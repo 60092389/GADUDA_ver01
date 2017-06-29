@@ -35,6 +35,7 @@ public class HomeController {
 
 		int i=13;
 		System.out.println("????");
+		System.out.println("okok");
 
 		return "home";
 		
