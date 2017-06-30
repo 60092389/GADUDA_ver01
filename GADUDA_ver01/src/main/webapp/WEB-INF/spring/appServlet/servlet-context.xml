@@ -24,5 +24,18 @@
 	<context:component-scan base-package="kr.co.gaduda" />
 	
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/member/**"/>
+			
+			<exclude-mapping path="/member/logout"/>
+			<exclude-mapping path="/member/idchk"/>
+			<exclude-mapping path="/member/deletemember"/>
+			<exclude-mapping path="/member/deletemember_chk"/>
+			<beans:bean class="kr.co.gaduda.interceptor.member.MemberLoginInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	
 	
 </beans:beans>
