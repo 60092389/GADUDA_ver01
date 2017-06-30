@@ -5,7 +5,8 @@ public class Pages {
 	private static final String commons_path = "/Commons";
 	private static final String detail_path = "/Detatil";
 	private static final String join_path = "/Join";
-	private static final String login_path = "/Login";
+	private static final String member_path="/Member";
+	//private static final String login_path = "/Login";
 	private static final String lookaround_path = "/LookAround";
 	private static final String main_path = "/Main";
 	private static final String mypage_path = "/MyPage";
@@ -21,9 +22,16 @@ public class Pages {
 	
 	public static final String VIEW_MAIN = main_path + "/main";
 	
+	public static final String VIEW_JOIN =  member_path +"/view_join";
 	
+	public static final String VIEW_LOGIN = member_path + "/view_login";
 	
-	//마이페이지의 가구스크랩 뷰
+	public static final String VIEW_LOGIN_FAILED = member_path +"/view_login_failed";
+	
+	public static final String VIEW_DEL_MEMBER = member_path +"/view_del_member";
+	
+	public static final String VIEW_DEL_MEMBER_FAILED =member_path+"/view_del_member_failed";
+	
 	public static final String VIEW_FURNITURE_SCRAP = "/FurnitureScrap";
 	public static final String VIEW_FURNITURE_SCRAP_LIST = mypage_path + VIEW_FURNITURE_SCRAP +"/furnitureScrapList";
 
