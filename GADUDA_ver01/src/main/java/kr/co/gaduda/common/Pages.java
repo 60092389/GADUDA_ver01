@@ -22,5 +22,9 @@ public class Pages {
 	public static final String VIEW_MAIN = main_path + "/main";
 	
 	
+	
+	//마이페이지의 가구스크랩 뷰
+	public static final String VIEW_FURNITURE_SCRAP = "/FurnitureScrap";
+	public static final String VIEW_FURNITURE_SCRAP_LIST = mypage_path + VIEW_FURNITURE_SCRAP +"/furnitureScrapList";
 
 }
