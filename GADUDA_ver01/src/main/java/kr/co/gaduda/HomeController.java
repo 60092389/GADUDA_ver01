@@ -35,7 +35,7 @@ public class HomeController {
 		
 		System.out.println("다시커밋");
 		
-		return "home";
+		return "main";
 		
 	}
 	
