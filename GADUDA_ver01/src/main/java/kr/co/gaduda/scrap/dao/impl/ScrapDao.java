@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.gaduda.furniture.vo.FurnitureVO;
 import kr.co.gaduda.scrap.dao.IScrapDao;
+import kr.co.gaduda.scrap.vo.FurArrBasicVO;
+import kr.co.gaduda.scrap.vo.FurArrNoDateVO;
 import kr.co.gaduda.scrap.vo.FurnitureBasicVO;
 import kr.co.gaduda.scrap.vo.FurnitureNoDateVO;
 
@@ -43,20 +45,61 @@ public class ScrapDao implements IScrapDao{
 
 	@Override
 	public int furnitureGoodCount(int fur_no) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int furnitureReplyCount(int fur_no) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int furnitureScrapDelete(int fur_scrap_no) {
-		// TODO Auto-generated method stub
 		return sqlSession.delete(namespace + ".furniture_scrap_delete", fur_scrap_no);
+	}
+
+	
+	@Override
+	public List<FurArrNoDateVO> furArrNo_furArrDate_List(String mem_id) {
+		return sqlSession.selectList(namespace + ".fur_arr_scrap_list", mem_id);
+	}
+
+	
+	@Override
+	public FurArrBasicVO fur_arr_scrap_info(int fur_arr_plan_no) {
+		return sqlSession.selectOne(namespace + ".fur_arr_scrap_info", fur_arr_plan_no);
+	}
+
+	@Override
+	public List<String> furArrConceptList(int fur_arr_plan_no) {
+		return sqlSession.selectList(namespace + ".fur_arr_concept", fur_arr_plan_no);
+	}
+
+	@Override
+	public List<String> furArrRoomKindList(int fur_arr_plan_no) {
+		return sqlSession.selectList(namespace + ".fur_arr_room_kind", fur_arr_plan_no);
+	}
+
+	@Override
+	public int furArrScrapCount(int fur_arr_plan_no) {
+		return sqlSession.selectOne(namespace + ".fur_arr_scrap_count", fur_arr_plan_no);
+	}
+
+	@Override
+	public int furArrGoodCount(int fur_arr_plan_no) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int furArrReplyCount(int fur_arr_plan_no) {
+		// TODO Auto-generated method stub
+		return 0;
 	}	
+	
+	@Override
+	public int furArrScrapDelete(int fur_arr_scrap_no) {
+			return sqlSession.delete(namespace + ".furniture_arr_scrap_delete", fur_arr_scrap_no);
+	}
 
 }

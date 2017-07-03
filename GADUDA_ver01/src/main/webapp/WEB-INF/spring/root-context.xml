@@ -7,12 +7,14 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.8.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 
@@ -53,6 +55,26 @@
 	<!-- base-package를 기준으로 모든 하위 패키지안에 있는 클래스를 자동으로 Bean으로 등록 -->
 	<!-- 단, @Repository나 @Service등 Annotation이 붙은 클래스만 등록 -->
 	<context:component-scan base-package="kr.co.gaduda"></context:component-scan>
+	
+	
+	
+	<!-- mongo 셋팅 다시 해줘야함 -->			 
+	 <mongo:mongo-client host="localhost" port="27017" credentials="pjb:1234@ststest">
+        <!-- <mongo:client-options connections-per-host="8"
+            threads-allowed-to-block-for-connection-multiplier="4"
+            connect-timeout="1000"
+            max-wait-time="1500"
+            socket-keep-alive="true"
+            socket-timeout="1500"/> -->
+    </mongo:mongo-client>
+    
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg ref="mongo"/>
+		<constructor-arg name="databaseName" value="ststest"/>
+	
+	</bean>
+	
+	
 	
 	
 	<!-- aop 설정하기 -->

@@ -49,6 +49,14 @@ public class URLs {
 	public static final String URI_FURNITURE_SCRAP_DELETE_FULL = mypage_default + URI_FURNITURE_SCRAP_DELETE;
 	
 	
+	//가구배치도스크랩
+	public static final String URI_FURNITURE_ARR_SCRAP = "/furniture_arr_scrap";
+	public static final String URI_FURNITURE_ARR_SCRAP_FULL = mypage_default + URI_FURNITURE_ARR_SCRAP;
+	
+	//가구배치도스크랩 삭제
+	public static final String URI_FURNITURE_ARR_SCRAP_DELETE = "/fur_arr_scrap_delete";
+	public static final String URI_FURNITURE_ARR_SCRAP_DELETE_FULL = mypage_default + URI_FURNITURE_ARR_SCRAP_DELETE;
+	
 	
 	
 }

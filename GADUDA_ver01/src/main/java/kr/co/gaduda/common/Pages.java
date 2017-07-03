@@ -32,7 +32,9 @@ public class Pages {
 	
 	public static final String VIEW_DEL_MEMBER_FAILED =member_path+"/view_del_member_failed";
 	
-	public static final String VIEW_FURNITURE_SCRAP = "/FurnitureScrap";
-	public static final String VIEW_FURNITURE_SCRAP_LIST = mypage_path + VIEW_FURNITURE_SCRAP +"/furnitureScrapList";
 
+	public static final String VIEW_FURNITURE_SCRAP_LIST = furniture_scrap_path +"/furnitureScrapList";
+
+	public static final String VIEW_FURNITURE_ARR_SCRAP_LIST = furniture_arr_scrap_path + "/furnitureArrScrapList";
+	
 }

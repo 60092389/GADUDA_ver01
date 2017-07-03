@@ -31,6 +31,51 @@
 	<delete id="furniture_scrap_delete">
 		delete from furniture_scrap where fur_scrap_no = #{fur_scrap_no}
 	</delete>
+	
+	
+	
+	
+	<!-- 해당회원이 가지고있는 가구배치도리스트 -->
+	<select id="fur_arr_scrap_list" resultType="kr.co.gaduda.scrap.vo.FurArrNoDateVO">
+		select fur_arr_plan_scrap_no, fur_arr_plan_no, fur_arr_plan_scrap_date
+		from furniture_arr_plan_scrap where mem_id = #{mem_id}
+	</select>
+	
+	<!-- 해당 가구배치도스크랩번호의 가구배치도 정보 -->	
+	<select id="fur_arr_scrap_info" resultType="kr.co.gaduda.scrap.vo.FurArrBasicVO">
+		select fur_arr_name, m.mem_id AS mem_id, mem_nickname, fur_arr_plan_img_loc 
+		from furniture_arrangement_plan fap, furniture_arrangement_image fai, member m
+		where fap.fur_arr_plan_no = fai.fur_arr_plan_no
+    	and fap.mem_id = m.mem_id
+		and fap.fur_arr_plan_no = #{fur_arr_plan_no}
+	</select>
+	
+	<!-- 해당 가구배치도의 스크랩 수 -->
+	<select id="fur_arr_scrap_count" resultType="int">
+		select count(*) from furniture_arr_plan_scrap where fur_arr_plan_no = #{fur_arr_plan_no}
+	</select>
+	
+	<!-- 해당 가구배치도의 컨셉 -->
+	<select id="fur_arr_concept" resultType="string">
+		select concept_name from furniture_arr_plan_concept fapc, concept c
+		where fapc.CONCEPT_NO = c.CONCEPT_NO
+		and fur_arr_plan_no = #{fur_arr_plan_no}
+	</select>
+	
+	<!-- 해당 가구배치도의 방종류 -->
+	<select id="fur_arr_room_kind" resultType="string">
+		select room_kind_def_name from furniture_arr_room_kind fark, room_kind_define rkd 
+		where fark.room_kind_def_no = rkd.room_kind_def_no
+		and fur_arr_plan_no = #{fur_arr_plan_no}
+	</select>
+	
+	
+	
+		<!-- 가구배치도스크랩 삭제 -->
+	<delete id="furniture_arr_scrap_delete">
+		delete from furniture_arr_plan_scrap where fur_arr_plan_scrap_no = #{fur_arr_plan_scrap_no}
+	</delete>
+	
 
   	
 </mapper>

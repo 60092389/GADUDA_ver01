@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import kr.co.gaduda.scrap.dao.impl.ScrapDao;
 import kr.co.gaduda.scrap.service.IScrapService;
+import kr.co.gaduda.scrap.vo.FurArrBasicVO;
+import kr.co.gaduda.scrap.vo.FurArrNoDateVO;
+import kr.co.gaduda.scrap.vo.FurArrangementVO;
 import kr.co.gaduda.scrap.vo.FurnitureBasicVO;
 import kr.co.gaduda.scrap.vo.FurnitureNoDateVO;
 import kr.co.gaduda.scrap.vo.FurnitureScrapVO;
@@ -75,6 +78,81 @@ public class ScrapService implements IScrapService {
 	public int furScrapDelete(int fur_scrap_no) {
 		
 		return scrapDao.furnitureScrapDelete(fur_scrap_no);
+	}
+
+
+	@Override
+	public List<FurArrangementVO> furArrScrapList(String mem_id) {
+		
+		List<FurArrNoDateVO> fur_arr_no_dateList = new ArrayList<FurArrNoDateVO>();
+		
+		List<FurArrangementVO> furArrangementList = new ArrayList<FurArrangementVO>();
+		
+		fur_arr_no_dateList = scrapDao.furArrNo_furArrDate_List(mem_id);
+		
+		for(int i = 0; i < fur_arr_no_dateList.size(); i++){
+			
+			FurArrangementVO furArrVO = new FurArrangementVO();
+			
+			int fur_arr_plan_scrap_no = fur_arr_no_dateList.get(i).getFur_arr_plan_scrap_no();
+			int fur_arr_plan_no = fur_arr_no_dateList.get(i).getFur_arr_plan_no();
+			String fur_arr_plan_scrap_date = fur_arr_no_dateList.get(i).getFur_arr_plan_scrap_date();
+			
+			FurArrBasicVO fabVO = scrapDao.fur_arr_scrap_info(fur_arr_plan_no);
+			
+			String fur_arr_plan_name = fabVO.getFur_arr_name();
+			String fur_arr_plan_mem_nickname = fabVO.getMem_nickname();
+			String fur_arr_plan_mem_id = fabVO.getMem_id();
+			String fur_arr_plan_img_loc = fabVO.getFur_arr_plan_img_loc();
+			
+			String fur_arr_plan_concepts = "";
+			
+			List<String> fur_arr_plan_concept = scrapDao.furArrConceptList(fur_arr_plan_no);
+			
+			for(int j = 0; j < fur_arr_plan_concept.size(); j++){
+				fur_arr_plan_concepts = fur_arr_plan_concept.get(j) + " " + fur_arr_plan_concepts;
+			}
+			
+			String fur_arr_plan_room_kind_names = "";
+			
+			List<String> fur_arr_plan_room_kind_name = scrapDao.furArrRoomKindList(fur_arr_plan_no);
+			
+			for(int k = 0; k < fur_arr_plan_room_kind_name.size(); k++){
+				fur_arr_plan_room_kind_names = 
+						fur_arr_plan_room_kind_name.get(k) + " " + fur_arr_plan_room_kind_names;
+			}
+			
+			int fur_arr_plan_good_count = scrapDao.furArrGoodCount(fur_arr_plan_no);
+			int fur_arr_plan_scrap_count = scrapDao.furArrScrapCount(fur_arr_plan_no);
+			int fur_arr_plan_reply_count = scrapDao.furArrReplyCount(fur_arr_plan_no);
+			
+			furArrVO.setFur_arr_plan_concepts(fur_arr_plan_concepts);
+			furArrVO.setFur_arr_plan_good_count(fur_arr_plan_good_count);
+			furArrVO.setFur_arr_plan_img_loc(fur_arr_plan_img_loc);
+			furArrVO.setFur_arr_plan_mem_id(fur_arr_plan_mem_id);
+			furArrVO.setFur_arr_plan_mem_nickname(fur_arr_plan_mem_nickname);
+			furArrVO.setFur_arr_plan_name(fur_arr_plan_name);
+			furArrVO.setFur_arr_plan_no(fur_arr_plan_no);
+			furArrVO.setFur_arr_plan_reply_count(fur_arr_plan_reply_count);
+			furArrVO.setFur_arr_plan_room_kind_names(fur_arr_plan_room_kind_names);
+			furArrVO.setFur_arr_plan_scrap_count(fur_arr_plan_scrap_count);
+			furArrVO.setFur_arr_plan_scrap_date(fur_arr_plan_scrap_date);
+			furArrVO.setFur_arr_plan_scrap_no(fur_arr_plan_scrap_no);
+			
+			
+			furArrangementList.add(furArrVO);
+			
+		}
+		
+		
+		return furArrangementList;
+	}
+	
+	
+	@Override
+	public int furArrScrapDelete(int fur_arr_scrap_no) {
+		
+		return scrapDao.furArrScrapDelete(fur_arr_scrap_no);
 	}
 
 }
