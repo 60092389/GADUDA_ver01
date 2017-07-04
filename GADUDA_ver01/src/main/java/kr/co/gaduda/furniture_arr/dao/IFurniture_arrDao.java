@@ -1,5 +1,8 @@
 package kr.co.gaduda.furniture_arr.dao;
 
-public interface IFurniture_arrDao {
+import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 
+public interface IFurniture_arrDao {
+	public Furniture_arrVO getFurArr(int fur_arr_plan_no);
+	public int countFurArr();
 }

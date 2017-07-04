@@ -75,13 +75,49 @@
 		<tbody>
 			<c:forEach var="fur_list" items="${fur_list }">
 				<tr>
-					<td>${fur_list.fur_pic_loc }</td>
+					<td><img alt="가구사진" src="${fur_list.fur_pic_loc }" width="100px" height="100px">
+					${fur_list.fur_pic_loc }</td>
 					<td>${fur_list.fur_name }</td>
 					<td>${fur_list.fur_price }</td>
 					<td>${fur_list.fur_brand_name }</td>
 					<td>${fur_list.fur_good_num }</td>
-					<td>스크랩</td>
+					<td>${fur_list.fur_scrap_num }</td>
 					<td>${fur_list.fur_repl_num }</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+
+	</table>
+	
+	<table border="1">
+
+		<h1>가구배치도 리스트</h1>
+
+		<thead>
+			<th>가구배치도이미지</th>
+			<th>가구배치도이름</th>
+			<th>작성자</th>
+			<th>가구배치도 컨셉</th>
+			<th>가구배치도 방종류</th>
+			
+			<th>좋아요 수</th>
+			<th>스크랩 수</th>
+			<th>댓글 수</th>
+		</thead>
+
+		<tbody>
+			<c:forEach var="fal" items="${fur_arr_list }">
+				<tr>
+					<td><img alt="가구사진" src="${fal.fur_arr_plan_img_loc }" width="100px" height="100px">
+					${fal.fur_arr_plan_img_loc }</td>
+					<td>${fal.fur_arr_name }</td>
+					<td>${fal.mem_id }</td>
+					<td>${fal.fur_arr_con }</td>
+					<td>${fal.fur_arr_room_kind }</td>
+					
+					<td>${fal.fur_arr_plan_good_num }</td>
+					<td>${fal.fur_arr_plan_scrap_num }</td>
+					<td>${fal.fur_arr_plan_repl_num }</td>
 				</tr>
 			</c:forEach>
 		</tbody>

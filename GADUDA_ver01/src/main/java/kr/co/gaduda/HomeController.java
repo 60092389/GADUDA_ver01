@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.gaduda.furniture.service.IFurnitureService;
 import kr.co.gaduda.furniture.vo.FurnitureVO;
+import kr.co.gaduda.furniture_arr.service.IFurniture_arrService;
+import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 
 /**
  * Handles requests for the application home page.
@@ -24,6 +26,9 @@ public class HomeController {
 	
 	@Autowired
 	private IFurnitureService furser;
+	
+	@Autowired
+	private IFurniture_arrService furarrser;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String furListView(Model model) {
@@ -31,7 +36,12 @@ public class HomeController {
 
 		List<FurnitureVO> fur_list = furser.furList();
 		model.addAttribute("fur_list", fur_list);
+		
+		List<Furniture_arrVO> fur_arr_list = furarrser.furArrList();
+		model.addAttribute("fur_arr_list", fur_arr_list);
+		
 		System.out.println(fur_list);
+		System.out.println(fur_arr_list);
 
 		return "main";
 

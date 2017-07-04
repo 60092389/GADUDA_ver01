@@ -2,8 +2,27 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="kr.co.gaduda.mapper.furniture_arr.Furniture_arrMapper">
 
-  	
+<mapper namespace="kr.co.gaduda.mapper.furniture_arr.Furniture_arrMapper">
+
+	<select id="getTime" resultType="String">
+		<![CDATA[
+			select sysdate from dual
+		]]>
+	</select>
+	
+	<select id="get_arr_info" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrVO">
+		<![CDATA[
+			select FUR_ARR_PLAN_IMG_LOC, FUR_ARR_NAME, MEM_ID, FUR_ARR_PLAN_GOOD_NUM, FUR_ARR_PLAN_REPL_NUM  
+			from FURNITURE_ARRANGEMENT_IMAGE FAI, FURNITURE_ARRANGEMENT_PLAN FAP 
+			where FAI.FUR_ARR_PLAN_NO = FAP.FUR_ARR_PLAN_NO and FAI.FUR_ARR_PLAN_NO = #{fur_arr_plan_no}
+		]]>
+	</select>
+	
+	<select id="count_fur_arr" resultType="int">
+		<![CDATA[
+			select count(*) from FURNITURE_ARRANGEMENT_PLAN
+		]]>
+	</select>
+
 </mapper>
