@@ -15,22 +15,18 @@ private static final String namespace = "kr.co.gaduda.mapper.furniture.Furniture
 	SqlSession fursqlSession;
 	
 	public String getTime(){
-		System.out.println("dao 들어옴");
 		return fursqlSession.selectOne(namespace+".getTime");
 	}
 	public int priceFur(){
-		System.out.println("가구가격");
 		return fursqlSession.selectOne(namespace+".example");
 	}
 	
 	@Override
 	public FurnitureVO getFurniture(int fur_no){
-		System.out.println("furniture불러오기");
 		return fursqlSession.selectOne(namespace+".get_fur_info", fur_no);
 	}
 	@Override
 	public int countFur() {
-		System.out.println("가구 갯수");
 		return fursqlSession.selectOne(namespace+".count_fur");
 	}
 	

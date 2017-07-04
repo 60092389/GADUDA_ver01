@@ -1,6 +1,7 @@
 package kr.co.gaduda.furniture.vo;
 
 public class FurnitureVO {
+	
 	private int fur_no;
 	private String fur_pic_loc;
 	private String fur_name;
@@ -9,6 +10,23 @@ public class FurnitureVO {
 	private int fur_good_num;
 	private int fur_scrap_num;
 	private int fur_repl_num;
+	private String fur_info;
+
+	public int getFur_no() {
+		return fur_no;
+	}
+
+	public void setFur_no(int fur_no) {
+		this.fur_no = fur_no;
+	}
+
+	public String getFur_info() {
+		return fur_info;
+	}
+
+	public void setFur_info(String fur_info) {
+		this.fur_info = fur_info;
+	}
 
 	public int getFur_good_num() {
 		return fur_good_num;
@@ -32,14 +50,6 @@ public class FurnitureVO {
 
 	public void setFur_repl_num(int fur_repl_num) {
 		this.fur_repl_num = fur_repl_num;
-	}
-
-	public int getFur_no() {
-		return fur_no;
-	}
-
-	public void setFur_no(int fur_no) {
-		this.fur_no = fur_no;
 	}
 
 	public String getFur_pic_loc() {
@@ -76,9 +86,10 @@ public class FurnitureVO {
 
 	@Override
 	public String toString() {
-		return "FurnitureVO [fur_no=" + fur_no + ", fur_pic_loc=" + fur_pic_loc + ", fur_name=" + fur_name
+		return "FurnitureVO [fur_no="+fur_no+"fur_pic_loc=" + fur_pic_loc + ", fur_name=" + fur_name
 				+ ", fur_price=" + fur_price + ", fur_brand_name=" + fur_brand_name + ", fur_good_num="
-				+ fur_good_num + ", fur_scrap_num=" + fur_scrap_num + ", fur_repl_num=" + fur_repl_num
+				+ fur_good_num + ", fur_scrap_num=" + fur_scrap_num + ", fur_repl_num=" + fur_repl_num + "fur_info: "+ fur_info
 				+ "]";
 	}
+
 }

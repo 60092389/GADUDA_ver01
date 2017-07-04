@@ -6,4 +6,5 @@ import kr.co.gaduda.furniture.vo.FurnitureVO;
 
 public interface IFurnitureService {
 	public List<FurnitureVO> furList();
+	public FurnitureVO furDetailView(int fur_no);
 }

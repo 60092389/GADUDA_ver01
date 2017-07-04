@@ -71,13 +71,14 @@
 			<th>스크랩 수</th>
 			<th>댓글 수</th>
 		</thead>
-
+		
 		<tbody>
 			<c:forEach var="fur_list" items="${fur_list }">
 				<tr>
 					<td><img alt="가구사진" src="${fur_list.fur_pic_loc }" width="100px" height="100px">
 					${fur_list.fur_pic_loc }</td>
-					<td>${fur_list.fur_name }</td>
+					<!-- <td>${fur_list.fur_name }</td> -->
+					<td><a href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fur_list.fur_no }">${fur_list.fur_name }</a></td>
 					<td>${fur_list.fur_price }</td>
 					<td>${fur_list.fur_brand_name }</td>
 					<td>${fur_list.fur_good_num }</td>
@@ -126,4 +127,3 @@
 
 
 </body>
-</html>

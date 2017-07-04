@@ -10,8 +10,10 @@ import kr.co.gaduda.furniture.dao.IFurnitureDao;
 import kr.co.gaduda.furniture.service.IFurnitureService;
 import kr.co.gaduda.furniture.vo.FurnitureVO;
 
+
 @Service
 public class FurnitureService implements IFurnitureService {
+	
 	@Autowired
 	private IFurnitureDao furDao;
 	
@@ -33,5 +35,17 @@ public class FurnitureService implements IFurnitureService {
 		}
 		
 		return fur_list;
+	}
+	
+	public FurnitureVO furDetailView(int fur_no){
+		FurnitureVO furVO = new FurnitureVO();
+		
+		furVO = furDao.getFurniture(fur_no);
+		String fur_img_loc = furDao.fur_pic_loc_Get(fur_no);
+		furVO.setFur_pic_loc(fur_img_loc);
+		
+		System.out.println(furVO);
+		
+		return furVO;
 	}
 }

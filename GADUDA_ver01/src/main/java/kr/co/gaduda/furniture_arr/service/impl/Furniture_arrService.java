@@ -26,6 +26,12 @@ public class Furniture_arrService implements IFurniture_arrService {
 			Furniture_arrVO furArrVO = new Furniture_arrVO();
 
 			furArrVO = furArrDao.getFurArr(fur_arr_no + 1);
+			String furArrCon = furArrDao.getFurCon(fur_arr_no+1);
+			String furRoomKind = furArrDao.getRoomKind(fur_arr_no+1);
+			
+			furArrVO.setFur_arr_con(furArrCon);
+			furArrVO.setFur_arr_room_kind(furRoomKind);
+			
 
 			fur_arr_list.add(furArrVO);
 		}

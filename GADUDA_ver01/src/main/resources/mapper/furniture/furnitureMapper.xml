@@ -21,7 +21,7 @@
 	<!-- 가구 이름, 가격 가져오기 -->
 	<select id="get_fur_info" resultType="kr.co.gaduda.furniture.vo.FurnitureVO">
 		<![CDATA[
-			select fur_name, fur_price, fur_good_num, fur_repl_num, fur_brand_name
+			select fur_no, fur_name, fur_price, fur_good_num, fur_repl_num, fur_brand_name
 			from FURNITURE, FURNITURE_BRAND
 			where FURNITURE.FUR_BRAND_NO = FURNITURE_BRAND.FUR_BRAND_NO and FURNITURE.FUR_NO = #{fur_no}
 		]]>
