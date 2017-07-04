@@ -25,10 +25,10 @@
 
 		<property value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" name="driverClassName" />
 
-		<property value="jdbc:log4jdbc:oracle:thin:@192.168.1.25:1521:orcl"
+		<property value="jdbc:log4jdbc:oracle:thin:@192.168.1.20:1521:orcl"
 			name="url" />
 
-		<property value="yongjin" name="username" />
+		<property value="ora_user" name="username" />
 
 		<property value="1234" name="password" />
 

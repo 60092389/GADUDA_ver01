@@ -5,17 +5,7 @@
   
   <mapper namespace="kr.co.gaduda.mapper.furniture.FurnitureMapper">
 
-	<!-- 스크랩에서 사용할 가구사진 경로 가져오기 -->
-	<select id="fur_pic_loc" resultType="string">
-		select fur_pic_loc from furniture_picture where fur_no = #{fur_no}
-	</select>
 
-	<!-- 가구스크랩 리스트용 가구정보 가져오기 -->
-	<select id="furniture_basic_info" resultType="kr.co.gaduda.scrap.vo.FurnitureBasicVO">
-		select fur_name, fur_price, fur_brand_name 
- 		 from furniture f, furniture_brand fb where f.fur_brand_no = fb.fur_brand_no 
- 		 and fur_no = #{fur_no}
-	</select>
 	
 	<!-- 해당 가구 스크랩 갯수 가져오기 -->
 	<select id="furniture_scrap_count" resultType="int">
@@ -27,9 +17,26 @@
 		select fur_scrap_no, fur_no, fur_scrap_date from furniture_scrap where mem_id = #{mem_id}	
 	</select>
 	
-	<!-- 가구스크랩 삭제 -->
-	<delete id="furniture_scrap_delete">
-		delete from furniture_scrap where fur_scrap_no = #{fur_scrap_no}
-	</delete>
+	
+	<!-- 가구 이름, 가격 가져오기 -->
+	<select id="get_fur_info" resultType="kr.co.gaduda.furniture.vo.FurnitureVO">
+		<![CDATA[
+			select fur_name, fur_price, fur_good_num, fur_repl_num, fur_brand_name
+			from FURNITURE, FURNITURE_BRAND
+			where FURNITURE.FUR_BRAND_NO = FURNITURE_BRAND.FUR_BRAND_NO and FURNITURE.FUR_NO = #{fur_no}
+		]]>
+	</select>
+	
+	<!-- 가구 갯수 세기 -->
+	<select id="count_fur" resultType="int">
+		<![CDATA[
+			select count(*) from furniture
+		]]>
+	</select>
+	
+	<!-- 사진 가져오기 -->
+	<select id="fur_pic_loc" resultType="string">
+		select fur_pic_loc from furniture_picture where fur_no = #{fur_no}
+	</select>
   	
 </mapper>

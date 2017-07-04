@@ -57,6 +57,13 @@ public class URLs {
 	public static final String URI_FURNITURE_ARR_SCRAP_DELETE = "/fur_arr_scrap_delete";
 	public static final String URI_FURNITURE_ARR_SCRAP_DELETE_FULL = mypage_default + URI_FURNITURE_ARR_SCRAP_DELETE;
 	
+	//Main Button
+			public static final String URI_MAIN_HOME = "/";
+			public static final String URI_MAIN_TO_LIST = "/list";
+			public static final String URI_MAIN_TO_ARR = "/arrange";
+			public static final String URI_MAIN_TO_WATCH = "/watch";
+			public static final String URI_MAIN_TO_RECOM = "/recommend";
+			public static final String URI_MAIN_TO_MYPAGE = mypage_default;
 	
 	
 }
