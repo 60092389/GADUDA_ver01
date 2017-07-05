@@ -59,7 +59,7 @@
 	
 	
 	<!-- mongo 셋팅 다시 해줘야함 -->			 
-	 <mongo:mongo-client host="localhost" port="27017" credentials="pjb:1234@ststest">
+	 <mongo:mongo-client host="192.168.1.77" port="27017" credentials="pjb:1234@gaduda">
         <!-- <mongo:client-options connections-per-host="8"
             threads-allowed-to-block-for-connection-multiplier="4"
             connect-timeout="1000"
@@ -70,7 +70,7 @@
     
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg ref="mongo"/>
-		<constructor-arg name="databaseName" value="ststest"/>
+		<constructor-arg name="databaseName" value="gaduda"/>
 	
 	</bean>
 	
