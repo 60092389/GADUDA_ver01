@@ -22,14 +22,18 @@ public class FurnitureService implements IFurnitureService {
 		
 		List<FurnitureVO> fur_list = new ArrayList<FurnitureVO>();
 		
+		
 		int fur_num = furnitureDao.countFur();
 		
 		for(int fur_no = 0; fur_no < fur_num ; fur_no++ ){
 			FurnitureVO furVO = new FurnitureVO();
 			
 			furVO = furnitureDao.getFurniture(fur_no+1);
-			String fur_img_loc = furnitureDao.fur_pic_loc_Get(fur_no+1);
-			furVO.setFur_pic_loc(fur_img_loc);
+			List<String> fur_pic_loc = furnitureDao.fur_pic_loc_Get(fur_no+1);
+			
+			String fur_pic_loc_main = fur_pic_loc.get(0).toString();
+			
+			furVO.setFur_pic_loc(fur_pic_loc_main);
 			
 			fur_list.add(furVO);
 		}
@@ -41,8 +45,8 @@ public class FurnitureService implements IFurnitureService {
 		FurnitureVO furVO = new FurnitureVO();
 		
 		furVO = furnitureDao.getFurniture(fur_no);
-		String fur_img_loc = furnitureDao.fur_pic_loc_Get(fur_no);
-		furVO.setFur_pic_loc(fur_img_loc);
+		//String fur_img_loc = furnitureDao.fur_pic_loc_Get(fur_no);
+		//furVO.setFur_pic_loc(fur_img_loc);
 		
 		System.out.println(furVO);
 		
