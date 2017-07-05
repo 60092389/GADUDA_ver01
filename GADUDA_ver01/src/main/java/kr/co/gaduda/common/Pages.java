@@ -12,6 +12,8 @@ public class Pages {
 	private static final String mypage_path = "/MyPage";
 	private static final String search_path = "/Search";
 	private static final String furniture_path = "/Furniture";
+	private static final String arrange_path="/Arrangement";
+	
 	
 	private static final String follow_path = mypage_path + "/Follow";
 	private static final String furniture_arr_path = mypage_path + "/FurnitureArr";
@@ -40,5 +42,7 @@ public class Pages {
 	
 	public static final String VIEW_FURNITURE_DETAIL = "/furniture_detail";
 	public static final String VIEW_FURNITURE_DETAIL_VIEW = furniture_path + VIEW_FURNITURE_DETAIL;
+	
+	public static final String VIEW_FURNITURE_WATCH_VIEW =arrange_path+"/view_watch";
 	
 }

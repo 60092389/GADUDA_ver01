@@ -8,7 +8,7 @@ public class URLs {
 	private static final String member_default = "/member";
 	private static final String mypage_default = "/mypage";
 	private static final String furniture_default = "/furniture";
-	private static final String furniture_arr_default = "/furniture_arr";
+	
 
 	// 로그아웃
 	public static final String URI_LOGOUT = "/logout";
@@ -67,4 +67,7 @@ public class URLs {
 	public static final String URI_FURNITURE_DETAIL = "/detail";
 	public static final String URI_FURNITURE_DETAIL_FULL = furniture_default + URI_FURNITURE_DETAIL;
 
+	//가구 배치도 페이지
+	public static final String URI_FURNITURE_WATCH ="/fur_arr";
+	public static final String URI_FURNITURE_WATCH_FULL=URI_MAIN_TO_WATCH+URI_FURNITURE_WATCH;
 }
