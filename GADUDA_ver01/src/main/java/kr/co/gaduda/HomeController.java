@@ -25,19 +25,19 @@ import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 public class HomeController {
 	
 	@Autowired
-	private IFurnitureService furser;
+	private IFurnitureService furnitureService;
 	
 	@Autowired
-	private IFurniture_arrService furarrser;
+	private IFurniture_arrService furniture_arrService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String furListView(Model model) {
 		System.out.println("Main Controller");
 
-		List<FurnitureVO> fur_list = furser.furList();
+		List<FurnitureVO> fur_list = furnitureService.furList();
 		model.addAttribute("fur_list", fur_list);
 		
-		List<Furniture_arrVO> fur_arr_list = furarrser.furArrList();
+		List<Furniture_arrVO> fur_arr_list = furniture_arrService.furArrList();
 		model.addAttribute("fur_arr_list", fur_arr_list);
 		
 		System.out.println(fur_list);

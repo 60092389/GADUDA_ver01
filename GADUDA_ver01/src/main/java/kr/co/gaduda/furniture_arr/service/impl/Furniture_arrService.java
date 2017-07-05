@@ -14,20 +14,20 @@ import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 public class Furniture_arrService implements IFurniture_arrService {
 	
 	@Autowired
-	private IFurniture_arrDao furArrDao;
+	private IFurniture_arrDao furniture_arrDao;
 
 	@Override
 	public List<Furniture_arrVO> furArrList() {
 		List<Furniture_arrVO> fur_arr_list = new ArrayList<Furniture_arrVO>();
 
-		int fur_arr_num = furArrDao.countFurArr();
+		int fur_arr_num = furniture_arrDao.countFurArr();
 
 		for (int fur_arr_no = 0; fur_arr_no < fur_arr_num; fur_arr_no++) {
 			Furniture_arrVO furArrVO = new Furniture_arrVO();
 
-			furArrVO = furArrDao.getFurArr(fur_arr_no + 1);
-			String furArrCon = furArrDao.getFurCon(fur_arr_no+1);
-			String furRoomKind = furArrDao.getRoomKind(fur_arr_no+1);
+			furArrVO = furniture_arrDao.getFurArr(fur_arr_no + 1);
+			String furArrCon = furniture_arrDao.getFurCon(fur_arr_no+1);
+			String furRoomKind = furniture_arrDao.getRoomKind(fur_arr_no+1);
 			
 			furArrVO.setFur_arr_con(furArrCon);
 			furArrVO.setFur_arr_room_kind(furRoomKind);

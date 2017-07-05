@@ -18,7 +18,7 @@ import kr.co.gaduda.furniture.vo.FurnitureVO;
 @RequestMapping(value="/furniture")
 public class FurnitureController {
 	@Autowired
-	private IFurnitureService furser;
+	private IFurnitureService furnitureService;
 
 	@RequestMapping(value = URLs.URI_FURNITURE_DETAIL, method = RequestMethod.GET)
 	public String furListView(@RequestParam(value="fur_no") int fur_no, Model model) {
@@ -26,7 +26,7 @@ public class FurnitureController {
 		
 		System.out.println("Furniture Controller");
 
-		FurnitureVO furVO = furser.furDetailView(fur_no);
+		FurnitureVO furVO = furnitureService.furDetailView(fur_no);
 		
 		model.addAttribute("furVO",furVO);
 
