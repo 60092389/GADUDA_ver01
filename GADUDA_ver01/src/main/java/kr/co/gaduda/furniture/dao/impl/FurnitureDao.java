@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.co.gaduda.furniture.dao.IFurnitureDao;
+import kr.co.gaduda.furniture.vo.FurnitureDetailVO;
 import kr.co.gaduda.furniture.vo.FurnitureVO;
 
 @Repository
@@ -15,24 +17,38 @@ public class FurnitureDao implements IFurnitureDao {
 
 	@Autowired
 	SqlSession fursqlSession;
-
+	
+	@Autowired
+	private MongoTemplate mongoTemplate;
+	
 	@Override
-	public FurnitureVO getFurniture(int fur_no) {
-		return fursqlSession.selectOne(namespace + ".get_fur_info", fur_no);
+	public FurnitureVO getFurniture(int fur_no){
+		return fursqlSession.selectOne(namespace+".get_fur_info", fur_no);
 	}
-
+	
+	@Override
+	public FurnitureDetailVO getDetailFurniture(int fur_no){
+		return fursqlSession.selectOne(namespace+".get_fur_info_detail", fur_no);
+	}
+	
 	@Override
 	public int countFur() {
-		return fursqlSession.selectOne(namespace + ".count_fur");
+		return fursqlSession.selectOne(namespace+".count_fur");
 	}
-
+	
 	@Override
 	public List<String> fur_pic_loc_Get(int fur_no) {
 		return fursqlSession.selectList(namespace + ".fur_pic_loc", fur_no);
 	}
-
+	
 	@Override
 	public List<String> fur_pic_con_Get(int fur_no) {
-		return fursqlSession.selectList(namespace + ".get_fur_con", fur_no);
+		return fursqlSession.selectList(namespace+".get_fur_con", fur_no);
 	}
+	
+	@Override
+	public List<String> fur_pic_kind_Get(int fur_no) {
+		return fursqlSession.selectList(namespace+".get_fur_kind", fur_no);
+	}
+	
 }

@@ -1,5 +1,7 @@
 package kr.co.gaduda.furniture_arr.dao.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -31,11 +33,11 @@ public class Furniture_arrDao implements IFurniture_arrDao{
 		// TODO Auto-generated method stub
 		return furarrsqlSession.selectOne(namespace+".count_fur_arr");
 	}
-
+	
 	@Override
-	public String getFurCon(int fur_arr_plan_no) {
+	public List<String> getFurCon(int fur_arr_plan_no) {
 		// TODO Auto-generated method stub
-		return furarrsqlSession.selectOne(namespace+".fur_arr_con", fur_arr_plan_no);
+		return furarrsqlSession.selectList(namespace+".fur_arr_con", fur_arr_plan_no);
 	}
 
 	@Override

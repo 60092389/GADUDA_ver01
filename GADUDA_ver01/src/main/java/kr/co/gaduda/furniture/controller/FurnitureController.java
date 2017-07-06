@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.co.gaduda.common.Pages;
 import kr.co.gaduda.common.URLs;
 import kr.co.gaduda.furniture.service.IFurnitureService;
+import kr.co.gaduda.furniture.vo.FurnitureDetailVO;
 import kr.co.gaduda.furniture.vo.FurnitureVO;
 
 @Controller
@@ -23,12 +24,14 @@ public class FurnitureController {
 	@RequestMapping(value = URLs.URI_FURNITURE_DETAIL, method = RequestMethod.GET)
 	public String furListView(@RequestParam(value="fur_no") int fur_no, Model model) {
 		
-		
-		System.out.println("Furniture Controller");
 
-		FurnitureVO furVO = furnitureService.furDetailView(fur_no);
+		FurnitureDetailVO furdeVO = furnitureService.furDetailView(fur_no);
+		List<String> furdepic_list = furnitureService.furDetailViewPic(fur_no);
 		
-		model.addAttribute("furVO",furVO);
+		model.addAttribute("furdeVO",furdeVO);
+		model.addAttribute("furdepic_list",furdepic_list);
+		
+		
 
 		return Pages.VIEW_FURNITURE_DETAIL_VIEW;
 

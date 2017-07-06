@@ -32,7 +32,6 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String furListView(Model model) {
-		System.out.println("Main Controller");
 
 		List<FurnitureVO> fur_list = furnitureService.furList();
 		model.addAttribute("fur_list", fur_list);
@@ -40,8 +39,6 @@ public class HomeController {
 		List<Furniture_arrVO> fur_arr_list = furniture_arrService.furArrList();
 		model.addAttribute("fur_arr_list", fur_arr_list);
 		
-		System.out.println(fur_list);
-		System.out.println(fur_arr_list);
 
 		return "main";
 
