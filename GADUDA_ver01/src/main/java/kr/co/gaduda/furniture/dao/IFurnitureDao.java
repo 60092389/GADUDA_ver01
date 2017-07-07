@@ -8,6 +8,7 @@ import kr.co.gaduda.furniture.vo.FurnitureDetailVO;
 import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
 import kr.co.gaduda.furniture.vo.FurnitureReplyListVO;
 import kr.co.gaduda.furniture.vo.FurnitureVO;
+import kr.co.gaduda.furniture.vo.FurnitureGoodListVO;
 
 public interface IFurnitureDao {
 	public FurnitureVO getFurniture(int fur_no);
@@ -21,6 +22,8 @@ public interface IFurnitureDao {
 	public List<String> fur_pic_con_Get(int fur_no);
 
 	public List<String> fur_pic_kind_Get(int fur_no);
+	//좋아요 리스트 가져오기
+	public List<FurnitureGoodListVO> getFurGoodList(Map<String, Object> search);
 
 	
 	////////////////////////////////////////////////////////////////////////

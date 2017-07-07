@@ -13,6 +13,7 @@ import kr.co.gaduda.furniture.dao.IFurnitureDao;
 import kr.co.gaduda.furniture.dto.FurnitureCateDTO;
 import kr.co.gaduda.furniture.service.IFurnitureService;
 import kr.co.gaduda.furniture.vo.FurnitureDetailVO;
+import kr.co.gaduda.furniture.vo.FurnitureGoodListVO;
 import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
 import kr.co.gaduda.furniture.vo.FurnitureReplyListVO;
 import kr.co.gaduda.furniture.vo.FurnitureVO;
@@ -236,6 +237,14 @@ public class FurnitureService implements IFurnitureService {
 		
 	}
 	//////////////////////////////////////////////////////////////////////////
+
+	@Override
+	public List<FurnitureGoodListVO> getFurGoodList(Map<String, Object> search) {
+		
+		List<FurnitureGoodListVO> vo = new ArrayList<FurnitureGoodListVO>();
+		vo = furnitureDao.getFurGoodList(search);
+		return furnitureDao.getFurGoodList(search);
+	}
 	
 	
 	

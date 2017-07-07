@@ -66,6 +66,12 @@ public class URLs {
 	// 가구 상세보기 페이지
 	public static final String URI_FURNITURE_DETAIL = "/detail";
 	public static final String URI_FURNITURE_DETAIL_FULL = furniture_default + URI_FURNITURE_DETAIL;
+	// 가구 상세페이지 좋아요 리스트 보기
+	public static final String URI_FURNITURE_DETAIL_GOOD_LIST = "/mongofurgoodlistajax";
+	public static final String URI_FURNITURE_DETAIL_GOOD_LIST_FULL = URI_FURNITURE_DETAIL + URI_FURNITURE_DETAIL_GOOD_LIST;
+	// 가구 상세페이지 댓글 리스트 보기
+	public static final String URI_FURNITURE_DETAIL_REPL_LIST = "/mongofurrepllistajax";
+	public static final String URI_FURNITURE_DETAIL_REPL_LIST_FULL = furniture_default + URI_FURNITURE_DETAIL_GOOD_LIST;
 
 	//가구 배치도 페이지
 	public static final String URI_FURNITURE_WATCH ="/fur_arr";

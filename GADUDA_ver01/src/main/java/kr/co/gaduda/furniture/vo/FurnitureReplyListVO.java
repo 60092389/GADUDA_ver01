@@ -7,9 +7,15 @@ public class FurnitureReplyListVO {
 	private String mem_nickname;
 	private String fur_rep_contents;
 	private String fur_rep_write_date;
+	private int fur_no;
 	
 	
-	
+	public int getFur_no() {
+		return fur_no;
+	}
+	public void setFur_no(int fur_no) {
+		this.fur_no = fur_no;
+	}
 	public String get_id() {
 		return _id;
 	}
