@@ -1,3 +1,4 @@
+<%@page import="kr.co.gaduda.common.URLs"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -268,7 +269,7 @@ $(document).ready(function(){
 			<tr>
 				<td><img alt="가구사진" src="${fsl.fur_pic_loc }" width="100px" height="100px">
 					${fsl.fur_pic_loc }</td>
-				<td>${fsl.fur_name }</td>
+				<td><a href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fsl.fur_no }">${fsl.fur_name }</a></td>
 				<td>${fsl.fur_price }</td>
 				<td>${fsl.fur_brand_name }</td>
 				<td>${fsl.fur_no }</td>

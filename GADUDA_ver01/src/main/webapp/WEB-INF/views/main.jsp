@@ -18,7 +18,7 @@
 		<a href=<%=URLs.URI_MAIN_HOME%>>홈</a> 
 		<a href=<%=URLs.URI_MAIN_TO_LIST%>>목록</a>
 		<a href=<%=URLs.URI_MAIN_TO_ARR%>>배치</a>
-		<a href=<%=URLs.URI_FURNITURE_WATCH_FULL%>>구경</a>
+		<a href=<%=URLs.URI_FURNITURE_LIST_LOOKAROUND_GET_FULL%>>구경</a>
 		<a href=<%=URLs.URI_MAIN_TO_RECOM%>>추천</a>
 		<a href=<%=URLs.URI_MAIN_TO_MYPAGE%>>마이페이지</a>
 
