@@ -64,7 +64,7 @@ public class FurnitureDao implements IFurnitureDao {
 
 	@Override
 	public String getFurPicLoc(int fur_no) {
-		return sqlSession.selectOne(namespace + ".fur_pic_loc", fur_no);
+		return sqlSession.selectOne(namespace + ".fur_pic_loc_one", fur_no);
 	}
 
 	@Override

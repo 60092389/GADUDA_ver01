@@ -133,6 +133,11 @@
 	<update id="fur_reply_num_down">
 		update furniture set fur_repl_num = fur_repl_num-1 where fur_no = #{fur_no}
 	</update>
+		<!-- 사진 가져오기 -->
+	<select id="fur_pic_loc_one" resultType="String">
+		select fur_pic_loc from furniture_picture where fur_no = #{fur_no} rownum=1
+	</select>
+	
 	
 	<!-- 가구 구경 페이지용 끝! -->
 	<!-- ///////////////////////////////////////////////////////////////////////// -->
