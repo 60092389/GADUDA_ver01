@@ -108,7 +108,6 @@ $(document).ready(function(){
 				
 				for(var i=0; i<retVal.replyList.length; i++){
 					$(".reply_list").append("<tr>");
-					$(".reply_list").append("<td>" + retVal.replyList[i].fur_no + "</td>");
 					$(".reply_list").append("<td>" + retVal.replyList[i].mem_nickname + "</td>");
 					$(".reply_list").append("<td>" + retVal.replyList[i].mem_id + "</td>");
 					$(".reply_list").append("<td>" + retVal.replyList[i].fur_rep_contents + "</td>");
@@ -243,9 +242,12 @@ $(document).ready(function(){
 	</thead>
 </table>
 
+	<c:set var="member" value="${ member }" />
 	 세션에있는 유저아이디와 닉네임
-	<input type="hidden" id="user_id" value="user01">
-	<input type="hidden" id="user_nickname" value="abcd">
+	 <h2>${ member.mem_id }</h2>
+	 <h2>${ member.mem_nickname }</h2>
+	<input type="hidden" id="user_id" value="${ member.mem_id }">
+	<input type="hidden" id="user_nickname" value="${ member.mem_nickname }">
 <table border ="1">
 
 	<thead>
