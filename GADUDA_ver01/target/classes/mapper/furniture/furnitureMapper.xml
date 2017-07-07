@@ -135,7 +135,7 @@
 	</update>
 		<!-- 사진 가져오기 -->
 	<select id="fur_pic_loc_one" resultType="String">
-		select fur_pic_loc from furniture_picture where fur_no = #{fur_no} rownum=1
+		select fur_pic_loc from furniture_picture where fur_no = #{fur_no} and rownum=1
 	</select>
 	
 	
