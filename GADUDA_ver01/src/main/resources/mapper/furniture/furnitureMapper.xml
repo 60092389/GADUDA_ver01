@@ -59,4 +59,87 @@
 		]]>
 	</select>
 	
+	
+	<!-- //////////////////////////////////////////////////////////// -->
+	<!-- 가구 구경 페이지용 sql문 -->
+	
+		
+	
+	<!-- 가구 리스트 탭용 가구 정보 가져오기 -->
+	<select id="furniture_list_info" resultType="kr.co.gaduda.furniture.vo.FurnitureListViewVO"
+			parameterType="kr.co.gaduda.furniture.dto.FurnitureCateDTO">
+		 select fur_no, fur_name, fur_price, fur_brand_name, fur_good_num, fur_repl_num 
+ 		 from furniture f, furniture_brand fb 
+ 		 where f.fur_brand_no = fb.fur_brand_no 
+ 		 
+ 		 <if test='room_kind_def_name != null'>
+ 		 	and f.fur_no in ( 
+       			select fur_no from furniture_room_kind frk, room_kind_define rkd 
+       			where frk.ROOM_KIND_DEF_NO = rkd.ROOM_KIND_DEF_NO
+       			and rkd.ROOM_KIND_DEF_NAME = #{room_kind_def_name} 
+       			
+       			<if test='fur_kind_def_name != null'>
+       			and fur_no in (
+         			select fur_no from furniture_kind_define fkd, furniture_kind fk
+         			where fkd.FUR_KIND_DEF_NO = fk.FUR_KIND_DEF_NO
+         			and FUR_KIND_DEF_NAME = #{fur_kind_def_name}
+       				)
+       			</if>	 
+    		 )
+ 		 </if>
+ 		 
+ 		 <if test='concept_name != null'>
+ 		 	and f.fur_no in ( 
+    		  select fur_no from furniture_concept fc, concept c
+   			  where fc.CONCEPT_NO = c.CONCEPT_NO
+  			  and c.CONCEPT_NAME = #{concept_name}
+			  
+				<if test='fur_kind_def_name != null'>      		  
+      			and fur_no in (
+        			select fur_no from furniture_kind_define fkd, furniture_kind fk
+        			where fkd.FUR_KIND_DEF_NO = fk.FUR_KIND_DEF_NO
+        			and FUR_KIND_DEF_NAME = #{fur_kind_def_name}
+    				)
+    			</if>  
+     		)
+ 		 
+ 		 </if>	 		 	 
+ 		 order by <if test='array_option == null'>
+ 		 				fur_no desc
+ 		 		  </if>
+ 		 		  <if test='array_option == "furno"'>
+ 		 		  		fur_no desc
+ 		 		  </if>
+ 		 		  <if test='array_option == "good"'>
+ 		 		  		fur_good_num desc
+ 		 		  </if>
+ 		 		  <if test='array_option == "reply"'>
+ 		 		  		fur_repl_num desc
+ 		 		  </if> 		 
+	</select>
+	
+	<update id="fur_good_num_up">
+		update furniture set fur_good_num = fur_good_num+1 where fur_no = #{fur_no}
+	</update>
+	
+	<update id="fur_good_num_down">
+		update furniture set fur_good_num = fur_good_num-1 where fur_no = #{fur_no}
+	</update>
+	
+	<update id="fur_reply_num_up">
+		update furniture set fur_repl_num = fur_repl_num+1 where fur_no = #{fur_no}
+	</update>
+	
+	<update id="fur_reply_num_down">
+		update furniture set fur_repl_num = fur_repl_num-1 where fur_no = #{fur_no}
+	</update>
+	
+	<!-- 가구 구경 페이지용 끝! -->
+	<!-- ///////////////////////////////////////////////////////////////////////// -->
+	
+	
+	
+	
+	
+	
 </mapper>

@@ -45,4 +45,7 @@ public class Pages {
 	
 	public static final String VIEW_FURNITURE_WATCH_VIEW =arrange_path+"/view_watch";
 	
+	//가구구경 페이지뷰
+	public static final String VIEW_FURNITURE_LIST = furniture_path + "/furnitureList";
+	
 }

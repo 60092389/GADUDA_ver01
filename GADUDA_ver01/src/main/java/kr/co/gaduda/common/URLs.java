@@ -70,4 +70,28 @@ public class URLs {
 	//가구 배치도 페이지
 	public static final String URI_FURNITURE_WATCH ="/fur_arr";
 	public static final String URI_FURNITURE_WATCH_FULL=URI_MAIN_TO_WATCH+URI_FURNITURE_WATCH;
+	
+	//////////////////////////////////17-07-07 11:43////////////////////////////////////////////////
+	//가구 구경 페이지
+	//가구리스트 구경
+	public static final String URI_FURNITURE_LIST_LOOKAROUND_GET = "/fur_list_get";
+	public static final String URI_FURNITURE_LIST_LOOKAROUND_GET_FULL = furniture_default + URI_FURNITURE_LIST_LOOKAROUND_GET;
+	
+	//가구 좋아요 업
+	public static final String URI_FURNITURE_GOOD_UP = "/fur_good_up";
+	public static final String URI_FURNITURE_GOOD_UP_FULL = furniture_default + URI_FURNITURE_GOOD_UP;
+	
+	//가구 댓글 작성
+	public static final String URI_FURNITURE_REPLY_WRITE = "/fur_reply_write";
+	public static final String URI_FURNITURE_REPLY_WRITE_FULL = furniture_default + URI_FURNITURE_REPLY_WRITE;
+	
+	//가구 댓글 리스트
+	public static final String URI_FURNITURE_REPLY_LIST = "/fur_reply_list";
+	public static final String URI_FURNITURE_REPLY_LIST_FULL = furniture_default + URI_FURNITURE_REPLY_LIST;
+	
+	//가구 댓글 삭제
+	public static final String URI_FURNITURE_REPLY_DELETE = "/fur_reply_delete";
+	public static final String URI_FURNITURE_REPLY_DELETE_FULL = furniture_default + URI_FURNITURE_REPLY_DELETE;
+	
+	
 }
