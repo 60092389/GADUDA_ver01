@@ -141,6 +141,21 @@
 	
 	<!-- 가구 구경 페이지용 끝! -->
 	<!-- ///////////////////////////////////////////////////////////////////////// -->
+		<!-- 가구 스크랩 한거 있나 확인 -->
+	<select id="fur_scrap_chk" parameterType="kr.co.gaduda.furniture.dto.FurnitureScrapDTO" resultType="int">
+		select count(*) from furniture_scrap where fur_no=#{fur_no} and mem_id=#{mem_id}
+	</select>
+	
+	<!-- 가구 스크랩 하기 -->
+	<insert id="fur_scrap" parameterType="kr.co.gaduda.furniture.dto.FurnitureScrapDTO">
+		insert into furniture_scrap(fur_scrap_no, mem_id, fur_no, fur_scrap_date)
+		values(seq_fur_scrap.nextval, #{mem_id}, #{fur_no}, sysdate)
+	</insert>
+	
+	<!-- 스크랩 한 사람 목록 가져오기 -->
+	<select id="fur_scrap_list" resultType="kr.co.gaduda.furniture.vo.FurnitureScrapListVO" parameterType="int">
+		SELECT FS.MEM_ID as MEM_ID, MEM_NICKNAME, FUR_SCRAP_DATE FROM FURNITURE_SCRAP FS, MEMBER ME WHERE ME.MEM_ID = FS.MEM_ID AND FS.FUR_NO = #{fur_no}
+	</select>
 	
 	
 	

@@ -5,24 +5,25 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import kr.co.gaduda.furniture.dto.FurnitureScrapDTO;
 import kr.co.gaduda.furniture.vo.FurnitureDetailVO;
 import kr.co.gaduda.furniture.vo.FurnitureGoodListVO;
 import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
 import kr.co.gaduda.furniture.vo.FurnitureReplyListVO;
+import kr.co.gaduda.furniture.vo.FurnitureScrapListVO;
 import kr.co.gaduda.furniture.vo.FurnitureVO;
 
 public interface IFurnitureService {
-	
-	//가구 상세페이지
+
+	// 가구 상세페이지
 	public List<FurnitureVO> furList();
 
 	public FurnitureDetailVO furDetailView(int fur_no);
 
 	public List<String> furDetailViewPic(int fur_no);
 
-
 	public List<FurnitureGoodListVO> getFurGoodList(Map<String, Object> search);
-	
+
 	/////////////////////////////////////
 	// 가구구경 페이지 용
 	public List<FurnitureListViewVO> furnitureList(String room_kind_def_name, String concept_name,
@@ -41,4 +42,11 @@ public interface IFurnitureService {
 	public void deleteFurnitureReply(Map<String, Object> furnitureReplyDeleteInfo);
 
 	//////////////////////////////////////
+
+	// 가구 스크랩
+	public int furScrapChk(FurnitureScrapDTO furnitureScrapDTO);
+
+	public int furScrap(FurnitureScrapDTO furnitureScrapDTO);
+
+	public List<FurnitureScrapListVO> furScrapList(int fur_no);
 }

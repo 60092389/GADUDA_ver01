@@ -12,10 +12,12 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.gaduda.furniture.dao.IFurnitureDao;
 import kr.co.gaduda.furniture.dto.FurnitureCateDTO;
+import kr.co.gaduda.furniture.dto.FurnitureScrapDTO;
 import kr.co.gaduda.furniture.vo.FurnitureDetailVO;
 import kr.co.gaduda.furniture.vo.FurnitureGoodListVO;
 import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
 import kr.co.gaduda.furniture.vo.FurnitureReplyListVO;
+import kr.co.gaduda.furniture.vo.FurnitureScrapListVO;
 import kr.co.gaduda.furniture.vo.FurnitureVO;
 
 @Repository
@@ -161,5 +163,26 @@ public class FurnitureDao implements IFurnitureDao {
 		return mongoTemplate.find(query, FurnitureGoodListVO.class, "furniture_good");
 
 	}
+	
+	//가구 스크랩 하기
+		@Override
+		public int furScrapChk(FurnitureScrapDTO furnitureScrapDTO){
+			return sqlSession.selectOne(namespace+".fur_scrap_chk", furnitureScrapDTO);
+		}
+		@Override
+		public int furScrap(FurnitureScrapDTO furnitureScrapDTO){
+			int result;
+			try {
+				result = sqlSession.insert(namespace+".fur_scrap", furnitureScrapDTO);
+			} catch (Exception e) {
+				result = 0;
+			}
+			return result;
+		}
+		
+		@Override
+		public List<FurnitureScrapListVO> furScrapList(int fur_no){
+			return sqlSession.selectList(namespace+".fur_scrap_list", fur_no);
+		}
 
 }
