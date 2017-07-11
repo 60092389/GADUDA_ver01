@@ -9,6 +9,7 @@ public class URLs {
 	private static final String mypage_default = "/mypage";
 	private static final String furniture_default = "/furniture";
 	private static final String furniture_arr_default = "/furniture_arr";
+	private static final String mypage_scrap_default = "/mypage/scrap";
 
 	// 로그아웃
 	public static final String URI_LOGOUT = "/logout";
@@ -42,19 +43,19 @@ public class URLs {
 
 	// 가구스크랩
 	public static final String URI_FURNITURE_SCRAP = "/furniture_scrap";
-	public static final String URI_FURNITURE_SCRAP_FULL = mypage_default + URI_FURNITURE_SCRAP;
+	public static final String URI_FURNITURE_SCRAP_FULL = mypage_scrap_default + URI_FURNITURE_SCRAP;
 
 	// 가구스크랩 삭제
 	public static final String URI_FURNITURE_SCRAP_DELETE = "/furniture_scrap_delete";
-	public static final String URI_FURNITURE_SCRAP_DELETE_FULL = mypage_default + URI_FURNITURE_SCRAP_DELETE;
+	public static final String URI_FURNITURE_SCRAP_DELETE_FULL = mypage_scrap_default + URI_FURNITURE_SCRAP_DELETE;
 
 	// 가구배치도스크랩
 	public static final String URI_FURNITURE_ARR_SCRAP = "/furniture_arr_scrap";
-	public static final String URI_FURNITURE_ARR_SCRAP_FULL = mypage_default + URI_FURNITURE_ARR_SCRAP;
+	public static final String URI_FURNITURE_ARR_SCRAP_FULL = mypage_scrap_default + URI_FURNITURE_ARR_SCRAP;
 
 	// 가구배치도스크랩 삭제
 	public static final String URI_FURNITURE_ARR_SCRAP_DELETE = "/fur_arr_scrap_delete";
-	public static final String URI_FURNITURE_ARR_SCRAP_DELETE_FULL = mypage_default + URI_FURNITURE_ARR_SCRAP_DELETE;
+	public static final String URI_FURNITURE_ARR_SCRAP_DELETE_FULL = mypage_scrap_default + URI_FURNITURE_ARR_SCRAP_DELETE;
 
 	// Main Button
 	public static final String URI_MAIN_HOME = "/";

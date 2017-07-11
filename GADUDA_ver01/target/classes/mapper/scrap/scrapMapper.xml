@@ -7,12 +7,12 @@
 	
 		<!-- 스크랩에서 사용할 가구사진 경로 가져오기 -->
 	<select id="fur_pic_loc" resultType="string">
-		select fur_pic_loc from furniture_picture where fur_no = #{fur_no}
+		select fur_pic_loc from furniture_picture where fur_no = #{fur_no} and rownum = 1
 	</select>
 
 	<!-- 가구스크랩 리스트용 가구정보 가져오기 -->
 	<select id="furniture_basic_info" resultType="kr.co.gaduda.scrap.vo.FurnitureBasicVO">
-		select fur_name, fur_price, fur_brand_name 
+		select fur_name, fur_price, fur_brand_name, fur_good_num, fur_repl_num
  		 from furniture f, furniture_brand fb where f.fur_brand_no = fb.fur_brand_no 
  		 and fur_no = #{fur_no}
 	</select>
@@ -43,7 +43,8 @@
 	
 	<!-- 해당 가구배치도스크랩번호의 가구배치도 정보 -->	
 	<select id="fur_arr_scrap_info" resultType="kr.co.gaduda.scrap.vo.FurArrBasicVO">
-		select fur_arr_name, m.mem_id AS mem_id, mem_nickname, fur_arr_plan_img_loc 
+		select fur_arr_name, m.mem_id AS mem_id, mem_nickname, fur_arr_plan_img_loc, 
+			fur_arr_plan_good_num, fur_arr_plan_repl_num
 		from furniture_arrangement_plan fap, furniture_arrangement_image fai, member m
 		where fap.fur_arr_plan_no = fai.fur_arr_plan_no
     	and fap.mem_id = m.mem_id

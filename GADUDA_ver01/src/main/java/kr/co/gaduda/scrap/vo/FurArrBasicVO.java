@@ -6,6 +6,9 @@ public class FurArrBasicVO {
 	private String mem_id;
 	private String mem_nickname;
 	private String fur_arr_plan_img_loc;
+	private int fur_arr_plan_good_num;
+	private int fur_arr_plan_repl_num;
+	
 	public String getFur_arr_name() {
 		return fur_arr_name;
 	}
@@ -32,14 +35,27 @@ public class FurArrBasicVO {
 	public void setMem_nickname(String mem_nickname) {
 		this.mem_nickname = mem_nickname;
 	}
-	
+	public int getFur_arr_plan_good_num() {
+		return fur_arr_plan_good_num;
+	}
+	public void setFur_arr_plan_good_num(int fur_arr_plan_good_num) {
+		this.fur_arr_plan_good_num = fur_arr_plan_good_num;
+	}
+	public int getFur_arr_plan_repl_num() {
+		return fur_arr_plan_repl_num;
+	}
+	public void setFur_arr_plan_repl_num(int fur_arr_plan_repl_num) {
+		this.fur_arr_plan_repl_num = fur_arr_plan_repl_num;
+	}
 	@Override
 	public String toString() {
 		return "FurArrBasicVO [fur_arr_name=" + fur_arr_name + ", mem_id=" + mem_id + ", mem_nickname=" + mem_nickname
-				+ ", fur_arr_plan_img_loc=" + fur_arr_plan_img_loc + "]";
+				+ ", fur_arr_plan_img_loc=" + fur_arr_plan_img_loc + ", fur_arr_plan_good_num=" + fur_arr_plan_good_num
+				+ ", fur_arr_plan_repl_num=" + fur_arr_plan_repl_num + "]";
 	}
 	
 	
+
 	
 	
 	

@@ -52,9 +52,10 @@ public class ScrapService implements IScrapService {
 			int fur_price = furBasicVO.getFur_price();
 			String fur_brand_name = furBasicVO.getFur_brand_name();
 			
-			int fur_good_count = scrapDao.furnitureGoodCount(fur_no);
+			int fur_good_count = furBasicVO.getFur_good_num();
+			int fur_reply_count = furBasicVO.getFur_repl_num();
 			int fur_scrap_count = scrapDao.furnitureScrapCount(fur_no);
-			int fur_reply_count = scrapDao.furnitureReplyCount(fur_no);
+			
 			
 			furScrapVO.setFur_scrap_no(fur_scrap_no);
 			furScrapVO.setFur_brand_name(fur_brand_name);
@@ -104,6 +105,8 @@ public class ScrapService implements IScrapService {
 			String fur_arr_plan_mem_nickname = fabVO.getMem_nickname();
 			String fur_arr_plan_mem_id = fabVO.getMem_id();
 			String fur_arr_plan_img_loc = fabVO.getFur_arr_plan_img_loc();
+			int fur_arr_plan_good_count = fabVO.getFur_arr_plan_good_num();
+			int fur_arr_plan_reply_count = fabVO.getFur_arr_plan_repl_num();
 			
 			String fur_arr_plan_concepts = "";
 			
@@ -122,9 +125,9 @@ public class ScrapService implements IScrapService {
 						fur_arr_plan_room_kind_name.get(k) + " " + fur_arr_plan_room_kind_names;
 			}
 			
-			int fur_arr_plan_good_count = scrapDao.furArrGoodCount(fur_arr_plan_no);
+			
 			int fur_arr_plan_scrap_count = scrapDao.furArrScrapCount(fur_arr_plan_no);
-			int fur_arr_plan_reply_count = scrapDao.furArrReplyCount(fur_arr_plan_no);
+		
 			
 			furArrVO.setFur_arr_plan_concepts(fur_arr_plan_concepts);
 			furArrVO.setFur_arr_plan_good_count(fur_arr_plan_good_count);
