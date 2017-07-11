@@ -1,49 +1,215 @@
 package kr.co.gaduda.furniture_arr.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import kr.co.gaduda.furniture.vo.FurnitureVO;
 import kr.co.gaduda.furniture_arr.dao.IFurniture_arrDao;
+import kr.co.gaduda.furniture_arr.dto.FurnitureArrScrapDTO;
+import kr.co.gaduda.furniture_arr.dto.OtherFurnitureDTO;
+import kr.co.gaduda.furniture_arr.vo.Arrangement_furnituresVO;
+import kr.co.gaduda.furniture_arr.vo.FurnitureArrGoodListVO;
+import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
+import kr.co.gaduda.furniture_arr.vo.Furniture_arrDetailVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
-
+import kr.co.gaduda.furniture_arr.vo.Other_Furniture_arrVO;
 
 @Repository
-public class Furniture_arrDao implements IFurniture_arrDao{
-	
+public class Furniture_arrDao implements IFurniture_arrDao {
+
 	private static final String namespace = "kr.co.gaduda.mapper.furniture_arr.Furniture_arrMapper";
 
 	@Autowired
 	SqlSession furarrsqlSession;
 	
-	public String getTime(){
-		return furarrsqlSession.selectOne(namespace+".getTime");
-	}
+	@Autowired
+	MongoTemplate mongoTemplate;
 	
+	public String getTime() {
+		return furarrsqlSession.selectOne(namespace + ".getTime");
+	}
+
 	@Override
-	public Furniture_arrVO getFurArr(int fur_arr_plan_no){
-		return furarrsqlSession.selectOne(namespace+".get_arr_info", fur_arr_plan_no);
+	public Furniture_arrVO getFurArr(int fur_arr_plan_no) {
+		return furarrsqlSession.selectOne(namespace + ".get_arr_info", fur_arr_plan_no);
 	}
 
 	@Override
 	public int countFurArr() {
 		// TODO Auto-generated method stub
-		return furarrsqlSession.selectOne(namespace+".count_fur_arr");
+		return furarrsqlSession.selectOne(namespace + ".count_fur_arr");
 	}
-	
+
 	@Override
 	public List<String> getFurCon(int fur_arr_plan_no) {
 		// TODO Auto-generated method stub
-		return furarrsqlSession.selectList(namespace+".fur_arr_con", fur_arr_plan_no);
+		return furarrsqlSession.selectList(namespace + ".fur_arr_con", fur_arr_plan_no);
 	}
 
 	@Override
 	public String getRoomKind(int fur_arr_plan_no) {
 		// TODO Auto-generated method stub
-		return furarrsqlSession.selectOne(namespace+".fur_arr_room_kind", fur_arr_plan_no);
+		return furarrsqlSession.selectOne(namespace + ".fur_arr_room_kind", fur_arr_plan_no);
 	}
-	
+
+	////////////////////////////////////////////////////////////////////////
+	// 가구배치도 상세페이지
+
+	@Override
+	public Furniture_arrDetailVO getFurArrDetailBasic(int fur_arr_plan_no) {
+		return furarrsqlSession.selectOne(namespace + ".fur_arr_detail_basic", fur_arr_plan_no);
+	}
+
+	@Override
+	public List<String> getFurArrHashtags(int fur_arr_plan_no) {
+		return furarrsqlSession.selectList(namespace + ".fur_arr_hashtag", fur_arr_plan_no);
+	}
+
+	@Override
+	public List<String> getFurArrConcepts(int fur_arr_plan_no) {
+		return furarrsqlSession.selectList(namespace + ".fur_arr_con", fur_arr_plan_no);
+	}
+
+	@Override
+	public List<String> getFurArrRoomKinds(int fur_arr_plan_no) {
+		return furarrsqlSession.selectList(namespace + ".fur_arr_room_kinds", fur_arr_plan_no);
+	}
+
+	@Override
+	public List<Arrangement_furnituresVO> getFurArrFurniture(int fur_arr_plan_no) {
+		return furarrsqlSession.selectList(namespace + ".arr_fur_info", fur_arr_plan_no);
+	}
+
+	@Override
+	public String getArrFurPic(int fur_no) {
+		return furarrsqlSession.selectOne(namespace + ".arr_fur_pic_loc", fur_no);
+	}
+
+	@Override
+	public List<Other_Furniture_arrVO> getOtherFurArr(OtherFurnitureDTO otherFurnitureDTO) {
+		return furarrsqlSession.selectList(namespace + ".other_fur_arr", otherFurnitureDTO);
+	}
+
+	// 가구배치도 댓글 관련
+	@Override
+	public List<FurnitureArrReplyListVO> getFurArrReplyList(int fur_arr_plan_no) {
+
+		String fur_arr_plan_no_str = String.valueOf(fur_arr_plan_no);
+
+		Query query = new Query(new Criteria().andOperator(Criteria.where("fur_arr_plan_no").is(fur_arr_plan_no_str)));
+
+		List<FurnitureArrReplyListVO> list = mongoTemplate.find(query, FurnitureArrReplyListVO.class,
+				"furniture_arrangement_reply");
+
+		System.out.println("가구배치도댓글들");
+
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i).getFur_arr_plan_rep_contents());
+		}
+
+		return mongoTemplate.find(query, FurnitureArrReplyListVO.class, "furniture_arrangement_reply");
+
+	}
+
+	@Override
+	public void insertFurnitureArrReply(Map<String, Object> furArrReplyInfo) {
+		mongoTemplate.insert(furArrReplyInfo, "furniture_arrangement_reply");
+
+	}
+
+	@Override
+	public int furnitureArrReplyNumUp(int fur_arr_plan_no) {
+		return furarrsqlSession.update(namespace + ".uprepl", fur_arr_plan_no);
+	}
+
+	@Override
+	public void deleteFurnitureArrReply(Map<String, Object> furArrReplyInfo) {
+
+		Query query = new Query(new Criteria().andOperator(Criteria.where("_id").is(furArrReplyInfo.get("_id"))));
+
+		mongoTemplate.remove(query, "furniture_arrangement_reply");
+		System.out.println("댓글 삭제 성공");
+	}
+
+	@Override
+	public int furnitureArrReplyNumDown(int fur_arr_plan_no) {
+		return furarrsqlSession.update(namespace + ".downrepl", fur_arr_plan_no);
+	}
+
+	// 가구배치도 댓글 끝
+
+	// 가구배치도 좋아요 기능
+	@Override
+	public void insertFurnitureArrGood(Map<String, Object> furnitureArrGoodInfo) {
+		mongoTemplate.insert(furnitureArrGoodInfo, "furniture_arrangement_good");
+
+	}
+
+	@Override
+	public int furnitureArrGoodNumUp(int fur_arr_plan_no) {
+
+		return furarrsqlSession.update(namespace + ".upgood", fur_arr_plan_no);
+	}
+
+	@Override
+	public int furnitureArrGoodChk(Map<String, Object> furnitureArrGoodInfo) {
+		int result = 0;
+
+		Query query = new Query(new Criteria().andOperator(
+				Criteria.where("fur_arr_plan_no").is(furnitureArrGoodInfo.get("fur_arr_plan_no")),
+				Criteria.where("mem_id").is(furnitureArrGoodInfo.get("mem_id"))));
+		result = (int) mongoTemplate.count(query, "furniture_arrangement_good");
+
+		System.out.println("furnitureGoodChk 갯수확인 : " + result);
+
+		return result;
+	}
+
+	@Override
+	public void deleteFurnitureArrGood(Map<String, Object> furnitureArrGoodInfo) {
+		Query query = new Query(new Criteria().andOperator(
+				Criteria.where("fur_arr_plan_no").is(furnitureArrGoodInfo.get("fur_arr_plan_no")),
+				Criteria.where("mem_id").is(furnitureArrGoodInfo.get("mem_id"))));
+		mongoTemplate.remove(query, "furniture_arrangement_good");
+		System.out.println("좋아요 삭제 성공!");
+	}
+
+	@Override
+	public int furnitureArrGoodNumDown(int fur_arr_plan_no) {
+		return furarrsqlSession.update(namespace + ".downgood", fur_arr_plan_no);
+	}
+
+	@Override
+	public List<FurnitureArrGoodListVO> getFurArrGoodList(Map<String, Object> furArrGoodInfo) {
+
+		Query query = new Query(new Criteria()
+				.andOperator(Criteria.where("fur_arr_plan_no").is(furArrGoodInfo.get("fur_arr_plan_no"))));
+
+		return mongoTemplate.find(query, FurnitureArrGoodListVO.class, "furniture_arrangement_good");
+	}
+
+	// 가구배치도 좋아요 기능 끝
+	//////////////////////////////////////////////////
+
+	// 가구배치도 스크랩
+
+	@Override
+	public int furArrScrapChk(FurnitureArrScrapDTO furnitureArrScrapDTO) {
+		return furarrsqlSession.selectOne(namespace + ".fur_arr_scrap_chk", furnitureArrScrapDTO);
+	}
+
+	@Override
+	public int insertFurArrScrap(FurnitureArrScrapDTO furnitureArrScrapDTO) {
+		return furarrsqlSession.insert(namespace + ".fur_arr_plan_scrap", furnitureArrScrapDTO);
+	}
+
+	// 가구 배치도 스크랩 끝
+
 }
