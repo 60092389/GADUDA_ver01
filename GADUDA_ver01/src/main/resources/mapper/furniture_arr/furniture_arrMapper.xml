@@ -72,6 +72,49 @@
       ]]>
 	</update>
 	
+	<select id="get_arr_fur_room_kind" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrVO">
+	<![CDATA[
+		select p.FUR_ARR_PLAN_NO,ai.FUR_ARR_PLAN_IMG_LOC,p.FUR_ARR_NAME,p.mem_id,r.ROOM_NAME,p.FUR_ARR_PLAN_GOOD_NUM,p.FUR_ARR_PLAN_REPL_NUM
+		from furniture_arrangement_plan p, furniture_arr_room_kind rk, room_kind_define kd,furniture_arrangement_image ai,room r
+		where p.fur_arr_plan_no=rk.FUR_ARR_PLAN_NO and rk.ROOM_KIND_DEF_NO=kd.ROOM_KIND_DEF_NO and p.FUR_ARR_PLAN_NO=ai.FUR_ARR_PLAN_NO 
+		and p.ROOM_NO=r.ROOM_NO 
+		and kd.room_kind_def_name=#{room_kind_def_name}
+	]]>
+	</select>
+	
+	<select id="count_fur_arr_roomkind" resultType="int">
+	<![CDATA[
+	select count(*)
+from furniture_arrangement_plan p, furniture_arr_room_kind rk, room_kind_define kd,furniture_arrangement_image ai,room r
+where p.fur_arr_plan_no=rk.FUR_ARR_PLAN_NO and rk.ROOM_KIND_DEF_NO=kd.ROOM_KIND_DEF_NO and p.FUR_ARR_PLAN_NO=ai.FUR_ARR_PLAN_NO 
+and p.ROOM_NO=r.ROOM_NO 
+and kd.room_kind_def_name=#{room_kind_def_name}
+	]]>
+	</select>
+	
+	<select id="get_arr_fur_con" resultType="String">
+	<![CDATA[
+		select c.concept_name
+		from furniture_arrangement_plan p, furniture_arr_room_kind rk, room_kind_define kd,furniture_arr_plan_concept pc,concept c
+		where p.fur_arr_plan_no=rk.FUR_ARR_PLAN_NO and rk.ROOM_KIND_DEF_NO=kd.ROOM_KIND_DEF_NO and p.fur_arr_plan_no=pc.fur_arr_plan_no and pc.concept_no=c.concept_no
+		and kd.room_kind_def_name=#{room_kind_def_name}
+	]]>
+	</select>
+	
+	<select id="count_scrap" resultType="int">
+	<![CDATA[
+	select count(*) from furniture_arr_plan_scrap where fur_arr_plan_no=#{fur_arr_plan_no}
+	]]>
+	</select>
+	<select id="get_arr_fur_concept" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrVO">
+	<![CDATA[
+	select p.FUR_ARR_PLAN_NO,ai.FUR_ARR_PLAN_IMG_LOC,p.FUR_ARR_NAME,p.MEM_ID,c.CONCEPT_NAME,r.ROOM_NAME,p.FUR_ARR_PLAN_GOOD_NUM,p.FUR_ARR_PLAN_REPL_NUM
+from furniture_arrangement_plan p, furniture_arr_plan_concept pc,furniture_arrangement_image ai,concept c,room r
+where p.fur_arr_plan_no=pc.fur_arr_plan_no and p.fur_arr_plan_no=ai.fur_arr_plan_no and pc.concept_no=c.concept_no and p.room_no=r.room_no
+and c.concept_name=#{concept_name}
+	]]>
+	</select>
+	
 	<!-- /////////////////////////////////////////////////////////// -->
 	<!-- 배치도 상세 페이지 -->
 	

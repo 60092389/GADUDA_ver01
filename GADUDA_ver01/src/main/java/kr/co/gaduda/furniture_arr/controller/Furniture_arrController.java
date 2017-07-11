@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.gaduda.common.Pages;
@@ -29,10 +30,28 @@ public class Furniture_arrController {
 	@Autowired
 	private IFurniture_arrService furniture_arrService;
 	
-	@RequestMapping(value=URLs.URI_FURNITURE_WATCH)
-	public String furnifure_arr_watch(Model model){
+	@RequestMapping(value=URLs.URI_FURNITURE_WATCH, method=RequestMethod.GET)
+	public String furnifure_arr_watch(@RequestParam(value="room_kind_def_name",required=false)String room_kind_def_name,
+			@RequestParam(value="concept_name",required=false)String concept_name,
+			Model model){
+	
+		if((room_kind_def_name==null||room_kind_def_name.equals("0")) && (concept_name==null||concept_name.equals("0"))){
 		List<Furniture_arrVO> fur_arr_list= furniture_arrService.furArrList();
+		
 		model.addAttribute("fur_arr_list",fur_arr_list);
+		}else if(room_kind_def_name!=null && (concept_name==null||concept_name.equals("0"))){
+			List<Furniture_arrVO> fur_arr_list_roomkind = furniture_arrService.furArrList_roomkind(room_kind_def_name);
+			
+			model.addAttribute("fur_arr_list",fur_arr_list_roomkind);
+			
+		}else if((room_kind_def_name==null||room_kind_def_name.equals("0"))&&concept_name!=null){
+			List<Furniture_arrVO> fur_arr_list_concept =furniture_arrService.furArrList_concept(concept_name);
+			
+			model.addAttribute("fur_arr_list",fur_arr_list_concept);
+		}else{
+			List<Furniture_arrVO> fur_arr_list_roomkind_concept = furniture_arrService.furArrList_roomkind_concept(room_kind_def_name, concept_name);
+			model.addAttribute("fur_arr_list",fur_arr_list_roomkind_concept);
+		}
 		
 		return Pages.VIEW_FURNITURE_WATCH_VIEW;
 	}

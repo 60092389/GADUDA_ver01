@@ -58,6 +58,38 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 		// TODO Auto-generated method stub
 		return furarrsqlSession.selectOne(namespace + ".fur_arr_room_kind", fur_arr_plan_no);
 	}
+	
+	
+	
+	
+	
+	@Override
+	public List<Furniture_arrVO> getFurArr_roomkind(String room_kind_def_name) {
+		
+		return furarrsqlSession.selectList(namespace+".get_arr_fur_room_kind",room_kind_def_name);
+
+	}
+
+	@Override
+	public int countFurArr_roomkind(String room_kind_def_name) {
+		return furarrsqlSession.selectOne(namespace+".count_fur_arr_roomkind",room_kind_def_name);
+	}
+
+	@Override
+	public String getArrFurCon(String room_kind_def_name) {
+		return furarrsqlSession.selectOne(namespace+".get_arr_fur_con",room_kind_def_name);
+	}
+
+	@Override
+	public int getCountScrap(int fur_arr_plan_no) {
+		return furarrsqlSession.selectOne(namespace+".count_scrap",fur_arr_plan_no);
+	}
+
+	
+	@Override
+	public List<Furniture_arrVO> getFurArr_concept(String concept_name) {
+		return furarrsqlSession.selectList(namespace+".get_arr_fur_concept",concept_name);
+	}
 
 	////////////////////////////////////////////////////////////////////////
 	// 가구배치도 상세페이지

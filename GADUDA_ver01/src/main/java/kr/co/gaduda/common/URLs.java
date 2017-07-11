@@ -40,6 +40,43 @@ public class URLs {
 	public static final String URI_DELETE_MEMBER_CHK = "/deletemember_chk";
 	public static final String URI_DELETE_MEMBER_CHK_FULL = member_default + URI_DELETE_MEMBER_CHK;
 
+	// 회원정보 수정 페이지
+	public static final String URI_UPDATE_MEMBER = "/update_mem";
+	public static final String URI_UPDATE_MEMBER_FULL = mypage_default + member_default + URI_UPDATE_MEMBER;
+
+	public static final String URI_UPDATE_MEMBER_FIRST = "/update_mem_first";
+	public static final String URI_UPDATE_MEMBER_FIRST_FULL = mypage_default + member_default + URI_UPDATE_MEMBER_FIRST;
+
+	// 회원정보 수정 체크
+	public static final String URI_UPDATE_MEMBER_CHK = "/update_mem_chk";
+	public static final String URI_UPDATE_MEMBER_CHK_FULL = mypage_default + member_default + URI_UPDATE_MEMBER_CHK;
+
+	// 회원정보 비번 수정 페이지
+	public static final String URI_UPDATE_MEMBER_PW_PAGE = "/update_mem_pw_page";
+	public static final String URI_UPDATE_MEMBER_PW_PAGE_FULL = mypage_default + member_default
+			+ URI_UPDATE_MEMBER_PW_PAGE;
+	// 회원정보 비번 확인
+	public static final String URI_UPDATE_MEMBER_PW_CHK = "/update_mem_pw_chk";
+	public static final String URI_UPDATE_MEMBER_PW_CHK_FULL = mypage_default + member_default
+			+ URI_UPDATE_MEMBER_PW_CHK;
+
+	// 회원정보 비번 수정
+	public static final String URI_UPDATE_MEMBER_PW = "/update_mem_pw";
+	public static final String URI_UPDATE_MEMBER_PW_FULL = mypage_default + member_default + URI_UPDATE_MEMBER_PW;
+
+	// 마이페이지 회원관리 페이지
+	public static final String URI_MYPAGE_MEMBER = "/mypage_member";
+	public static final String URI_MYPAGE_MEMBER_FULL = mypage_default + member_default + URI_MYPAGE_MEMBER;
+
+	// 팔로워 리스트 페이지
+	public static final String URI_MYPAGE_MEMBER_FOLLOWER = "/follower";
+	public static final String URI_MYPAGE_MEMBER_FOLLOWER_FULL = mypage_default + member_default
+			+ URI_MYPAGE_MEMBER_FOLLOWER;
+	// 팔로잉 리스트 페이지
+	public static final String URI_MYPAGE_MEMBER_FOLLOWING = "/following";
+	public static final String URI_MYPAGE_MEMBER_FOLLOWING_FULL = mypage_default + member_default
+			+ URI_MYPAGE_MEMBER_FOLLOWING;
+
 	// 가구스크랩
 	public static final String URI_FURNITURE_SCRAP = "/furniture_scrap";
 	public static final String URI_FURNITURE_SCRAP_FULL = mypage_default + URI_FURNITURE_SCRAP;
@@ -111,9 +148,9 @@ public class URLs {
 	public static final String URI_FURNITURE_FUR_SCRAP_FULL = furniture_default + URI_FURNITURE_SCRAP;
 	public static final String URI_FURNITURE_DETAIL_REDIRECT = URI_MAIN_REDIRECT + URI_FURNITURE_DETAIL_FULL;
 
-	////////준병 17-07-11 16:57/////////////////////
-	//가구배치도 상세페이지 관련
-	
+	//////// 준병 17-07-11 16:57/////////////////////
+	// 가구배치도 상세페이지 관련
+
 	// 가구배치도 상세 페이지
 	public static final String URI_FURNITURE_ARR_DETAIL_VIEW = "/fur_arr_detail";
 	public static final String URI_FURNITURE_ARR_DETAIL_VIEW_FULL = furniture_arr_default
@@ -142,5 +179,5 @@ public class URLs {
 	public static final String URI_FURNITURE_ARR_SCRAP_ADD_FULL = furniture_arr_default + URI_FURNITURE_ARR_SCRAP_ADD;
 
 	////////////////////////////////////////////
-	
+
 }

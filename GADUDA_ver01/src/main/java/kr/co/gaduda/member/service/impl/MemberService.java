@@ -1,11 +1,17 @@
 package kr.co.gaduda.member.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.gaduda.member.dao.impl.MemberDao;
+import kr.co.gaduda.member.dto.FollowDTO;
 import kr.co.gaduda.member.dto.MemberDTO;
 import kr.co.gaduda.member.service.IMemberService;
+import kr.co.gaduda.member.vo.Follower_VO;
+import kr.co.gaduda.member.vo.Following_VO;
 import kr.co.gaduda.member.vo.MemberVO;
 @Service
 public class MemberService implements IMemberService {
@@ -31,6 +37,64 @@ public class MemberService implements IMemberService {
 	public void deletemember(MemberDTO memberDTO) {
 		memberDAO.deletemember(memberDTO);
 		
+	}
+
+	@Override
+	public int chkmem_pw(MemberDTO memberDTO) {
+		return memberDAO.chkmem_pw(memberDTO);
+	}
+
+	@Override
+	public void update_mem(MemberDTO memberDTO) {
+		memberDAO.update_mem(memberDTO);
+		
+	}
+
+	@Override
+	public int update_mem_pw(MemberDTO memberDTO) {
+		
+		return memberDAO.update_mem_pw(memberDTO); 
+	}
+
+	@Override
+	public int update_mem_pw_chk(MemberDTO memberDTO) {
+		return memberDAO.update_mem_pw_chk(memberDTO);
+	}
+
+	@Override
+	public void update_mem_pic(MemberDTO memberDTO) {
+		memberDAO.update_mem_img(memberDTO);
+
+		
+	}
+
+	@Override
+	public int follower_info(FollowDTO followDTO) {
+		return memberDAO.follower_info(followDTO);
+	}
+
+	@Override
+	public int following_info(FollowDTO followDTO) {
+		
+		return memberDAO.following_info(followDTO);
+	}
+
+	@Override
+	public String follower_list(FollowDTO followDTO) {
+		
+		
+		return memberDAO.follower_list(followDTO);
+	}
+
+	@Override
+	public String following_list(FollowDTO followDTO) {
+		
+		return memberDAO.following_list(followDTO);
+	}
+
+	@Override
+	public int following_available(FollowDTO followDTO) {
+		return memberDAO.following_available(followDTO);
 	}
 
 }

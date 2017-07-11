@@ -20,7 +20,14 @@ public interface IFurniture_arrDao {
 	public List<String> getFurCon(int fur_arr_plan_no);
 
 	public String getRoomKind(int fur_arr_plan_no);
-
+//-----------------------------------------------------------------------------//
+	public List<Furniture_arrVO> getFurArr_roomkind(String room_kind_def_name);
+	public int countFurArr_roomkind(String room_kind_def_name);
+	public String getArrFurCon(String room_kind_def_name);
+	public int getCountScrap(int fur_arr_plan_no);
+	public List<Furniture_arrVO> getFurArr_concept(String concept_name);
+//	-----------------------------------------------------------------------------//	
+	
 	/////////////////////////////////////////////////////////
 	// 가구배치도 상세페이지
 

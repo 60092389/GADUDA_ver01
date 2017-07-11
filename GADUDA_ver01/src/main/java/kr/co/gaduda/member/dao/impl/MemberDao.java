@@ -1,15 +1,21 @@
 package kr.co.gaduda.member.dao.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.gaduda.member.dao.IMemberDao;
+import kr.co.gaduda.member.dto.FollowDTO;
 import kr.co.gaduda.member.dto.MemberDTO;
+import kr.co.gaduda.member.vo.Follower_VO;
+import kr.co.gaduda.member.vo.Following_VO;
 import kr.co.gaduda.member.vo.MemberVO;
 
 @Repository
 public class MemberDao implements IMemberDao {
+
 	private static final String namespace="kr.co.gaduda.mapper.MemberMapper";
 	@Autowired
 	SqlSession memberSqlSession;
@@ -26,6 +32,11 @@ public class MemberDao implements IMemberDao {
 	}
 
 	@Override
+	public void update_mem_img(MemberDTO memberDTO) {
+		memberSqlSession.update(namespace+".update_img",memberDTO);
+		
+	}
+	@Override
 	public int idchk(String mem_id) {
 		return memberSqlSession.selectOne(namespace+".idchk",mem_id);
 	}
@@ -41,6 +52,54 @@ public class MemberDao implements IMemberDao {
 	public void deletemember(MemberDTO memberDTO) {
 		memberSqlSession.delete(namespace+".deletemember",memberDTO);
 		
+	}
+
+	@Override
+	public int chkmem_pw(MemberDTO memberDTO) {
+		return memberSqlSession.selectOne(namespace+".chkmem_pw",memberDTO);
+	}
+
+	@Override
+	public void update_mem(MemberDTO memberDTO) {
+		memberSqlSession.update(namespace+".update_mem",memberDTO);
+		
+	}
+
+	@Override
+	public int update_mem_pw(MemberDTO memberDTO) {
+		return memberSqlSession.update(namespace+".update_mem_pw",memberDTO);
+		
+	}
+
+	@Override
+	public int update_mem_pw_chk(MemberDTO memberDTO) {
+		return memberSqlSession.selectOne(namespace+".pwchk",memberDTO);
+	}
+	
+	
+	@Override
+	public int follower_info(FollowDTO followDTO) {
+		return memberSqlSession.selectOne(namespace+".follower_info", followDTO);
+	}
+
+	@Override
+	public int following_info(FollowDTO followDTO) {
+		return memberSqlSession.selectOne(namespace+".following_info", followDTO);
+	}
+
+	@Override
+	public String  follower_list(FollowDTO followDTO) {
+		return memberSqlSession.selectOne(namespace+".follower_list",followDTO);
+	}
+
+	@Override
+	public String following_list(FollowDTO followDTO) {
+		return memberSqlSession.selectOne(namespace+".following_list",followDTO);
+	}
+
+	@Override
+	public int following_available(FollowDTO followDTO) {
+		return memberSqlSession.selectOne(namespace+".following_available",followDTO);
 	}
 
 }

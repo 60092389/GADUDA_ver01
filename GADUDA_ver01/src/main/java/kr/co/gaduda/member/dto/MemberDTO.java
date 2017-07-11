@@ -1,5 +1,7 @@
 package kr.co.gaduda.member.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MemberDTO {
 	private String mem_id;
 	private String mem_pw;
@@ -9,7 +11,29 @@ public class MemberDTO {
 	private String mem_birth;
 	private String mem_intro;
 	private String mem_profile_pic;
+	private String mem_orgname;
+	private String mem_newname;
+	private String mem_pw_chk;
+	private MultipartFile file;
+	public String getMem_pw_chk() {
+		return mem_pw_chk;
+	}
+	public void setMem_pw_chk(String mem_pw_chk) {
+		this.mem_pw_chk = mem_pw_chk;
+	}
 	
+	public String getMem_orgname() {
+		return mem_orgname;
+	}
+	public void setMem_orgname(String mem_orgname) {
+		this.mem_orgname = mem_orgname;
+	}
+	public String getMem_newname() {
+		return mem_newname;
+	}
+	public void setMem_newname(String mem_newname) {
+		this.mem_newname = mem_newname;
+	}
 	public String getMem_id() {
 		return mem_id;
 	}

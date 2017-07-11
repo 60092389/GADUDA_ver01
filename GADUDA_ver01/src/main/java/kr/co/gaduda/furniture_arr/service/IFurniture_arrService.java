@@ -12,7 +12,9 @@ import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 public interface IFurniture_arrService {
 	public List<Furniture_arrVO> furArrList();
 	
-	
+	public List<Furniture_arrVO> furArrList_roomkind(String room_kind_def_name);
+	public List<Furniture_arrVO> furArrList_concept(String concept_name);
+	public List<Furniture_arrVO> furArrList_roomkind_concept(String room_kind_def_name,String concept_name);
 	/////////////////////////////////////////////
 	//가구배치도 상세페이지 - 상세정보
 	public Furniture_arrDetailVO getFurArrDetailInfo(int fur_arr_plan_no);

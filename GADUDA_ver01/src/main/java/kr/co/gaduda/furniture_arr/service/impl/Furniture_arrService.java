@@ -33,23 +33,161 @@ public class Furniture_arrService implements IFurniture_arrService {
 		for (int fur_arr_no = 0; fur_arr_no < fur_arr_num; fur_arr_no++) {
 			Furniture_arrVO furArrVO = new Furniture_arrVO();
 
-			String furArrCon = "";
-			List<String> fur_arr_con_list = furniture_arrDao.getFurCon(fur_arr_no + 1);
-
+			
 			furArrVO = furniture_arrDao.getFurArr(fur_arr_no + 1);
-			String furRoomKind = furniture_arrDao.getRoomKind(fur_arr_no + 1);
-
-			for (int i = 0; i < fur_arr_con_list.size(); i++) {
-				furArrCon = fur_arr_con_list.get(i) + "  " + furArrCon;
+			List<String> furArrCon = furniture_arrDao.getFurCon(fur_arr_no + 1);
+			String furArrCon_final="";
+			for(int j =0; j<furArrCon.size();j++){
+				String concept=furArrCon.get(j);
+				furArrCon_final=concept+" "+furArrCon_final;
 			}
-
-			furArrVO.setFur_arr_con(furArrCon);
+			String furRoomKind = furniture_arrDao.getRoomKind(fur_arr_no + 1);
+			int fur_scrap_num = furniture_arrDao.getCountScrap(fur_arr_no+1);
+			furArrVO.setFur_arr_con(furArrCon_final);
 			furArrVO.setFur_arr_room_kind(furRoomKind);
-
+			furArrVO.setFur_arr_plan_scrap_num(fur_scrap_num);
 			fur_arr_list.add(furArrVO);
 		}
 
 		return fur_arr_list;
+	}
+	
+	@Override
+	public List<Furniture_arrVO> furArrList_roomkind(String room_kind_def_name) {
+		List<Furniture_arrVO> fur_arr_list_roomkind = new ArrayList<Furniture_arrVO>();
+
+			List<Furniture_arrVO> furArrVO = new ArrayList<Furniture_arrVO>();
+			
+			List<Furniture_arrVO> result = new ArrayList<Furniture_arrVO>();
+
+			furArrVO = furniture_arrDao.getFurArr_roomkind(room_kind_def_name);
+		
+			for(int i=0; i<furArrVO.size(); i++){
+				Furniture_arrVO vo = new Furniture_arrVO();
+				
+				int fur_arr_plan_no = furArrVO.get(i).getFur_arr_plan_no();
+				
+				List<String> concepts=furniture_arrDao.getFurCon(fur_arr_plan_no);
+				
+				String concept_final = "";
+				
+				System.out.println("가구배치도 컨셉사이즈 - " + concepts.size());
+			
+				for(int j=0; j<concepts.size(); j++){
+					
+					String concept = concepts.get(j);
+					
+					concept_final = concept + " " + concept_final;
+					
+				}
+				
+			
+				
+				int fur_arr_plan_scrap_num = furniture_arrDao.getCountScrap(fur_arr_plan_no);
+				
+				vo.setFur_arr_plan_img_loc(furArrVO.get(i).getFur_arr_plan_img_loc());
+				vo.setFur_arr_name(furArrVO.get(i).getFur_arr_name());
+				vo.setMem_id(furArrVO.get(i).getMem_id());
+				vo.setFur_arr_con(concept_final);
+				vo.setRoom_name(furArrVO.get(i).getRoom_name());
+				vo.setFur_arr_plan_good_num(furArrVO.get(i).getFur_arr_plan_good_num());
+				vo.setFur_arr_plan_scrap_num(fur_arr_plan_scrap_num);
+				vo.setFur_arr_plan_repl_num(furArrVO.get(i).getFur_arr_plan_repl_num());
+				
+				
+				
+				result.add(vo);
+				
+			}
+			
+		return result;
+
+	}
+
+	@Override
+	public List<Furniture_arrVO> furArrList_concept(String concept_name) {
+		List<Furniture_arrVO> fur_arr_list_concept= new ArrayList<Furniture_arrVO>();
+		List<Furniture_arrVO> furArrVO = new ArrayList<Furniture_arrVO>();
+		List<Furniture_arrVO> result = new ArrayList<Furniture_arrVO>();
+		
+		furArrVO= furniture_arrDao.getFurArr_concept(concept_name);
+		for(int i=0; i<furArrVO.size();i++){
+			Furniture_arrVO vo= new Furniture_arrVO();
+			int fur_arr_plan_no_con = furArrVO.get(i).getFur_arr_plan_no();
+			List<String> concepts = furniture_arrDao.getFurCon(fur_arr_plan_no_con);
+			String concept_final="";
+			
+			for(int j=0;j<concepts.size();j++){
+				String concept=concepts.get(j);
+				concept_final=concept+" "+concept_final;
+			}
+			
+			int fur_arr_plan_scrap_num=furniture_arrDao.getCountScrap(fur_arr_plan_no_con);
+			
+			vo.setFur_arr_plan_img_loc(furArrVO.get(i).getFur_arr_plan_img_loc());
+			vo.setFur_arr_name(furArrVO.get(i).getFur_arr_name());
+			vo.setMem_id(furArrVO.get(i).getMem_id());
+			vo.setFur_arr_con(concept_final);
+			vo.setRoom_name(furArrVO.get(i).getRoom_name());
+			vo.setFur_arr_plan_good_num(furArrVO.get(i).getFur_arr_plan_good_num());
+			vo.setFur_arr_plan_scrap_num(fur_arr_plan_scrap_num);
+			vo.setFur_arr_plan_repl_num(furArrVO.get(i).getFur_arr_plan_repl_num());
+			
+			result.add(vo);
+		}
+		
+		
+		return result;
+	}
+
+	@Override
+	public List<Furniture_arrVO> furArrList_roomkind_concept(String room_kind_def_name, String concept_name) {
+		List<Furniture_arrVO> fur_arr_list_roomkind = new ArrayList<Furniture_arrVO>();
+
+		List<Furniture_arrVO> furArrVO = new ArrayList<Furniture_arrVO>();
+		
+		List<Furniture_arrVO> result = new ArrayList<Furniture_arrVO>();
+
+		furArrVO = furniture_arrDao.getFurArr_roomkind(room_kind_def_name);
+	
+		for(int i=0; i<furArrVO.size(); i++){
+			Furniture_arrVO vo = new Furniture_arrVO();
+			
+			int fur_arr_plan_no = furArrVO.get(i).getFur_arr_plan_no();
+			
+			List<String> concepts=furniture_arrDao.getFurCon(fur_arr_plan_no);
+			
+			String concept_final = "";
+			
+			System.out.println("가구배치도 컨셉사이즈 - " + concepts.size());
+		
+			for(int j=0; j<concepts.size(); j++){
+				
+				String concept = concepts.get(j);
+				
+				concept_final = concept + " " + concept_final;
+				
+			}
+						
+			int fur_arr_plan_scrap_num = furniture_arrDao.getCountScrap(fur_arr_plan_no);
+			
+			vo.setFur_arr_plan_img_loc(furArrVO.get(i).getFur_arr_plan_img_loc());
+			vo.setFur_arr_name(furArrVO.get(i).getFur_arr_name());
+			vo.setMem_id(furArrVO.get(i).getMem_id());
+			vo.setFur_arr_con(concept_final);
+			vo.setRoom_name(furArrVO.get(i).getRoom_name());
+			vo.setFur_arr_plan_good_num(furArrVO.get(i).getFur_arr_plan_good_num());
+			vo.setFur_arr_plan_scrap_num(fur_arr_plan_scrap_num);
+			vo.setFur_arr_plan_repl_num(furArrVO.get(i).getFur_arr_plan_repl_num());
+			
+			if(vo.getFur_arr_con().contains(concept_name)){			
+			
+				vo.setFur_arr_con(concept_final);
+				result.add(vo);
+			}
+		}
+		
+	return result;
 	}
 	
 	@Override

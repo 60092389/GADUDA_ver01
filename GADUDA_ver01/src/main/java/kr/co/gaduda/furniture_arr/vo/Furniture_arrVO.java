@@ -2,22 +2,31 @@ package kr.co.gaduda.furniture_arr.vo;
 
 public class Furniture_arrVO {
 
-	private String fur_arr_plan_no;
+	private int fur_arr_plan_no;
 	private String mem_id;
 	private String fur_arr_name;
 	private String fur_arr_plan_img_loc;
 	private String fur_arr_con;
 	private String fur_arr_room_kind;
+	private String room_name;
+
+	public String getRoom_name() {
+		return room_name;
+	}
+
+	public void setRoom_name(String room_name) {
+		this.room_name = room_name;
+	}
 
 	private int fur_arr_plan_scrap_num;
 	private int fur_arr_plan_good_num;
 	private int fur_arr_plan_repl_num;
 
-	public String getFur_arr_plan_no() {
+	public int getFur_arr_plan_no() {
 		return fur_arr_plan_no;
 	}
 
-	public void setFur_arr_plan_no(String fur_arr_plan_no) {
+	public void setFur_arr_plan_no(int fur_arr_plan_no) {
 		this.fur_arr_plan_no = fur_arr_plan_no;
 	}
 
