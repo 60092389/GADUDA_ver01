@@ -28,7 +28,7 @@ public class ScrapController {
 	public String funitureScrapList(@RequestParam(value="mem_id")String mem_id,
 								Model model){
 		
-		System.out.println("스크랩컨트롤러");
+		System.out.println("스크랩컨트롤러"); 
 		
 		List<FurnitureScrapVO> fur_scrap_list = scrapService.furScrapList(mem_id);
 		
