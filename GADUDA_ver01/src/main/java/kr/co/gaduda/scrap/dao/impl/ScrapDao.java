@@ -43,15 +43,6 @@ public class ScrapDao implements IScrapDao{
 		return sqlSession.selectOne(namespace + ".furniture_scrap_count", fur_no);
 	}
 
-	@Override
-	public int furnitureGoodCount(int fur_no) {
-		return 0;
-	}
-
-	@Override
-	public int furnitureReplyCount(int fur_no) {
-		return 0;
-	}
 
 	@Override
 	public int furnitureScrapDelete(int fur_scrap_no) {
@@ -85,17 +76,6 @@ public class ScrapDao implements IScrapDao{
 		return sqlSession.selectOne(namespace + ".fur_arr_scrap_count", fur_arr_plan_no);
 	}
 
-	@Override
-	public int furArrGoodCount(int fur_arr_plan_no) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int furArrReplyCount(int fur_arr_plan_no) {
-		// TODO Auto-generated method stub
-		return 0;
-	}	
 	
 	@Override
 	public int furArrScrapDelete(int fur_arr_scrap_no) {

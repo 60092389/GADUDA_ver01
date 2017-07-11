@@ -16,7 +16,7 @@ import kr.co.gaduda.scrap.vo.FurArrangementVO;
 import kr.co.gaduda.scrap.vo.FurnitureScrapVO;
 
 @Controller
-@RequestMapping(value="/mypage")
+@RequestMapping(value="/mypage/scrap")
 public class ScrapController {
 	
 	@Autowired

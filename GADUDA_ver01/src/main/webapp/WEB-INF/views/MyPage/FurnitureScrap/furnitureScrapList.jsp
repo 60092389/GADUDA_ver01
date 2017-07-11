@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="kr.co.gaduda.common.URLs"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -43,7 +44,7 @@
 				<td>${fsl.fur_good_count }</td>
 				<td>${fsl.fur_scrap_count }</td>
 				<td>${fsl.fur_reply_count }</td>
-				<td><a href="/mypage/furniture_scrap_delete?fur_scrap_no=${fsl.fur_scrap_no}">삭제하기</a></td>
+				<td><a href="${URLs.URI_FURNITURE_SCRAP_DELETE_FULL }?fur_scrap_no=${fsl.fur_scrap_no}">삭제하기</a></td>
 				<!-- <td><input type="button" name="scrapdelete" id="scrapdelete" value="삭제하기"></td> -->
 				
 			</tr>

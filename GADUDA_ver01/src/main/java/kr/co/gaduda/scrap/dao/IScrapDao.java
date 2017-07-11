@@ -24,11 +24,6 @@ public interface IScrapDao {
 	//가구의 스크랩 수
 	public int furnitureScrapCount(int fur_no);
 	
-	//가구의 좋아요 수
-	public int furnitureGoodCount(int fur_no);
-	
-	//가구의 댓글 수
-	public int furnitureReplyCount(int fur_no);
 	
 	//가구스크랩 삭제
 	public int furnitureScrapDelete(int fur_scrap_no);
@@ -49,12 +44,6 @@ public interface IScrapDao {
 	
 	//해당 가구배치도의 스크랩 갯수
 	public int furArrScrapCount(int fur_arr_plan_no);
-	
-	//해당 가구배치도의 좋아요 갯수
-	public int furArrGoodCount(int fur_arr_plan_no);
-	
-	//해당 가구배치도의 댓글 갯수
-	public int furArrReplyCount(int fur_arr_plan_no);
 	
 	//가구배치도 스크랩 삭제
 	public int furArrScrapDelete(int fur_arr_scrap_no);
