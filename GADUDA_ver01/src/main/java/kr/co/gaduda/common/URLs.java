@@ -8,6 +8,7 @@ public class URLs {
 	private static final String member_default = "/member";
 	private static final String mypage_default = "/mypage";
 	private static final String furniture_default = "/furniture";
+	private static final String furniture_arr_default = "/furniture_arr";
 
 	// 로그아웃
 	public static final String URI_LOGOUT = "/logout";
@@ -59,7 +60,6 @@ public class URLs {
 	public static final String URI_MAIN_HOME = "/";
 	public static final String URI_MAIN_TO_LIST = "/list";
 	public static final String URI_MAIN_TO_ARR = "/arrange";
-	public static final String URI_MAIN_TO_WATCH = "/watch";
 	public static final String URI_MAIN_TO_RECOM = "/recommend";
 	public static final String URI_MAIN_TO_MYPAGE = mypage_default;
 	// 가구 상세보기 페이지
@@ -81,7 +81,7 @@ public class URLs {
 
 	// 가구 배치도 페이지
 	public static final String URI_FURNITURE_WATCH = "/fur_arr";
-	public static final String URI_FURNITURE_WATCH_FULL = URI_MAIN_TO_WATCH + URI_FURNITURE_WATCH;
+	public static final String URI_FURNITURE_WATCH_FULL = furniture_arr_default + URI_FURNITURE_WATCH;
 
 	////////////////////////////////// 17-07-07
 	////////////////////////////////// 11:43////////////////////////////////////////////////
@@ -111,4 +111,36 @@ public class URLs {
 	public static final String URI_FURNITURE_FUR_SCRAP_FULL = furniture_default + URI_FURNITURE_SCRAP;
 	public static final String URI_FURNITURE_DETAIL_REDIRECT = URI_MAIN_REDIRECT + URI_FURNITURE_DETAIL_FULL;
 
+	////////준병 17-07-11 16:57/////////////////////
+	//가구배치도 상세페이지 관련
+	
+	// 가구배치도 상세 페이지
+	public static final String URI_FURNITURE_ARR_DETAIL_VIEW = "/fur_arr_detail";
+	public static final String URI_FURNITURE_ARR_DETAIL_VIEW_FULL = furniture_arr_default
+			+ URI_FURNITURE_ARR_DETAIL_VIEW;
+
+	// 가구배치도 좋아요
+	public static final String URI_FURNITURE_ARR_GOOD_UP = "/fur_arr_good_up";
+	public static final String URI_FURNITURE_ARR_GOOD_UP_FULL = furniture_arr_default + URI_FURNITURE_ARR_GOOD_UP;
+
+	// 가구배치도 좋아요 목록
+	public static final String URI_FURNITURE_ARR_GOOD_LIST = "/fur_arr_good_list";
+	public static final String URI_FURNITURE_ARR_GOOD_LIST_FULL = furniture_arr_default + URI_FURNITURE_ARR_GOOD_LIST;
+
+	// 가구배치도 댓글 작성
+	public static final String URI_FURNITURE_ARR_REPLY_WRITE = "/fur_arr_reply_write";
+	public static final String URI_FURNITURE_ARR_REPLY_WRITE_FULL = furniture_arr_default
+			+ URI_FURNITURE_ARR_REPLY_WRITE;
+
+	// 가구배치도 댓글 삭제
+	public static final String URI_FURNITURE_ARR_REPLY_DELETE = "/fur_arr_reply_delete";
+	public static final String URI_FURNITURE_ARR_REPLY_DELETE_FULL = furniture_arr_default
+			+ URI_FURNITURE_ARR_REPLY_DELETE;
+
+	// 가구배치도 스크랩 하기
+	public static final String URI_FURNITURE_ARR_SCRAP_ADD = "/fur_arr_scrap_add";
+	public static final String URI_FURNITURE_ARR_SCRAP_ADD_FULL = furniture_arr_default + URI_FURNITURE_ARR_SCRAP_ADD;
+
+	////////////////////////////////////////////
+	
 }
