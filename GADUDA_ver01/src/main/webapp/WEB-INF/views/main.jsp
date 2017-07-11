@@ -20,7 +20,7 @@
 		<a href=<%=URLs.URI_MAIN_TO_ARR%>>배치</a>
 		<a href=<%=URLs.URI_FURNITURE_LIST_LOOKAROUND_GET_FULL%>>구경</a>
 		<a href=<%=URLs.URI_MAIN_TO_RECOM%>>추천</a>
-		<a href=<%=URLs.URI_MAIN_TO_MYPAGE%>>마이페이지</a>
+		<a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%>>마이페이지</a>
 
 	</div>
 
@@ -48,12 +48,12 @@
 			</form>
 
 
-			<form role="form" action=${ URLs.URI_DELETE_MEMBER_FULL }
+		<%-- 	<form role="form" action=${ URLs.URI_DELETE_MEMBER_FULL }
 				method="post">
 				<div>
 					<input type="submit" value="회원탈퇴">
 				</div>
-			</form>
+			</form> --%>
 
 		</c:otherwise>
 	</c:choose>
