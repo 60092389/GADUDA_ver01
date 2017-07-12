@@ -121,7 +121,7 @@ public class MypageMemberController implements ServletContextAware{
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public String mem_img_upload(MemberDTO memberDTO, HttpServletRequest request,MultipartFile file)
 			throws Exception {
-		String realpath="C:/sts/workspace/GADUDA_ver2/src/main/webapp/resources/Images/MemberImage/";
+		String realpath = request.getSession().getServletContext().getRealPath("resources/Images/MemberImage/");
 		File f=new File(realpath+file.getOriginalFilename());
 		MemberVO memVO = (MemberVO) request.getSession().getAttribute("member");
 		String mem_id=memVO.getMem_id();
