@@ -68,7 +68,7 @@
 		<tbody>
 			<c:forEach var="fal" items="${fur_arr_list }">
 				<tr>
-					<td><img alt="가구사진" src="${fal.fur_arr_plan_img_loc }" width="100px" height="100px">
+					<td><img alt="가구배치돈사진" src="${fal.fur_arr_plan_img_loc }" width="100px" height="100px">
 					${fal.fur_arr_plan_img_loc }</td>
 					<td>${fal.fur_arr_name }</td>
 					<td>${fal.mem_id }</td>

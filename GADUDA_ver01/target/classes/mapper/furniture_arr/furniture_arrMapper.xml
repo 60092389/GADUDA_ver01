@@ -15,8 +15,7 @@
 		<![CDATA[
 			select fur_arr_plan_no,FUR_ARR_PLAN_IMG_LOC, FUR_ARR_NAME, MEM_ID, FUR_ARR_PLAN_GOOD_NUM, FUR_ARR_PLAN_REPL_NUM  
 			from FURNITURE_ARRANGEMENT_IMAGE FAI, FURNITURE_ARRANGEMENT_PLAN FAP 
-			where FAI.FUR_ARR_PLAN_NO = FAP.FUR_ARR_PLAN_NO
-			order by fur_arr_plan_no asc
+			where FAI.FUR_ARR_PLAN_NO = FAP.FUR_ARR_PLAN_NO and fur_arr_plan_no = ${fur_arr_plan_no}
 	</select>
 
 	<select id="count_fur_arr" resultType="int">
