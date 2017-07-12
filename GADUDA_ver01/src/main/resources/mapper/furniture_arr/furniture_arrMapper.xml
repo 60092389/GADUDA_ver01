@@ -13,15 +13,15 @@
 
 	<select id="get_arr_info" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrVO">
 		<![CDATA[
-			select fur_arr_plan_no,FUR_ARR_PLAN_IMG_LOC, FUR_ARR_NAME, MEM_ID, FUR_ARR_PLAN_GOOD_NUM, FUR_ARR_PLAN_REPL_NUM  
+			select FAI.FUR_ARR_PLAN_NO, FUR_ARR_PLAN_IMG_LOC, FUR_ARR_NAME, MEM_ID, FUR_ARR_PLAN_GOOD_NUM, FUR_ARR_PLAN_REPL_NUM  
 			from FURNITURE_ARRANGEMENT_IMAGE FAI, FURNITURE_ARRANGEMENT_PLAN FAP 
 			where FAI.FUR_ARR_PLAN_NO = FAP.FUR_ARR_PLAN_NO
-			order by fur_arr_plan_no asc
+		]]>
 	</select>
 
-	<select id="count_fur_arr" resultType="int">
+	<select id="fur_arr_room_kind_get" resultType="String">
 		<![CDATA[
-			select count(*) from FURNITURE_ARRANGEMENT_PLAN
+			select ROOM_KIND_DEF_NAME from FURNITURE_ARR_ROOM_KIND FARK, ROOM_KIND_DEFINE RKD where FARK.ROOM_KIND_DEF_NO = RKD.ROOM_KIND_DEF_NO and FARK.FUR_ARR_PLAN_NO = #{fur_arr_plan_no}
 		]]>
 	</select>
 

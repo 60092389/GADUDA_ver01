@@ -31,20 +31,16 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 	
 	@Autowired
 	MongoTemplate mongoTemplate;
-	
-	public String getTime() {
-		return furarrsqlSession.selectOne(namespace + ".getTime");
+
+	@Override
+	public List<Furniture_arrVO> getFurArr() {
+		return furarrsqlSession.selectList(namespace + ".get_arr_info");
 	}
 
 	@Override
-	public Furniture_arrVO getFurArr(int fur_arr_plan_no) {
-		return furarrsqlSession.selectOne(namespace + ".get_arr_info", fur_arr_plan_no);
-	}
-
-	@Override
-	public int countFurArr() {
+	public List<String> FurArrRoomKind(int fur_arr_plan_no) {
 		// TODO Auto-generated method stub
-		return furarrsqlSession.selectOne(namespace + ".count_fur_arr");
+		return furarrsqlSession.selectList(namespace + ".fur_arr_room_kind_get", fur_arr_plan_no);
 	}
 
 	@Override

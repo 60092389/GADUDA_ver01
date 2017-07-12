@@ -26,27 +26,30 @@ public class Furniture_arrService implements IFurniture_arrService {
 
 	@Override
 	public List<Furniture_arrVO> furArrList() {
-		List<Furniture_arrVO> fur_arr_list = new ArrayList<Furniture_arrVO>();
+		
+		List<Furniture_arrVO> fur_arr_list = furniture_arrDao.getFurArr();
 
-		int fur_arr_num = furniture_arrDao.countFurArr();
-
-		for (int fur_arr_no = 0; fur_arr_no < fur_arr_num; fur_arr_no++) {
-			Furniture_arrVO furArrVO = new Furniture_arrVO();
-
+		for (int fur_arr_no = 0; fur_arr_no < fur_arr_list.size(); fur_arr_no++) {
 			
-			furArrVO = furniture_arrDao.getFurArr(fur_arr_no + 1);
-			List<String> furArrCon = furniture_arrDao.getFurCon(fur_arr_no + 1);
+			List<String> furArrRoomKind = furniture_arrDao.FurArrRoomKind(fur_arr_no);
+			List<String> furArrCon = furniture_arrDao.getFurCon(fur_arr_no);
+			String furArrRoomKind_final="";
 			String furArrCon_final="";
 			for(int j =0; j<furArrCon.size();j++){
 				String concept=furArrCon.get(j);
 				furArrCon_final=concept+" "+furArrCon_final;
 			}
-			String furRoomKind = furniture_arrDao.getRoomKind(fur_arr_no + 1);
-			int fur_scrap_num = furniture_arrDao.getCountScrap(fur_arr_no+1);
-			furArrVO.setFur_arr_con(furArrCon_final);
-			furArrVO.setFur_arr_room_kind(furRoomKind);
-			furArrVO.setFur_arr_plan_scrap_num(fur_scrap_num);
-			fur_arr_list.add(furArrVO);
+			for(int j =0; j<furArrRoomKind.size();j++){
+				String roomkind=furArrRoomKind.get(j);
+				furArrRoomKind_final=roomkind+" "+furArrRoomKind_final;
+			}
+			String furRoomKind = furniture_arrDao.getRoomKind(fur_arr_no);
+			int fur_scrap_num = furniture_arrDao.getCountScrap(fur_arr_no);
+			
+			fur_arr_list.get(fur_arr_no).setFur_arr_room_kind(furArrRoomKind_final);
+			fur_arr_list.get(fur_arr_no).setFur_arr_con(furArrCon_final);
+			fur_arr_list.get(fur_arr_no).setFur_arr_room_kind(furRoomKind);
+			fur_arr_list.get(fur_arr_no).setFur_arr_plan_scrap_num(fur_scrap_num);
 		}
 
 		return fur_arr_list;

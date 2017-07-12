@@ -13,9 +13,9 @@ import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 import kr.co.gaduda.furniture_arr.vo.Other_Furniture_arrVO;
 
 public interface IFurniture_arrDao {
-	public Furniture_arrVO getFurArr(int fur_arr_plan_no);
+	public List<Furniture_arrVO> getFurArr();
 
-	public int countFurArr();
+	public List<String> FurArrRoomKind(int fur_arr_plan_no);
 
 	public List<String> getFurCon(int fur_arr_plan_no);
 

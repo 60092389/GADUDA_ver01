@@ -92,7 +92,7 @@
 	
 	<table border="1">
 
-		<h1>가구배치도 리스트</h1>
+		<h1>가구배치도 리스트 ${fal.fur_arr_plan_no}</h1>
 
 		<thead>
 			<th>가구배치도이미지</th>
@@ -111,7 +111,7 @@
 				<tr>
 					<td><img alt="가구사진" src="${fal.fur_arr_plan_img_loc }" width="100px" height="100px">
 					${fal.fur_arr_plan_img_loc }</td>
-					<td><a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }?fur_arr_plan_no=${fal.fur_arr_plan_no}">${fal.fur_arr_name }</a></td>
+					<td><a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${fal.fur_arr_plan_no}">${fal.fur_arr_name }</a></td>
 					<td>${fal.mem_id }</td>
 					<td>${fal.fur_arr_con }</td>
 					<td>${fal.fur_arr_room_kind }</td>
