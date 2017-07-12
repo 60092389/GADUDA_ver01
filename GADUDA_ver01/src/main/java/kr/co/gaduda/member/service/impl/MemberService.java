@@ -15,86 +15,86 @@ import kr.co.gaduda.member.vo.Following_VO;
 import kr.co.gaduda.member.vo.MemberVO;
 @Service
 public class MemberService implements IMemberService {
-	
-	@Autowired
-	private MemberDao memberDAO;
-	@Override
-	public int joinMember(MemberDTO memberDTO) {
-		return memberDAO.joinMember(memberDTO);
-	}
+   
+   @Autowired
+   private MemberDao memberDAO;
+   @Override
+   public int joinMember(MemberDTO memberDTO) {
+      return memberDAO.joinMember(memberDTO);
+   }
 
-	@Override
-	public int idchk(String mem_id) {
-		return memberDAO.idchk(mem_id);
-	}
+   @Override
+   public int idchk(String mem_id) {
+      return memberDAO.idchk(mem_id);
+   }
 
-	@Override
-	public MemberVO login_chk(MemberDTO memberDTO) {
-		return memberDAO.login_chk(memberDTO);
-	}
+   @Override
+   public MemberVO login_chk(MemberDTO memberDTO) {
+      return memberDAO.login_chk(memberDTO);
+   }
 
-	@Override
-	public void deletemember(MemberDTO memberDTO) {
-		memberDAO.deletemember(memberDTO);
-		
-	}
+   @Override
+   public void deletemember(MemberDTO memberDTO) {
+      memberDAO.deletemember(memberDTO);
+      
+   }
 
-	@Override
-	public int chkmem_pw(MemberDTO memberDTO) {
-		return memberDAO.chkmem_pw(memberDTO);
-	}
+   @Override
+   public int chkmem_pw(MemberDTO memberDTO) {
+      return memberDAO.chkmem_pw(memberDTO);
+   }
 
-	@Override
-	public void update_mem(MemberDTO memberDTO) {
-		memberDAO.update_mem(memberDTO);
-		
-	}
+   @Override
+   public void update_mem(MemberDTO memberDTO) {
+      memberDAO.update_mem(memberDTO);
+      
+   }
 
-	@Override
-	public int update_mem_pw(MemberDTO memberDTO) {
-		
-		return memberDAO.update_mem_pw(memberDTO); 
-	}
+   @Override
+   public int update_mem_pw(MemberDTO memberDTO) {
+      
+      return memberDAO.update_mem_pw(memberDTO); 
+   }
 
-	@Override
-	public int update_mem_pw_chk(MemberDTO memberDTO) {
-		return memberDAO.update_mem_pw_chk(memberDTO);
-	}
+   @Override
+   public int update_mem_pw_chk(MemberDTO memberDTO) {
+      return memberDAO.update_mem_pw_chk(memberDTO);
+   }
 
-	@Override
-	public void update_mem_pic(MemberDTO memberDTO) {
-		memberDAO.update_mem_img(memberDTO);
+   @Override
+   public void update_mem_pic(MemberDTO memberDTO) {
+      memberDAO.update_mem_img(memberDTO);
 
-		
-	}
+      
+   }
 
-	@Override
-	public int follower_info(FollowDTO followDTO) {
-		return memberDAO.follower_info(followDTO);
-	}
+   @Override
+   public int follower_info(FollowDTO followDTO) {
+      return memberDAO.follower_info(followDTO);
+   }
 
-	@Override
-	public int following_info(FollowDTO followDTO) {
-		
-		return memberDAO.following_info(followDTO);
-	}
+   @Override
+   public int following_info(FollowDTO followDTO) {
+      
+      return memberDAO.following_info(followDTO);
+   }
 
-	@Override
-	public String follower_list(FollowDTO followDTO) {
-		
-		
-		return memberDAO.follower_list(followDTO);
-	}
+   @Override
+   public List<Follower_VO> follower_list(FollowDTO followDTO) {
+      
+      
+      return memberDAO.follower_list(followDTO);
+   }
 
-	@Override
-	public String following_list(FollowDTO followDTO) {
-		
-		return memberDAO.following_list(followDTO);
-	}
+   @Override
+   public List<Following_VO> following_list(FollowDTO followDTO) {
+      
+      return memberDAO.following_list(followDTO);
+   }
 
-	@Override
-	public int following_available(FollowDTO followDTO) {
-		return memberDAO.following_available(followDTO);
-	}
+   @Override
+   public int following_available(FollowDTO followDTO) {
+      return memberDAO.following_available(followDTO);
+   }
 
 }
