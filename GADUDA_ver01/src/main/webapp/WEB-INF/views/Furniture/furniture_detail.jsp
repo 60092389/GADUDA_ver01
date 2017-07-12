@@ -83,6 +83,30 @@ $(document).ready(function() {
 						+ "btn-xs btn-fur-reply-del' value='"+retVal.replyList[i]._id +"'> 댓글 삭제</button> </td>");
 				$("#furrepllist").append("</tr>");
 				}
+				
+				$(".btn-fur-reply-del").click(function(){
+					var fur_reply_id = $(this).val();
+					//alert("댓글 아디 : " + fur_reply_id);
+					var fur_reply_id_trans_object = {
+							'_id' : fur_reply_id,
+							'fur_no' : replfurno
+					}
+					
+					var reply_id_trans_json = JSON.stringify(fur_reply_id_trans_object); 
+					
+					$.ajax({
+						url : "http://localhost:8080/furniture/fur_reply_delete",
+						type : 'POST',
+						dataType : 'json',
+						data : reply_id_trans_json,
+						contentType : 'application/json',
+						mimeType : 'application/json',
+						success : function(retDeleteVal){
+							alert("삭제 성공 - " + retDeleteVal.val );
+							location.reload();
+						}
+					});
+				});
 			},
 			error : function(retVal, status, er){
 				alert("에러 : " + retval + " status : " + status + " er : " + er);
