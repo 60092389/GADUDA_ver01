@@ -72,9 +72,10 @@ public class Furniture_arrService implements IFurniture_arrService {
 			Furniture_arrVO vo = new Furniture_arrVO();
 
 			int fur_arr_plan_no = furArrVO.get(i).getFur_arr_plan_no();
-
+			List<String> furArrRoomKind = furniture_arrDao.FurArrRoomKind(fur_arr_plan_no);
 			List<String> concepts = furniture_arrDao.getFurCon(fur_arr_plan_no);
 
+			String furArrRoomKind_final = "";
 			String concept_final = "";
 
 			System.out.println("가구배치도 컨셉사이즈 - " + concepts.size());
@@ -86,14 +87,17 @@ public class Furniture_arrService implements IFurniture_arrService {
 				concept_final = concept + " " + concept_final;
 
 			}
-
+			for (int j = 0; j < furArrRoomKind.size(); j++) {
+				String roomkind = furArrRoomKind.get(j);
+				furArrRoomKind_final = roomkind + " " + furArrRoomKind_final;
+			}
 			int fur_arr_plan_scrap_num = furniture_arrDao.getCountScrap(fur_arr_plan_no);
-
+			vo.setFur_arr_plan_no(fur_arr_plan_no);
 			vo.setFur_arr_plan_img_loc(furArrVO.get(i).getFur_arr_plan_img_loc());
 			vo.setFur_arr_name(furArrVO.get(i).getFur_arr_name());
 			vo.setMem_id(furArrVO.get(i).getMem_id());
 			vo.setFur_arr_con(concept_final);
-			vo.setRoom_name(furArrVO.get(i).getRoom_name());
+			vo.setFur_arr_room_kind(furArrRoomKind_final);
 			vo.setFur_arr_plan_good_num(furArrVO.get(i).getFur_arr_plan_good_num());
 			vo.setFur_arr_plan_scrap_num(fur_arr_plan_scrap_num);
 			vo.setFur_arr_plan_repl_num(furArrVO.get(i).getFur_arr_plan_repl_num());
@@ -117,20 +121,24 @@ public class Furniture_arrService implements IFurniture_arrService {
 			Furniture_arrVO vo = new Furniture_arrVO();
 			int fur_arr_plan_no_con = furArrVO.get(i).getFur_arr_plan_no();
 			List<String> concepts = furniture_arrDao.getFurCon(fur_arr_plan_no_con);
+			List<String> furArrRoomKind = furniture_arrDao.FurArrRoomKind(fur_arr_plan_no_con);
 			String concept_final = "";
-
+			String furArrRoomKind_final = "";
 			for (int j = 0; j < concepts.size(); j++) {
 				String concept = concepts.get(j);
 				concept_final = concept + " " + concept_final;
 			}
-
+			for (int j = 0; j < furArrRoomKind.size(); j++) {
+				String roomkind = furArrRoomKind.get(j);
+				furArrRoomKind_final = roomkind + " " + furArrRoomKind_final;
+			}
 			int fur_arr_plan_scrap_num = furniture_arrDao.getCountScrap(fur_arr_plan_no_con);
-
+			vo.setFur_arr_plan_no(fur_arr_plan_no_con);
 			vo.setFur_arr_plan_img_loc(furArrVO.get(i).getFur_arr_plan_img_loc());
 			vo.setFur_arr_name(furArrVO.get(i).getFur_arr_name());
 			vo.setMem_id(furArrVO.get(i).getMem_id());
 			vo.setFur_arr_con(concept_final);
-			vo.setRoom_name(furArrVO.get(i).getRoom_name());
+			vo.setFur_arr_room_kind(furArrRoomKind_final);
 			vo.setFur_arr_plan_good_num(furArrVO.get(i).getFur_arr_plan_good_num());
 			vo.setFur_arr_plan_scrap_num(fur_arr_plan_scrap_num);
 			vo.setFur_arr_plan_repl_num(furArrVO.get(i).getFur_arr_plan_repl_num());
@@ -157,9 +165,9 @@ public class Furniture_arrService implements IFurniture_arrService {
 			int fur_arr_plan_no = furArrVO.get(i).getFur_arr_plan_no();
 
 			List<String> concepts = furniture_arrDao.getFurCon(fur_arr_plan_no);
-
+			List<String> furArrRoomKind = furniture_arrDao.FurArrRoomKind(fur_arr_plan_no);
 			String concept_final = "";
-
+			String furArrRoomKind_final = "";
 			System.out.println("가구배치도 컨셉사이즈 - " + concepts.size());
 
 			for (int j = 0; j < concepts.size(); j++) {
@@ -169,14 +177,17 @@ public class Furniture_arrService implements IFurniture_arrService {
 				concept_final = concept + " " + concept_final;
 
 			}
-
+			for (int j = 0; j < furArrRoomKind.size(); j++) {
+				String roomkind = furArrRoomKind.get(j);
+				furArrRoomKind_final = roomkind + " " + furArrRoomKind_final;
+			}
 			int fur_arr_plan_scrap_num = furniture_arrDao.getCountScrap(fur_arr_plan_no);
 
 			vo.setFur_arr_plan_img_loc(furArrVO.get(i).getFur_arr_plan_img_loc());
 			vo.setFur_arr_name(furArrVO.get(i).getFur_arr_name());
 			vo.setMem_id(furArrVO.get(i).getMem_id());
 			vo.setFur_arr_con(concept_final);
-			vo.setRoom_name(furArrVO.get(i).getRoom_name());
+			vo.setFur_arr_room_kind(furArrRoomKind_final);
 			vo.setFur_arr_plan_good_num(furArrVO.get(i).getFur_arr_plan_good_num());
 			vo.setFur_arr_plan_scrap_num(fur_arr_plan_scrap_num);
 			vo.setFur_arr_plan_repl_num(furArrVO.get(i).getFur_arr_plan_repl_num());

@@ -70,10 +70,11 @@
 				<tr>
 					<td><img alt="가구배치돈사진" src="${fal.fur_arr_plan_img_loc }" width="100px" height="100px">
 					${fal.fur_arr_plan_img_loc }</td>
-					<td>${fal.fur_arr_name }</td>
+					<td><a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${fal.fur_arr_plan_no}">${fal.fur_arr_name }</a></td>
+					
 					<td>${fal.mem_id }</td>
 					<td>${fal.fur_arr_con }</td>
-					<td>${fal.room_name }</td>
+					<td>${fal.fur_arr_room_kind }</td>
 					
 					<td>${fal.fur_arr_plan_good_num }</td>
 					<td>${fal.fur_arr_plan_scrap_num }</td>
