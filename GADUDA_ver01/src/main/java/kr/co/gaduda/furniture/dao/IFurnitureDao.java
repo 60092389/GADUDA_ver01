@@ -13,7 +13,8 @@ import kr.co.gaduda.furniture.vo.FurnitureVO;
 import kr.co.gaduda.furniture.vo.FurnitureGoodListVO;
 
 public interface IFurnitureDao {
-	public FurnitureVO getFurniture(int fur_no);
+	
+	public List<FurnitureVO> getFurniture();
 
 	public FurnitureDetailVO getDetailFurniture(int fur_no);
 

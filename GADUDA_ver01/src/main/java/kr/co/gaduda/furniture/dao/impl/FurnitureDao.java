@@ -31,8 +31,8 @@ public class FurnitureDao implements IFurnitureDao {
 	private MongoTemplate mongoTemplate;
 
 	@Override
-	public FurnitureVO getFurniture(int fur_no) {
-		return sqlSession.selectOne(namespace + ".get_fur_info", fur_no);
+	public List<FurnitureVO> getFurniture() {
+		return sqlSession.selectList(namespace + ".get_fur_info");
 	}
 
 	@Override
