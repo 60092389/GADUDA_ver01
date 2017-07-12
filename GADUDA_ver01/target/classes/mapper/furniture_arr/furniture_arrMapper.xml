@@ -13,9 +13,17 @@
 
 	<select id="get_arr_info" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrVO">
 		<![CDATA[
+<<<<<<< HEAD
 			select FAI.FUR_ARR_PLAN_NO, FUR_ARR_PLAN_IMG_LOC, FUR_ARR_NAME, MEM_ID, FUR_ARR_PLAN_GOOD_NUM, FUR_ARR_PLAN_REPL_NUM  
+=======
+			select FUR_ARR_PLAN_IMG_LOC, FUR_ARR_NAME, MEM_ID, FUR_ARR_PLAN_GOOD_NUM, FUR_ARR_PLAN_REPL_NUM  
+>>>>>>> branch 'master' of https://github.com/60092389/GADUDA_ver01.git
 			from FURNITURE_ARRANGEMENT_IMAGE FAI, FURNITURE_ARRANGEMENT_PLAN FAP 
+<<<<<<< HEAD
 			where FAI.FUR_ARR_PLAN_NO = FAP.FUR_ARR_PLAN_NO
+=======
+			where FAI.FUR_ARR_PLAN_NO = FAP.FUR_ARR_PLAN_NO and fur_arr_plan_no = ${fur_arr_plan_no}
+>>>>>>> branch 'master' of https://github.com/60092389/GADUDA_ver01.git
 		]]>
 	</select>
 

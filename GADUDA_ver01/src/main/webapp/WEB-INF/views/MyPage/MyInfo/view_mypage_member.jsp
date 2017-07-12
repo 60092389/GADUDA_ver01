@@ -11,6 +11,15 @@
 <body>
  <form role="form" action=${ URLs.URI_DELETE_MEMBER_FULL }
 				method="post">
+				<c:set var="member" value="${ member }" />
+				
+				<ul>
+					<li><a href="${URLs.URI_FURNITURE_SCRAP_FULL }?mem_id=${member.mem_id}">가구스크랩</a></li>
+					<li><a href="${URLs.URI_FURNITURE_ARR_SCRAP_FULL }?mem_id=${member.mem_id}">가구 배치도 스크랩</a></li>
+				</ul>
+	
+				
+	
 				<div>
 					<input type="submit" value="회원탈퇴">
 				</div>
