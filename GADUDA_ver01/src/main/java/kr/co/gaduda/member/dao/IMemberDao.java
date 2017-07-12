@@ -24,4 +24,4 @@ public interface IMemberDao {
 	public String follower_list(FollowDTO followDTO);
 	public String following_list(FollowDTO followDTO);
 	public int following_available(FollowDTO followDTO);
-}
+} 

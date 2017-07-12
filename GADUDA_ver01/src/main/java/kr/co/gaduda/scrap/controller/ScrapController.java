@@ -1,13 +1,17 @@
 package kr.co.gaduda.scrap.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.gaduda.common.Pages;
 import kr.co.gaduda.common.URLs;
@@ -38,26 +42,33 @@ public class ScrapController {
 		
 	}
 	
+
 	//가구스크랩 삭제
-	@RequestMapping(value=URLs.URI_FURNITURE_SCRAP_DELETE, method = RequestMethod.GET)
-	public String furnitureScrapDelete(@RequestParam(value="fur_scrap_no")int fur_scrap_no, 
-					Model model){
+	@RequestMapping(value=URLs.URI_FURNITURE_SCRAP_DELETE, method = RequestMethod.POST, produces = { "application/json" })
+	public @ResponseBody Map<String, Object> furnitureScrapDelete(
+			@RequestBody Map<String, Object> deleteInfo){
+		 
 		
+		System.out.println("스크랩삭제 컨트롤러" + deleteInfo.get("fur_scrap_no"));
 		
-		System.out.println("스크랩삭제 컨트롤러");
+		Map<String, Object> retVal = new HashMap<String, Object>();
 		
-		int result = scrapService.furScrapDelete(fur_scrap_no);
+		int fur_scrap_no_int = Integer.parseInt((String)deleteInfo.get("fur_scrap_no"));
+		
+		int result = scrapService.furScrapDelete(fur_scrap_no_int);
 		
 		if(result == 1){
 			System.out.println("삭제성공");
+			retVal.put("resultNum", result);
 		}else{
 			System.out.println("삭제실패");
+			retVal.put("resultNum", result);
 		}
 		
-		model.addAttribute("mem_id", "user01");
-		
-		return null;
+		return retVal;
 	}
+	
+	
 	
 	
 	//가구배치도 스크랩 리스트 뷰로
@@ -71,20 +82,29 @@ public class ScrapController {
 		return Pages.VIEW_FURNITURE_ARR_SCRAP_LIST;
 	}
 	
-	@RequestMapping(value=URLs.URI_FURNITURE_ARR_SCRAP_DELETE, method = RequestMethod.GET)
-	public String furArrScrapDelete(@RequestParam(value="fur_arr_scrap_no")int fur_arr_scrap_no,
-					Model model){
-		int result = scrapService.furArrScrapDelete(fur_arr_scrap_no);
+	//가구배치도 스크랩 삭제
+	@RequestMapping(value=URLs.URI_FURNITURE_ARR_SCRAP_DELETE, method = RequestMethod.POST, produces = { "application/json" })
+	public @ResponseBody Map<String, Object> furArrScrapDelete(
+			@RequestBody Map<String, Object> deleteInfo){
+		System.out.println("스크랩삭제 컨트롤러" + deleteInfo.get("fur_arr_scrap_no"));
+		
+		Map<String, Object> retVal = new HashMap<String, Object>();
+		
+		int fur_arr_scrap_no_int = Integer.parseInt((String)deleteInfo.get("fur_arr_scrap_no"));
+		
+		int result = scrapService.furArrScrapDelete(fur_arr_scrap_no_int);
 		
 		if(result == 1){
-			System.out.println("삭제 성공");
+			System.out.println("삭제성공");
+			retVal.put("resultNum", result);
 		}else{
-			System.out.println("삭제 실패");
+			System.out.println("삭제실패");
+			retVal.put("resultNum", result);
 		}
 		
-		return null;
+		return retVal;
 	}
 	
-	
+
 
 }
