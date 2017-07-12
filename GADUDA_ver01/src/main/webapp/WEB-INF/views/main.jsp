@@ -17,7 +17,7 @@
 
 		<a href=<%=URLs.URI_MAIN_HOME%>>홈</a> 
 		<a href=<%=URLs.URI_MAIN_TO_LIST%>>목록</a>
-		<a href=<%=URLs.URI_MAIN_TO_ARR%>>배치</a>
+		<a href=<%=URLs.URI_FURNITURE_WATCH_FULL%>>배치</a>
 		<a href=<%=URLs.URI_FURNITURE_LIST_LOOKAROUND_GET_FULL%>>구경</a>
 		<a href=<%=URLs.URI_MAIN_TO_RECOM%>>추천</a>
 		<a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%>>마이페이지</a>
@@ -111,7 +111,7 @@
 				<tr>
 					<td><img alt="가구사진" src="${fal.fur_arr_plan_img_loc }" width="100px" height="100px">
 					${fal.fur_arr_plan_img_loc }</td>
-					<td>${fal.fur_arr_name }</td>
+					<td><a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }?fur_arr_plan_no=${fal.fur_arr_plan_no}">${fal.fur_arr_name }</a></td>
 					<td>${fal.mem_id }</td>
 					<td>${fal.fur_arr_con }</td>
 					<td>${fal.fur_arr_room_kind }</td>
