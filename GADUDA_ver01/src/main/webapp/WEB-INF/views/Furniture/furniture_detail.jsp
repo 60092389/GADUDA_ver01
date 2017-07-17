@@ -1,12 +1,33 @@
-<%@page import="kr.co.gaduda.common.URLs"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="kr.co.gaduda.common.URLs"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>가구 상세보기 페이지</title>
+<title>GADUDA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<style>
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Lato", sans-serif
+}
+
+.w3-bar, h1, button {
+	font-family: "Montserrat", sans-serif
+}
+
+.fa-anchor, .fa-coffee {
+	font-size: 200px
+}
+</style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
@@ -14,11 +35,9 @@
 $(document).ready(function() {
 	
 
-	//좋아요 목록 리스트 보기
-		
-	$('#mongofurgoodlist').click(function() {
-		
-		var goodfurno = $('#good_fur_no').val();
+	$('.good_list').click('show.bs.modal', function(){
+		$('#myModal').focus();
+		var goodfurno = $('#fur_no').val();
 		
 
 		var trans_object = {
@@ -35,14 +54,14 @@ $(document).ready(function() {
 			contentType : 'application/json',
 			mimeType : 'application/json',
 			success : function(retVal){
-				$("#furgoodlist").html("");
+				$(".good_list_show").html("");
 				
 				for(var i =0; i < retVal.list_good.length; i++){ 
-				$("#furgoodlist").append("<tr>");
-				$("#furgoodlist").append("<td>" + retVal.list_good[i].mem_id +"</td>");
-				$("#furgoodlist").append("<td>" + retVal.list_good[i].mem_nickname +"</td>");
-				$("#furgoodlist").append("<td>" + retVal.list_good[i].fur_good_date+"</td>");
-				$("#furgoodlist").append("</tr>");
+				$(".good_list_show").append("<tr>");
+				$(".good_list_show").append("<td>" + retVal.list_good[i].mem_id +"</td>");
+				$(".good_list_show").append("<td>" + retVal.list_good[i].mem_nickname +"</td>");
+				$(".good_list_show").append("<td>" + retVal.list_good[i].fur_good_date+"</td>");
+				$(".good_list_show").append("</tr>");
 				}
 			},
 			error : function(retVal, status, er){
@@ -53,72 +72,34 @@ $(document).ready(function() {
 
 	});
 	
-	// 댓글 리스트 보기
-	$('#mongofurrepllist').click(function() {
-		var replfurno = $('#repl_fur_no').val();
+	$(".btn-fur-reply-del").click(function(){
+		var fur_reply_id = $(this).val();
+		var fur_no = $('#fur_no').val();
 		
-		var fur_no_trans_object = {
-				'fur_no' : replfurno
+		var fur_reply_id_trans_object = {
+				'_id' : fur_reply_id,
+				'fur_no' : fur_no
 		}
-		
-		var fur_no_trans_json = JSON.stringify(fur_no_trans_object); 
+					
+		var reply_id_trans_json = JSON.stringify(fur_reply_id_trans_object); 
 		
 		$.ajax({
-			url : "http://localhost:8080/furniture/fur_reply_list",
+			url : "http://localhost:8080/furniture/fur_reply_delete",
 			type : 'POST',
 			dataType : 'json',
-			data : fur_no_trans_json,
+			data : reply_id_trans_json,
 			contentType : 'application/json',
 			mimeType : 'application/json',
-			success : function(retVal){
-				$("#furrepllist").html("");
-				
-				for(var i =0; i < retVal.replyList.length; i++){ 
-				$("#furrepllist").append("<tr>");
-				$("#furrepllist").append("<td>" + retVal.replyList[i].mem_id +"</td>");
-				$("#furrepllist").append("<td>" + retVal.replyList[i].fur_rep_contents+"</td>");
-				$("#furrepllist").append("<td>" + retVal.replyList[i].mem_nickname +"</td>");
-				$("#furrepllist").append("<td>" + retVal.replyList[i].fur_rep_write_date+"</td>");
-				$("#furrepllist").append("<td><button type='button' class='btn btn-primary " 
-						+ "btn-xs btn-fur-reply-del' value='"+retVal.replyList[i]._id +"'> 댓글 삭제</button> </td>");
-				$("#furrepllist").append("</tr>");
-				}
-				
-				$(".btn-fur-reply-del").click(function(){
-					var fur_reply_id = $(this).val();
-					//alert("댓글 아디 : " + fur_reply_id);
-					var fur_reply_id_trans_object = {
-							'_id' : fur_reply_id,
-							'fur_no' : replfurno
-					}
-					
-					var reply_id_trans_json = JSON.stringify(fur_reply_id_trans_object); 
-					
-					$.ajax({
-						url : "http://localhost:8080/furniture/fur_reply_delete",
-						type : 'POST',
-						dataType : 'json',
-						data : reply_id_trans_json,
-						contentType : 'application/json',
-						mimeType : 'application/json',
-						success : function(retDeleteVal){
-							alert("삭제 성공 - " + retDeleteVal.val );
-							location.reload();
-						}
-					});
-				});
-			},
-			error : function(retVal, status, er){
-				alert("에러 : " + retval + " status : " + status + " er : " + er);
+			success : function(retDeleteVal){
+				alert("삭제 성공 - " + retDeleteVal.val );
+				location.reload();
 			}
-
 		});
-
 	});
 	
 	//스크랩 리스트 보기
-	$("#scraplist").click(function() {
-			var scrap_fur_no = $('#good_fur_no').val();
+	$('.scrap_list').click('show.bs.modal', function(){
+			var scrap_fur_no = $('#fur_no').val();
 			
 			 var trans_object_scrap = {
 					'fur_no' : scrap_fur_no
@@ -134,14 +115,14 @@ $(document).ready(function() {
 				mimeType : 'application/json',
 				success : function(retVal) {
 					
-					$("#furscraplist").html("");
+					$(".scrap_list_show").html("");
 					
 					for(var i =0; i < retVal.fur_scrap_list.length; i++){ 
-						$("#furscraplist").append("<tr>");
-						$("#furscraplist").append("<td>" + retVal.fur_scrap_list[i].mem_id +"</td>");
-						$("#furscraplist").append("<td>" + retVal.fur_scrap_list[i].mem_nickname +"</td>");
-						$("#furscraplist").append("<td>" + retVal.fur_scrap_list[i].fur_scrap_date+"</td>");
-						$("#furscraplist").append("</tr>");
+						$(".scrap_list_show").append("<tr>");
+						$(".scrap_list_show").append("<td>" + retVal.fur_scrap_list[i].mem_id +"</td>");
+						$(".scrap_list_show").append("<td>" + retVal.fur_scrap_list[i].mem_nickname +"</td>");
+						$(".scrap_list_show").append("<td>" + retVal.fur_scrap_list[i].fur_scrap_date+"</td>");
+						$(".scrap_list_show").append("</tr>");
 					}
 				}
 			});
@@ -151,7 +132,7 @@ $(document).ready(function() {
 	//좋아요 누르기
 	$('#btn_good').click(function() {
 		var mem_nickname = $('#fur_memnick').val();
-		var fur_no = $('#good_fur_no').val();
+		var fur_no = $('#fur_no').val();
 		var mem_id = $('#fur_mem_id').val();
 		var now_date = new Date();
 		
@@ -187,7 +168,7 @@ $(document).ready(function() {
 	//스크랩 누르기
 	$('#btn_scrap').click(function() {
 		
-		var fur_no = $('#good_fur_no').val();
+		var fur_no = $('#fur_no').val();
 		var mem_id = $('#fur_mem_id').val();
 		
 		var trans_object = {
@@ -221,7 +202,7 @@ $(document).ready(function() {
 	$("#replinput").click(function(){
 		alert("댓글?")
 		var mem_nickname = $('#fur_memnick').val();
-		var fur_no = $('#good_fur_no').val();
+		var fur_no = $('#fur_no').val();
 		var mem_id = $('#fur_mem_id').val();
 		var now_date = new Date();
  		var contents = $('#fur_repl').val();
@@ -254,33 +235,6 @@ $(document).ready(function() {
 		}); 
 		
 	});
-	//댓글삭제
-	$(".btn-fur-reply-del").click(function(){
-		var fur_reply_id = $(this).val();
-		//alert("댓글 아디 : " + fur_reply_id);
-		
-		var fur_reply_id_trans_object = {
-				'_id' : fur_reply_id,
-				'fur_no' : fur_no
-		}
-		
-		var reply_id_trans_json = JSON.stringify(fur_reply_id_trans_object); 
-		
-		$.ajax({
-			url : "http://localhost:8080/furniture/fur_reply_delete",
-			type : 'POST',
-			dataType : 'json',
-			data : reply_id_trans_json,
-			contentType : 'application/json',
-			mimeType : 'application/json',
-			success : function(retDeleteVal){
-				alert("삭제 성공 - " + retDeleteVal.val );
-				location.reload();
-			}
-		});
-	});
-	
-		
 
 
 });
@@ -288,133 +242,89 @@ $(document).ready(function() {
 
 </head>
 <body>
+	<!-- header include -->
+	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
 
+<div class="w3-container" style="float: right">
 	<c:set var="member" value="${ member }" />
-	${ member.mem_nickname }  가구 페이지입니당
-	<form role="form" method="get">
-		<input type="hidden" name="fur_mem_id" id="fur_mem_id" value="${member.mem_id }"/>
-		<input type="hidden" name="fur_memnick" id="fur_memnick" value="${member.mem_nickname } "/>
-		<input type="hidden" name="good_fur_no" id="good_fur_no" value="${furdeVO.fur_no }"/>
-	</form>
-	<form action=${URLs.URI_FURNITURE_FUR_SCRAP_FULL } method="get">
-		<input type="hidden" name="fur_mem_id" id="fur_mem_id" value="${member.mem_id }"/>
-		<input type="hidden" name="good_fur_no" id="good_fur_no" value="${furdeVO.fur_no }"/>
-	</form>
-	<h1>가구 상세보기 페이지</h1>
-	<h2>제품 기본 정보(가구 이미지 여러개 불러오는거 완성하기)</h2>
-	<div>
-		<table border="1">
-			<thead>
-				<th>이미지</th>
-				<th>가구이름</th>
-				<th>가구 가격</th>
-				<th>가구브랜드</th>
-				<th width="200px">가구 정보</th>
-				<th>가구 컨셉</th>
-				<th>가구 종류</th>
-			</thead>
+	<input type="hidden" id="fur_mem_id" value="${ member.mem_id }">
+	<input type="hidden" id="fur_memnick" value="${ member.mem_nickname }">
+	<c:set var="fur" value="${ furdeVO }" />
+	<input type="hidden" id="fur_no" value="${ furdeVO.fur_no }">
+</div>
 
-			<tbody>
-				<c:set var="furdeVO" value="${furdeVO }" />
-				<tr>
-
-
-					<td><c:forEach var="pic_loc" items="${furdeVO.fur_pic_loc }">
-							<img alt="가구사진" src="${pic_loc}" width="100px" height="100px"> ${pic_loc}
-													
-					</c:forEach></td>
-
-					<td>${furdeVO.fur_name }</td>
-					<td>${furdeVO.fur_price }</td>
-					<td>${furdeVO.fur_brand_name }</td>
-					<td width="200px">${furdeVO.fur_info }</td>
-					<td>${furdeVO.fur_con }</td>
-					<td>${furdeVO.fur_kind }</td>
-				</tr>
-
-			</tbody>
-		</table>
+	<div class="w3-light-grey w3-padding-64 w3-margin-bottom w3-center">
+  		<h1 class="w3-jumbo">${furdeVO.fur_name }</h1>
 	</div>
-
-	<h2>제품 추가 정보</h2>
-	<div>
-		<table border="1">
-			<thead>
-				<th width="200px">
-					<button name="subject" id="btn_good" value="${furdeVO.fur_no }">좋아요</button>
-					<button name="subject" id="mongofurgoodlist">좋아요 누른사람 보기</button>
-				</th>
-				<th width="200px">
-					<button name="subject" id="btn_scrap">스크랩 ${furdeVO.fur_scrap_num }</button><br/>
-					<button name="subject" id="scraplist">스크랩 누른사람 보기</button>
-				</th>
-				<th width="500px">
-					<div class="form-group">
-					<label for="mem_pw">내용작성 >> </label>
-					<input name="fur_repl" id="fur_repl" value='' placeholder="내용을 작성하세요" type="text"
-						   class="form-control" /> <input type="submit" id="replinput" value="작성" />
-					</div>
-					<input type="hidden" id="repl_fur_no" value="${furdeVO.fur_no }">
-					<button name="subject" id="mongofurrepllist">댓글 보기</button>
-				</th>
-			</thead>
-
-			<tbody>
-				<c:set var="furdeVO" value="${furdeVO }" />
-				<tr>
-					<td width="200px">${furdeVO.fur_good_num }</td>
-					<td width="200px">${furdeVO.fur_scrap_num }</td>
-					<td width="200px">${furdeVO.fur_repl_num }</td>
-				</tr>
-
-			</tbody>
-		</table>
-		
-		<h3>좋아요 한 사람 보기</h3>
-		<div>
-			<table border="1">
-			<thead>
-				<th>아이디</th>
-				<th>닉네임</th>
-				<th>날짜</th>
-			</thead>
-			<tbody id="furgoodlist">
-			</tbody>
-			</table>
-		</div>
-		<br/>
-		
-		<h3>댓글 보기</h3>
-		<div>
-			<table border="1">
-			<thead>
-				<th>아이디</th>
-				<th>내용</th>
-				<th>닉네임</th>
-				<th>날짜</th>
-				<th>댓글 삭제</th>
-			</thead>
-		
-			<tbody id="furrepllist">
-			</tbody>
-			</table>
-		</div>
-		
-		<h3>스크랩 한 사람 보기</h3>
-		<div>
-			<table border="1">
-			<thead>
-				<th>아이디</th>
-				<th>닉네임</th>
-				<th>날짜</th>
-			</thead>
-			
-			<tbody id="furscraplist">
-			</tbody>
-			</table>
-		</div>
 	
+	<div class="w3-row-padding w3-content" style="max-width:1200px;"">
+  		<div class="w3-twothird">
+  			<c:set var="furdeVO" value="${furdeVO }" />
+    		<img src="${furdeVO.fur_pic_loc.get(0) }" alt="Furniture" style="width:600px">
+    		<div>
+    			<c:forEach var="pic_loc" items="${furdeVO.fur_pic_loc }">
+
+							<img style="border:1px solid grey" alt="가구사진" src="${pic_loc}" width="200px" height="200px">						
+				</c:forEach>
+    		</div>
+    	</div>
+    	<br>
+    	<br>
+    	<br>
+    	<div class="w3-third">
+ 			<h1>${furdeVO.fur_name }</h1>
+ 			<p>${furdeVO.fur_info }</p>
+			<table class="w3-table w3-bordered w3-border">
+					<tr><td style="width:30%">Brand</td><td>${furdeVO.fur_brand_name }</td></tr>
+					<tr><td>Price</td><td>${furdeVO.fur_price } won</td></tr>
+					<tr><td>Concept</td><td>${furdeVO.fur_con }</td></tr>
+					<tr><td>Kind</td><td>${furdeVO.fur_kind }</td></tr>
+					<tr><td>Like</td><td><i class="material-icons">favorite</i> <button name="subject" id="btn_good" value="${furdeVO.fur_no }">Like</button> 
+						<button onclick="document.getElementById('myLikeModal').style.display='block'" class="good_list" 
+						data-toggle="modal" data-target="#myLikeModal"> ${furdeVO.fur_good_num } </button></td></tr>
+						
+					<tr><td>Scrap</td><td><i class="material-icons">attachment</i> <button name="subject" id="btn_scrap" value="${furdeVO.fur_no }">Scrap</button>
+						<button onclick="document.getElementById('myScrapModal').style.display='block'" class="scrap_list" 
+						data-toggle="modal" data-target="#myScrapModal">${furdeVO.fur_scrap_num }</button></td></tr>
+						
+					<tr><td>Commend</td><td><i class="material-icons">cloud</i> ${furdeVO.fur_repl_num }</td></tr>
+			</table>
+
+ 		</div>
+<br><br>
+
+<!-- 댓글 보기 -->
+<div class="w3-container" style="float: center">
+	<h1>Commend</h1>
+
+	<div>
+		<table>
+			<tbody id="furrepllist">
+			<c:forEach var="replyList" items="${fur_repl_list }">
+				<tr>
+					<td>${replyList.mem_id }(${replyList.mem_nickname }) </td>
+					<td>${replyList.fur_rep_contents }</td>
+					<td>${replyList.fur_rep_write_date }</td>
+					<td><button class="btn-fur-reply-del" value="${replyList._id }">delete</button> </td>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
 	</div>
+	<br>
+	<div class="w3-container" style="float: center">
+		<table>
+			<tbody>
+				<tr><td>${member.mem_profile_pic } || ${member.mem_id } (${member.mem_nickname })</td></tr>
+				<tr><td><input name="fur_repl" id="fur_repl" value='' placeholder="내용을 작성하세요" type="text" class="form-control" /></td></tr>
+				<tr><td><input type="submit" id="replinput" value="작성" /><input type="hidden" id="repl_fur_no" value="${furdeVO.fur_no }"></td></tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<br>
+
+<div style="float: center">
 
 
 	<h2>제품에 대한 평(크롤링)</h2>
@@ -425,10 +335,62 @@ $(document).ready(function() {
 
 	<h2>사이트별 가구 가격 비교</h2>
 	<div>가격 비교 목록(나중에 완성)</div>
+</div>
+<br><br>
+<!-- Footer -->
+	<footer class="w3-center w3-white w3-padding-16">
+	<p>
+		made by <a href="https://www.w3schools.com/w3css/default.asp"
+			title="W3.CSS" target="_blank" class="w3-hover-text-green">sin
+			park han jo</a>
+	</p>
+	</footer>
 
 
+<!-- Modal -->
+<!-- 좋아요 -->
+	<div class="w3-modal" id="myLikeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		
+		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 1000px" >
+			<div class="modal-content" style="margin: 20px">
+				<h1>좋아요 누른 사람</h1>
+				<div class="modal-body">
+					<table border="1">
+						<tbody class="good_list_show">						
+		
+						</tbody>
+
+					</table>
 
 
+				</div>
+				<button
+					onclick="document.getElementById('myLikeModal').style.display='none'"
+					type="button" class="w3-button w3-red">Cancel</button>
+			</div>
+		</div>
+	</div>
+<!-- 스크랩 -->	
+	<div class="w3-modal" id="myScrapModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		
+		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 1000px" >
+			<div class="modal-content" style="margin: 20px">
+				<h1>스크랩 한 사람</h1>
+				<div class="modal-body">
+					<table border="1">
+						<tbody class="scrap_list_show">						
+		
+						</tbody>
 
+					</table>
+
+
+				</div>
+				<button
+					onclick="document.getElementById('myScrapModal').style.display='none'"
+					type="button" class="w3-button w3-red">Cancel</button>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

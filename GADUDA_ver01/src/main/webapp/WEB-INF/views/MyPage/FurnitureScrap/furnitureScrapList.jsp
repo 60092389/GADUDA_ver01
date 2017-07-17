@@ -1,17 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
 <%@ page import="kr.co.gaduda.common.URLs"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>가구스크랩</title>
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<title>GADUDA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<style>
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Lato", sans-serif
+}
+
+.w3-bar, h1, button {
+	font-family: "Montserrat", sans-serif
+}
+
+.fa-anchor, .fa-coffee {
+	font-size: 200px
+}
+</style>
 
 
 <script
@@ -20,6 +36,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+
 
 
 $(document).ready(function(){
@@ -73,7 +90,6 @@ $(document).ready(function(){
 	
 	
 });
-
 </script>
 
 
@@ -82,13 +98,20 @@ $(document).ready(function(){
 
 </head>
 <body>
+<body>
+	<!-- header include -->
+	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
 
-<c:set var="member" value="${ member }" />
-<input type="hidden" id="user_id" value="${member.mem_id }"/>
-<input type="hidden" id="user_nickname" value="${member.mem_nickname }"/>
+<div class="w3-container" style="float: right">
+	<c:set var="member" value="${ member }" />
+	<input type="hidden" id="user_id" value="${ member.mem_id }">
+	<input type="hidden" id="user_nickname" value="${ member.mem_nickname }">
+</div>
 
+<!-- 스크랩 목록 보기 -->			
 
-<table border ="1">
+<div class="w3-container" style="float: center">
+	<table cellspacing="0" border="1" class="tb_list tb_order_check _order_area">
 
 	<thead>
 		<th>이미지</th>
@@ -100,7 +123,7 @@ $(document).ready(function(){
 		<th>스크랩 수</th>
 		<th>댓글 수</th>
 		<th></th>
-	</thead>furnitureScrapList.jsp
+	</thead>
 	
 	<tbody>
 		<c:forEach var="fsl" items="${fur_scrap_list }">
@@ -123,7 +146,8 @@ $(document).ready(function(){
 		</c:forEach>
 	</tbody>
 
-</table>
+	</table>
+</div>
 
 
 </body>

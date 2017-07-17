@@ -2,128 +2,93 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="kr.co.gaduda.common.URLs"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>GADUDA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-</head>
+<style>
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Lato", sans-serif
+}
+
+.w3-bar, h1, button {
+	font-family: "Montserrat", sans-serif
+}
+
+.fa-anchor, .fa-coffee {
+	font-size: 200px
+}
+</style>
 <body>
-	<div>
+	<!-- header include -->
+	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
 
-		<a href=<%=URLs.URI_MAIN_HOME%>>홈</a> 
-		<a href=<%=URLs.URI_MAIN_TO_LIST%>>목록</a>
-		<a href=<%=URLs.URI_FURNITURE_WATCH_FULL%>>배치</a>
-		<a href=<%=URLs.URI_FURNITURE_LIST_LOOKAROUND_GET_FULL%>>구경</a>
-		<a href=<%=URLs.URI_MAIN_TO_RECOM%>>추천</a>
-		<a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%>>마이페이지</a>
-
+	<!-- First Grid(인기 가구 리스트) -->
+	<div class="w3-container">
+		<div class="w3-container" style="float: center">
+			<h1>인기 가구 리스트</h1>
+			<div>
+				<c:forEach var="fur_list" items="${fur_list }">
+					<div class="w3-quarter">
+						<ul class="w3-ul w3-border w3-center w3-hover-shadow">
+							<li class="w3-basiccolor w3-xlarge w3-padding-32"><a
+								href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fur_list.fur_no }"><b>${fur_list.fur_name }</b></a></li>
+							<li class="w3-padding-16"><img alt="가구사진"
+								src="${fur_list.fur_pic_loc }" width="100px" height="100px"></li>
+							<li class="w3-padding-16"><b>${fur_list.fur_price }</b>원</li>
+							<li class="w3-padding-16"><b>${fur_list.fur_brand_name }</b></li>
+							<li class="w3-padding-16"><i class="material-icons">favorite</i><b>${fur_list.fur_good_num }</b></li>
+							<li class="w3-padding-16"><i class="material-icons">attachment</i><b>${fur_list.fur_scrap_num }</b></li>
+							<li class="w3-padding-16"><i class="material-icons">cloud</i><b>${fur_list.fur_repl_num }</b></li>
+						</ul>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
 	</div>
 
-	<c:set var="member" value="${ member }" />
-	<c:choose>
-		<c:when test="${ empty member }">
-			<form role="form" action=${URLs.URI_LOGIN_FULL } method="post">
-				<div>
-					<input type="submit" value="login" />
-				</div>
-			</form>
-			<form role="form" action=${ URLs.URI_JOIN_VIEW_FULL } method="post">
-				<div>
-					<input type="submit" value="join" />
-				</div>
-			</form>
-		</c:when>
-		<c:otherwise>
-		
-		${ member.mem_name }님 환영합니다.
-			<form role="form" action=${ URLs.URI_LOGOUT_FULL } method="post">
-				<div>
-					<input type="submit" value="logout" />
-				</div>
-			</form>
-
-
-		<%-- 	<form role="form" action=${ URLs.URI_DELETE_MEMBER_FULL }
-				method="post">
-				<div>
-					<input type="submit" value="회원탈퇴">
-				</div>
-			</form> --%>
-
-		</c:otherwise>
-	</c:choose>
-
-	<table border="1">
-
-		<h1>가구 리스트</h1>
-
-		<thead>
-			<th>이미지</th>
-			<th>가구이름</th>
-			<th>가구 가격</th>
-			<th>가구브랜드</th>
-			<th>좋아요 수</th>
-			<th>스크랩 수</th>
-			<th>댓글 수</th>
-		</thead>
-		
-		<tbody>
-			<c:forEach var="fur_list" items="${fur_list }">
-				<tr>
-					<td><img alt="가구사진" src="${fur_list.fur_pic_loc }" width="100px" height="100px">
-					${fur_list.fur_pic_loc }</td>
-					<!-- <td>${fur_list.fur_name }</td> -->
-					<td><a href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fur_list.fur_no }">${fur_list.fur_name }</a></td>
-					<td>${fur_list.fur_price }</td>
-					<td>${fur_list.fur_brand_name }</td>
-					<td>${fur_list.fur_good_num }</td>
-					<td>${fur_list.fur_scrap_num }</td>
-					<td>${fur_list.fur_repl_num }</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-
-	</table>
+	<!-- Second Grid(인기 가구 리스트) -->
+	<div class="w3-container">
+		<div class="w3-container" style="float: center">
+			<h1>인기 가구 배치도 리스트</h1>
+			<div>
+				<c:forEach var="fal" items="${fur_arr_list }">
+					<div class="w3-quarter">
+						<ul class="w3-ul w3-border w3-center w3-hover-shadow">
+							<li class="w3-basiccolor w3-xlarge w3-padding-32"><a
+								href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${fal.fur_arr_plan_no}"><b>${fal.fur_arr_name }</b></a></li>
+							<li class="w3-padding-16"><img alt="가구배치도사진"
+								src="${fal.fur_arr_plan_img_loc }" width="100px" height="100px"></li>
+							<li class="w3-padding-16"><b>${fal.mem_id }</b>님의 배치도</li>
+							<li class="w3-padding-16"><b>${fal.fur_arr_con }</b></li>
+							<li class="w3-padding-16"><b>${fal.fur_arr_room_kind }</b></li>
+							<li class="w3-padding-16"><i class="material-icons">favorite</i><b>${fal.fur_arr_plan_good_num}</b></li>
+							<li class="w3-padding-16"><i class="material-icons">attachment</i><b>${fal.fur_arr_plan_scrap_num }</b></li>
+							<li class="w3-padding-16"><i class="material-icons">cloud</i><b>${fal.fur_arr_plan_repl_num }</b></li>
+						</ul>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+	</div>
 	
-	<table border="1">
 
-		<h1>가구배치도 리스트 ${fal.fur_arr_plan_no}</h1>
-
-		<thead>
-			<th>가구배치도이미지</th>
-			<th>가구배치도이름</th>
-			<th>작성자</th>
-			<th>가구배치도 컨셉</th>
-			<th>가구배치도 방종류</th>
-			
-			<th>좋아요 수</th>
-			<th>스크랩 수</th>
-			<th>댓글 수</th>
-		</thead>
-
-		<tbody>
-			<c:forEach var="fal" items="${fur_arr_list }">
-				<tr>
-					<td><img alt="가구사진" src="${fal.fur_arr_plan_img_loc }" width="100px" height="100px">
-					${fal.fur_arr_plan_img_loc }</td>
-					<td><a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${fal.fur_arr_plan_no}">${fal.fur_arr_name }</a></td>
-					<td>${fal.mem_id }</td>
-					<td>${fal.fur_arr_con }</td>
-					<td>${fal.fur_arr_room_kind }</td>
-					
-					<td>${fal.fur_arr_plan_good_num }</td>
-					<td>${fal.fur_arr_plan_scrap_num }</td>
-					<td>${fal.fur_arr_plan_repl_num }</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-
-	</table>
-
-
+	<!-- Footer -->
+	<footer class="w3-center w3-white w3-padding-16">
+	<p>
+		made by <a href="https://www.w3schools.com/w3css/default.asp"
+			title="W3.CSS" target="_blank" class="w3-hover-text-green">sin
+			park han jo</a>
+	</p>
+	</footer>
 </body>
+</html>

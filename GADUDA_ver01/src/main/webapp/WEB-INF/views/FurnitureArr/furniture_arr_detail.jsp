@@ -1,24 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
 <%@ page import="kr.co.gaduda.common.URLs"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>GADUDA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<style>
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Lato", sans-serif
+}
 
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+.w3-bar, h1, button {
+	font-family: "Montserrat", sans-serif
+}
 
-
+</style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
 
@@ -77,15 +85,12 @@ $(document).ready(function(){
 		$('#myModal').focus();
 		
 
-		//var fur_arr_plan_no = $("#fur_arr_plan_no").val();
-		//alert(fur_arr_plan_no);
+		var fur_arr_plan_no = $("#fur_arr_plan_no").val();
 		
 		var trans_object = {
 			'fur_arr_plan_no' : fur_arr_plan_no
 
 		}
-
-		//alert(mem_id + "/" + mem_nickname + "/" + fur_no);
 
 		var trans_json = JSON.stringify(trans_object); //json으로 반환//
 
@@ -252,143 +257,150 @@ $(document).ready(function(){
 	
 });
 
+
 </script>
 
 </head>
 <body>
+	<!-- header include -->
+	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
 
-	<c:set var="detailVO" value="${detailVO }"/>
+<div class="w3-container" style="float: right">
 	<c:set var="member" value="${ member }" />
-	<input type="hidden" id="user_id" value="${member.mem_id }"/>
-	<input type="hidden" id="user_nickname" value="${member.mem_nickname }"/>
-	<input type="hidden" id="user_profile_pic" value="${member.mem_profile_pic}"/>
-	<input type="hidden" id="fur_arr_plan_no" value="${detailVO.fur_arr_plan_no }"/>
-	
-	<div style ="margin-left: 50px">
-	<h1>가구배치도상세</h1>
-	<table border="1" width="1200px" >
-		<tbody>
-			<tr>
-				<th>이미지</th>
-				<td><img alt="가구사진" src="${detailVO.fur_arr_plan_img_loc }" width="200px" height="200px"></td>
-				<th>가구배치도번호</th>
-				<td>${detailVO.fur_arr_plan_no }</td>
-				<th>제목</th>
-				<td>${detailVO.fur_arr_name }</td>
-				<th>작성자</th>
-				<td>
-					<p>사진주소 : ${detailVO.mem_profile_pic }</p>
-					<p>아디 : ${detailVO.mem_id }</p>
-					<p>닉네임 : ${detailVO.mem_nickname }</p>
-				</td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td colspan="7">${detailVO.fur_arr_contents}</td>			
-			</tr>
-			<tr>
-				<th>작성일</th>
-				<td>${detailVO.fur_arr_create_date }</td>
-				<th>좋아요 개수  :  <button class="good_list" data-toggle="modal" data-target="#myModal"> 
-								${detailVO.fur_arr_plan_good_num } </button>
-				</th>
-				<td colspan="2">
-					<button name="goodup" class="btn-fur-arr-good" value="${detailVO.fur_arr_plan_no }">
-						좋아요
-					</button>
-				</td>
-
-				<th>스크랩 개수   :   ${detailVO.fur_arr_plan_scrap_num }</th>
-				<td colspan="2"><button id="btn-scrap-add">스크랩</button></td>
-			</tr>
-			<tr>
-				<th>해시태그</th>
-				<td>${detailVO.fur_arr_hashtags }</td>
-				<th>컨셉</th>
-				<td colspan="2">${detailVO.fur_arr_concepts }</td>
-				<th>방종류</th>
-				<td colspan="2">${detailVO.fur_arr_rooms }</td>
-			</tr>			
-			<tr>
-				<th>가구배치도에 사용된 가구</th>
-				<th>사용된 가구의 총 가격 : ${detailVO.total_fur_price }</th>
-				<td colspan="6">
-					<c:forEach var="fur" items="${arr_fur }">
-						<p>가구번호 : ${fur.fur_no } </p>
-						<p>가구이미지 : <img alt="가구사진" src="${fur.fur_pic_loc }" width="100px" height="100px"></p>
-						<p>가구 이름 : ${fur.fur_name }</p>
-						<p>가구 가격 : ${fur.fur_price }</p>
-					</c:forEach>						
-				</td>
-			</tr>
-			<tr>
-				<th colspan="5">가구배치도 댓글들</th>
-				<th colspan="3">댓글 개수 : ${detailVO.fur_arr_plan_repl_num }</th>
-			</tr>
-			<tr>
-				<td colspan="8">
-					<ul id ="reply_show">
-					<c:forEach var="reply" items="${reply_list }">
-					<%-- <p>댓글오브잭트아디 : ${reply._id } || 배치도 번호 : ${reply.fur_arr_plan_no }
-						댓글 작성자 : ${reply.mem_id } || 댓글 작성자닉네임 : ${reply.mem_nickname }</p>
-					<p>댓글 내용 : ${reply.fur_arr_plan_rep_contents } || 댓글 작성날짜 : ${reply.fur_arr_plan_rep_write_date }</p>
-					<p></p> --%>
-						<li>
-							${reply.mem_profile_pic }|| ${reply.mem_id } (${reply.mem_nickname } ) || ${reply.fur_arr_plan_rep_contents }
-								|| ${reply.fur_arr_plan_rep_write_date }
-								|| <button class="btn-reply-delete" value="${reply._id }">삭제하기</button>   							
-						</li>
-					</c:forEach>
-					</ul>
-				</td>
-			</tr>
-			<tr>
-				<th>${member.mem_profile_pic } || ${member.mem_id } (${member.mem_nickname })</th>
-				<td colspan="6"><input type="text" id="reply_text" placeholder="댓글 입력" size="80px"> </td>
-				<td><button id="reply_write">댓글쓰기</button></td>
-			</tr>
-			<tr>
-				<th colspan="8">작성자의 다른 가구배치도</th>
-			</tr>
-			<tr>
-				<td colspan="8">
-					<c:forEach var="otherFurArr" items="${detailVO.other_furniture_arrList }">
-						<p>배치도번호 : ${otherFurArr.fur_arr_plan_no } || 배치도이미지 : ${otherFurArr.fur_arr_plan_img_loc }
-							|| 배치도 제목 : ${otherFurArr.fur_arr_name }
-						</p>
-					</c:forEach>
-				</td>
-			</tr>
-		</tbody>
-	
-	</table>
-
-	</br>
-	<h1>가구배치도에 들어간 가구와 비슷한 가구들 추천이 들어가야함</h1>
-	</br>
-	<h1></h1>
-	</br>
-
+	<input type="hidden" id="user_id" value="${ member.mem_id }">
+	<input type="hidden" id="user_nickname" value="${ member.mem_nickname }">
+	<c:set var="fur_arr" value="${ detailVO }" />
+	<input type="hidden" id="fur_arr_plan_no" value="${ detailVO.fur_arr_plan_no }">
 </div>
+
+<div>
+	<div class="w3-light-grey w3-padding-64 w3-margin-bottom w3-center">
+  		<h1 class="w3-jumbo">${detailVO.fur_arr_name }</h1>
+	</div>
+	
+	<div class="w3-row-padding w3-content" style="max-width:1200px;"">
+  		<div class="w3-twothird">
+    		<img src="${detailVO.fur_arr_plan_img_loc }" alt="Furniture" style="width:600px">
+    	</div>
+    	<br>
+    	<br>
+    	<br>
+    	
+	<div class="w3-third">
+ 			<h1>${detailVO.fur_arr_name }</h1>
+ 			<p>${detailVO.fur_arr_contents}</p>
+			<table class="w3-table w3-bordered w3-border">
+					<tr><td style="width:30%">User Profile</td>
+							<td><p>사진주소 : ${detailVO.mem_profile_pic }</p>
+								<p>아디 : ${detailVO.mem_id }</p>
+								<p>닉네임 : ${detailVO.mem_nickname }</p></td></tr>
+					<tr><td>Date</td><td>${detailVO.fur_arr_create_date }</td></tr>
+					<tr><td><button  name="goodup" class="btn-fur-arr-good" value="${detailVO.fur_arr_plan_no }">Like</button></td>
+						<td><button onclick="document.getElementById('myModal').style.display='block'" class="good_list" data-toggle="modal" data-target="#myModal"> ${detailVO.fur_arr_plan_good_num } </button></td></tr>
+					<tr><td><button id="btn-scrap-add">scrap</button></td><td>${detailVO.fur_arr_plan_scrap_num }</td></tr>
+					<tr><td>HashTag</td><td>${detailVO.fur_arr_hashtags }</td></tr>
+					<tr><td>Concept</td><td>${detailVO.fur_arr_concepts }</td></tr>
+					<tr><td>RoomKind</td><td>${detailVO.fur_arr_rooms }</td></tr>
+			</table>
+ 		</div>
+ 	</div>
+</div>		
+ 	<br><br>
+<div class="w3-container" style="float: center">
+<h1>가구배치도에 사용된 가구</h1>
+<h3>사용된 가구의 총 가격 : ${detailVO.total_fur_price }</h3>
+	<div class="w3-container">
+		<div class="w3-container" style="float: center">
+			<div>
+				<c:forEach var="fur" items="${arr_fur }">
+					<div class="w3-quarter">
+						<ul class="w3-ul w3-border w3-center w3-hover-shadow">
+							<li class="w3-basiccolor w3-xlarge w3-padding-32"><a
+								href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fur.fur_no }"><b>${fur.fur_name }</b></a></li>
+							<li class="w3-padding-16"><img alt="가구사진"
+								src="${fur.fur_pic_loc }" width="100px" height="100px"></li>
+							<li class="w3-padding-16"><b>${fur.fur_price }</b>원</li>
+						</ul>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+
+<div class="w3-container" style="float: center">
+	<h1>가구배치도 댓글들</h1>
+	<p>댓글 개수 : ${detailVO.fur_arr_plan_repl_num }</p>
+	
+	<div class="w3-container" style="float: center">
+		<table>
+			<tbody>
+			<c:forEach var="reply" items="${reply_list }">
+				<tr>
+					<td>${member.mem_profile_pic }</td>
+					<td>${reply.mem_id }(${reply.mem_nickname }) </td>
+					<td>${reply.fur_arr_plan_rep_contents }</td>
+					<td>${reply.fur_arr_plan_rep_write_date }</td>
+					<td><button class="btn-reply-delete" value="${reply._id }">delete</button> </td>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="w3-container" style="float: center">
+		<table>
+			<tbody>
+				<tr><td>${member.mem_profile_pic } || ${member.mem_id } (${member.mem_nickname })</td></tr>
+				<tr><td><input type="text" id="reply_text" placeholder="댓글 입력" size="80px"></td></tr>
+				<tr><td><button id="reply_write">댓글쓰기</button></td></tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<br>
+
+<div class="w3-container" style="float: center">
+	<h1>작성자의 다른 가구배치도</h1>
+	<div class="w3-container" style="float: center">
+		<c:forEach var="otherFurArr" items="${detailVO.other_furniture_arrList }">
+				<div class="w3-quarter">
+					<ul class="w3-ul w3-border w3-center w3-hover-shadow">
+						<li class="w3-basiccolor w3-xlarge w3-padding-32"><a
+								href="<%= URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL %>/?fur_arr_plan_no=${otherFurArr.fur_arr_plan_no }"><b>${otherFurArr.fur_arr_name }</b></a></li>
+						<li class="w3-padding-16"><img alt="배치도 이미지"
+								src="${otherFurArr.fur_arr_plan_img_loc }" width="100px" height="100px"></li>
+					</ul>
+				</div>
+		</c:forEach>
+	</div>
+</div>
+<br>
+
+<div class="w3-container" style="float: center">
+	<h1>가구배치도에 들어간 가구와 비슷한 가구들 추천이 들어가야함</h1>
+</div>
+
+<!-- Footer -->
+	<footer class="w3-center w3-white w3-padding-16">
+	<p>
+		made by <a href="https://www.w3schools.com/w3css/default.asp"
+			title="W3.CSS" target="_blank" class="w3-hover-text-green">sin
+			park han jo</a>
+	</p>
+	</footer>
 
 
 <!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
-				</div>
+	<div class="w3-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		
+		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 1000px" >
+			<div class="modal-content" style="margin: 20px">
+				<h1>좋아요 누른 사람</h1>
 				<div class="modal-body">
-					<h2>좋아요 누른 사람</h2>
 					<table border="1">
-						<tbody class="good_list_show">
-							
+						<tbody class="good_list_show">						
 		
 						</tbody>
 
@@ -396,14 +408,12 @@ $(document).ready(function(){
 
 
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-				</div>
+				<button
+					onclick="document.getElementById('myModal').style.display='none'"
+					type="button" class="w3-button w3-red">Cancel</button>
 			</div>
 		</div>
 	</div>
-
 
 </body>
 </html>

@@ -1,9 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
 <%@ page import="kr.co.gaduda.common.URLs"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<title>GADUDA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<style>
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Lato", sans-serif
+}
+
+.w3-bar, h1, button {
+	font-family: "Montserrat", sans-serif
+}
+
+.fa-anchor, .fa-coffee {
+	font-size: 200px
+}
+</style>
 <head>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -83,10 +107,18 @@ $(document).ready(function(){
 
 </head>
 <body>
+	<!-- header include -->
+	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
+
+<div class="w3-container" style="float: right">
+	<c:set var="member" value="${ member }" />
+	<input type="hidden" id="user_id" value="${ member.mem_id }">
+	<input type="hidden" id="user_nickname" value="${ member.mem_nickname }">
+</div>
 
 
-
-<table border ="1">
+<div class="w3-container" style="float: center">
+	<table cellspacing="0" border="1" class="tb_list tb_order_check _order_area">
 
 	<thead>
 		<th>가구배치도이미지</th>
@@ -130,6 +162,6 @@ $(document).ready(function(){
 	</tbody>
 
 </table>
-
+</div>
 </body>
 </html>
