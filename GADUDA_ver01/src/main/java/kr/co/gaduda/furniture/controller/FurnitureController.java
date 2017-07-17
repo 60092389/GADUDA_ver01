@@ -40,12 +40,13 @@ public class FurnitureController {
 
 		FurnitureDetailVO furdeVO = furnitureService.furDetailView(fur_no);
 		List<String> furdepic_list = furnitureService.furDetailViewPic(fur_no);
+		List<FurnitureReplyListVO> fur_repl_list = furnitureService.FurnitureReplList(fur_no);
 
 		model.addAttribute("furdeVO", furdeVO);
 		model.addAttribute("furdepic_list", furdepic_list);
+		model.addAttribute("fur_repl_list", fur_repl_list);
 
 		return Pages.VIEW_FURNITURE_DETAIL_VIEW;
-
 	}
 
 	////////////////////////////////////////////////////////////

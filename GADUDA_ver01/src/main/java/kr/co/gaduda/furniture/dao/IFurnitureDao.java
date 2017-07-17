@@ -25,6 +25,8 @@ public interface IFurnitureDao {
 	public List<String> fur_pic_con_Get(int fur_no);
 
 	public List<String> fur_pic_kind_Get(int fur_no);
+	
+	public List<FurnitureReplyListVO> FurnitureReplList(int fur_no);
 
 	// 좋아요 리스트 가져오기
 	public List<FurnitureGoodListVO> getFurGoodList(Map<String, Object> search);

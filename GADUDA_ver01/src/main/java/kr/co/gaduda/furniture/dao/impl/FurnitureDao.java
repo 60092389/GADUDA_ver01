@@ -49,6 +49,17 @@ public class FurnitureDao implements IFurnitureDao {
 	public List<String> fur_pic_loc_Get(int fur_no) {
 		return sqlSession.selectList(namespace + ".fur_pic_loc", fur_no);
 	}
+	
+	@Override
+	public List<FurnitureReplyListVO> FurnitureReplList(int fur_no) {
+		
+		String fur_no_str = String.valueOf(fur_no);
+		
+		Query query = new Query(
+				new Criteria().andOperator(Criteria.where("fur_no").is(fur_no_str)));
+
+		return mongoTemplate.find(query, FurnitureReplyListVO.class, "furniture_reply");
+	}
 
 	@Override
 	public List<String> fur_pic_con_Get(int fur_no) {

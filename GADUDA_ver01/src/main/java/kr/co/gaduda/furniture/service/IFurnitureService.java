@@ -22,6 +22,8 @@ public interface IFurnitureService {
 
 	public List<String> furDetailViewPic(int fur_no);
 
+	public List<FurnitureReplyListVO> FurnitureReplList(int fur_no);
+	
 	public List<FurnitureGoodListVO> getFurGoodList(Map<String, Object> search);
 
 	/////////////////////////////////////

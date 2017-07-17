@@ -75,9 +75,16 @@ public class FurnitureService implements IFurnitureService {
 		return furdeVO;
 	}
 
+	@Override
 	public List<String> furDetailViewPic(int fur_no) {
 		List<String> fur_pic_loc_list = furnitureDao.fur_pic_loc_Get(fur_no);
 		return fur_pic_loc_list;
+	}
+	
+	@Override
+	public List<FurnitureReplyListVO> FurnitureReplList(int fur_no) {
+		List<FurnitureReplyListVO> fur_repl_list = furnitureDao.FurnitureReplList(fur_no);
+		return fur_repl_list;
 	}
 
 	///////////////////////////////////////////////////////////////
