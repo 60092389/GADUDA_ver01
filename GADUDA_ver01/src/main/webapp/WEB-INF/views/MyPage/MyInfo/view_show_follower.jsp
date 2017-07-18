@@ -21,7 +21,7 @@
 		<tbody>
 			<c:forEach var="follower_list" items="${follower_list }">
 				<tr>
-					<td>${follower_list }</td>
+					<td>${follower_list.fol_mem_id }</td>
 					
 				</tr>
 			</c:forEach>
