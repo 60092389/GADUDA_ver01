@@ -86,6 +86,7 @@ body, h1, h2, h3, h4, h5, h6 {
 					<div class="w3-container">
 						<h4 class="w3-center">My Profile</h4>
 						<p class="w3-center">
+						
 							<img src=${ member.mem_profile_pic } class="w3-circle"
 								style="height: 106px; width: 106px" alt="Avatar">
 						</p>

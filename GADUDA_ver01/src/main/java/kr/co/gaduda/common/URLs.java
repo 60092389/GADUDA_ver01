@@ -35,11 +35,11 @@ public class URLs {
 
 	// 회원탈퇴 페이지
 	public static final String URI_DELETE_MEMBER = "/deletemember";
-	public static final String URI_DELETE_MEMBER_FULL = member_default + URI_DELETE_MEMBER;
+	public static final String URI_DELETE_MEMBER_FULL = mypage_default+member_default + URI_DELETE_MEMBER;
 
 	// 회원탈퇴
 	public static final String URI_DELETE_MEMBER_CHK = "/deletemember_chk";
-	public static final String URI_DELETE_MEMBER_CHK_FULL = member_default + URI_DELETE_MEMBER_CHK;
+	public static final String URI_DELETE_MEMBER_CHK_FULL = mypage_default+member_default + URI_DELETE_MEMBER_CHK;
 
 	// 회원정보 수정 페이지
 	public static final String URI_UPDATE_MEMBER = "/update_mem";
@@ -77,7 +77,15 @@ public class URLs {
 	public static final String URI_MYPAGE_MEMBER_FOLLOWING = "/following";
 	public static final String URI_MYPAGE_MEMBER_FOLLOWING_FULL = mypage_default + member_default
 			+ URI_MYPAGE_MEMBER_FOLLOWING;
-
+	
+	//회원 프로필사진 업로드
+	public static final String URI_MYPAGE_MEMBER_IMAGE ="/upload";
+	public static final String URI_MYPAGE_MEMBER_IMAGE_FULL = mypage_default+member_default + URI_MYPAGE_MEMBER_IMAGE;
+	
+	//언팔 -> 팔로우
+	public static final String URI_MYPAGE_FOLLOW_CHK="/follow_chk";
+	public static final String URI_MYPAGE_FOLLOW_CHK_FULL= mypage_default+member_default + URI_MYPAGE_FOLLOW_CHK;
+	
 	// 가구스크랩
 	public static final String URI_FURNITURE_SCRAP = "/furniture_scrap";
 	public static final String URI_FURNITURE_SCRAP_FULL = mypage_scrap_default + URI_FURNITURE_SCRAP;

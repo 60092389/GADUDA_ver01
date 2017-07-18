@@ -37,6 +37,7 @@ public class Furniture_arrController {
 	
 		if((room_kind_def_name==null||room_kind_def_name.equals("0")) && (concept_name==null||concept_name.equals("0"))){
 		List<Furniture_arrVO> fur_arr_list= furniture_arrService.furArrList();
+		model.addAttribute("fur_arr_list",fur_arr_list);
 		
 		model.addAttribute("fur_arr_list",fur_arr_list);
 		}else if(room_kind_def_name!=null && (concept_name==null||concept_name.equals("0"))){

@@ -2,80 +2,80 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="kr.co.gaduda.mapper.MemberMapper">
 
-  	<insert id="joinMember">
+<mapper namespace="kr.co.gaduda.mapper.MemberMapper">
+
+	<insert id="joinMember">
   		<![CDATA[
   		
   		insert into member(mem_id,mem_pw,mem_name,mem_nickname,mem_profile_pic) 
   		values(#{mem_id},#{mem_pw},#{mem_name},#{mem_id},'/resources/Images/MemberImage/member_basic_image.PNG')
   		]]>
-  	</insert>
-  	
-  	<select id="idchk" resultType="integer">
+	</insert>
+
+	<select id="idchk" resultType="integer">
   	<![CDATA[
   	select count(*) from member where mem_id=#{mem_id}
   	
   	]]>
-  	</select>
-  	
-  	<select id="pwchk" resultType="integer">
+	</select>
+
+	<select id="pwchk" resultType="integer">
   	<![CDATA[
   	select count(*) from member where mem_pw=#{mem_pw} and mem_id=#{mem_id}
   	]]>
-  	</select>
-  	
-  	<select id="loginMember" resultType="kr.co.gaduda.member.vo.MemberVO">
+	</select>
+
+	<select id="loginMember" resultType="kr.co.gaduda.member.vo.MemberVO">
   		<![CDATA[
   			select mem_id,mem_name,mem_nickname,mem_intro,mem_pw,mem_sex,mem_birth,mem_profile_pic 
   			from member where mem_id=#{mem_id} and mem_pw=#{mem_pw}
   		
   		]]>
-  	</select>
-  	
-  	<delete id="deletemember">
+	</select>
+
+	<delete id="deletemember">
   	
   		<![CDATA[
   			delete from member where mem_id=#{mem_id} and mem_pw=#{mem_pw}
   		]]>
-  	</delete>
-  	
-  	<!-- 비밀번호 확인 -->
-  	<select id="chkmem_pw" resultType="int">
+	</delete>
+
+	<!-- 비밀번호 확인 -->
+	<select id="chkmem_pw" resultType="int">
   	<![CDATA[
   	select count(*) from member where mem_id=#{mem_id} and mem_pw=#{mem_pw}
   	]]>
-  	
-  	</select>
-  	
-  	<update id="update_mem">
+
+	</select>
+
+	<update id="update_mem">
   	<![CDATA[
   	update member set mem_nickname=#{mem_nickname},mem_sex=#{mem_sex},mem_birth=#{mem_birth},mem_intro=#{mem_intro} 
 where mem_id=#{mem_id}
   	]]>
-  	</update>
-  	
-  	<update id="update_mem_pw">
+	</update>
+
+	<update id="update_mem_pw">
   	<![CDATA[ 
   	
   	update member set mem_pw=#{mem_pw} where mem_id=#{mem_id} 
   	]]>
-  	</update>
-  	
-  	<!-- 이미지 업로드경로 업데이트 -->
-  	<update id="update_img">
+	</update>
+
+	<!-- 이미지 업로드경로 업데이트 -->
+	<update id="update_img">
   	<![CDATA[
   	update member set mem_profile_pic=#{mem_profile_pic} where mem_id=#{mem_id}
   	]]>
-  	</update>
-  	
-  	
-  	
-  	
-  	
-  	
-  	<!-- 내가 팔로우한 인원수 -->
+	</update>
+
+
+
+
+
+
+	<!-- 내가 팔로우한 인원수 -->
 	<select id="follower_info" resultType="integer">
 	<![CDATA[
 	
@@ -89,27 +89,52 @@ where mem_id=#{mem_id}
 	select count(*) from follow where mem_id=#{mem_id} and (fol_kind=2 or fol_kind=3) 
 	
 	]]>
-	
+
 	</select>
 	<!-- 내가 팔로우한 아이디 보기 -->
-	<select id="follower_list" resultType="String">
+	<select id="follower_list" resultType="kr.co.gaduda.member.vo.Follower_VO">
 	<![CDATA[
 	select fol_mem_id from follow where mem_id=#{mem_id} and (fol_kind=1 or fol_kind=3)
 	]]>
-	
+
 	</select>
-  	
-  	<!-- 나를 팔로우한 아이디 보기 -->
-  	<select id="following_list" resultType="String">
+
+	<!-- 나를 팔로우한 아이디 보기 -->
+	<select id="following_list" resultType="kr.co.gaduda.member.vo.Following_VO">
   	<![CDATA[
   	select fol_mem_id from follow where mem_id=#{mem_id} and (fol_kind=2 or fol_kind=3)
   	]]>
-  	</select>
-  	<!--상대가 나를 팔로우 했을때 내가 팔로우 했는지 안했는지 -->
-  	<select id="following_available" resultType="integer">
+	</select>
+	<!--상대가 나를 팔로우 했을때 내가 팔로우 했는지 안했는지 -->
+	<select id="following_available" resultType="integer">
   	  	<![CDATA[
-		select count(*) from follow where mem_id=#{fol_mem_id} and fol_mem_id=#{mem_id} and (fol_kind=2 or fol_kind=3)
+		select count(*) from follow where mem_id=#{mem_id} and fol_mem_id=#{fol_mem_id} and (fol_kind=1 or fol_kind=3)
   		]]>
-  	</select>
-  	
+	</select>
+	
+	
+	<update id="follow_change1">
+  	<![CDATA[
+  		update follow set fol_kind=2 where mem_id=#{mem_id} and fol_mem_id=#{fol_mem_id}
+			]]>
+	</update>
+	<update id="follow_change2">
+  	<![CDATA[
+  		update follow set fol_kind=1 where mem_id=#{fol_mem_id} and fol_mem_id=#{mem_id}
+			]]>
+	</update>
+	<update id="unfollow_change1">
+  	<![CDATA[
+  		update follow set fol_kind=3 where mem_id=#{mem_id} and fol_mem_id=#{fol_mem_id}
+			]]>
+	</update>
+	<update id="unfollow_change2">
+  	<![CDATA[
+  		update follow set fol_kind=3 where mem_id=#{fol_mem_id} and fol_mem_id=#{mem_id}
+			]]>
+	</update>
+	
+	
+	
+	
 </mapper>
