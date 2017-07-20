@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="kr.co.gaduda.common.URLs" %>     
+	pageEncoding="UTF-8"%>
+<%@ page import="kr.co.gaduda.common.URLs"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,23 +8,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form role="form" method="post" action=${ URLs.URI_LOGIN_CHK_FULL }>
-						<legend>로그인</legend>
-						<div class="form-group">
-							<label for="mem_id">이메일 or 아이디</label> <input name="mem_id"
-								value='' id="mem_id" placeholder="Id" type="text"
-								class="form-control" />
-						</div>
-						<div class="form-group">
-							<label for="mem_pw">비밀번호</label> <input name="mem_pw"
-								id="mem_pw" value='' placeholder="Password" type="password"
-								class="form-control" />
-						</div>
-						<div class="form-group">
-							<input type="submit"
-								class="btn btn-default btn-login-submit btn-block m-t-md"
-								value="Login" />
-						</div>
-					</form>
+	<!-- 로그인 -->
+	<form class="w3-container" method="post" action=${ URLs.URI_LOGIN_CHK_FULL }>
+		<div class="w3-section">
+			<label><b>ID or E-mail</b></label>
+			<input class="w3-input w3-border w3-margin-bottom" type="text"
+				placeholder="Enter user E-mail" name="mem_id" id="mem_id" required>
+			<label><b>Password</b></label>
+			<input class="w3-input w3-border" type="password" placeholder="Enter Password" name="mem_pw"
+				id="mem_pw" required>
+			<button class="w3-button w3-block w3-orange w3-section w3-padding" type="submit">Login</button>
+			<input class="w3-check w3-margin-top" type="checkbox"
+				checked="checked"> Remember me
+		</div>
+	</form>
+	
+	<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+		<button onclick="document.getElementById('loginUser').style.display='none'"
+				type="button" class="w3-button w3-red">Cancel</button>
+		<span class="w3-right w3-padding w3-hide-small"> <a href="#">비밀번호 찾기</a></span>
+	</div>
+			
 </body>
 </html>

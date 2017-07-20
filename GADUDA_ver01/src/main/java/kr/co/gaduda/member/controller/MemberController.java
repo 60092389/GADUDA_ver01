@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -56,16 +57,10 @@ public class MemberController {
 		return URLs.URI_MAIN_REDIRECT;
 	}
 
-	@RequestMapping(value = URLs.URI_JOIN_IDCHK, method = RequestMethod.GET)
-	@ResponseBody
-	public JSONObject idchk(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		response.setContentType("application/json;charset=UTF-8");
-		request.setCharacterEncoding("UTF-8");
-
+	@RequestMapping(value = URLs.URI_JOIN_IDCHK)
+	public @ResponseBody Object idchk(@RequestBody String mem_id) throws IOException {
+		
 		JSONObject jsonObj = new JSONObject();
-
-		String mem_id = request.getParameter("mem_id");
-
 		Integer id = memberService.idchk(mem_id);
 		jsonObj.put("idchk", id.toString());
 

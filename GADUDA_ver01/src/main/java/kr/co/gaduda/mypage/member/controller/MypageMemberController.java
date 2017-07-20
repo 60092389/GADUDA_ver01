@@ -87,15 +87,15 @@ public class MypageMemberController implements ServletContextAware{
 	public String update_mem() {
 		
 		
-		return Pages.VIEW_UPDATE_MEMBER;
+		return Pages.VIEW_MYPAGE_MEMBER;
 	}
 
 	@RequestMapping(value = URLs.URI_UPDATE_MEMBER_CHK, method = RequestMethod.POST)
-	public String update_mem_chk(MemberDTO memberDTO) {
+	public String update_mem_chk(MemberDTO memberDTO,Model model) {
 
 		memberService.update_mem(memberDTO);
-
-		return URLs.URI_MAIN_REDIRECT;
+		model.addAttribute("member");
+		return Pages.VIEW_MYPAGE_MEMBER;
 	}
 
 	@RequestMapping(value = URLs.URI_UPDATE_MEMBER_PW_PAGE)
@@ -114,10 +114,10 @@ public class MypageMemberController implements ServletContextAware{
 			System.out.println(memberDTO.getMem_pw_chk());
 			memberService.update_mem_pw(memberDTO);
 		}else{
-			return URLs.URI_MAIN_REDIRECT;
+			return Pages.VIEW_MYPAGE_MEMBER;
 		}
 		
-		return URLs.URI_MAIN_REDIRECT;
+		return Pages.VIEW_MYPAGE_MEMBER;
 
 	}
 
@@ -139,7 +139,7 @@ public class MypageMemberController implements ServletContextAware{
 		memVO.setMem_profile_pic(pic_path);
 		memberService.update_mem_pic(memberDTO);
 				
-		return Pages.VIEW_UPDATE_MEMBER_FIRST;
+		return Pages.VIEW_MYPAGE_MEMBER;
 	}
 	
 	@RequestMapping(value=URLs.URI_MYPAGE_MEMBER_FOLLOWER)

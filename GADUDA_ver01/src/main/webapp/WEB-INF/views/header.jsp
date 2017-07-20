@@ -7,16 +7,35 @@
 <title>GADUDA</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <body>
-	<!-- Navbar -->
+
+	<!-- 메인 로고, 로그인, 회원가입 -->
 	<div class="w3-top">
-		<div class="w3-bar w3-basiccolor w3-card-2 w3-left-align w3-large">
-			<a
-				class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-basiccolor"
+		<div class="w3-bar w3-basiccolor w3-right-align w3-large">
+			<a class="w3-basiccolor w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-large"
 				href="javascript:void(0);" onclick="myFunction()"
 				title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a> <a
 				href=<%=URLs.URI_MAIN_HOME%>
-				class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">GADUDA</a>
-
+				class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"><h2>GADUDA</h2></a>
+			<div style="float: right">
+			<c:set var="member" value="${ member }" />
+			<c:choose>
+				<c:when test="${ empty member }">
+					<a onclick="document.getElementById('loginUser').style.display='block'"
+						class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"><h6>LOGIN</h6></a>
+					<a onclick="document.getElementById('joinUser').style.display='block'"
+						class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"><h6>JOIN</h6></a>
+				</c:when>
+				<c:otherwise>
+					<a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%>
+						class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"><h6>${ member.mem_name }님</h6></a>
+					<a href=<%=URLs.URI_LOGOUT_FULL%>
+						class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"><h6>logout</h6></a>
+				</c:otherwise>
+			</c:choose>
+			</div>
+		</div>
+		<!-- 기본 목록 -->
+		<div class="w3-bar w3-subcolor w3-left-align w3-large">
 			<div style="float: right">
 				<a href=<%=URLs.URI_FURNITURE_LIST_LOOKAROUND_GET_FULL%>
 					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Furniture</a>
@@ -25,67 +44,30 @@
 				<a href=<%=URLs.URI_MAIN_TO_RECOM%>
 					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Recommend</a>
 				<a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%>
-					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">My
-					Page</a> <br>
+					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">My Page</a>
+				<br>
 			</div>
 		</div>
-		<div style="float: right">
-			<c:set var="member" value="${ member }" />
-			<c:choose>
-				<c:when test="${ empty member }">
-					<a
-						onclick="document.getElementById('loginUser').style.display='block'"
-						class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">login</a>
-					<a
-						href=<%=URLs.URI_JOIN_VIEW_FULL  %> method="post"
-						class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">join</a>
-				</c:when>
-				<c:otherwise>
-					<a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%>
-						class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">${ member.mem_name }님
-					</a>
-					<a href=<%=URLs.URI_LOGOUT_FULL%>
-						class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">logout</a>
-				</c:otherwise>
-			</c:choose>
-		</div>
 	</div>
-	<!-- Header -->
-	<header class="w3-container w3-basiccolor w3-center"
-		style="padding:50px 16px">
-	</header>
 
 <!-- 로그인 창 띄우기 -->
 	<div id="loginUser" class="w3-modal">
-		<div class="w3-modal-content w3-card-4 w3-animate-zoom"
-			style="max-width: 600px">
+	
+		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px">
+		
+			<h1 class="modal-title" style="margin: 20px; margin-top: 30px;">LOGIN</h1> 
+			
+			<jsp:include page="/WEB-INF/views/Member/view_login.jsp" flush="false" />
 
+		</div>
+	</div>
+<!-- 회원가입 창 띄우기 -->
+	<div id="joinUser" class="w3-modal">
+		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px">
+		
+			<h1 class="modal-title" style="margin: 20px; margin-top: 30px;">JOIN</h1> 
 
-			<form class="w3-container" method="post"
-				action=${ URLs.URI_LOGIN_CHK_FULL }>
-				<div class="w3-section">
-					<label><b>E-mail</b></label> <input
-						class="w3-input w3-border w3-margin-bottom" type="text"
-						placeholder="Enter user E-mail" name="mem_id" id="mem_id" required>
-					<label><b>Password</b></label> <input class="w3-input w3-border"
-						type="password" placeholder="Enter Password" name="mem_pw"
-						id="mem_pw" required>
-					<button class="w3-button w3-block w3-orange w3-section w3-padding"
-						type="submit">Login</button>
-					<button class="w3-button w3-block w3-gray w3-section w3-padding"
-						type="submit">join</button>
-					<input class="w3-check w3-margin-top" type="checkbox"
-						checked="checked"> Remember me
-				</div>
-			</form>
-
-			<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-				<button
-					onclick="document.getElementById('loginUser').style.display='none'"
-					type="button" class="w3-button w3-red">Cancel</button>
-				<span class="w3-right w3-padding w3-hide-small"> <a href="#">비밀번호
-						찾기</a></span>
-			</div>
+			<jsp:include page="/WEB-INF/views/Member/view_join.jsp" flush="false" />
 
 		</div>
 	</div>

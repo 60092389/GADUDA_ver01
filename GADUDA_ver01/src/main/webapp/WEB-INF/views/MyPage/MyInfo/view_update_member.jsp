@@ -10,47 +10,33 @@
 </head>
 <body>
 <c:set var="member" value="${ member }" />
-id:${ member.mem_id }
-<form role="form" method="post" action=${ URLs.URI_UPDATE_MEMBER_CHK_FULL }>
-						<div class="form-group">
-						<input type="hidden" name="mem_id" value=${ member.mem_id }>
-						</div>
-						<div class="form-group">
-							<label for="mem_nickname">mem_nickname</label> <input name="mem_nickname" id="mem_nickname"
-								value='' placeholder=${ member.mem_nickname } type="text"/>
-						</div>
-						<div class="form-group">
-							<input type="radio" name="mem_sex" value="남">남
-							<input type="radio" name="mem_sex" value="여">여
-						</div>
-						
-						<div class="form-group">
-							<label for="mem_intro">mem_intro</label> <input name="mem_intro" id="mem_intro"
-								value='' placeholder=${ member.mem_intro } type="text"/>
-						</div>
-						<div class="form-group">
-						<label for="mem_birth">생년월일 ${member.mem_birth }</label>
-						<input  type="date" placeholder="DD MM YYYY" name="mem_birth" >
-						
-						</div>
-						<div class="form-group">
-							<input type="submit"
-								class="btn btn-default btn-login-submit btn-block m-t-md"
-								value="정보수정" />
-						</div>
 
+<form class="w3-container" method="post" action=${ URLs.URI_UPDATE_MEMBER_CHK_FULL }>
+	<input class="w3-input w3-border w3-margin-bottom" type="hidden" name="mem_id" value=${ member.mem_id }>
+
+	<label for="mem_nickname"><b>닉네임</b></label>
+	<input class="w3-input w3-border w3-margin-bottom" name="mem_nickname" id="mem_nickname" value='' placeholder=${ member.mem_nickname } type="text"/>
+	<br>
+	<div class="form-group">
+		<input type="radio" name="mem_sex" value="남"><b>남</b>
+		<input type="radio" name="mem_sex" value="여"><b>여</b>
+	</div>
+	<br>				
+	<label for="mem_intro"><b>자기소개</b></label>
+	<input class="w3-input w3-border w3-margin-bottom" name="mem_intro" id="mem_intro" value='' placeholder=${ member.mem_intro } type="text"/>		
+	<br>
+	<label for="mem_birth"><b>생년월일</b></label>
+	<input type="date" placeholder="DD MM YYYY" name="mem_birth" class="w3-input w3-border w3-margin-bottom" >
+	<br>				
+		
+	<button type="submit" class="w3-button w3-block w3-orange w3-text-white w3-section w3-padding" type="submit" >변경하기</button>
 </form>
-<!-- <form action="./upload" method="post" enctype="multipart/form-data">
- <input type="file" name="imageFile"><br> 
-<input type="submit" value="전송">
- </form> -->
+
+<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+	<button onclick="document.getElementById('profMod').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+	<button class="w3-button w3-subcolor" onclick="document.getElementById('profMod').style.display='none'; document.getElementById('pwMod').style.display='block'" method="post" type="submit">비밀번호 수정</button>
+</div>
 
 
-<form role="form" action=${ URLs.URI_UPDATE_MEMBER_PW_PAGE_FULL }
-				method="post">
-				<div>
-					<input type="submit" value="비밀번호 수정">
-				</div>
-			</form>
 </body>
 </html>
