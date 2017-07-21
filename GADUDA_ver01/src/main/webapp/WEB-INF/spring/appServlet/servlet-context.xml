@@ -37,6 +37,11 @@
 				<exclude-mapping path="/member/update_mem"/> <exclude-mapping path="/member/update_mem_chk"/> -->
 			<beans:bean class="kr.co.gaduda.interceptor.member.MemberLoginInterceptor" />
 		</interceptor>
+		<interceptor>
+         <mapping path="/**"/>
+         <beans:bean class="kr.co.gaduda.interceptor.log.LogInterceptor"/>
+               
+      </interceptor>
 	</interceptors>
 	
 	

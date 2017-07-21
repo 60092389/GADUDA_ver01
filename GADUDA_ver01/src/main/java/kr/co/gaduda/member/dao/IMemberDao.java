@@ -1,6 +1,7 @@
 package kr.co.gaduda.member.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.co.gaduda.member.dto.FollowDTO;
 import kr.co.gaduda.member.dto.MemberDTO;
@@ -30,4 +31,5 @@ public interface IMemberDao {
 	public void unfollow_change(FollowDTO followDTO);
 	public void unfollow_change1(FollowDTO followDTO);
 	
+	public void member_log(Map<String, Object> memberInfo);
 } 
