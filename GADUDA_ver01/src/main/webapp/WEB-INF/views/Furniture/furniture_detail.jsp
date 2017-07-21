@@ -36,7 +36,7 @@ $(document).ready(function() {
 	
 
 	$('.good_list').click('show.bs.modal', function(){
-		$('#myModal').focus();
+		$('#myLikeModal').focus();
 		var goodfurno = $('#fur_no').val();
 		alert(goodfurno);
 
@@ -99,6 +99,7 @@ $(document).ready(function() {
 	
 	//스크랩 리스트 보기
 	$('.scrap_list').click('show.bs.modal', function(){
+			$('#myScrapModal').focus();
 			var scrap_fur_no = $('#fur_no').val();
 			
 			 var trans_object_scrap = {
