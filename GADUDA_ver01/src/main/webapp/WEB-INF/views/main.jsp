@@ -43,61 +43,63 @@ body, h1, h2, h3, h4, h5, h6 {
 
 	<!-- First Grid(인기 가구 리스트) -->
 	<div class="w3-container">
-			<h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>인기가구 리스트</b></span></h1>
+		<div class="w3-container" style="float: center">
+			<h1><b>가구 리스트</b></h1>
 			<div>
-				<c:forEach var="fur_list" items="${fur_list }">
-					<div class="w3-quarter">
-						<ul class="w3-ul w3-border w3-center w3-hover-shadow">
-							<li class="w3-subcolor w3-large w3-padding-32">
-								<a href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fur_list.fur_no }"><h3><b>${fur_list.fur_name }</b></h3></a></li>
-							<li class="w3-padding">
-  									<img class="w3-image" src="${fur_list.fur_pic_loc }" alt="${fur_list.fur_name }" width="70%">
-							</li>
-							<li class="w3-padding"><h6><b>${fur_list.fur_price }</b>원</h6></li>
-							<li class="w3-padding"><h6><b>${fur_list.fur_brand_name }</b></h6></li>
-							<li class="w3-padding">
-								<p><i class="material-icons">favorite</i>${fur_list.fur_good_num }
-   		 							<i class="material-icons">attachment</i>${fur_list.fur_scrap_num }
-   		 							<i class="material-icons">cloud</i>${fur_list.fur_repl_num }</p>
-							</li>
-						</ul>
+				<c:forEach var="fsl" items="${fur_list }">
+					<div class="w3-quarter w3-padding-32 w3-border">
+						<div class="w3-row-padding w3-center">
+      						<div class="w3-display-container w3-center">
+      							<a href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fsl.fur_no }">
+        							<div class="w3-display-topleft w3-padding">
+        								<h4><b>No${fsl.fur_no }. ${fsl.fur_name }</b></h4><br>
+        								<p class="w3-display-right"><b>${fsl.fur_brand_name } ${fsl.fur_price }</b>원</p>
+        							</div><br>
+        							<img src="${fsl.fur_pic_loc }" alt="${fsl.fur_no }" style="width:100%">
+        							<div class="w3-padding w3-display-bottomright">
+										<i class="material-icons" >favorite</i>${fsl.fur_good_num }
+										<i class="material-icons">attachment</i>${fsl.fur_scrap_num }
+										<i class="material-icons">cloud</i>${fsl.fur_repl_num }
+									</div>
+									<br>
+        						</a>
+        					</div>
+    					</div>
 					</div>
 				</c:forEach>
 			</div>
+		</div>
 	</div>
+	<br><br>
 
 	<!-- Second Grid(인기 가구 배치도 리스트) -->
-	<div class="w3-container">
-			<h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>인기 가구 배치도 리스트</b></span></h1>
+		<div class="w3-container" style="float: center">
+			<h1><b>가구 리스트</b></h1>
 			<div>
 				<c:forEach var="fal" items="${fur_arr_list }">
-					<div class="w3-quarter">
-						<ul class="w3-ul w3-border w3-center w3-hover-shadow">
-							<li class="w3-subcolor w3-large w3-padding-32">
-								<a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${fal.fur_arr_plan_no}"><h3><b>${fal.fur_arr_name }</b></h3></a></li>
-							<li class="w3-padding">
-  									<img class="w3-image" src="${fal.fur_arr_plan_img_loc }" alt="${fal.fur_arr_name }" width="70%">
-							</li>
-							<li class="w3-padding"><h6><b>${fal.fur_arr_con }</b></h6></li>
-							<li class="w3-padding"><h6><b>${fal.mem_id }</b>님의 배치도</h6></li>
-							<li class="w3-padding"><h6><b>${fal.fur_arr_room_kind }</b></h6></li>
-							<li class="w3-padding">
-								<p><i class="material-icons">favorite</i>${fal.fur_arr_plan_good_num}
-   		 							<i class="material-icons">attachment</i>${fal.fur_arr_plan_scrap_num }
-   		 							<i class="material-icons">cloud</i>${fal.fur_arr_plan_repl_num }</p>
-							</li>
-						</ul>
+					<div class="w3-quarter w3-padding-32 w3-border w3-center">
+						<div class="w3-row-padding w3-center">
+      						<div class="w3-display-container w3-center">
+      							<a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${fal.fur_arr_plan_no}">
+        							<div class="w3-display-topleft w3-padding">
+        								<h4><b>No${fal.fur_arr_plan_no}. ${fal.fur_arr_name }</b></h4><br><br>
+        								<p class="w3-display-right"><b>${fal.mem_id }</b>님의 배치도 <br>
+        								<b>${fal.fur_arr_con }/${fal.fur_arr_room_kind }</b></p>
+        							</div><br><br><br><br><br>
+        							<img src="${fal.fur_arr_plan_img_loc }" alt="${fal.fur_arr_name }" style="width:60%"><br><br>
+        							<div class="w3-padding w3-display-bottomright">
+										<i class="material-icons" >favorite</i>${fal.fur_arr_plan_good_num}
+										<i class="material-icons">attachment</i>${fal.fur_arr_plan_scrap_num }
+										<i class="material-icons">cloud</i>${fal.fur_arr_plan_repl_num }
+									</div>
+									<br>
+        						</a>
+        					</div>
+    					</div>
 					</div>
 				</c:forEach>
 			</div>
-	</div>
-	
-
-	<!-- Footer -->
-	<footer class="w3-center w3-white w3-padding-16">
-	<p>
-		made by sin park han jo</a>
-	</p>
-	</footer>
+		</div>
+	<br><br>	
 </body>
 </html>

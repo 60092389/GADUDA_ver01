@@ -253,7 +253,7 @@ $(document).ready(function() {
 	<c:set var="fur" value="${ furdeVO }" />
 	<input type="hidden" id="fur_no" value="${ furdeVO.fur_no }">
 </div>
-
+<div class="w3-main w3-container" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
 	<div class="w3-light-grey w3-padding-64 w3-margin-bottom w3-center">
   		<h1 class="w3-jumbo">${furdeVO.fur_name }</h1>
 	</div>
@@ -339,7 +339,7 @@ $(document).ready(function() {
 	<div>가격 비교 목록(나중에 완성)</div>
 </div>
 <br><br>
-
+</div>
 
 <!-- Modal -->
 <!-- 좋아요 -->

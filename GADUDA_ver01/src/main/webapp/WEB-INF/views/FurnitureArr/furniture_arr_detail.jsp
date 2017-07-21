@@ -273,7 +273,7 @@ $(document).ready(function(){
 	<input type="hidden" id="fur_arr_plan_no" value="${ detailVO.fur_arr_plan_no }">
 </div>
 
-<div>
+<div class="w3-main w3-container" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
 	<div class="w3-light-grey w3-padding-64 w3-margin-bottom w3-center">
   		<h1 class="w3-jumbo">${detailVO.fur_arr_name }</h1>
 	</div>

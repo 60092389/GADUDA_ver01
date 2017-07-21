@@ -37,35 +37,37 @@ body, h1, h2, h3, h4, h5, h6 {
 	<input type="hidden" id="user_nickname" value="${ member.mem_nickname }">
 </div>
 
-<form method="get" action=${URLs.URI_FURNITURE_WATCH_FULL }>
-<table border=1>
-<tr><th>방종류</th>
-<td><select name="room_kind_def_name">
-<option selected value="0" >전체</option>
-<option value="침실">침실</option>
-<option value="거실">거실</option>
-<option value="서재">서재</option>
-</select>
-</td>
-</tr>
-<tr><th>컨셉</th>
-<td><select name="concept_name">
-<option selected value="0">전체</option>
-<option value="내추럴">내추럴</option>
-<option value="모던">모던</option>
-<option value="미니멀">미니멀</option>
-<option value="시골풍">시골풍</option>
-<option value="앤틱">앤틱</option>
-<option value="북유럽">북유럽</option>
-<option value="동양적">동양적</option>
+<div class="w3-container" >
+	<div class="w3-main w3-content" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
+		<form method="get" action=${URLs.URI_FURNITURE_WATCH_FULL }>
+			<table border=1>
+				<tr><th>방종류</th>
+				<td><select name="room_kind_def_name">
+					<option selected value="0" >전체</option>
+					<option value="침실">침실</option>
+					<option value="거실">거실</option>
+					<option value="서재">서재</option>
+					</select>
+				</td>
+				</tr>
+				<tr><th>컨셉</th>
+				<td><select name="concept_name">
+					<option selected value="0">전체</option>
+					<option value="내추럴">내추럴</option>
+					<option value="모던">모던</option>
+					<option value="미니멀">미니멀</option>
+					<option value="시골풍">시골풍</option>
+					<option value="앤틱">앤틱</option>
+					<option value="북유럽">북유럽</option>
+					<option value="동양적">동양적</option>
 
-</select>
-</td>
-</tr>
-</table>
-<input type="submit" value="검색">
-</form>
-
+				</select>
+				</td>
+				</tr>
+			</table>
+			<input type="submit" value="검색">
+		</form>
+	</div>
 <!-- <h2>정렬기준</h2>
 <table border="1">
    <thead>
@@ -74,38 +76,35 @@ body, h1, h2, h3, h4, h5, h6 {
       <th><a href="/furniture/fur_list_get?array_option=reply">댓글순</a></th>
    </thead>
 </table> -->
-	<div class="w3-container">
+	<!-- First Grid(인기 가구 배치도 리스트) -->
 		<div class="w3-container" style="float: center">
-			<h1>인기 가구 배치도 리스트</h1>
+			<h1><b>가구 리스트</b></h1>
 			<div>
 				<c:forEach var="fal" items="${fur_arr_list }">
-					<div class="w3-quarter">
-						<ul class="w3-ul w3-border w3-center w3-hover-shadow">
-							<li class="w3-basiccolor w3-xlarge w3-padding-32"><a
-								href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${fal.fur_arr_plan_no}"><b>${fal.fur_arr_name }</b></a></li>
-							<li class="w3-padding-16"><img alt="가구배치도사진"
-								src="${fal.fur_arr_plan_img_loc }" width="100px" height="100px"></li>
-							<li class="w3-padding-16"><b>${fal.mem_id }</b>님의 배치도</li>
-							<li class="w3-padding-16"><b>${fal.fur_arr_con }</b></li>
-							<li class="w3-padding-16"><b>${fal.fur_arr_room_kind }</b></li>
-							<li class="w3-padding-16"><i class="material-icons">favorite</i><b>${fal.fur_arr_plan_good_num}</b></li>
-							<li class="w3-padding-16"><i class="material-icons">attachment</i><b>${fal.fur_arr_plan_scrap_num }</b></li>
-							<li class="w3-padding-16"><i class="material-icons">cloud</i><b>${fal.fur_arr_plan_repl_num }</b></li>
-						</ul>
+					<div class="w3-quarter w3-padding-32 w3-border w3-center">
+						<div class="w3-row-padding w3-center">
+      						<div class="w3-display-container w3-center">
+      							<a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${fal.fur_arr_plan_no}">
+        							<div class="w3-display-topleft w3-padding">
+        								<h4><b>No${fal.fur_arr_plan_no}. ${fal.fur_arr_name }</b></h4><br><br>
+        								<p class="w3-display-right"><b>${fal.mem_id }</b>님의 배치도 <br>
+        								<b>${fal.fur_arr_con }/${fal.fur_arr_room_kind }</b></p>
+        							</div><br><br><br><br><br>
+        							<img src="${fal.fur_arr_plan_img_loc }" alt="${fal.fur_arr_name }" style="width:60%"><br><br>
+        							<div class="w3-padding w3-display-bottomright">
+										<i class="material-icons" >favorite</i>${fal.fur_arr_plan_good_num}
+										<i class="material-icons">attachment</i>${fal.fur_arr_plan_scrap_num }
+										<i class="material-icons">cloud</i>${fal.fur_arr_plan_repl_num }
+									</div>
+									<br>
+        						</a>
+        					</div>
+    					</div>
 					</div>
 				</c:forEach>
 			</div>
 		</div>
-	</div>
-	
-	
-<!-- Footer -->
-	<footer class="w3-center w3-white w3-padding-16">
-	<p>
-		made by <a href="https://www.w3schools.com/w3css/default.asp"
-			title="W3.CSS" target="_blank" class="w3-hover-text-green">sin
-			park han jo</a>
-	</p>
-	</footer>
+</div>
+	<br><br>
 </body>
 </html>
