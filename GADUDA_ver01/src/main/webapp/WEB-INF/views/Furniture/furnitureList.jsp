@@ -29,8 +29,9 @@ $(document).ready(function(){
 	var now_date = new Date();
 	
 	//스크랩 누르기
-	$('.btn-scrap').click(function() {
-		var fur_no = $(this).val();
+	$('#btn_scrap').click(function() {
+		
+		var fur_no = $('#fur_no').val();
 		var mem_id = $('#user_id').val();
 		alert(mem_id);
 		
@@ -66,10 +67,7 @@ $(document).ready(function(){
 	$('.btn-good').click(function(){
 		//var fur_no = $(this).find('.fur_no_val').val();
 		var fur_no = $(this).val();
-		
-		
-		
-		
+
 		var trans_object = {
 			'mem_id' : mem_id,
 			'mem_nickname' : mem_nickname,
@@ -232,14 +230,14 @@ $(document).ready(function(){
 	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
 
 <div class="w3-container" style="float: right">
-	<c:set var="member" value="${ member }" />
-	<input type="hidden" id="user_id" value="${ member.mem_id }">
-	<input type="hidden" id="user_nickname" value="${ member.mem_nickname }">
+	<c:set var="mem" value="${ member }" />
+	<input type="hidden" id="user_id" value="${mem.mem_id }">
+	<input type="hidden" id="user_nickname"value="${mem.mem_nickname }">
 </div>
 
 <div class="w3-container">
   <h2>Furniture</h2>
-  <p>종류별로 검색해서 보세용~</p>
+  <p>종류별로 검색해서 보세용~ ${member.mem_id }</p>
 
   <div class="w3-bar">
     <div class="w3-dropdown-hover">
@@ -298,7 +296,7 @@ $(document).ready(function(){
 							<li class="w3-padding-16">No.<b>${fsl.fur_no }</b></li>
 							<li class="w3-padding-16"><b>${fsl.fur_brand_name }</b></li>
 							<li class="w3-padding-16"><i class="material-icons">favorite</i><button name="goodup" class="btn-good" value="${fsl.fur_no }"><b>${fsl.fur_good_num }</b></button></li>
-							<li class="w3-padding-16"><i class="material-icons">attachment</i><button name="subject" class="btn-scrap" id="btn_scrap" value="${fsl.fur_no }"><b>${fsl.fur_scrap_num }</b></button></li>
+							<li class="w3-padding-16"><i class="material-icons">attachment</i><button name="subject" id="btn_scrap" value="${fsl.fur_no }">${fsl.fur_scrap_num }</button></li>
 							<li class="w3-padding-16"><i class="material-icons">cloud</i>
 								<button type="button" class="btn-repl-fur-no" data-toggle="modal" data-target="#myModal" value="${fsl.fur_no }"><b>${fsl.fur_repl_num }</b></button></li>
 						</ul>

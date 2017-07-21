@@ -132,7 +132,7 @@ public class FurnitureController {
 	//////////////////////////////////////////////////////////////////////
 
 	// 가구 좋아요 리스트
-	@RequestMapping(value = URLs.URI_FURNITURE_DETAIL_GOOD_LIST_FULL, method = RequestMethod.POST, produces = {
+	@RequestMapping(value = URLs.URI_FURNITURE_DETAIL_GOOD_LIST_U, method = RequestMethod.POST, produces = {
 			"application/json" })
 	public @ResponseBody Map<String, Object> mongoFurGoodListService(@RequestBody Map<String, Object> search) {
 

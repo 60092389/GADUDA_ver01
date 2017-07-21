@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="kr.co.gaduda.common.URLs"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -6,21 +7,30 @@
 <title>GADUDA</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <style>
-body, h1, h2, h3, h4, h5, h6 {font-family: "Lato", sans-serif}
-.w3-bar, h1, button { font-family: "Montserrat", sans-serif}
-.fa-anchor, .fa-coffee { font-size: 200px }
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Lato", sans-serif
+}
+
+.w3-bar, h1, button {
+	font-family: "Montserrat", sans-serif
+}
+
+.fa-anchor, .fa-coffee {
+	font-size: 200px
+}
 </style>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -28,7 +38,7 @@ $(document).ready(function() {
 	$('.good_list').click('show.bs.modal', function(){
 		$('#myModal').focus();
 		var goodfurno = $('#fur_no').val();
-		
+		alert(goodfurno);
 
 		var trans_object = {
 			'goodfurno' : goodfurno,
@@ -37,7 +47,7 @@ $(document).ready(function() {
 		var trans_json = JSON.stringify(trans_object);
 		
 		$.ajax({
-			url : "http://localhost:8080/furniture/detail/mongofurgoodlistajax",
+			url : "${URLs.URI_FURNITURE_DETAIL_GOOD_LIST_FULL}",
 			type : 'POST',
 			dataType : 'json',
 			data : trans_json,
@@ -74,7 +84,7 @@ $(document).ready(function() {
 		var reply_id_trans_json = JSON.stringify(fur_reply_id_trans_object); 
 		
 		$.ajax({
-			url : "http://localhost:8080/furniture/fur_reply_delete",
+			url : "${URLs.URI_FURNITURE_REPLY_DELETE_FULL}",
 			type : 'POST',
 			dataType : 'json',
 			data : reply_id_trans_json,
@@ -135,7 +145,7 @@ $(document).ready(function() {
 		var trans_json = JSON.stringify(trans_object);
 		
 		$.ajax({
-			url : "http://localhost:8080/furniture/fur_good_up",
+			url : "${URLs.URI_FURNITURE_GOOD_UP_FULL}",
 			type : 'POST',
 			dataType : 'json',
 			data : trans_json,
@@ -168,7 +178,7 @@ $(document).ready(function() {
 		var trans_json = JSON.stringify(trans_object);
 		
 		$.ajax({
-			url : "http://localhost:8080/furniture/furniture_scrap",
+			url : "${URLs.URI_FURNITURE_FUR_SCRAP_FULL}",
 			type : 'POST',
 			dataType : 'json',
 			data : trans_json,
@@ -208,7 +218,7 @@ $(document).ready(function() {
 		var trans_json = JSON.stringify(trans_object);
 		
 		$.ajax({
-			url : "http://localhost:8080/furniture/fur_reply_write",
+			url : "${URLs.URI_FURNITURE_REPLY_WRITE_FULL}",
 			type : 'POST',
 			dataType : 'json',
 			data : trans_json,
@@ -253,8 +263,7 @@ $(document).ready(function() {
     		<img src="${furdeVO.fur_pic_loc.get(0) }" alt="Furniture" style="width:600px">
     		<div>
     			<c:forEach var="pic_loc" items="${furdeVO.fur_pic_loc }">
-
-							<img style="border:1px solid grey" alt="가구사진" src="${pic_loc}" width="200px" height="200px">						
+					<img style="border:1px solid grey" alt="가구사진" src="${pic_loc}" width="200px" height="200px">						
 				</c:forEach>
     		</div>
     	</div>
@@ -277,44 +286,46 @@ $(document).ready(function() {
 						<button onclick="document.getElementById('myScrapModal').style.display='block'" class="scrap_list" 
 						data-toggle="modal" data-target="#myScrapModal">${furdeVO.fur_scrap_num }</button></td></tr>
 						
-					<tr><td>Commend</td><td><i class="material-icons">cloud</i> ${furdeVO.fur_repl_num }</td></tr>
+					<tr><td>Comment</td><td><i class="material-icons">cloud</i> ${furdeVO.fur_repl_num }</td></tr>
 			</table>
 
  		</div>
+ 	</div>
 <br><br>
 
 <!-- 댓글 보기 -->
-<div class="w3-container" style="float: center">
-	<h1>Commend</h1>
-
-	<div>
-		<table>
-			<tbody id="furrepllist">
-			<c:forEach var="replyList" items="${fur_repl_list }">
-				<tr>
-					<td>${replyList.mem_id }(${replyList.mem_nickname }) </td>
-					<td>${replyList.fur_rep_contents }</td>
-					<td>${replyList.fur_rep_write_date }</td>
-					<td><button class="btn-fur-reply-del" value="${replyList._id }">delete</button> </td>
-				</tr>
-			</c:forEach>
-			</tbody>
-		</table>
+	<div id="repl" class="w3-container">
+		<div class="w3-container">
+		
+			<h1>댓글</h1> 
+			<div>
+				<table>
+					<tbody id="furrepllist">
+						<c:forEach var="replyList" items="${fur_repl_list }">
+							<tr>
+								<td>${replyList.mem_id }(${replyList.mem_nickname }) </td>
+								<td>${replyList.fur_rep_contents }</td>
+								<td>${replyList.fur_rep_write_date }</td>
+								<td><button class="btn-fur-reply-del" value="${replyList._id }">delete</button> </td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+			<div style="float: center">
+				<table>
+					<tbody>
+						<tr><td>${member.mem_profile_pic } || ${member.mem_id } (${member.mem_nickname })</td></tr>
+						<tr><td><input name="fur_repl" id="fur_repl" value='' placeholder="내용을 작성하세요" type="text" class="form-control" /></td></tr>
+						<tr><td><input type="submit" id="replinput" value="작성" /><input type="hidden" id="repl_fur_no" value="${furdeVO.fur_no }"></td></tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
-	<br>
-	<div class="w3-container" style="float: center">
-		<table>
-			<tbody>
-				<tr><td>${member.mem_profile_pic } || ${member.mem_id } (${member.mem_nickname })</td></tr>
-				<tr><td><input name="fur_repl" id="fur_repl" value='' placeholder="내용을 작성하세요" type="text" class="form-control" /></td></tr>
-				<tr><td><input type="submit" id="replinput" value="작성" /><input type="hidden" id="repl_fur_no" value="${furdeVO.fur_no }"></td></tr>
-			</tbody>
-		</table>
-	</div>
-</div>
 <br>
 
-<div style="float: center">
+<div class="w3-container">
 
 
 	<h2>제품에 대한 평(크롤링)</h2>
@@ -327,19 +338,13 @@ $(document).ready(function() {
 	<div>가격 비교 목록(나중에 완성)</div>
 </div>
 <br><br>
-<!-- Footer -->
-	<footer class="w3-center w3-white w3-padding-16">
-	<p>
-		made by <a href="https://www.w3schools.com/w3css/default.asp"
-			title="W3.CSS" target="_blank" class="w3-hover-text-green">sin
-			park han jo</a>
-	</p>
-	</footer>
 
 
 <!-- Modal -->
 <!-- 좋아요 -->
-	<div class="w3-modal" id="myLikeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+
+<div class="w3-modal" id="myLikeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		
 		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 1000px" >
 			<div class="modal-content" style="margin: 20px">
@@ -360,13 +365,15 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</div>
+
+	
 <!-- 스크랩 -->	
-	<div class="w3-modal" id="myScrapModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="w3-modal w3-container" id="myScrapModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		
 		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 1000px" >
 			<div class="modal-content" style="margin: 20px">
 				<h1>스크랩 한 사람</h1>
-				<div class="modal-body">
+				<div class="w3-container w3-center modal-body">
 					<table border="1">
 						<tbody class="scrap_list_show">						
 		
