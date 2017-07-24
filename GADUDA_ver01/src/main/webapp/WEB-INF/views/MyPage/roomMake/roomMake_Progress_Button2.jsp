@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="kr.co.gaduda.common.URLs"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,13 +34,13 @@ $(document).ready(function() {
 		roomMake_canvas_wallPaper_color = "black";
 		
 		$.ajax({      
-	        url : "roomMake_Select_Figure",
+	        url : "${URLs.URI_ROOMMAKE_SELECT_FIGURE_FULL}",
 	 		success:function(data){
 	 			$("#roomMake_Progress_Position").html(data);
 	 		}
 	    }); 
 		$.ajax({      
-	        url : "roomMake_Progress_Button1",
+	        url : "${URLs.URI_ROOMMAKE_PROGRESS_BUTTON1_FULL}",
 	 		success:function(data){
 	 			$("#roomMake_Progress_Button_Position").html(data);
 	 		}
@@ -52,13 +53,13 @@ $(document).ready(function() {
 		
 		
 		$.ajax({      
-	        url : "roomMake_RoomName",
+	        url : "${URLs.URI_ROOMMAKEROOMNAE_FULL }",
 	 		success:function(data){
 	 			$("#roomMake_Progress_Position").html(data);
 	 		}
 	    }); 
 		$.ajax({      
-	        url : "roomMake_Progress_Button3",
+	        url : "${URLs.URI_ROOMMAKE_PROGRESS_BUTTON3_FULL}",
 	 		success:function(data){
 	 			$("#roomMake_Progress_Button_Position").html(data);
 	 		}

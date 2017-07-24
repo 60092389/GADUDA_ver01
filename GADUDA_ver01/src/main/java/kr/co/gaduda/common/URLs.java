@@ -10,6 +10,8 @@ public class URLs {
 	private static final String furniture_default = "/furniture";
 	private static final String furniture_arr_default = "/furniture_arr";
 	private static final String mypage_scrap_default = "/mypage/scrap";
+	
+	private static final String room_default="/room";
 
 	// 로그아웃
 	public static final String URI_LOGOUT = "/logout";
@@ -185,6 +187,32 @@ public class URLs {
 	public static final String URI_FURNITURE_ARR_SCRAP_ADD = "/fur_arr_scrap_add";
 	public static final String URI_FURNITURE_ARR_SCRAP_ADD_FULL = furniture_arr_default + URI_FURNITURE_ARR_SCRAP_ADD;
 
-	////////////////////////////////////////////
 
+	////////진섭 17-07-21 /////////////////////
+	// 방생성 관련
+	//private static final String room_default="/room";
+	public static final String URI_ROOMMAKE_INCLUDE = "/roomMake_Include";
+	public static final String URI_ROOMMAKE_INCLUDE_FULL = room_default+URI_ROOMMAKE_INCLUDE;
+	
+	public static final String URI_ROOMMAKE_PROGRESS_BUTTON1 = "/roomMake_Progress_Button1";
+	public static final String URI_ROOMMAKE_PROGRESS_BUTTON1_FULL = room_default+URI_ROOMMAKE_PROGRESS_BUTTON1;
+	
+	public static final String URI_ROOMMAKE_SELECT_FIGURE = "/roomMake_Select_Figure";
+	public static final String URI_ROOMMAKE_SELECT_FIGURE_FULL = room_default+URI_ROOMMAKE_SELECT_FIGURE;
+	
+	public static final String URI_ROOMMAKE_PROGRESS_BUTTON2 = "/roomMake_Progress_Button2";
+	public static final String URI_ROOMMAKE_PROGRESS_BUTTON2_FULL = room_default+URI_ROOMMAKE_PROGRESS_BUTTON2;
+	
+	public static final String URI_ROOMMAKE_CANVAS = "/roomMake_Canvas";
+	public static final String URI_ROOMMAKE_CANVAS_FULL = room_default+URI_ROOMMAKE_CANVAS;
+	
+	public static final String URI_ROOMMAKE_PROGRESS_BUTTON3 = "/roomMake_Progress_Button3";
+	public static final String URI_ROOMMAKE_PROGRESS_BUTTON3_FULL = room_default+URI_ROOMMAKE_PROGRESS_BUTTON3;
+	
+	public static final String URI_ROOMMAKE_ROOMNAME = "/roomMake_roomName";
+	public static final String URI_ROOMMAKEROOMNAE_FULL = room_default+URI_ROOMMAKE_ROOMNAME;
+	
+	public static final String URI_ROOMMAKE = "/roomMake";
+	public static final String URI_ROOMMAKE_FULL = room_default+URI_ROOMMAKE;
+	
 }

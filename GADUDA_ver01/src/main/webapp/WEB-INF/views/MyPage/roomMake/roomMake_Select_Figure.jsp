@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="kr.co.gaduda.common.URLs"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -564,7 +565,7 @@ $(document).ready(function() {
 		<!-- 2踰����� -->
 		<div class="roomMake_Figure_Pic_css" value="1"  >
 			<div>
-				<img src="resources/Images/Room/roomMake_quadrangular.png" class="roomMake_selectFigurePic_css" alt="�ш���"  >
+				<img src="/resources/Images/Room/roomMake_quadrangular.png" class="roomMake_selectFigurePic_css" alt="�ш���"  >
 			</div>	
 			<p class="roomMake_selectFigureName_css">
 				사각형
@@ -574,7 +575,7 @@ $(document).ready(function() {
 		<!-- 3踰����� -->
 		<div class="roomMake_Figure_Pic_css" value="2" >
 			<div>
-				<img  class="roomMake_selectFigurePic_css" alt="�깊��" src="resources/Images/Room/roomMake_seven.png" >
+				<img  class="roomMake_selectFigurePic_css" alt="�깊��" src="/resources/Images/Room/roomMake_seven.png" >
 			</div>	
 			<p class="roomMake_selectFigureName_css">
 				ㄱ형
@@ -584,7 +585,7 @@ $(document).ready(function() {
 		<!-- 4踰����� -->
 		<div class="roomMake_Figure_Pic_css"  value='3' >
 			<div>
-				<img  class="roomMake_selectFigurePic_css" alt="�댄��" src="resources/Images/Room/roomMake_L.png" >
+				<img  class="roomMake_selectFigurePic_css" alt="�댄��" src="/resources/Images/Room/roomMake_L.png" >
 			</div>	
 			<p class="roomMake_selectFigureName_css">
 				ㄴ형
@@ -594,7 +595,7 @@ $(document).ready(function() {
 		<!-- 5踰����� -->
 		<div class="roomMake_Figure_Pic_css"  value='4' >
 			<div>
-				<img  class="roomMake_selectFigurePic_css" alt=""  src="resources/Images/Room/roomMake_reverse_seven.png">
+				<img  class="roomMake_selectFigurePic_css" alt=""  src="/resources/Images/Room/roomMake_reverse_seven.png">
 			</div>	
 			<p class="roomMake_selectFigureName_css">
 				역 ㄱ형
@@ -604,7 +605,7 @@ $(document).ready(function() {
 		<!-- 6踰����� -->
 		<div class="roomMake_Figure_Pic_css" value='5' >
 			<div>
-				<img  class="roomMake_selectFigurePic_css" alt="���댄��" src="resources/Images/Room/roomMake_reverse_L.png" >
+				<img  class="roomMake_selectFigurePic_css" alt="���댄��" src="/resources/Images/Room/roomMake_reverse_L.png" >
 			</div>	
 			<p class="roomMake_selectFigureName_css">
 				역ㄴ형

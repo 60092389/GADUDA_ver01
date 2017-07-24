@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="kr.co.gaduda.common.URLs"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,13 +26,13 @@ $(document).ready(function(){
 			$(".roomMak_Progress_state2").css("background","pink");
 			$(".roomMak_Progress_state3").css("background","yellow");
 			$.ajax({      
-				  url : "roomMake_Canvas",
+				  url : "${URLs.URI_ROOMMAKE_CANVAS_FULL}",
 			 		success:function(data){
 			 			$("#roomMake_Progress_Position").html(data);
 			 		}
 		    });
 			$.ajax({      
-		        url : "roomMake_Progress_Button2",
+		        url : "${URLs.URI_ROOMMAKE_PROGRESS_BUTTON2_FULL}",
 		 		success:function(data){
 		 			$("#roomMake_Progress_Button_Position").html(data);
 		 		}

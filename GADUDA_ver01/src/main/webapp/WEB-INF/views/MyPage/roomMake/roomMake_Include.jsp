@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="kr.co.gaduda.common.URLs"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,6 +28,7 @@
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
+
 var startX='';
 var startY='';
 
@@ -72,13 +74,13 @@ $(document).ready(function() {
 	
 	function aaa(){
 		$.ajax({      
-			url : "roomMake_Select_Figure",
+			url : "${URLs.URI_ROOMMAKE_SELECT_FIGURE_FULL}",
 	 		success:function(data){
 	 			$("#roomMake_Progress_Position").html(data);
 	 		}
 	    }); 
 		$.ajax({      
-			url : "roomMake_Progress_Button1",
+			url : "${URLs.URI_ROOMMAKE_PROGRESS_BUTTON1_FULL}",
 	 		success:function(data){
 	 			$("#roomMake_Progress_Button_Position").html(data);
 	 		}

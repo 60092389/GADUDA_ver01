@@ -14,13 +14,14 @@ public class Pages {
 	private static final String furniture_path = "/Furniture";
 	private static final String arrange_path = "/Arrangement";
 	private static final String furniture_arr_path = "/FurnitureArr";
+	
 
 	private static final String follow_path = mypage_path + "/Follow";
 	private static final String my_page_furniture_arr_path = mypage_path + "/FurnitureArr";
 	private static final String furniture_arr_scrap_path = mypage_path + "/FurnitureArrScrap";
 	private static final String furniture_scrap_path = mypage_path + "/FurnitureScrap";
 	private static final String myinfo_path = mypage_path + "/MyInfo";
-	private static final String room_path = mypage_path + "/Room";
+	private static final String room_path = mypage_path + "/roomMake";
 	private static final String update_profile_path = mypage_path + "/UpdateProfile";
 
 	public static final String VIEW_MAIN = main_path + "/main";
@@ -62,4 +63,16 @@ public class Pages {
 	// 가구배치도 상세 페이지 뷰
 	public static final String VIEW_FURNITURE_ARR_DETAIL = furniture_arr_path + "/furniture_arr_detail";
 
+	
+	//private static final String room_path = mypage_path + "/RoomMake";
+	
+	public static final String VIEW_ROOMMAKE_INCLUDE=room_path+"/roomMake_Include";
+	public static final String VIEW_ROOMMAKE_PROGRESS_BUTTON1=room_path+"/roomMake_Progress_Button1";
+	public static final String VIEW_ROOMMAKE_PROGRESS_BUTTON2=room_path+"/roomMake_Progress_Button2";
+	public static final String VIEW_ROOMMAKE_PROGRESS_BUTTON3=room_path+"/roomMake_Progress_Button3";
+	public static final String VIEW_ROOMMAKE_SELECT_FIGURE=room_path+"/roomMake_Select_Figure";
+	public static final String VIEW_ROOMMAKE_CNAVAS=room_path+"/roomMake_Canvas";
+	public static final String VIEW_ROOMMAKE_ROOMNAME=room_path+"/roomMake_RoomName";
+	
+	
 }

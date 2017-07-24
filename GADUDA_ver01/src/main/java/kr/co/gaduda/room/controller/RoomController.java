@@ -11,76 +11,79 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.gaduda.common.Pages;
+import kr.co.gaduda.common.URLs;
 import kr.co.gaduda.room.dto.RoomDTO;
 
 @Controller
+@RequestMapping(value = "/room")
 public class RoomController {
 
 	
-	@RequestMapping(value = "/roomMake_Include", method = RequestMethod.GET)
+	@RequestMapping(value = URLs.URI_ROOMMAKE_INCLUDE, method = RequestMethod.GET)
 	public ModelAndView  home() {
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("roomMake/roomMake_Include");
+		mav.setViewName(Pages.VIEW_ROOMMAKE_INCLUDE);
 
 		return mav;
 	}
 	
-	@RequestMapping(value = "/roomMake_Progress_Button1", method = RequestMethod.GET)
+	@RequestMapping(value = URLs.URI_ROOMMAKE_PROGRESS_BUTTON1, method = RequestMethod.GET)
 	public ModelAndView  roomMake_Progress_Button1() {
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("roomMake/roomMake_Progress_Button1");
+		mav.setViewName(Pages.VIEW_ROOMMAKE_PROGRESS_BUTTON1);
 		return mav;
 	}
 	
-	@RequestMapping(value = "/roomMake_Select_Figure", method = RequestMethod.GET)
+	@RequestMapping(value = URLs.URI_ROOMMAKE_SELECT_FIGURE , method = RequestMethod.GET)
 	public ModelAndView  roomMake_Select_Figure() {
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("roomMake/roomMake_Select_Figure");
+		mav.setViewName(Pages.VIEW_ROOMMAKE_SELECT_FIGURE);
 
 		return mav;
 	}
 	
-	@RequestMapping(value = "/roomMake_Canvas", method = RequestMethod.GET)
+	@RequestMapping(value = URLs.URI_ROOMMAKE_CANVAS, method = RequestMethod.GET)
 	public ModelAndView  roomMake_Canvas() {
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("roomMake/roomMake_Canvas");
+		mav.setViewName(Pages.VIEW_ROOMMAKE_CNAVAS);
 
 		return mav;
 	}
-	@RequestMapping(value = "/roomMake_Progress_Button2", method = RequestMethod.GET)
+	@RequestMapping(value = URLs.URI_ROOMMAKE_PROGRESS_BUTTON2, method = RequestMethod.GET)
 	public ModelAndView  roomMake_Progress_Button2() {
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("roomMake/roomMake_Progress_Button2");
+		mav.setViewName(Pages.VIEW_ROOMMAKE_PROGRESS_BUTTON2);
 
 		return mav;
 	}
 	
 	
-	@RequestMapping(value = "/roomMake_RoomName", method = RequestMethod.GET)
+	@RequestMapping(value = URLs.URI_ROOMMAKE_ROOMNAME, method = RequestMethod.GET)
 	public ModelAndView roomMake_RoomName() {
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("roomMake/roomMake_RoomName");
+		mav.setViewName(Pages.VIEW_ROOMMAKE_ROOMNAME);
 
 		return mav;
 	}
-	@RequestMapping(value = "/roomMake_Progress_Button3", method = RequestMethod.GET)
+	@RequestMapping(value = URLs.URI_ROOMMAKE_PROGRESS_BUTTON3 , method = RequestMethod.GET)
 	public ModelAndView roomMake_Progress_Button3() {
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("roomMake/roomMake_Progress_Button3");
+		mav.setViewName(Pages.VIEW_ROOMMAKE_PROGRESS_BUTTON3);
 
 		return mav;
 	}
 	
 	
 	
-	@RequestMapping(value = "/roomMake" ,method = RequestMethod.POST)
+	@RequestMapping(value = URLs.URI_ROOMMAKE ,method = RequestMethod.POST)
 	public ModelAndView roomMake(RoomDTO roomDTO) throws Exception {
 		
 		FileOutputStream stream = null;

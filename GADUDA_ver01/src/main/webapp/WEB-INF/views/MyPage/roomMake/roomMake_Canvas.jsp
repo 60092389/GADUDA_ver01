@@ -74,11 +74,11 @@ $(document).ready(function(){
 	
 	//李쎈Ц �대�몄�
 	var roomMake_canvas_window_one_img  = new Image();
-	roomMake_canvas_window_one_img.src = "resources/Images/Room/roomMake_window_one.png";
+	roomMake_canvas_window_one_img.src = "/resources/Images/Room/roomMake_window_one.png";
 	
 	//臾몄�대�몄�
 	var roomMake_canvas_door_one_img =  new Image();
-	roomMake_canvas_door_one_img.src = "resources/Images/Room/roomMake_door_one.png";
+	roomMake_canvas_door_one_img.src = "/resources/Images/Room/roomMake_door_one.png";
 	
 	//�≪�ㅽ�� �대�몄�
 	var roomMake_canvas_Ximg =  new Image();
@@ -161,7 +161,7 @@ $(document).ready(function(){
 	function roomMake_Draw_Turn_Img() {
 		
 		roomMake_canvas_TurnImg_X = 
-			roomMake_canvas_img_X_arr[select_img_num]+(roomMake_canvas_img_width_arr[select_img_num]/2-40/2);
+			roomMake_canvas_img_X_arr[select_img_num]+(roomMake_canvas_img_width_arr[select_img_num]/2-(40/2));
 		
 		roomMake_canvas_TurnImg_Y = roomMake_canvas_img_Y_arr[select_img_num]+roomMake_canvas_img_height_arr[select_img_num]+20;
 		
@@ -347,7 +347,7 @@ $(document).ready(function(){
 		if(roomMake_canvas_img_kind_num_arr[select_img_num]==1){
 			
 			if(roomMake_canvas_img_state_arr[select_img_num]==1){
-				img_turn.src="resources/Images/Room/roomMake_window_two.png";
+				img_turn.src="/resources/Images/Room/roomMake_window_two.png";
 				roomMake_canvas_img_kind_arr[select_img_num]=img_turn;
 				temp=roomMake_canvas_img_height_arr[select_img_num];
 				roomMake_canvas_img_height_arr[select_img_num]=roomMake_canvas_img_width_arr[select_img_num];
@@ -355,7 +355,7 @@ $(document).ready(function(){
 				roomMake_canvas_img_state_arr[select_img_num]=2;
 			}
 			else if(roomMake_canvas_img_state_arr[select_img_num]==2){
-				img_turn.src="resources/Images/Room/roomMake_window_three.png";
+				img_turn.src="/resources/Images/Room/roomMake_window_three.png";
 				roomMake_canvas_img_kind_arr[select_img_num]=img_turn;
 				temp=roomMake_canvas_img_height_arr[select_img_num];
 				roomMake_canvas_img_height_arr[select_img_num]=roomMake_canvas_img_width_arr[select_img_num];
@@ -364,7 +364,7 @@ $(document).ready(function(){
 				
 			}
 			else if(roomMake_canvas_img_state_arr[select_img_num]==3){
-				img_turn.src="resources/Images/Room/roomMake_window_four.png";
+				img_turn.src="/resources/Images/Room/roomMake_window_four.png";
 				roomMake_canvas_img_kind_arr[select_img_num]=img_turn;
 				temp=roomMake_canvas_img_height_arr[select_img_num];
 				roomMake_canvas_img_height_arr[select_img_num]=roomMake_canvas_img_width_arr[select_img_num];
@@ -373,7 +373,7 @@ $(document).ready(function(){
 				
 			}
 			else if(roomMake_canvas_img_state_arr[select_img_num]==4){
-				img_turn.src="resources/Images/Room/roomMake_window_ond.png";
+				img_turn.src="/resources/Images/Room/roomMake_window_ond.png";
 				roomMake_canvas_img_kind_arr[select_img_num]=img_turn;
 				temp=roomMake_canvas_img_height_arr[select_img_num];
 				roomMake_canvas_img_height_arr[select_img_num]=roomMake_canvas_img_width_arr[select_img_num];
@@ -386,7 +386,7 @@ $(document).ready(function(){
 		else if(roomMake_canvas_img_kind_num_arr[select_img_num]==2){
 			
 			if(roomMake_canvas_img_state_arr[select_img_num]==1){
-				img_turn.src="resources/Images/Room/roomMake_door_two.png";
+				img_turn.src="/resources/Images/Room/roomMake_door_two.png";
 				roomMake_canvas_img_kind_arr[select_img_num]=img_turn;
 				temp=roomMake_canvas_img_height_arr[select_img_num];
 				roomMake_canvas_img_height_arr[select_img_num]=roomMake_canvas_img_width_arr[select_img_num];
@@ -394,7 +394,7 @@ $(document).ready(function(){
 				roomMake_canvas_img_state_arr[select_img_num]=2;
 			}
 			else if(roomMake_canvas_img_state_arr[select_img_num]==2){
-				img_turn.src="resources/Images/Room/roomMake_door_three.png";
+				img_turn.src="/resources/Images/Room/roomMake_door_three.png";
 				roomMake_canvas_img_kind_arr[select_img_num]=img_turn;
 				temp=roomMake_canvas_img_height_arr[select_img_num];
 				roomMake_canvas_img_height_arr[select_img_num]=roomMake_canvas_img_width_arr[select_img_num];
@@ -403,7 +403,7 @@ $(document).ready(function(){
 				
 			}
 			else if(roomMake_canvas_img_state_arr[select_img_num]==3){
-				img_turn.src="resources/Images/Room/roomMake_door_four.png";
+				img_turn.src="/resources/Images/Room/roomMake_door_four.png";
 				roomMake_canvas_img_kind_arr[select_img_num]=img_turn;
 				temp=roomMake_canvas_img_height_arr[select_img_num];
 				roomMake_canvas_img_height_arr[select_img_num]=roomMake_canvas_img_width_arr[select_img_num];
@@ -412,7 +412,7 @@ $(document).ready(function(){
 				
 			}
 			else if(roomMake_canvas_img_state_arr[select_img_num]==4){
-				img_turn.src="resources/Images/Room/roomMake_door_one.png";
+				img_turn.src="/resources/Images/Room/roomMake_door_one.png";
 				roomMake_canvas_img_kind_arr[select_img_num]=img_turn;
 				temp=roomMake_canvas_img_height_arr[select_img_num];
 				roomMake_canvas_img_height_arr[select_img_num]=roomMake_canvas_img_width_arr[select_img_num];

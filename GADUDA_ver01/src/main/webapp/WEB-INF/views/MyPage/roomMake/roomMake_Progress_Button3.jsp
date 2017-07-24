@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+      <%@ page import="kr.co.gaduda.common.URLs"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,31 +21,15 @@ $(document).ready(function() {
 		$(".roomMak_Progress_state1").css("background","pink");
 		$(".roomMak_Progress_state2").css("background","yellow");
 		$(".roomMak_Progress_state3").css("background","yellow");
+		
 		$.ajax({      
-	        url : "roomMake_Canvas",
+	        url : "${URLs.URI_ROOMMAKE_CANVAS_FULL}",
 	 		success:function(data){
 	 			$("#roomMake_Progress_Position").html(data);
 	 		}
 	    }); 
 		$.ajax({      
-	        url : "roomMake_Progress_Button2",
-	 		success:function(data){
-	 			$("#roomMake_Progress_Button_Position").html(data);
-	 		}
-	    });
-	});
-	$("#roomMake_Progress_Next_Button_js").click(function(){
-		$(".roomMak_Progress_state1").css("background","yellow");
-		$(".roomMak_Progress_state2").css("background","yellow");
-		$(".roomMak_Progress_state3").css("background","pink");
-		$.ajax({      
-	        url : "js_test03.jsp",
-	 		success:function(data){
-	 			$("#roomMake_Progress_Position").html(data);
-	 		}
-	    }); 
-		$.ajax({      
-	        url : "js_button03.jsp",
+	        url : "${URLs.URI_ROOMMAKE_PROGRESS_BUTTON2_FULL}",
 	 		success:function(data){
 	 			$("#roomMake_Progress_Button_Position").html(data);
 	 		}

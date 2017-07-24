@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+      <%@ page import="kr.co.gaduda.common.URLs"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -78,11 +79,10 @@ body {
 
 
 </style>
-<script src="resources/script/html2canvas.js"></script>
+<script src="/resources/script/html2canvas.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	
 	var canvas = document.getElementById("myCanvas");
 	var context = canvas.getContext("2d");
 
@@ -90,50 +90,12 @@ $(document).ready(function(){
 	var offsetX=canvasOffset.left;
 	var offsetY=canvasOffset.top;
 	
-    
-	//이미지 시작점
-	var roomMake_canvas_img_X = 150;
-	var roomMake_canvas_img_Y = 150;
 	
-	
-	var select_img_num = '';
-	var turn_img_num = '';
-	
-	//창문 이미지
-	var roomMake_canvas_window_one_img  = new Image();
-	roomMake_canvas_window_one_img.src = "https://i.ytimg.com/vi/ZE_dO1wCipE/hqdefault.jpg";
-	
-	//문이미지
-	var roomMake_canvas_door_one_img =  new Image();
-	roomMake_canvas_door_one_img.src = "https://i.ytimg.com/vi/jLxD6cxLA1A/hqdefault.jpg";
-	
-	//액스표 이미지
-	var roomMake_canvas_Ximg =  new Image();
-	roomMake_canvas_Ximg.src = "https://static4.depositphotos.com/1001003/355/i/450/depositphotos_3552603-stock-photo-3d-rejected-or-rated-x.jpg";
-    
-	var roomMake_canvas_Turnimg =  new Image();
-	roomMake_canvas_Turnimg.src = "https://st2.depositphotos.com/4441075/12231/v/950/depositphotos_122316444-stock-illustration-rotation-arrow-in-a-circle.jpg";
-	
-	var size_img = new Image();
-	size_img.src="http://cfile29.uf.tistory.com/image/224DC14F530F35C5292D53";
-	
-	var roomMake_canvas_XImg_X ='';
-	var roomMake_canvas_XImg_Y = '';
-	
-	var roomMake_canvas_TurnImg_X ='';
-	var roomMake_canvas_TurnImg_Y = '';
-	
-	var roomMake_canvas_SizeImg_X=[];
-	var roomMake_canvas_SizeImg_Y=[];
-	
-	var roomMake_canvas_draggingImage = false;
-	var roomMake_canvas_size = false;
 	
     RectDraw();
     roomDraw();
-    TextPoition();
     roomMake_Canvas_DrawImg();
-    
+    TextPoition();
     
    
     function RectDraw() {
@@ -158,7 +120,6 @@ $(document).ready(function(){
 	}
 	
 	function roomMake_Canvas_DrawImg(){
-		
 		var i=0;
 		while(i<roomMake_canvas_img_arr_size){
 			context.drawImage(roomMake_canvas_img_kind_arr[i], 0, 0, 
@@ -296,7 +257,7 @@ $(document).ready(function(){
 						$.ajax({
 							type : "post",
 							data :myroom_data,
-							url : "roomMake",
+							url : "${URLs.URI_ROOMMAKE_FULL}",
 							success : function(data) {
 								alert(data.msg);
 								try {
