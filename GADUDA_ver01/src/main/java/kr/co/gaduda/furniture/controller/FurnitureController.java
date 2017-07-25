@@ -60,6 +60,15 @@ public class FurnitureController {
 			@RequestParam(value = "array_option", required = false) String array_option, Model model,
 			HttpServletRequest request) {
 
+		List<String> furRoomKind = furnitureService.getRoomKind();
+		model.addAttribute("roomKind", furRoomKind);
+		
+		List<String> furConceptKind = furnitureService.getConceptKind();
+		model.addAttribute("conceptKind", furConceptKind);
+		
+		List<String> furDefKind = furnitureService.getFurDefKind();
+		model.addAttribute("furDefKind", furDefKind);
+
 		List<FurnitureListViewVO> furList = furnitureService.furnitureList(room_kind_def_name, concept_name,
 				fur_kind_def_name, array_option, request);
 

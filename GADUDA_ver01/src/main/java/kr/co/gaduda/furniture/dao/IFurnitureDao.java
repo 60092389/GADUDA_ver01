@@ -78,5 +78,14 @@ public interface IFurnitureDao {
 	public int furScrap(FurnitureScrapDTO furnitureScrapDTO);
 
 	public List<FurnitureScrapListVO> furScrapList(int fur_no);
+	
+	//방 종류 가져오기
+	public List<String> getRoomKind();
+	
+	//컨셉 종류 가져오기
+	public List<String> getConceptKind();
+	
+	//가구 종류 가져오기
+	public List<String> getFurDefKind();
 
 }

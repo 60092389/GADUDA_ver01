@@ -49,14 +49,13 @@ public class FurnitureDao implements IFurnitureDao {
 	public List<String> fur_pic_loc_Get(int fur_no) {
 		return sqlSession.selectList(namespace + ".fur_pic_loc", fur_no);
 	}
-	
+
 	@Override
 	public List<FurnitureReplyListVO> FurnitureReplList(int fur_no) {
-		
+
 		String fur_no_str = String.valueOf(fur_no);
-		
-		Query query = new Query(
-				new Criteria().andOperator(Criteria.where("fur_no").is(fur_no_str)));
+
+		Query query = new Query(new Criteria().andOperator(Criteria.where("fur_no").is(fur_no_str)));
 
 		return mongoTemplate.find(query, FurnitureReplyListVO.class, "furniture_reply");
 	}
@@ -165,7 +164,7 @@ public class FurnitureDao implements IFurnitureDao {
 		return sqlSession.update(namespace + ".fur_reply_num_down", fur_no);
 	}
 
-	//가구 좋아요 리스트 불러오기
+	// 가구 좋아요 리스트 불러오기
 	@Override
 	public List<FurnitureGoodListVO> getFurGoodList(Map<String, Object> search) {
 
@@ -174,26 +173,43 @@ public class FurnitureDao implements IFurnitureDao {
 		return mongoTemplate.find(query, FurnitureGoodListVO.class, "furniture_good");
 
 	}
-	
-	//가구 스크랩 하기
-		@Override
-		public int furScrapChk(FurnitureScrapDTO furnitureScrapDTO){
-			return sqlSession.selectOne(namespace+".fur_scrap_chk", furnitureScrapDTO);
-		}
-		@Override
-		public int furScrap(FurnitureScrapDTO furnitureScrapDTO){
-			int result;
-			try {
-				result = sqlSession.insert(namespace+".fur_scrap", furnitureScrapDTO);
-			} catch (Exception e) {
-				result = 0;
-			}
-			return result;
-		}
-		
-		@Override
-		public List<FurnitureScrapListVO> furScrapList(int fur_no){
-			return sqlSession.selectList(namespace+".fur_scrap_list", fur_no);
-		}
 
+	// 가구 스크랩 하기
+	@Override
+	public int furScrapChk(FurnitureScrapDTO furnitureScrapDTO) {
+		return sqlSession.selectOne(namespace + ".fur_scrap_chk", furnitureScrapDTO);
+	}
+
+	@Override
+	public int furScrap(FurnitureScrapDTO furnitureScrapDTO) {
+		int result;
+		try {
+			result = sqlSession.insert(namespace + ".fur_scrap", furnitureScrapDTO);
+		} catch (Exception e) {
+			result = 0;
+		}
+		return result;
+	}
+
+	@Override
+	public List<FurnitureScrapListVO> furScrapList(int fur_no) {
+		return sqlSession.selectList(namespace + ".fur_scrap_list", fur_no);
+	}
+
+	// 가구 방 종류 가져오기
+	@Override
+	public List<String> getRoomKind() {
+		return sqlSession.selectList(namespace + ".get_room_kind");
+	}
+
+	// 가구 방 컨셉 가져오기
+	@Override
+	public List<String> getConceptKind() {
+		return sqlSession.selectList(namespace + ".get_concept_kind");
+	}
+
+	// 가구 종류 가져오기
+	public List<String> getFurDefKind() {
+		return sqlSession.selectList(namespace + ".get_fur_def_kind");
+	}
 }

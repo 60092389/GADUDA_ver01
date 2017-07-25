@@ -14,23 +14,11 @@
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	
+<link rel="stylesheet" href="/resources/Css/Bootstrap/bootstrap.css">
 
-<style>
-body, h1, h2, h3, h4, h5, h6 {
-	font-family: "Lato", sans-serif
-}
-
-.w3-bar, h1, button {
-	font-family: "Montserrat", sans-serif
-}
-
-.fa-anchor, .fa-coffee {
-	font-size: 200px
-}
-</style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -38,7 +26,6 @@ $(document).ready(function() {
 	$('.good_list').click('show.bs.modal', function(){
 		$('#myLikeModal').focus();
 		var goodfurno = $('#fur_no').val();
-		alert(goodfurno);
 
 		var trans_object = {
 			'goodfurno' : goodfurno,
@@ -57,11 +44,10 @@ $(document).ready(function() {
 				$(".good_list_show").html("");
 				
 				for(var i =0; i < retVal.list_good.length; i++){ 
-				$(".good_list_show").append("<tr>");
-				$(".good_list_show").append("<td>" + retVal.list_good[i].mem_id +"</td>");
-				$(".good_list_show").append("<td>" + retVal.list_good[i].mem_nickname +"</td>");
-				$(".good_list_show").append("<td>" + retVal.list_good[i].fur_good_date+"</td>");
-				$(".good_list_show").append("</tr>");
+					$(".good_list_show").append("<div>");
+					$(".good_list_show").append("<p><b>" + retVal.list_good[i].mem_id +"</b>　"+retVal.list_good[i].mem_nickname+"</p>");
+					//$(".good_list_show").append("<h6>[" + retVal.list_good[i].fur_good_date+"]</h6>");
+					$(".good_list_show").append("</div>");
 				}
 			},
 			error : function(retVal, status, er){
@@ -236,8 +222,6 @@ $(document).ready(function() {
 		}); 
 		
 	});
-
-
 });
 </script>
 
@@ -246,126 +230,129 @@ $(document).ready(function() {
 	<!-- header include -->
 	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
 
-<div class="w3-container" style="float: right">
+<div class="container-fluid">
 	<c:set var="member" value="${ member }" />
 	<input type="hidden" id="fur_mem_id" value="${ member.mem_id }">
 	<input type="hidden" id="fur_memnick" value="${ member.mem_nickname }">
 	<c:set var="fur" value="${ furdeVO }" />
 	<input type="hidden" id="fur_no" value="${ furdeVO.fur_no }">
 </div>
-<div class="w3-main w3-container" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
-	<div class="w3-light-grey w3-padding-64 w3-margin-bottom w3-center">
+
+<div class="w3-main w3-col m9 w3-center mainSection">
+	<div class="w3-padding-64 w3-margin-bottom">
   		<h1 class="w3-jumbo">${furdeVO.fur_name }</h1>
 	</div>
 	
-	<div class="w3-row-padding w3-content" style="max-width:1200px;"">
-  		<div class="w3-twothird">
-  			<c:set var="furdeVO" value="${furdeVO }" />
-    		<img src="${furdeVO.fur_pic_loc.get(0) }" alt="Furniture" style="width:600px">
-    		<div>
-    			<c:forEach var="pic_loc" items="${furdeVO.fur_pic_loc }">
-					<img style="border:1px solid grey" alt="가구사진" src="${pic_loc}" width="200px" height="200px">						
-				</c:forEach>
-    		</div>
-    	</div>
-    	<br>
-    	<br>
-    	<br>
-    	<div class="w3-third">
- 			<h1>${furdeVO.fur_name }</h1>
+	<div class="w3-content" style="max-width:600px">
+	
+		<div class="w3-content w3-display-container w3-padding-16">
+			<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+			<c:forEach var="pic" items="${furdeVO.fur_pic_loc }">
+				<img class="mySlides" src="${pic}" style="width:80%; max-height: 100%" >
+			</c:forEach>
+  			<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+		</div>
+    </div>
+</div>
+
+<div>
+	<div id="user_action" class="w3-display-right" style="position: fixed; right:400px; top:500px; max-width: 300px">
+    	<div class="w3-content">
+    		<p style="color: orange;"><b>${furdeVO.fur_brand_name }</b></p>
+ 			<h3><b>${furdeVO.fur_name }</b></h3>
+ 			<br>
+ 			<p><b>가격</b> 　　　　 <b>${furdeVO.fur_price } won</b></p> 
+ 			<p><b>종류</b> 　　　 　<b>${furdeVO.fur_kind }</b></p> 
+ 			<p><b>컨셉</b> 　　　 　<b>${furdeVO.fur_con }</b></p> 
+ 			<b>소개</b>
  			<p>${furdeVO.fur_info }</p>
-			<table class="w3-table w3-bordered w3-border">
-					<tr><td style="width:30%">Brand</td><td>${furdeVO.fur_brand_name }</td></tr>
-					<tr><td>Price</td><td>${furdeVO.fur_price } won</td></tr>
-					<tr><td>Concept</td><td>${furdeVO.fur_con }</td></tr>
-					<tr><td>Kind</td><td>${furdeVO.fur_kind }</td></tr>
-					<tr><td>Like</td><td><i class="material-icons">favorite</i> <button name="subject" id="btn_good" value="${furdeVO.fur_no }">Like</button> 
-						<button onclick="document.getElementById('myLikeModal').style.display='block'" class="good_list" 
-						data-toggle="modal" data-target="#myLikeModal"> ${furdeVO.fur_good_num } </button></td></tr>
-						
-					<tr><td>Scrap</td><td><i class="material-icons">attachment</i> <button name="subject" id="btn_scrap" value="${furdeVO.fur_no }">Scrap</button>
-						<button onclick="document.getElementById('myScrapModal').style.display='block'" class="scrap_list" 
-						data-toggle="modal" data-target="#myScrapModal">${furdeVO.fur_scrap_num }</button></td></tr>
-						
-					<tr><td>Comment</td><td><i class="material-icons">cloud</i> ${furdeVO.fur_repl_num }</td></tr>
-			</table>
-
- 		</div>
+ 			<br>
+ 			<br>
+ 			<div class="w3-center">
+ 				<div class="w3-border w3-round" style="width: 150px">
+					<button class="w3-button w3-white w3-hover-white" name="subject" id="btn_good" value="${furdeVO.fur_no }"><i class="material-icons">favorite</i></button> 
+					<button onclick="document.getElementById('myLikeModal').style.display='block'" class="good_list w3-button w3-white w3-hover-white" 
+							data-toggle="modal" data-target="#myLikeModal">Like${furdeVO.fur_good_num }</button>
+				</div>
+				<br>
+				<div class="w3-border w3-round" style="width: 150px">
+					<button class="w3-button w3-white w3-hover-white" name="subject" id="btn_scrap" value="${furdeVO.fur_no }"><i class="material-icons">attachment</i></button> 
+					<button onclick="document.getElementById('myScrapModal').style.display='block'" class="scrap_list w3-button w3-white w3-hover-white" 
+							data-toggle="modal" data-target="#myScrapModal">Scrap${furdeVO.fur_scrap_num }</button>
+				</div>
+				<br>
+				<div class="w3-border w3-round" style="width: 150px">
+					<button class="w3-button w3-white w3-hover-white" name="subject"><i class="material-icons">cloud</i></button> 
+					<button class="w3-button w3-white w3-hover-white" >Repl${furdeVO.fur_repl_num }</button>
+				</div>
+ 			</div>
+		</div>
  	</div>
+</div>
 <br><br>
-
 <!-- 댓글 보기 -->
-	<div id="repl" class="w3-container">
-		<div class="w3-container">
-		
-			<h1>댓글</h1> 
-			<div>
-				<table>
-					<tbody id="furrepllist">
-						<c:forEach var="replyList" items="${fur_repl_list }">
-							<tr>
-								<td>${replyList.mem_id }(${replyList.mem_nickname }) </td>
-								<td>${replyList.fur_rep_contents }</td>
-								<td>${replyList.fur_rep_write_date }</td>
-								<td><button class="btn-fur-reply-del" value="${replyList._id }">delete</button> </td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-			<div style="float: center">
-				<table>
-					<tbody>
-						<tr><td>${member.mem_profile_pic } || ${member.mem_id } (${member.mem_nickname })</td></tr>
-						<tr><td><input name="fur_repl" id="fur_repl" value='' placeholder="내용을 작성하세요" type="text" class="form-control" /></td></tr>
-						<tr><td><input type="submit" id="replinput" value="작성" /><input type="hidden" id="repl_fur_no" value="${furdeVO.fur_no }"></td></tr>
-					</tbody>
-				</table>
+<div style="float: center; margin-right: 400px">
+	<div id="more_comments" class="w3-container w3-left">
+		<div class="w3-content w3-border-bottom ">
+			<a><h5><b>댓글 더보기</b></h5></a> <!-- 댓글이 많아지는 경우에 사용할 것(수정해야함) -->
+			<br>
+			<c:forEach var="replyList" items="${fur_repl_list }">
+				<div id="repllistcall" class="w3-padding w3-margin-left">
+					<p>
+						<!-- ★★★★★★★★★★★★★★★사진 왜 안나오는 거니★★★★★★★★★★★★★★ -->
+						<!-- replyList.mem_profile_pic 이미지 안나옴-->
+						<b>　　　${replyList.mem_id }(${replyList.mem_nickname })</b>　　　${replyList.fur_rep_contents }
+						<input type="hidden" id="repl_id" value="${replyList._id }">
+						<b class="w3-right" style="font-size: 11px">
+						<button class="w3-button btn-reply-delete" style="size: 15px" value="${reply._id }"> delete</button>${reply.fur_arr_plan_rep_write_date }</b>
+					</p>		
+				</div>
+			</c:forEach>
+		</div>
+		<div class="w3-content w3-border-bottom ">
+			<div id="replwritediv" class="w3-padding w3-margin-left">
+				<p>
+					<img class="w3-circle" alt="${member.mem_id }" src="${member.mem_profile_pic }" style="width:25px; height: 25px" >
+					<b>　　　${member.mem_id }(${member.mem_nickname })</b>
+					<input class="w3-margin-left" type="text" id="fur_repl" placeholder="댓글 입력" size="60px">
+					<button class="w3-button w3-right" id="replinput">댓글쓰기</button>
+				</p>
 			</div>
 		</div>
 	</div>
+	<!-- ★★★★★★★★★★★★★★★크롤링 완성 후 수정하기★★★★★★★★★★★★★★ -->
+	<div class="w3-container w3-left">
+		<div class="w3-content w3-border-bottom">
+			<h5>제품에 대한 평(크롤링)</h5>
+			<div>제품평(나중에 완성)</div>
+
+			<h5>비슷한 제품 추천</h5>
+			<div>비슷한 제품들 목록(나중에 완성)</div>
+
+			<h5>사이트별 가구 가격 비교</h5>
+			<div>가격 비교 목록(나중에 완성)</div>
+		</div>
+	</div>
+<br><br><br><br>
+</div>
 <br>
-
-<div class="w3-container">
-
-
-	<h2>제품에 대한 평(크롤링)</h2>
-	<div>제품평(나중에 완성)</div>
-
-	<h2>비슷한 제품 추천</h2>
-	<div>비슷한 제품들 목록(나중에 완성)</div>
-
-	<h2>사이트별 가구 가격 비교</h2>
-	<div>가격 비교 목록(나중에 완성)</div>
-</div>
-<br><br>
-</div>
 
 <!-- Modal -->
 <!-- 좋아요 -->
-
-
-<div class="w3-modal" id="myLikeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		
-		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 1000px" >
-			<div class="modal-content" style="margin: 20px">
-				<h1>좋아요 누른 사람</h1>
-				<div class="modal-body">
-					<table border="1">
-						<tbody class="good_list_show">						
-		
-						</tbody>
-
-					</table>
-
-
+<div id="myLikeModal" class="w3-modal">	
+		<!-- 여기도 좋아요 한사람 많아지면 바꿔야 될거같은데 -->
+		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px; ">
+			<h1 class="modal-title" style="margin: 20px; margin-top: 30px;">좋아요 누른 사람</h1>
+			<div class="w3-section">
+				<div class="good_list_show w3-margin">
 				</div>
-				<button
-					onclick="document.getElementById('myLikeModal').style.display='none'"
-					type="button" class="w3-button w3-red">Cancel</button>
 			</div>
+			<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+				<button onclick="document.getElementById('myLikeModal').style.display='none'"
+					type="button" class="w3-button w3-red">Cancel</button>
+				</div>
 		</div>
-	</div>
+</div>
 
 	
 <!-- 스크랩 -->	
@@ -390,5 +377,26 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</div>
+	
+<!-- 사진 도로록 -->
+<script>
+var slideIndex = 3;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
 </body>
 </html>

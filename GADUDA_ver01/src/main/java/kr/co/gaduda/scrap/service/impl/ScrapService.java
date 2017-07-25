@@ -66,6 +66,7 @@ public class ScrapService implements IScrapService {
 			furScrapVO.setFur_reply_count(fur_reply_count);
 			furScrapVO.setFur_scrap_count(fur_scrap_count);
 			furScrapVO.setFur_scrap_date(fur_scrap_date);
+			furScrapVO.setFur_no(fur_no);
 			
 			fur_scrapList.add(furScrapVO);
 			

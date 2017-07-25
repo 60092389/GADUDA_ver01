@@ -6,21 +6,17 @@
 <title>GADUDA</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_listview.css">
+<link rel="stylesheet" href="/resources/Css/Bootstrap/bootstrap.css">
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<style>
-body, h1, h2, h3, h4, h5, h6 {font-family: "Lato", sans-serif}
-.w3-bar, h1, button { font-family: "Montserrat", sans-serif}
-.fa-anchor, .fa-coffee { font-size: 200px }
-</style>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>가두다</title>
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -79,41 +75,41 @@ $(document).ready(function(){
 	<jsp:include page="/WEB-INF/views/MyPage/MyInfo/view_mypage_sidebar.jsp" flush="false" />
 	
 	<!-- Page Container -->
-	<div class="w3-main w3-content" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
-
-	<table cellspacing="0" border="1" class="tb_list tb_order_check _order_area">
-
-		<thead>
-			<th>이미지</th>
-			<th>가구이름</th>
-			<th>가구 가격</th>
-			<th>가구브랜드</th>
-			<th>스크랩 작성날짜</th>
-			<th>좋아요 수</th>
-			<th>스크랩 수</th>
-			<th>댓글 수</th>
-			<th></th>
-		</thead>
-	
-		<tbody>
-			<c:forEach var="fsl" items="${fur_scrap_list }">
-				<tr>
-					<td><img alt="가구사진" src="${fsl.fur_pic_loc }" width="100px" height="100px"></td>
-					<td>${fsl.fur_name }</td>
-					<td>${fsl.fur_price }</td>
-					<td>${fsl.fur_brand_name }</td>
-					<td>${fsl.fur_scrap_date }</td>
-					<td>${fsl.fur_good_count }</td>
-					<td>${fsl.fur_scrap_count }</td>
-					<td>${fsl.fur_reply_count }</td>
-					<td><%-- <a href="${URLs.URI_FURNITURE_SCRAP_DELETE_FULL }?fur_scrap_no=${fsl.fur_scrap_no}">삭제하기</a> --%>
-					<button id="btn-scrap-delete" value="${fsl.fur_scrap_no}">삭제하기</button></td>
-					<!-- <td><input type="button" name="scrapdelete" id="scrapdelete" value="삭제하기"></td> -->
-				
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+	<div class="w3-padding-32 w3-main mainSection w3-content w3-center ">
+		<h2><b>가구 스크랩 리스트</b></h2>
+		<br>
+		<c:forEach var="fsl" items="${fur_scrap_list }">
+		<div class="w3-padding-32 w3-main w3-content w3-margin-top w3-border-top">
+			<table class="w3-container w3-table">
+  				<tr>
+   					 <th colspan="4" class="w3-subcolor"><a href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fsl.fur_no }"><h6><b>${fsl.fur_name }</b></h6></a></th>
+  				</tr>
+  				<tr>
+    				<th rowspan="3"><img alt="${fsl.fur_name }" src="${fsl.fur_pic_loc }" height="200px"></th>
+   					<th></th> 
+    				<th></th>
+    				<th></th> 
+  				</tr>
+  				<tr>
+   	 				<th>${fsl.fur_scrap_date }</th> 
+    				<th></th>
+    				<th>
+    					<div>
+							<i class="material-icons" >favorite</i>${fsl.fur_good_count }
+							<i class="material-icons">attachment</i>${fsl.fur_reply_count }
+							<i class="material-icons">cloud</i>${fsl.fur_scrap_count }
+						</div>
+    				</th> 
+  				</tr>
+  				<tr>
+    				<th>${fsl.fur_brand_name } | ${fsl.fur_price }</th> 
+    				<th></th>
+    				<th><button class="w3-button" id="btn-scrap-delete" value="${fsl.fur_scrap_no}">삭제하기</button></th>
+  				</tr>
+  
+			</table>
+		</div>
+		</c:forEach>
 	</div>
 </div>
 

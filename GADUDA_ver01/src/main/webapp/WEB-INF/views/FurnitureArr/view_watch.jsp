@@ -12,19 +12,6 @@
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<style>
-body, h1, h2, h3, h4, h5, h6 {
-	font-family: "Lato", sans-serif
-}
-
-.w3-bar, h1, button {
-	font-family: "Montserrat", sans-serif
-}
-
-.fa-anchor, .fa-coffee {
-	font-size: 200px
-}
-</style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <body>

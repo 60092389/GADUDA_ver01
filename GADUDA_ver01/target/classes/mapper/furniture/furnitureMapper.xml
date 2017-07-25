@@ -157,7 +157,26 @@
 		SELECT FS.MEM_ID as MEM_ID, MEM_NICKNAME, FUR_SCRAP_DATE FROM FURNITURE_SCRAP FS, MEMBER ME WHERE ME.MEM_ID = FS.MEM_ID AND FS.FUR_NO = #{fur_no}
 	</select>
 	
+		<!-- 방종류 가져오기 -->
+	<select id="get_room_kind" resultType="String">
+		<![CDATA[
+			select room_kind_def_name from ROOM_KIND_DEFINE
+		]]>
+	</select>
 	
+	<!-- 컨셉 종류 가져오기 -->
+	<select id="get_concept_kind" resultType="String">
+		<![CDATA[
+			select concept_name from CONCEPT
+		]]>
+	</select>
+	
+	<!-- 가구 종류 가져오기 -->
+	<select id="get_fur_def_kind" resultType="String">
+		<![CDATA[
+			select fur_kind_def_name from FURNITURE_KIND_DEFINE
+		]]>
+	</select>
 	
 	
 	

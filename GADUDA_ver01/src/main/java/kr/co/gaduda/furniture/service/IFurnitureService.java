@@ -51,4 +51,13 @@ public interface IFurnitureService {
 	public int furScrap(FurnitureScrapDTO furnitureScrapDTO);
 
 	public List<FurnitureScrapListVO> furScrapList(int fur_no);
+	
+	//가구 방 종류 가져오기
+	public List<String> getRoomKind();
+	
+	//가구 방 컨셉 가져오기
+	public List<String> getConceptKind();
+	
+	//가구 종류 가져오기
+	public List<String> getFurDefKind();
 }

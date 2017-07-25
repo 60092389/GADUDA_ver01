@@ -252,5 +252,21 @@ public class FurnitureService implements IFurnitureService {
 	public List<FurnitureScrapListVO> furScrapList(int fur_no) {
 		return furnitureDao.furScrapList(fur_no);
 	}
+	//가구 방 종류 가져오기
+	@Override
+	public List<String> getRoomKind(){
+		return furnitureDao.getRoomKind();
+	}
+	
+	//가구 컨셉 종류 가져오기
+	@Override 
+	public List<String> getConceptKind(){
+		return furnitureDao.getConceptKind();
+	}
+	
+	//가구 종류 가져오기
+	public List<String> getFurDefKind(){
+		return furnitureDao.getFurDefKind();
+	}
 
 }

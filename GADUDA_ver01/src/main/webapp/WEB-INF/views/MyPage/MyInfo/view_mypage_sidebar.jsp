@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class=" w3-sidebar " style="margin-top:150px; margin-left: 50px">
+<div class=" w3-sidebar " style="margin-top:200px; margin-left: 50px">
 	<div class="w3-col m2">
 		<nav class="w3-sidebar w3-bar-block w3-white w3-collapse" style="z-index:3;width:200px" id="mySidebar">
 			<div class="w3-container w3-display-container w3-padding-16">

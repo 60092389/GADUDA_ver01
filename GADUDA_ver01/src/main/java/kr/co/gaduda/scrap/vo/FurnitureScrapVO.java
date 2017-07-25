@@ -5,6 +5,7 @@ import java.util.Date;
 public class FurnitureScrapVO {
 	
 	private int fur_scrap_no;
+	private int fur_no;
 	private String fur_pic_loc;
 	private String fur_name;
 	private int fur_price;
@@ -17,6 +18,12 @@ public class FurnitureScrapVO {
 	
 	
 	
+	public int getFur_no() {
+		return fur_no;
+	}
+	public void setFur_no(int fur_no) {
+		this.fur_no = fur_no;
+	}
 	public int getFur_scrap_no() {
 		return fur_scrap_no;
 	}

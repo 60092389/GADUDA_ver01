@@ -4,30 +4,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<title>GADUDA</title>
+<title>가두다</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<style>
-body, h1, h2, h3, h4, h5, h6 {
-	font-family: "Lato", sans-serif
-}
+<link rel="stylesheet" href="/resources/Css/Bootstrap/bootstrap.css">
 
-.w3-bar, h1, button {
-	font-family: "Montserrat", sans-serif
-}
-
-.fa-anchor, .fa-coffee {
-	font-size: 200px
-}
-</style>
 <body>
 	<!-- header include -->
 	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
@@ -43,19 +30,22 @@ body, h1, h2, h3, h4, h5, h6 {
 
 	<!-- First Grid(인기 가구 리스트) -->
 	<div class="w3-container">
-		<div class="w3-container" style="float: center">
+		<div>
 			<h1><b>가구 리스트</b></h1>
 			<div>
 				<c:forEach var="fsl" items="${fur_list }">
-					<div class="w3-quarter w3-padding-32 w3-border">
-						<div class="w3-row-padding w3-center">
+					<div class="w3-col m3 w3-padding w3-margin-2">
+						<div class=" w3-center">
       						<div class="w3-display-container w3-center">
       							<a href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fsl.fur_no }">
-        							<div class="w3-display-topleft w3-padding">
-        								<h4><b>No${fsl.fur_no }. ${fsl.fur_name }</b></h4><br>
-        								<p class="w3-display-right"><b>${fsl.fur_brand_name } ${fsl.fur_price }</b>원</p>
+      								<img src="${fsl.fur_pic_loc }" alt="${fsl.fur_no }" style="width:90%">
+        							<div class="w3-display-bottomleft w3-padding w3-center">
+        								<div>
+        									<h5><b>${fsl.fur_name }</b></h5>
+        									<p>${fsl.fur_brand_name } 　${fsl.fur_price }원</p>
+        								</div>
         							</div><br>
-        							<img src="${fsl.fur_pic_loc }" alt="${fsl.fur_no }" style="width:100%">
+        							
         							<div class="w3-padding w3-display-bottomright">
 										<i class="material-icons" >favorite</i>${fsl.fur_good_num }
 										<i class="material-icons">attachment</i>${fsl.fur_scrap_num }

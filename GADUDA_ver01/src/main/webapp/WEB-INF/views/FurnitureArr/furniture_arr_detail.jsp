@@ -15,16 +15,6 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<style>
-body, h1, h2, h3, h4, h5, h6 {
-	font-family: "Lato", sans-serif
-}
-
-.w3-bar, h1, button {
-	font-family: "Montserrat", sans-serif
-}
-
-</style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
@@ -215,6 +205,10 @@ $(document).ready(function(){
 	//스크랩하기
 	$("#btn-scrap-add").click(function(){
 		
+		var fur_arr_plan_no = $(this).val();
+		var mem_id = $('#sc_user_id').val();
+		
+		alert(fur_arr_plan_no+","+mem_id);
 		
 		var trans_object = {
 			'mem_id' : mem_id,
@@ -257,6 +251,11 @@ $(document).ready(function(){
 	
 });
 
+var login_id = $('#user_id').val();
+var repl_id = $('#repl_id').val();
+if(login_id != repl_id){
+	$('.btn-reply-delete').hide();
+}
 
 </script>
 
@@ -274,41 +273,100 @@ $(document).ready(function(){
 </div>
 
 <div class="w3-main w3-container" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
-	<div class="w3-light-grey w3-padding-64 w3-margin-bottom w3-center">
+	<div class="\ w3-padding-64 w3-margin-bottom w3-center">
   		<h1 class="w3-jumbo">${detailVO.fur_arr_name }</h1>
 	</div>
 	
-	<div class="w3-row-padding w3-content" style="max-width:1200px;"">
+	<div class="w3-row-padding w3-content" style="max-width:1200px;">
   		<div class="w3-twothird">
-    		<img src="${detailVO.fur_arr_plan_img_loc }" alt="Furniture" style="width:600px">
+    		<img src="${detailVO.fur_arr_plan_img_loc }" alt="FurnitureArr" style="width:600px">
     	</div>
     	<br>
     	<br>
     	<br>
-    	
-	<div class="w3-third">
- 			<h1>${detailVO.fur_arr_name }</h1>
+    	<div id="user_action" class="w3-display-right" style="position: fixed; right:300px; top:500px; max-width: 300px">
+    		<div class="w3-content">
+    		<p style="color: orange;">
+    			<img class="w3-circle" src="${detailVO.mem_profile_pic }" alt="profile" style="width:10%"> <b>　　${detailVO.mem_id }</b></p>
+ 			<h3><b>${detailVO.fur_arr_name }</b></h3>
+ 			<br>
+ 			<p><b>Date</b> 　　　　 <b>${detailVO.fur_arr_create_date }</b></p> 
+ 			<p><b>종류</b> 　　　 　<b>${detailVO.fur_arr_rooms }</b></p> 
+ 			<p><b>컨셉</b> 　　　 　<b>${detailVO.fur_arr_concepts }</b></p> 
+ 			<p><b>#</b> 　　　 　　<b>${detailVO.fur_arr_hashtags }</b></p> 
+ 			<b>소개</b>
  			<p>${detailVO.fur_arr_contents}</p>
-			<table class="w3-table w3-bordered w3-border">
-					<tr><td style="width:30%">User Profile</td>
-							<td><p>사진주소 : ${detailVO.mem_profile_pic }</p>
-								<p>아디 : ${detailVO.mem_id }</p>
-								<p>닉네임 : ${detailVO.mem_nickname }</p></td></tr>
-					<tr><td>Date</td><td>${detailVO.fur_arr_create_date }</td></tr>
-					<tr><td><button  name="goodup" class="btn-fur-arr-good" value="${detailVO.fur_arr_plan_no }">Like</button></td>
-						<td><button onclick="document.getElementById('myModal').style.display='block'" class="good_list" data-toggle="modal" data-target="#myModal"> ${detailVO.fur_arr_plan_good_num } </button></td></tr>
-					<tr><td><button id="btn-scrap-add">scrap</button></td><td>${detailVO.fur_arr_plan_scrap_num }</td></tr>
-					<tr><td>HashTag</td><td>${detailVO.fur_arr_hashtags }</td></tr>
-					<tr><td>Concept</td><td>${detailVO.fur_arr_concepts }</td></tr>
-					<tr><td>RoomKind</td><td>${detailVO.fur_arr_rooms }</td></tr>
-			</table>
- 		</div>
+ 			<br>
+ 			<br>
+ 			<div class="w3-center">
+ 				<div class="w3-border w3-round " style="width: 150px">
+					<button class="btn-fur-arr-good w3-button w3-hover-white" name="subject" id="btn_good" value="${detailVO.fur_arr_plan_no }"><i class="material-icons">favorite</i></button> 
+					<button onclick="document.getElementById('myModal').style.display='block'" class="good_list w3-button w3-hover-white" 
+							data-toggle="modal" data-target="#myModal">Like ${detailVO.fur_arr_plan_good_num }</button>
+				</div>
+				<br>
+				<div class="w3-border w3-round" style="width: 150px">
+					<button class="w3-button w3-hover-white" name="subject" id="btn-scrap-add" value="${detailVO.fur_arr_plan_no }"><i class="material-icons">attachment</i></button> 
+					<input type="hidden" id="sc_user_id" value="${ member.mem_id }">
+					<button class="scrap_list w3-button w3-hover-white">Scrap ${detailVO.fur_arr_plan_scrap_num }</button>
+				</div>
+				<br>
+				<div class="w3-border w3-round" style="width: 150px">
+					<button class="w3-button w3-hover-white" name="subject"><i class="material-icons">cloud</i></button> 
+					<button class="w3-button w3-hover-white" >Repl ${detailVO.fur_arr_plan_repl_num }</button>
+				</div>
+ 			</div>
+			</div>
+ 		</div>  	
  	</div>
 </div>		
- 	<br><br>
-<div class="w3-container" style="float: center">
-<h1>가구배치도에 사용된 가구</h1>
-<h3>사용된 가구의 총 가격 : ${detailVO.total_fur_price }</h3>
+<br><br>
+
+<div style="float: center; margin-right: 400px">
+	<div id="more_comments" class="w3-container w3-left">
+		<div class="w3-content w3-border-bottom ">
+			<a><h5><b>댓글 더보기</b></h5></a> <!-- 댓글이 많아지는 경우에 사용할 것(수정해야함) -->
+			<br>
+			<!-- 댓글 리스트 불러오기 -->
+			<c:forEach var="reply" items="${reply_list }">
+				<div id="repllistcall" class="w3-padding w3-margin-left">
+					<p>
+						<img class="w3-circle" alt="${reply.mem_id }" src="${reply.mem_profile_pic }" style="width:25px; height: 25px" >
+						<b>　　　${reply.mem_id }(${reply.mem_nickname })</b>　　　${reply.fur_arr_plan_rep_contents }
+						<input type="hidden" id="repl_id" value="${ reply.mem_id }">
+						<b class="w3-right" style="font-size: 11px">
+						<button class="w3-button btn-reply-delete" style="size: 15px" value="${reply._id }"> delete</button>${reply.fur_arr_plan_rep_write_date }</b>
+					</p>		
+				</div>
+			</c:forEach>
+		</div>
+		
+		<div class="w3-content w3-border-bottom ">
+			<div id="replwritediv" class="w3-padding w3-margin-left">
+				<p>
+					<img class="w3-circle" alt="${reply.mem_id }" src="${member.mem_profile_pic }" style="width:25px; height: 25px" >
+					<b>　　　${member.mem_id }(${member.mem_nickname })</b>
+					<input class="w3-margin-left" type="text" id="reply_text" placeholder="댓글 입력" size="60px">
+					<button class="w3-button w3-right" id="reply_write">댓글쓰기</button>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="w3-padding-large" style="float: center; margin-right: 400px">
+	<div class="w3-container w3-left">
+		<div id="recommend_items" class="w3-content">
+			<div class="title"><h4><b>배치도에 사용된 제품</b></h4></div>
+			<p>배치도에 사용된 제품의 총 가격　　${detailVO.total_fur_price }</p>
+			<div class="w3-bar">
+				<div>
+				</div>
+			</div>
+		</div>
+		<h1>배치도에 사용된 가구</h1>
+	</div>
 	<div class="w3-container">
 		<div class="w3-container" style="float: center">
 			<div>
