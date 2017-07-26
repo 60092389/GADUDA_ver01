@@ -300,7 +300,6 @@ $(document).ready(function() {
 				<div id="repllistcall" class="w3-padding w3-margin-left">
 					<p>
 						<!-- ★★★★★★★★★★★★★★★사진 왜 안나오는 거니★★★★★★★★★★★★★★ -->
-						<img class="w3-circle" alt="${replyList.mem_id }" src="${replyList.mem_profile_pic }" style="width:25px; height: 25px" >
 						<b>　　　${replyList.mem_id }(${replyList.mem_nickname })</b>　　　${replyList.fur_rep_contents }
 						<input type="hidden" id="repl_id" value="${replyList._id }">
 						<b class="w3-right" style="font-size: 11px">
