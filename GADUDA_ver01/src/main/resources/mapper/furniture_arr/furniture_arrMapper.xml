@@ -71,7 +71,7 @@
 		where FUR_ARR_PLAN_NO=#{fur_arr_plan_no}
       ]]>
 	</update>
-	
+
 	<select id="get_arr_fur_room_kind" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrVO">
 	<![CDATA[
 		select p.FUR_ARR_PLAN_NO,ai.FUR_ARR_PLAN_IMG_LOC,p.FUR_ARR_NAME,p.mem_id,r.ROOM_NAME,p.FUR_ARR_PLAN_GOOD_NUM,p.FUR_ARR_PLAN_REPL_NUM
@@ -81,7 +81,7 @@
 		and kd.room_kind_def_name=#{room_kind_def_name}
 	]]>
 	</select>
-	
+
 	<select id="count_fur_arr_roomkind" resultType="int">
 	<![CDATA[
 	select count(*)
@@ -91,7 +91,7 @@ and p.ROOM_NO=r.ROOM_NO
 and kd.room_kind_def_name=#{room_kind_def_name}
 	]]>
 	</select>
-	
+
 	<select id="get_arr_fur_con" resultType="String">
 	<![CDATA[
 		select c.concept_name
@@ -100,7 +100,7 @@ and kd.room_kind_def_name=#{room_kind_def_name}
 		and kd.room_kind_def_name=#{room_kind_def_name}
 	]]>
 	</select>
-	
+
 	<select id="count_scrap" resultType="int">
 	<![CDATA[
 	select count(*) from furniture_arr_plan_scrap where fur_arr_plan_no=#{fur_arr_plan_no}
@@ -114,55 +114,63 @@ where p.fur_arr_plan_no=pc.fur_arr_plan_no and p.fur_arr_plan_no=ai.fur_arr_plan
 and c.concept_name=#{concept_name}
 	]]>
 	</select>
-	
+
 	<!-- /////////////////////////////////////////////////////////// -->
 	<!-- 배치도 상세 페이지 -->
-	
+
 	<!-- 해당 배치도 기본 정보 -->
-	<select id="fur_arr_detail_basic" resultType = "kr.co.gaduda.furniture_arr.vo.Furniture_arrDetailVO">
-		select fur_arr_plan_img_loc, fap.fur_arr_plan_no, fur_arr_name, 
-  		m.mem_id, mem_nickname, mem_profile_pic, fur_arr_contents, fur_arr_create_date,
-  		fur_arr_plan_good_num, fur_arr_plan_repl_num, 
-  		(select count(*) from furniture_arr_plan_scrap where fur_arr_plan_no = #{fur_arr_plan_no}) 
-  		  as fur_arr_plan_scrap_num,
- 		(select sum(fur_price) as total_fur_price from furniture 
-    		where fur_no IN 
-  	 		(select fur_no from arrangement_furniture where fur_arr_plan_no = #{fur_arr_plan_no})
-  		) as total_fur_price
- 		from furniture_arrangement_plan fap, furniture_arrangement_image fai, member m
-  		where fap.fur_arr_plan_no = fai.fur_arr_plan_no
-  		and fap.mem_id = m.mem_id
-  		and fap.fur_arr_plan_no = #{fur_arr_plan_no}
+	<select id="fur_arr_detail_basic" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrDetailVO">
+		select
+		fur_arr_plan_img_loc, fap.fur_arr_plan_no, fur_arr_name,
+		m.mem_id, mem_nickname, mem_profile_pic, fur_arr_contents, fur_arr_create_date,
+		fur_arr_plan_good_num, fur_arr_plan_repl_num,
+		(select count(*) from furniture_arr_plan_scrap where fur_arr_plan_no =
+		#{fur_arr_plan_no})
+		as fur_arr_plan_scrap_num,
+		(select sum(fur_price) as total_fur_price from furniture
+		where fur_no IN
+		(select fur_no from arrangement_furniture where fur_arr_plan_no =
+		#{fur_arr_plan_no})
+		) as total_fur_price
+		from furniture_arrangement_plan fap, furniture_arrangement_image fai,
+		member m
+		where fap.fur_arr_plan_no = fai.fur_arr_plan_no
+		and fap.mem_id = m.mem_id
+		and fap.fur_arr_plan_no = #{fur_arr_plan_no}
 	</select>
-	
+
 	<!-- 해당 배치도의 해시태그 -->
-	<select id="fur_arr_hashtag" resultType ="String">
-		select fur_arr_hashtag_name from furniture_arr_plan_hashtag 
-  		where fur_arr_plan_no = #{fur_arr_plan_no}
+	<select id="fur_arr_hashtag" resultType="String">
+		select
+		fur_arr_hashtag_name from furniture_arr_plan_hashtag
+		where fur_arr_plan_no = #{fur_arr_plan_no}
 	</select>
-	
+
 	<!-- 해당 배치도에 사용된 가구들 -->
-	<select id="arr_fur_info" resultType="kr.co.gaduda.furniture_arr.vo.Arrangement_furnituresVO">
-		select af.fur_no, fur_name, fur_price from arrangement_furniture af, furniture f 
-  		where af.fur_no = f.fur_no
-  		and af.FUR_ARR_PLAN_NO = #{fur_arr_plan_no}
+	<select id="arr_fur_info"
+		resultType="kr.co.gaduda.furniture_arr.vo.Arrangement_furnituresVO">
+		select af.fur_no, fur_name, fur_price from
+		arrangement_furniture af, furniture f
+		where af.fur_no = f.fur_no
+		and af.FUR_ARR_PLAN_NO = #{fur_arr_plan_no}
 	</select>
-	
+
 	<!-- 해당 배치도에 사용된 가구 이미지 -->
 	<select id="arr_fur_pic_loc" resultType="String">
-		 select fur_pic_loc from furniture_picture 
-		 where fur_no = #{fur_no} and rownum = 1
+		select fur_pic_loc from furniture_picture
+		where fur_no = #{fur_no} and rownum = 1
 	</select>
-	
+
 	<!-- 해당 배치도 작성자의 다른 배치도 -->
 	<select id="other_fur_arr" resultType="kr.co.gaduda.furniture_arr.vo.Other_Furniture_arrVO">
-		select fur_arr_plan_img_loc, fap.fur_arr_plan_no, fur_arr_name
-  		from furniture_arrangement_plan fap, furniture_arrangement_image fai 
-  		where fap.fur_arr_plan_no = fai.fur_arr_plan_no
-  		and fap.mem_id = #{mem_id}
-  		and fap.fur_arr_plan_no != #{fur_arr_plan_no}	
+		select
+		fur_arr_plan_img_loc, fap.fur_arr_plan_no, fur_arr_name
+		from furniture_arrangement_plan fap, furniture_arrangement_image fai
+		where fap.fur_arr_plan_no = fai.fur_arr_plan_no
+		and fap.mem_id = #{mem_id}
+		and fap.fur_arr_plan_no != #{fur_arr_plan_no}
 	</select>
-	
+
 	<!-- 배치도 방종류 가져오기 -->
 	<select id="fur_arr_room_kinds" resultType="String">
   	 <![CDATA[
@@ -171,29 +179,47 @@ and c.concept_name=#{concept_name}
   		and fur_arr_plan_no = #{fur_arr_plan_no}
   	 ]]>
 	</select>
-	
-	
+
+
 	<!-- 해당 회원이 해당 배치도를 스크랩 했나 안했나~ -->
-	<select id="fur_arr_scrap_chk" resultType="int" parameterType="kr.co.gaduda.furniture_arr.dto.FurnitureArrScrapDTO">
-		select count(*) from furniture_arr_plan_scrap where fur_arr_plan_no=#{fur_arr_plan_no} and mem_id=#{mem_id}
+	<select id="fur_arr_scrap_chk" resultType="int"
+		parameterType="kr.co.gaduda.furniture_arr.dto.FurnitureArrScrapDTO">
+		select count(*) from furniture_arr_plan_scrap where
+		fur_arr_plan_no=#{fur_arr_plan_no} and mem_id=#{mem_id}
 	</select>
-	
+
 	<!-- 배치도 스크랩 하기 -->
 	<insert id="fur_arr_plan_scrap" parameterType="kr.co.gaduda.furniture_arr.dto.FurnitureArrScrapDTO">
-		insert into furniture_arr_plan_scrap(fur_arr_plan_scrap_no, mem_id, fur_arr_plan_no, fur_arr_plan_scrap_date)
-		values(seq_fur_arr_plan_scrap.nextval, #{mem_id}, #{fur_arr_plan_no}, sysdate)
+		insert into
+		furniture_arr_plan_scrap(fur_arr_plan_scrap_no, mem_id,
+		fur_arr_plan_no, fur_arr_plan_scrap_date)
+		values(seq_fur_arr_plan_scrap.nextval, #{mem_id}, #{fur_arr_plan_no},
+		sysdate)
 	</insert>
-	
+
 	<!-- 스크랩 한 사람 목록 가져오기 -->
-	<select id="fur_arr_scrap_list" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO">
+	<select id="fur_arr_scrap_list"
+		resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO">
 		<![CDATA[
 			select m.mem_id, m.mem_nickname, fa.fur_arr_plan_scrap_date from FURNITURE_ARR_PLAN_SCRAP fa, member m where fa.mem_id = m.mem_id and fur_arr_plan_no = #{fur_arr_plan_no}
 		]]>
 	</select>
-	
+
 	<!-- 가구배치도 상세페이지 끝 -->
 	<!-- ///////////////////////////////////////////////////////////////// -->
-	
-	
+	<!-- 방종류 가져오기 -->
+	<select id="get_room_kind" resultType="String">
+		<![CDATA[
+			select room_kind_def_name from ROOM_KIND_DEFINE
+		]]>
+	</select>
+
+	<!-- 컨셉 종류 가져오기 -->
+	<select id="get_concept_kind" resultType="String">
+		<![CDATA[
+			select concept_name from CONCEPT
+		]]>
+	</select>
+
 
 </mapper>

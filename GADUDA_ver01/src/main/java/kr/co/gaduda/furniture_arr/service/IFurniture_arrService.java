@@ -41,4 +41,10 @@ public interface IFurniture_arrService {
 	//가구배치도 스크랩 리스트 --07.26
 	public List<Furniture_arrScrapListVO> furArrScrapList(int fur_arr_plan_no);
 	
+	//가구 방 종류 가져오기
+	public List<String> getRoomKind();
+	
+	//가구 방 컨셉 가져오기
+	public List<String> getConceptKind();
+	
 }

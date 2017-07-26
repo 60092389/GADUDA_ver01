@@ -99,4 +99,10 @@ public interface IFurniture_arrDao {
 	
 	//가구배치도 상세페이지 끝
 	/////////////////////////////////////////////////////////////////////////
+	
+	//방 종류 가져오기
+	public List<String> getRoomKind();
+	
+	//컨셉 종류 가져오기
+	public List<String> getConceptKind();
 }

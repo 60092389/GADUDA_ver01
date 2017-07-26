@@ -39,6 +39,11 @@ public class Furniture_arrController {
 	public String furnifure_arr_watch(@RequestParam(value="room_kind_def_name",required=false)String room_kind_def_name,
 			@RequestParam(value="concept_name",required=false)String concept_name,
 			Model model){
+		List<String> furRoomKind = furniture_arrService.getRoomKind();
+		model.addAttribute("roomKind", furRoomKind);
+		
+		List<String> furConceptKind = furniture_arrService.getConceptKind();
+		model.addAttribute("conceptKind", furConceptKind);
 	
 		if((room_kind_def_name==null||room_kind_def_name.equals("0")) && (concept_name==null||concept_name.equals("0"))){
 		List<Furniture_arrVO> fur_arr_list= furniture_arrService.furArrList();

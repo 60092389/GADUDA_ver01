@@ -31,23 +31,18 @@
 				<tr><th>방종류</th>
 				<td><select name="room_kind_def_name">
 					<option selected value="0" >전체</option>
-					<option value="침실">침실</option>
-					<option value="거실">거실</option>
-					<option value="서재">서재</option>
+					<c:forEach var="roomkind" items="${roomKind}">
+						<option value="${roomkind}">${roomkind}</option>
+					</c:forEach>
 					</select>
 				</td>
 				</tr>
 				<tr><th>컨셉</th>
 				<td><select name="concept_name">
 					<option selected value="0">전체</option>
-					<option value="내추럴">내추럴</option>
-					<option value="모던">모던</option>
-					<option value="미니멀">미니멀</option>
-					<option value="시골풍">시골풍</option>
-					<option value="앤틱">앤틱</option>
-					<option value="북유럽">북유럽</option>
-					<option value="동양적">동양적</option>
-
+					<c:forEach var="conceptKind" items="${conceptKind}">
+      					<option value="${conceptKind}">${conceptKind}</option>
+      				</c:forEach>
 				</select>
 				</td>
 				</tr>

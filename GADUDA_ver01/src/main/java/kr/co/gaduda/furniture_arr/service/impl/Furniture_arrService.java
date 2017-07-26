@@ -192,6 +192,7 @@ public class Furniture_arrService implements IFurniture_arrService {
 			vo.setFur_arr_plan_good_num(furArrVO.get(i).getFur_arr_plan_good_num());
 			vo.setFur_arr_plan_scrap_num(fur_arr_plan_scrap_num);
 			vo.setFur_arr_plan_repl_num(furArrVO.get(i).getFur_arr_plan_repl_num());
+			vo.setFur_arr_plan_no(fur_arr_plan_no);
 
 			if (vo.getFur_arr_con().contains(concept_name)) {
 
@@ -391,6 +392,18 @@ public class Furniture_arrService implements IFurniture_arrService {
 	@Override
 	public List<Furniture_arrScrapListVO> furArrScrapList(int fur_arr_plan_no){
 		return furniture_arrDao.furArrScrapList(fur_arr_plan_no);
+	}
+	
+	//가구 방 종류 가져오기
+	@Override
+	public List<String> getRoomKind(){
+		return furniture_arrDao.getRoomKind();
+	}
+	
+	//가구 컨셉 종류 가져오기
+	@Override 
+	public List<String> getConceptKind(){
+		return furniture_arrDao.getConceptKind();
 	}
 
 }

@@ -246,5 +246,17 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 	}
 
 	// 가구 배치도 스크랩 끝
+	
+	// 가구 방 종류 가져오기
+	@Override
+	public List<String> getRoomKind() {
+		return furarrsqlSession.selectList(namespace + ".get_room_kind");
+	}
+
+	// 가구 방 컨셉 가져오기
+	@Override
+	public List<String> getConceptKind() {
+		return furarrsqlSession.selectList(namespace + ".get_concept_kind");
+	}
 
 }
