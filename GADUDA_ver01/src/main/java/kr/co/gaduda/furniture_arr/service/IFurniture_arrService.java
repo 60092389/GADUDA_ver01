@@ -7,6 +7,7 @@ import kr.co.gaduda.furniture_arr.vo.Arrangement_furnituresVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrGoodListVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrDetailVO;
+import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 
 public interface IFurniture_arrService {
@@ -36,5 +37,8 @@ public interface IFurniture_arrService {
 	
 	//가구배치도 스크랩 하기
 	public int insertFurnitureArrScrap(Map<String, Object> furArrScrapInfo);
+	
+	//가구배치도 스크랩 리스트 --07.26
+	public List<Furniture_arrScrapListVO> furArrScrapList(int fur_arr_plan_no);
 	
 }

@@ -16,8 +16,8 @@ $(document).ready(function() {
 		$('font[name=pw_chk]').text('');
 	});
 
-	$('#mem_pw_chk').keyup(function() {
-		if ($('#mem_pa').val() != $('#mem_pw_chk').val()) {
+	$('#mem_pw_ch').keyup(function() {
+		if ($('#mem_pa').val() != $('#mem_pw_ch').val()) {
 			$('font[name=pw_chk]').text('');
 			$('font[name=pw_chk]').text("비밀번호 다시 확인 바람");
 		} else {
@@ -32,11 +32,12 @@ $(document).ready(function() {
 <c:set var="member" value="${ member }"/>
 <form method="post" class="w3-container" action=${ URLs.URI_UPDATE_MEMBER_PW_FULL }>
 	<div class="w3-section">
-		<label><b>NEW Password</b></label>
+		<label><b>새로운 비밀번호</b></label>
 		<input name="mem_pw" id="mem_pa" value='' placeholder="Password" type="password" class="w3-input w3-border" />
 			
-		<label><b>Password check</b></label>
+		<label><b>비밀번호 확인</b></label>
 		<input name="mem_pw_chk" id="mem_pw_ch" value='' placeholder="Password" type="password" class="w3-input w3-border" />
+		
 		<font name="pw_chk" size="2" color="red"></font>
 		<input type="hidden" value=${member.mem_id } name="mem_id" id="mem_id">	
 		<br>

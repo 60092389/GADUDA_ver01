@@ -18,6 +18,7 @@ import kr.co.gaduda.furniture_arr.vo.Arrangement_furnituresVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrGoodListVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrDetailVO;
+import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 import kr.co.gaduda.furniture_arr.vo.Other_Furniture_arrVO;
 
@@ -236,6 +237,12 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 	@Override
 	public int insertFurArrScrap(FurnitureArrScrapDTO furnitureArrScrapDTO) {
 		return furarrsqlSession.insert(namespace + ".fur_arr_plan_scrap", furnitureArrScrapDTO);
+	}
+	
+	//가구 스크랩 리스트 가져오기 --07.26
+	@Override
+	public List<Furniture_arrScrapListVO> furArrScrapList(int fur_arr_plan_no){
+		return furarrsqlSession.selectList(namespace+".fur_arr_scrap_list",fur_arr_plan_no);
 	}
 
 	// 가구 배치도 스크랩 끝

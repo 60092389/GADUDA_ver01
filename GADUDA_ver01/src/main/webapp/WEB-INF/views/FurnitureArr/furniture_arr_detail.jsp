@@ -7,16 +7,10 @@
 <title>GADUDA</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <script type="text/javascript">
 
@@ -202,6 +196,38 @@ $(document).ready(function(){
 
 	});
 	
+	//스크랩 리스트 보기
+	$('.scrap_list').click('show.bs.modal', function(){
+			$('#myScrapModal').focus();
+			var fur_arr_plan_no = $(this).val();
+			
+			 var trans_object_scrap = {
+					'fur_arr_plan_no' : fur_arr_plan_no
+			} 
+			
+			var trans_json_scrap = JSON.stringify(trans_object_scrap);
+			$.ajax({
+				url : "${URLs.URI_FURNITURE_ARR_DETAIL_SCRAP_LIST_FULL}",
+				data : trans_json_scrap,
+				type : 'POST',
+				dataType : 'json',
+				contentType : 'application/json',
+				mimeType : 'application/json',
+				success : function(retVal) {
+					
+					$(".scrap_list_show").html("");
+					
+					for(var i =0; i < retVal.fur_arr_plan_list.length; i++){ 
+						$(".scrap_list_show").append("<div>");
+						$(".scrap_list_show").append("<p><b>" + retVal.fur_arr_plan_list[i].mem_id +"</b>　"+retVal.fur_arr_plan_list[i].mem_nickname+"</p>");
+						//$(".scrap_list_show").append("<h6>[" + retVal.fur_arr_plan_list[i].fur_scrap_date+"]</h6>");
+						$(".scrap_list_show").append("</div>");
+					}
+				}
+			});
+			
+	});
+	
 	//스크랩하기
 	$("#btn-scrap-add").click(function(){
 		
@@ -261,9 +287,10 @@ if(login_id != repl_id){
 
 </head>
 <body>
-	<!-- header include -->
-	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
+<!-- 메뉴 -->
+<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
 
+<!-- 로그인 정보 -->
 <div class="w3-container" style="float: right">
 	<c:set var="member" value="${ member }" />
 	<input type="hidden" id="user_id" value="${ member.mem_id }">
@@ -272,61 +299,71 @@ if(login_id != repl_id){
 	<input type="hidden" id="fur_arr_plan_no" value="${ detailVO.fur_arr_plan_no }">
 </div>
 
-<div class="w3-main w3-container" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
-	<div class="\ w3-padding-64 w3-margin-bottom w3-center">
+<!-- 메인 화면 -->
+<div class="w3-main w3-container mainSection">
+
+	<!-- 가구 배치도 이름 보기 -->
+	<div class="w3-padding-64 w3-margin-bottom w3-center">
   		<h1 class="w3-jumbo">${detailVO.fur_arr_name }</h1>
 	</div>
 	
-	<div class="w3-row-padding w3-content" style="max-width:1200px;">
+	<!-- 가구 배치도 사진 -->
+	<div class="w3-row-padding w3-content w3-col m9">
   		<div class="w3-twothird">
     		<img src="${detailVO.fur_arr_plan_img_loc }" alt="FurnitureArr" style="width:600px">
     	</div>
-    	<br>
-    	<br>
-    	<br>
-    	<div id="user_action" class="w3-display-right" style="position: fixed; right:300px; top:500px; max-width: 300px">
-    		<div class="w3-content">
+    </div>
+    
+    <!-- 가구 배치도 정보 -->
+    <div>
+    	<div id="user_action">
+    		<div class="w3-col m3">
     		<p style="color: orange;">
-    			<img class="w3-circle" src="${detailVO.mem_profile_pic }" alt="profile" style="width:10%"> <b>　　${detailVO.mem_id }</b></p>
- 			<h3><b>${detailVO.fur_arr_name }</b></h3>
- 			<br>
- 			<p><b>Date</b> 　　　　 <b>${detailVO.fur_arr_create_date }</b></p> 
- 			<p><b>종류</b> 　　　 　<b>${detailVO.fur_arr_rooms }</b></p> 
- 			<p><b>컨셉</b> 　　　 　<b>${detailVO.fur_arr_concepts }</b></p> 
- 			<p><b>#</b> 　　　 　　<b>${detailVO.fur_arr_hashtags }</b></p> 
- 			<b>소개</b>
- 			<p>${detailVO.fur_arr_contents}</p>
- 			<br>
- 			<br>
- 			<div class="w3-center">
- 				<div class="w3-border w3-round " style="width: 150px">
-					<button class="btn-fur-arr-good w3-button w3-hover-white" name="subject" id="btn_good" value="${detailVO.fur_arr_plan_no }"><i class="material-icons">favorite</i></button> 
-					<button onclick="document.getElementById('myModal').style.display='block'" class="good_list w3-button w3-hover-white" 
-							data-toggle="modal" data-target="#myModal">Like ${detailVO.fur_arr_plan_good_num }</button>
-				</div>
-				<br>
-				<div class="w3-border w3-round" style="width: 150px">
-					<button class="w3-button w3-hover-white" name="subject" id="btn-scrap-add" value="${detailVO.fur_arr_plan_no }"><i class="material-icons">attachment</i></button> 
-					<input type="hidden" id="sc_user_id" value="${ member.mem_id }">
-					<button class="scrap_list w3-button w3-hover-white">Scrap ${detailVO.fur_arr_plan_scrap_num }</button>
-				</div>
-				<br>
-				<div class="w3-border w3-round" style="width: 150px">
-					<button class="w3-button w3-hover-white" name="subject"><i class="material-icons">cloud</i></button> 
-					<button class="w3-button w3-hover-white" >Repl ${detailVO.fur_arr_plan_repl_num }</button>
-				</div>
- 			</div>
+    			<img class="w3-circle" src="${detailVO.mem_profile_pic }" alt="${detailVO.mem_id }" style="width:10%"> <b>　　${detailVO.mem_id }</b>
+    			<button class="w3-button w3-hover-white w3-center" name="subject"><img src="/resources/Images/icon/attachment.png" style="width: 40px"></button></p>
+    			<!-- ★★★★★★★★★★★★★★★★★★★★★★★★★★사용자가 팔로우한 사람이면 다른 아이콘 뜨도록 해야합니다.★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ -->
+	 			<h3><b>${detailVO.fur_arr_name }</b></h3>
+	 			<br>
+	 			<p><b>Date</b> 　　　　 <b>${detailVO.fur_arr_create_date }</b></p> 
+	 			<p><b>종류</b> 　　　 　<b>${detailVO.fur_arr_rooms }</b></p> 
+	 			<p><b>컨셉</b> 　　　 　<b>${detailVO.fur_arr_concepts }</b></p> 
+	 			<p><b>#</b> 　　　 　　<b>${detailVO.fur_arr_hashtags }</b></p> 
+	 			<b>소개</b>
+	 			<p>${detailVO.fur_arr_contents}</p>
+	 			<br>
+	 			<br>
+	 			<div class="w3-center">
+	 				<div class="w3-border w3-round " style="width: 150px">
+						<button class="btn-fur-arr-good w3-button w3-hover-white" name="subject" id="btn_good" value="${detailVO.fur_arr_plan_no }"><i class="material-icons">favorite</i></button> 
+						<button onclick="document.getElementById('myModal').style.display='block'" class="good_list w3-button w3-hover-white" 
+								data-toggle="modal" data-target="#myModal">Like ${detailVO.fur_arr_plan_good_num }</button>
+					</div>
+					<br>
+					<div class="w3-border w3-round" style="width: 150px">
+						<button class="w3-button w3-hover-white" name="subject" id="btn-scrap-add" value="${detailVO.fur_arr_plan_no }"><i class="material-icons">attachment</i></button> 
+						<input type="hidden" id="sc_user_id" value="${ member.mem_id }">
+						<button onclick="document.getElementById('myScrapModal').style.display='block'" class="scrap_list w3-button w3-white w3-hover-white" 
+								data-toggle="modal" data-target="#myScrapModal" value="${detailVO.fur_arr_plan_no }">Scrap ${detailVO.fur_arr_plan_scrap_num }</button>
+					</div>
+					<br>
+					<div class="w3-border w3-round" style="width: 150px">
+						<button class="w3-button w3-hover-white" name="subject"><i class="material-icons">cloud</i></button> 
+						<button class="w3-button w3-hover-white" >Repl ${detailVO.fur_arr_plan_repl_num }</button>
+					</div>
+					<br>
+	 			</div>
 			</div>
- 		</div>  	
+ 		</div> 
  	</div>
-</div>		
-<br><br>
+</div>
 
-<div style="float: center; margin-right: 400px">
+<div>
+	<!-- 댓글 -->
 	<div id="more_comments" class="w3-container w3-left">
+		<!-- 댓글 보기 -->
 		<div class="w3-content w3-border-bottom ">
-			<a><h5><b>댓글 더보기</b></h5></a> <!-- 댓글이 많아지는 경우에 사용할 것(수정해야함) -->
-			<br>
+			<a><h5><b>댓글 더보기</b></h5></a>
+			<!-- ★★★★★★★★★★★★★★★★★★★★★★★댓글이 많아지는 경우에는 더보기 버튼 눌러야 더나오는 걸로 수정하거나, 최근 댓글만 보여주기 ★★★★★★★★★★★★★★★★★★★★★★★-->
 			<!-- 댓글 리스트 불러오기 -->
 			<c:forEach var="reply" items="${reply_list }">
 				<div id="repllistcall" class="w3-padding w3-margin-left">
@@ -340,7 +377,7 @@ if(login_id != repl_id){
 				</div>
 			</c:forEach>
 		</div>
-		
+		<!-- 댓글 달기 -->
 		<div class="w3-content w3-border-bottom ">
 			<div id="replwritediv" class="w3-padding w3-margin-left">
 				<p>
@@ -352,122 +389,110 @@ if(login_id != repl_id){
 			</div>
 		</div>
 	</div>
-</div>
 
-
-<div class="w3-padding-large" style="float: center; margin-right: 400px">
-	<div class="w3-container w3-left">
-		<div id="recommend_items" class="w3-content">
-			<div class="title"><h4><b>배치도에 사용된 제품</b></h4></div>
-			<p>배치도에 사용된 제품의 총 가격　　${detailVO.total_fur_price }</p>
-			<div class="w3-bar">
-				<div>
-				</div>
-			</div>
-		</div>
-		<h1>배치도에 사용된 가구</h1>
-	</div>
-	<div class="w3-container">
-		<div class="w3-container" style="float: center">
-			<div>
-				<c:forEach var="fur" items="${arr_fur }">
-					<div class="w3-quarter">
-						<ul class="w3-ul w3-border w3-center w3-hover-shadow">
-							<li class="w3-basiccolor w3-xlarge w3-padding-32"><a
-								href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fur.fur_no }"><b>${fur.fur_name }</b></a></li>
-							<li class="w3-padding-16"><img alt="가구사진"
-								src="${fur.fur_pic_loc }" width="100px" height="100px"></li>
-							<li class="w3-padding-16"><b>${fur.fur_price }</b>원</li>
-						</ul>
+	<!-- 가구에 사용된 제품 -->
+	<div class="w3-padding-large">
+		<div class="w3-container w3-left">
+			<div id="recommend_items" class="w3-content">
+				<div class="title"><h4><b>배치도에 사용된 제품</b></h4></div>
+				<div class="w3-bar">
+					<c:forEach var="fur" items="${arr_fur }">
+						<div class="w3-container w3-border-top">
+							<a href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fur.fur_no }">
+	      						<div class=" w3-padding">
+	      							<div class="w3-col m2 ">
+	      								<b>No.<h3>${fur.fur_no }</h3></b>
+	      							</div>
+	      							<div class="w3-col m3">
+	      								<img src="${fur.fur_pic_loc }" alt="${fur.fur_no }" style="width:100px">
+	      							</div> 								
+	        						<div class="w3-col m4 w3-center">
+	        							<h5><b>${fur.fur_name }</b></h5>
+	        						</div>
+	        						<div class="w3-col m3 w3-padding-16 w3-center">
+	        							<p>${fur.fur_price }원</p>
+	        						</div>
+								</div>
+	        				</a>
+						</div>
+					</c:forEach>
+					<div class=" w3-border-top w3-center">
+						<p><b>배치도에 사용된 제품의 총 가격</b>　　${detailVO.total_fur_price } 원</p>
 					</div>
-				</c:forEach>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 작성자의 다른 가구 배치도 -->
+	<div class="w3-padding-large">
+		<div class="w3-container w3-left">
+			<div id="other_arr_fur" class="w3-content">
+				<div class="title"><h4><b>작성자의 다른 가구배치도</b></h4></div>
+				<div class="w3-bar">
+					<c:forEach var="otherFurArr" items="${detailVO.other_furniture_arrList }">
+						<div class="w3-container w3-border-top">
+							<a href="<%= URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL %>/?fur_arr_plan_no=${otherFurArr.fur_arr_plan_no }">
+	      						<div class=" w3-padding">
+	      							<div class="w3-col m2 ">
+	      								<b>No.<h3>${otherFurArr.fur_arr_plan_no }</h3></b>
+	      							</div>
+	      							<div class="w3-col m3">
+	      								<img src="${otherFurArr.fur_arr_plan_img_loc }" alt="${otherFurArr.fur_arr_plan_no }" style="width:100px">
+	      							</div> 								
+	        						<div class="w3-col m4 w3-center">
+	        							<h5><b>${otherFurArr.fur_arr_name }</b></h5>
+	        						</div>
+								</div>
+	        				</a>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ★★★★★★★★★★★★★★★크롤링 완성 후 수정하기★★★★★★★★★★★★★★ -->
+	<!-- 가구배치도에 사용된 가구와 비슷한 가구 추천 리스트 -->
+	<div class="w3-padding-large">
+		<div class="w3-container w3-left">
+			<div id="recom_fur" class="w3-content">
+				<div class="title"><h4><b>가구 추천 리스트</b></h4></div>
+				<div class="w3-bar">
+
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<br>
-
-<div class="w3-container" style="float: center">
-	<h1>가구배치도 댓글들</h1>
-	<p>댓글 개수 : ${detailVO.fur_arr_plan_repl_num }</p>
-	
-	<div class="w3-container" style="float: center">
-		<table>
-			<tbody>
-			<c:forEach var="reply" items="${reply_list }">
-				<tr>
-					<td>${member.mem_profile_pic }</td>
-					<td>${reply.mem_id }(${reply.mem_nickname }) </td>
-					<td>${reply.fur_arr_plan_rep_contents }</td>
-					<td>${reply.fur_arr_plan_rep_write_date }</td>
-					<td><button class="btn-reply-delete" value="${reply._id }">delete</button> </td>
-				</tr>
-			</c:forEach>
-			</tbody>
-		</table>
-	</div>
-	
-	<div class="w3-container" style="float: center">
-		<table>
-			<tbody>
-				<tr><td>${member.mem_profile_pic } || ${member.mem_id } (${member.mem_nickname })</td></tr>
-				<tr><td><input type="text" id="reply_text" placeholder="댓글 입력" size="80px"></td></tr>
-				<tr><td><button id="reply_write">댓글쓰기</button></td></tr>
-			</tbody>
-		</table>
-	</div>
-</div>
-<br>
-
-<div class="w3-container" style="float: center">
-	<h1>작성자의 다른 가구배치도</h1>
-	<div class="w3-container" style="float: center">
-		<c:forEach var="otherFurArr" items="${detailVO.other_furniture_arrList }">
-				<div class="w3-quarter">
-					<ul class="w3-ul w3-border w3-center w3-hover-shadow">
-						<li class="w3-basiccolor w3-xlarge w3-padding-32"><a
-								href="<%= URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL %>/?fur_arr_plan_no=${otherFurArr.fur_arr_plan_no }"><b>${otherFurArr.fur_arr_name }</b></a></li>
-						<li class="w3-padding-16"><img alt="배치도 이미지"
-								src="${otherFurArr.fur_arr_plan_img_loc }" width="100px" height="100px"></li>
-					</ul>
-				</div>
-		</c:forEach>
-	</div>
-</div>
-<br>
-
-<div class="w3-container" style="float: center">
-	<h1>가구배치도에 들어간 가구와 비슷한 가구들 추천이 들어가야함</h1>
-</div>
-
-<!-- Footer -->
-	<footer class="w3-center w3-white w3-padding-16">
-	<p>
-		made by <a href="https://www.w3schools.com/w3css/default.asp"
-			title="W3.CSS" target="_blank" class="w3-hover-text-green">sin
-			park han jo</a>
-	</p>
-	</footer>
-
 
 <!-- Modal -->
+<!-- 좋아요 -->
 	<div class="w3-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		
 		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 1000px" >
 			<div class="modal-content" style="margin: 20px">
 				<h1>좋아요 누른 사람</h1>
 				<div class="modal-body">
 					<table border="1">
-						<tbody class="good_list_show">						
-		
-						</tbody>
-
+						<tbody class="good_list_show"></tbody>
 					</table>
-
-
 				</div>
 				<button
 					onclick="document.getElementById('myModal').style.display='none'"
+					type="button" class="w3-button w3-red">Cancel</button>
+			</div>
+		</div>
+	</div>
+	
+<!-- 스크랩 -->	
+	<div id="myScrapModal" class="w3-modal">	
+		<!-- 여기도 좋아요 한사람 많아지면 바꿔야 될거같은데 -->
+		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px; ">
+			<h1 class="modal-title" style="margin: 20px; margin-top: 30px;">스크랩 한 사람</h1>
+			<div class="w3-section">
+				<div class="scrap_list_show w3-margin"></div>
+			</div>
+			<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+				<button onclick="document.getElementById('myScrapModal').style.display='none'"
 					type="button" class="w3-button w3-red">Cancel</button>
 			</div>
 		</div>

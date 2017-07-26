@@ -15,6 +15,7 @@ import kr.co.gaduda.furniture_arr.vo.Arrangement_furnituresVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrGoodListVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrDetailVO;
+import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 import kr.co.gaduda.furniture_arr.vo.Other_Furniture_arrVO;
 
@@ -385,6 +386,11 @@ public class Furniture_arrService implements IFurniture_arrService {
 		}
 
 		return result;
+	}
+	
+	@Override
+	public List<Furniture_arrScrapListVO> furArrScrapList(int fur_arr_plan_no){
+		return furniture_arrDao.furArrScrapList(fur_arr_plan_no);
 	}
 
 }

@@ -1,8 +1,12 @@
 package kr.co.gaduda.furniture_arr.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +25,7 @@ import kr.co.gaduda.furniture_arr.vo.Arrangement_furnituresVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrGoodListVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrDetailVO;
+import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 
 @Controller
@@ -159,6 +164,27 @@ public class Furniture_arrController {
 		Map<String, Object> retVal = new HashMap<String, Object>();
 		
 		retVal.put("resultNum", result);
+		
+		return retVal;
+	}
+	
+	//가구배치도 상세페이지에서 스크랩 하기 07.26
+	@RequestMapping(value = URLs.URI_FURNITURE_ARR_DETAIL_SCRAP_LIST, method = RequestMethod.POST, produces = {
+	"application/json" })
+	public @ResponseBody Map<String, Object> FurArrScrapListService(HttpServletRequest request,
+			HttpServletResponse response, @RequestBody Map<String, Object> scrap_info) throws IOException {
+		System.out.println("여기있는데");
+		
+		Map<String, Object> retVal = new HashMap<String, Object>();
+		System.out.println("??");
+		
+		int real_fur_arr_plan_no = Integer.parseInt(scrap_info.get("fur_arr_plan_no").toString());
+		System.out.println(real_fur_arr_plan_no);
+		
+		List<Furniture_arrScrapListVO> fur_arr_plan_list = furniture_arrService.furArrScrapList(real_fur_arr_plan_no);
+		retVal.put("fur_arr_plan_list", fur_arr_plan_list);
+		System.out.println(retVal);
+		
 		
 		return retVal;
 	}

@@ -55,42 +55,46 @@
 			<input type="submit" value="검색">
 		</form>
 	</div>
-<!-- <h2>정렬기준</h2>
-<table border="1">
-   <thead>
-      <th><a href="/furniture/fur_list_get?array_option=furno">가구번호순</a></th>
-      <th><a href="/furniture/fur_list_get?array_option=good">좋아요순</a></th>
-      <th><a href="/furniture/fur_list_get?array_option=reply">댓글순</a></th>
-   </thead>
-</table> -->
+
 	<!-- First Grid(인기 가구 배치도 리스트) -->
-		<div class="w3-container" style="float: center">
-			<h1><b>가구 리스트</b></h1>
-			<div>
-				<c:forEach var="fal" items="${fur_arr_list }">
-					<div class="w3-quarter w3-padding-32 w3-border w3-center">
-						<div class="w3-row-padding w3-center">
-      						<div class="w3-display-container w3-center">
-      							<a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${fal.fur_arr_plan_no}">
-        							<div class="w3-display-topleft w3-padding">
-        								<h4><b>No${fal.fur_arr_plan_no}. ${fal.fur_arr_name }</b></h4><br><br>
-        								<p class="w3-display-right"><b>${fal.mem_id }</b>님의 배치도 <br>
-        								<b>${fal.fur_arr_con }/${fal.fur_arr_room_kind }</b></p>
-        							</div><br><br><br><br><br>
-        							<img src="${fal.fur_arr_plan_img_loc }" alt="${fal.fur_arr_name }" style="width:60%"><br><br>
-        							<div class="w3-padding w3-display-bottomright">
-										<i class="material-icons" >favorite</i>${fal.fur_arr_plan_good_num}
-										<i class="material-icons">attachment</i>${fal.fur_arr_plan_scrap_num }
-										<i class="material-icons">cloud</i>${fal.fur_arr_plan_repl_num }
-									</div>
-									<br>
-        						</a>
+	<div class="w3-container">
+		<br>
+		<c:forEach var="fal" items="${fur_arr_list }">
+			<div class="w3-padding w3-margin-2">
+				<div class=" w3-center">
+      				<a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${fal.fur_arr_plan_no}">
+      					<div class="w3-col w3-border-top w3-padding">
+      						<div class="w3-col m2 w3-padding-32">
+      							No.<h1>${fal.fur_arr_plan_no}</h1>
+      						</div>
+      						<div class="w3-col m2 w3-display-container w3-center">
+      							<img src="${fal.fur_arr_plan_img_loc }" alt="${fal.fur_arr_name }" style="width:90%">
+      							<div class="w3-display-bottomright w3-margin-top w3-center">
+      								<span class="w3-padding w3-subcolor w3-opacity"><b>${fal.fur_arr_room_kind }</b></span>
+      							</div>
+      						</div> 								
+        					<div class="w3-col m3 w3-padding-64 w3-center">
+        						<h5><b>${fal.fur_arr_name }</b></h5>
         					</div>
-    					</div>
-					</div>
-				</c:forEach>
-			</div>
-		</div>
+        					<div class="w3-col m1 w3-padding-64 w3-center">
+        						<p>${fal.mem_id }</p>
+        					</div>
+        					<div class="w3-col m2 w3-padding-64 w3-center">
+        						<p>${fal.fur_arr_con }</p>
+        					</div>
+        					<div class="w3-col m2 w3-padding-64 w3-center">
+								<i class="material-icons" >favorite</i>${fal.fur_arr_plan_good_num}
+								<i class="material-icons">attachment</i>${fal.fur_arr_plan_scrap_num }
+								<i class="material-icons">cloud</i>${fal.fur_arr_plan_repl_num }
+							</div>
+						</div>
+        			</a>
+        		</div>
+    		</div>
+		</c:forEach>
+	</div>
+	
+		
 </div>
 	<br><br>
 </body>

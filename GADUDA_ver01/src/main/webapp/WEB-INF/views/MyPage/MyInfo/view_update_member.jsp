@@ -35,6 +35,7 @@
 <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
 	<button onclick="document.getElementById('profMod').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
 	<button class="w3-button w3-subcolor" onclick="document.getElementById('profMod').style.display='none'; document.getElementById('pwMod').style.display='block'" method="post" type="submit">비밀번호 수정</button>
+	<button class="w3-button w3-white w3-hover-white" onclick="document.getElementById('profMod').style.display='none'; document.getElementById('delMember').style.display='block'" method="post" type="submit">회원 탈퇴</button>
 </div>
 
 

@@ -184,6 +184,13 @@ and c.concept_name=#{concept_name}
 		values(seq_fur_arr_plan_scrap.nextval, #{mem_id}, #{fur_arr_plan_no}, sysdate)
 	</insert>
 	
+	<!-- 스크랩 한 사람 목록 가져오기 -->
+	<select id="fur_arr_scrap_list" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO">
+		<![CDATA[
+			select m.mem_id, m.mem_nickname, fa.fur_arr_plan_scrap_date from FURNITURE_ARR_PLAN_SCRAP fa, member m where fa.mem_id = m.mem_id and fur_arr_plan_no = #{fur_arr_plan_no}
+		]]>
+	</select>
+	
 	<!-- 가구배치도 상세페이지 끝 -->
 	<!-- ///////////////////////////////////////////////////////////////// -->
 	

@@ -108,5 +108,16 @@
 		</div>
 	</div>
 	
+	<!--회원탈퇴 창 띄우기-->
+	<div id="delMember" class="w3-modal">
+		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px">
+		
+			<h1 class="modal-title" style="margin: 20px; margin-top: 30px;">회원탈퇴</h1> 
+
+			<jsp:include page="/WEB-INF/views/MyPage/MyInfo/view_del_member.jsp" flush="false" />
+
+		</div>
+	</div>
+	
 </body>
 </html>

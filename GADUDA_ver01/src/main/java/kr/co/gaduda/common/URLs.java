@@ -186,6 +186,11 @@ public class URLs {
 	// 가구배치도 스크랩 하기
 	public static final String URI_FURNITURE_ARR_SCRAP_ADD = "/fur_arr_scrap_add";
 	public static final String URI_FURNITURE_ARR_SCRAP_ADD_FULL = furniture_arr_default + URI_FURNITURE_ARR_SCRAP_ADD;
+	
+	// 가구배치도스크랩 리스트 보기 --17.07.26 수정 추가
+	public static final String URI_FURNITURE_ARR_DETAIL_SCRAP_LIST = "/furarrscraplist";
+	public static final String URI_FURNITURE_ARR_DETAIL_SCRAP_LIST_FULL = furniture_arr_default + URI_FURNITURE_ARR_DETAIL_SCRAP_LIST;
+
 
 
 	////////진섭 17-07-21 /////////////////////
