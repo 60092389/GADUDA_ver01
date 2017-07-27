@@ -12,8 +12,21 @@
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#btn_makeRoom").click(function(){
+		$("#btn_makeRoom_div").html('');
+		$.ajax({
+			url:"${URLs.URI_ROOMMAKE_INCLUDE_FULL}",
+			success:function(data){
+				$("#myPage_content5").html(data);
+			}
+		});
+	});
+});
+
+</script>	
 <body>
 	<!-- header include -->
 	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
@@ -30,7 +43,7 @@
 	
 	<!-- Page Container -->
 	<div class="w3-main w3-content" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
-		<div class="w3-container">
+		<div class="w3-container" id="myPage_content5">
 			<br>
 			<c:forEach var="arrList" items="${arrList }">
 			<div class="w3-padding-32 w3-main w3-content w3-margin-top w3-border-top">
@@ -80,7 +93,7 @@
 	    	</div>
 		</c:forEach>
 		</div>
-		<button class="w3-button w3-blue w3-hover-white">새로운 방 생성 하기</button> 
+		<div id="btn_makeRoom_div"><button class="w3-button w3-blue w3-hover-white" id="btn_makeRoom">새로운 방 생성 하기</button></div> 
 	</div>
 </div>
 	
