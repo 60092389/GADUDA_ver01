@@ -51,7 +51,7 @@ public class MemberController {
 		int result = memberService.joinMember(memberDTO);
 		request.setCharacterEncoding("UTF-8");
 		if (result == 0) {
-			return "join_failed";
+			return Pages.VIEW_LOGIN_FAILED;
 		}
 
 		return URLs.URI_MAIN_REDIRECT;

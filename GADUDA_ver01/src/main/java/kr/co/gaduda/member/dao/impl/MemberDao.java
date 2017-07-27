@@ -15,6 +15,7 @@ import kr.co.gaduda.member.dto.FollowDTO;
 import kr.co.gaduda.member.dto.MemberDTO;
 import kr.co.gaduda.member.vo.Follower_VO;
 import kr.co.gaduda.member.vo.Following_VO;
+import kr.co.gaduda.member.vo.MemberFurArrVO;
 import kr.co.gaduda.member.vo.MemberVO;
 
 @Repository
@@ -148,5 +149,35 @@ public class MemberDao implements IMemberDao {
 	      
 	      mongoTemplate.insert(memberInfo,"member_log");
 	   }
+
+	
+	// 마이페이지 내 가구배치도 리스트 불러오기//
+	@Override
+	public List<MemberFurArrVO> callMyFurArr(String mem_id) {
+		return memberSqlSession.selectList(namespace + ".callMyFurArr", mem_id);
+	}
+
+	@Override
+	public int getCountScrap(int fur_arr_plan_no) {
+		return memberSqlSession.selectOne(namespace + ".count_scrap", fur_arr_plan_no);
+	}
+
+	// 가구 방 컨셉 가져오기
+	@Override
+	public List<String> getFurCon(int fur_arr_plan_no) {
+		return memberSqlSession.selectList(namespace + ".fur_arr_con", fur_arr_plan_no);
+	}
+
+	// 가구 방 종류 가져오기
+	@Override
+	public List<String> getRoomKind(int fur_arr_plan_no) {
+		return memberSqlSession.selectList(namespace + ".fur_arr_room_kind", fur_arr_plan_no);
+	}
+	
+	// 가구 방 해시태그 가져오기
+	@Override
+	public List<String> getHashTag(int fur_arr_plan_no) {
+		return memberSqlSession.selectList(namespace + ".fur_arr_hashtag", fur_arr_plan_no);
+	}
 
 }

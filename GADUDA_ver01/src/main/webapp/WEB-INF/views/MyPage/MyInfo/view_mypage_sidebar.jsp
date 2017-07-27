@@ -19,7 +19,7 @@
 				<a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%> class="w3-bar-item w3-button">내 정보</a>
 				
 				<!-- 수정하기 -->
-				<a href="#" class="w3-button w3-block w3-white w3-left-align w3-text-block" id="myBtn">내 배치도</a>
+				<a href="${URLs.URI_MYPAGE_MYFURARR_FULL}" class="w3-button w3-block w3-white w3-left-align w3-text-block" id="myBtn">내 배치도</a>
 				
 				<a href="${URLs.URI_FURNITURE_SCRAP_FULL }?mem_id=${member.mem_id}" class="w3-bar-item w3-button">가구 스크랩</a>
 				<a href="${URLs.URI_FURNITURE_ARR_SCRAP_FULL }?mem_id=${member.mem_id}" class="w3-bar-item w3-button">배치도 스크랩</a>

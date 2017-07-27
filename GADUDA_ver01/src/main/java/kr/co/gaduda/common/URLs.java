@@ -191,8 +191,12 @@ public class URLs {
 	public static final String URI_FURNITURE_ARR_DETAIL_SCRAP_LIST = "/furarrscraplist";
 	public static final String URI_FURNITURE_ARR_DETAIL_SCRAP_LIST_FULL = furniture_arr_default + URI_FURNITURE_ARR_DETAIL_SCRAP_LIST;
 
-
-
+	
+	//마이페이지 나의 배치도 부분
+	public static final String URI_MYPAGE_MYFURARR  = "/myfurarr";
+	public static final String URI_MYPAGE_MYFURARR_FULL =  mypage_default + member_default + URI_MYPAGE_MYFURARR;
+	
+	
 	////////진섭 17-07-21 /////////////////////
 	// 방생성 관련
 	//private static final String room_default="/room";

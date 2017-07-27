@@ -53,6 +53,7 @@ $(document).ready(function() {
 	});
 	
 	$(".btn-fur-reply-del").click(function(){
+		
 		var fur_reply_id = $(this).val();
 		var fur_no = $('#fur_no').val();
 		
@@ -298,25 +299,37 @@ $(document).ready(function() {
 			<!-- 댓글 리스트 불러오기 -->
 			<c:forEach var="replyList" items="${fur_repl_list }">
 				<div id="repllistcall" class="w3-padding w3-margin-left">
-					<p>
-						<!-- ★★★★★★★★★★★★★★★사진 왜 안나오는 거니★★★★★★★★★★★★★★ -->
-						<b>　　　${replyList.mem_id }(${replyList.mem_nickname })</b>　　　${replyList.fur_rep_contents }
-						<input type="hidden" id="repl_id" value="${replyList._id }">
-						<b class="w3-right" style="font-size: 11px">
-						<button class="w3-button btn-reply-delete" style="size: 15px" value="${reply._id }"> delete</button>${reply.fur_arr_plan_rep_write_date }</b>
-					</p>		
+						<c:set value="${replyList.mem_id }" var="repl_id"/>
+						<c:set value="${member.mem_id }" var="user_id"/>
+						<div>
+							<!-- ★★★★★★★★★★★★★★★사진 왜 안나오는 거니★★★★★★★★★★★★★★ -->
+							<b style="width: 30px">${replyList.mem_id }(${replyList.mem_nickname })</b>　　　${replyList.fur_rep_contents }
+							<input type="hidden" id="repl_id" value="${replyList._id }">
+							<b class="w3-right" style="font-size: 11px">
+							<c:if test="${repl_id == user_id}">
+								<button class="w3-button btn-reply-delete" style="size: 15px" value="${replyList._id }"> delete</button>
+							</c:if>${replyList.fur_rep_write_date }</b>
+						</div>		
 				</div>
 			</c:forEach>
 		</div>
 		<!-- 댓글 달기 -->
 		<div class="w3-content w3-border-bottom ">
 			<div id="replwritediv" class="w3-padding w3-margin-left">
-				<p>
-					<img class="w3-circle" alt="${member.mem_id }" src="${member.mem_profile_pic }" style="width:25px; height: 25px" >
-					<b>　　　${member.mem_id }(${member.mem_nickname })</b>
-					<input class="w3-margin-left" type="text" id="fur_repl" placeholder="댓글 입력" size="60px">
-					<button class="w3-button w3-right" id="replinput">댓글쓰기</button>
-				</p>
+				<c:choose>
+					<c:when test="${ empty member }">
+							<a onclick="document.getElementById('loginUser').style.display='block'"
+								class="w3-center w3-button w3-hover-white"><h6>로그인을 하여 의견을 남겨주세요 *^^*</h6></a>	
+					</c:when>
+					<c:otherwise>
+						<p>
+							<img class="w3-circle" alt="${member.mem_id }" src="${member.mem_profile_pic }" style="width:25px; height: 25px" >
+							<b>　　　${member.mem_id }(${member.mem_nickname })</b>
+							<input class="w3-margin-left" type="text" id="fur_repl" placeholder="댓글 입력" size="60px">
+							<button class="w3-button w3-right" id="replinput">댓글쓰기</button>
+						</p>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>
@@ -409,5 +422,6 @@ function showDivs(n) {
   x[slideIndex-1].style.display = "block";  
 }
 </script>
+
 </body>
 </html>

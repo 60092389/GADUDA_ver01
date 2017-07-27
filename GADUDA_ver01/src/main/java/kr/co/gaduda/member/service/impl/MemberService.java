@@ -12,6 +12,7 @@ import kr.co.gaduda.member.dto.MemberDTO;
 import kr.co.gaduda.member.service.IMemberService;
 import kr.co.gaduda.member.vo.Follower_VO;
 import kr.co.gaduda.member.vo.Following_VO;
+import kr.co.gaduda.member.vo.MemberFurArrVO;
 import kr.co.gaduda.member.vo.MemberVO;
 @Service
 public class MemberService implements IMemberService {
@@ -109,6 +110,46 @@ public class MemberService implements IMemberService {
 		memberDAO.unfollow_change(followDTO);
 		memberDAO.unfollow_change1(followDTO);
 		
+	}
+	
+	@Override
+	public List<MemberFurArrVO> callMyFurArr(String mem_id) {
+		return memberDAO.callMyFurArr(mem_id);
+	}
+
+	@Override
+	public int getCountScrap(int fur_arr_plan_no) {
+		return memberDAO.getCountScrap(fur_arr_plan_no);
+	}
+
+	@Override
+	public String getFurCon(int fur_arr_plan_no){
+		String furArrCon = "";
+		List<String> conarr = memberDAO.getFurCon(fur_arr_plan_no);
+		for(int i = 0 ; i < conarr.size() ; i++){
+			furArrCon = conarr.get(i) + " " + furArrCon;
+		}
+		return furArrCon;
+	}
+
+	@Override
+	public String getRoomKind(int fur_arr_plan_no){
+		String furArrRoomKind = "";
+		List<String> roomkind = memberDAO.getRoomKind(fur_arr_plan_no);
+		for(int i = 0 ; i < roomkind.size() ; i++){
+			furArrRoomKind = roomkind.get(i) + " " + furArrRoomKind;
+		}
+		return furArrRoomKind;
+	}
+
+	@Override
+	public String getHashTag(int fur_arr_plan_no){
+		String furArrHashTag = "";
+		List<String> hashtag = memberDAO.getHashTag(fur_arr_plan_no);
+		for(int i = 0 ; i < hashtag.size() ; i++){
+			furArrHashTag = hashtag.get(i) + " " + furArrHashTag;
+		}
+		return furArrHashTag;
 	}
 
 }

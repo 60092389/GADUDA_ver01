@@ -25,6 +25,7 @@ import kr.co.gaduda.member.dto.MemberDTO;
 import kr.co.gaduda.member.service.impl.MemberService;
 import kr.co.gaduda.member.vo.Follower_VO;
 import kr.co.gaduda.member.vo.Following_VO;
+import kr.co.gaduda.member.vo.MemberFurArrVO;
 import kr.co.gaduda.member.vo.MemberVO;
 import net.sf.json.JSONObject;
 
@@ -41,21 +42,23 @@ public class MypageMemberController implements ServletContextAware{
 	private ServletContext servletContext;
 	
 	
-	@RequestMapping(value=URLs.URI_MYPAGE_MEMBER)
-	public String mypage_member(Model model, HttpServletRequest request){
+	@RequestMapping(value = URLs.URI_MYPAGE_MEMBER)
+	public String mypage_member(Model model, HttpServletRequest request) {
 		MemberVO memVO = (MemberVO) request.getSession().getAttribute("member");
-		String mem_id=memVO.getMem_id();
-		System.out.println("아아아");
-		System.out.println(mem_id+"mem_id!!!!!");
+		if (memVO == null) {
+			return Pages.VIEW_LOGIN_FAILED;
+		}
+		String mem_id = memVO.getMem_id();
 		FollowDTO followDTO = new FollowDTO();
 		followDTO.setMem_id(mem_id);
-		int follower=memberService.follower_info(followDTO);
-		int following=memberService.following_info(followDTO);
+		int follower = memberService.follower_info(followDTO);
+		int following = memberService.following_info(followDTO);
 		model.addAttribute("follower", follower);
 		model.addAttribute("following", following);
-		
+
 		return Pages.VIEW_MYPAGE_MEMBER;
 	}
+	
 	@RequestMapping(value = URLs.URI_DELETE_MEMBER)
 	public String deleteMember() {
 
@@ -216,6 +219,34 @@ public class MypageMemberController implements ServletContextAware{
 	
 		
 		return jsonObj;
+	}
+	
+	// 마이페이지 내 가구배치도 가져오기
+	@RequestMapping(value = URLs.URI_MYPAGE_MYFURARR)
+	public String callMyFurArr(HttpServletRequest request, Model model) {
+
+		MemberVO memVO = (MemberVO) request.getSession().getAttribute("member");
+		String mem_id = memVO.getMem_id();
+		System.out.println(mem_id);
+		List<MemberFurArrVO> mem_arrList = memberService.callMyFurArr(mem_id);
+		
+		for (int i = 0; i < mem_arrList.size(); i++){
+			int fur_arr_plan_no = mem_arrList.get(i).getFur_arr_plan_no();
+			
+			int scrap_no = memberService.getCountScrap(fur_arr_plan_no);
+			String furArrCon = memberService.getFurCon(fur_arr_plan_no);
+			String furArrRoomKind = memberService.getRoomKind(fur_arr_plan_no);
+			String furArrHashTag = memberService.getHashTag(fur_arr_plan_no);
+			
+			mem_arrList.get(i).setFur_arr_plan_scrap_num(scrap_no);
+			mem_arrList.get(i).setFur_arr_plan_room_kind(furArrRoomKind);
+			mem_arrList.get(i).setFur_arr_plan_concept(furArrCon);
+			mem_arrList.get(i).setFur_arr_plan_hash_tag(furArrHashTag);
+			
+		}
+		model.addAttribute("arrList", mem_arrList);
+
+		return Pages.VIEW_MYFURARR;
 	}
 	
 	

@@ -26,6 +26,9 @@
 	<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
 		<button onclick="document.getElementById('loginUser').style.display='none'"
 				type="button" class="w3-button w3-red">Cancel</button>
+		<button onclick="document.getElementById('loginUser').style.display='none';
+						document.getElementById('joinUser').style.display='block'"
+				type="button" class="w3-button w3-green">회원가입하기</button>
 		<span class="w3-right w3-padding w3-hide-small"> <a href="#">비밀번호 찾기</a></span>
 	</div>
 			

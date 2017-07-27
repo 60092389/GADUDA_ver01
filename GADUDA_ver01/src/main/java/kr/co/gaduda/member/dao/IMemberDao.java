@@ -7,6 +7,7 @@ import kr.co.gaduda.member.dto.FollowDTO;
 import kr.co.gaduda.member.dto.MemberDTO;
 import kr.co.gaduda.member.vo.Follower_VO;
 import kr.co.gaduda.member.vo.Following_VO;
+import kr.co.gaduda.member.vo.MemberFurArrVO;
 import kr.co.gaduda.member.vo.MemberVO;
 
 public interface IMemberDao {
@@ -32,4 +33,12 @@ public interface IMemberDao {
 	public void unfollow_change1(FollowDTO followDTO);
 	
 	public void member_log(Map<String, Object> memberInfo);
+	
+	
+	//나의 가구배치도 정보 가져오기
+	public List<MemberFurArrVO> callMyFurArr(String mem_id);
+	public int getCountScrap(int fur_arr_plan_no);
+	public List<String> getFurCon(int fur_arr_plan_no);
+	public List<String> getRoomKind(int fur_arr_plan_no);
+	public List<String> getHashTag(int fur_arr_plan_no);
 } 
