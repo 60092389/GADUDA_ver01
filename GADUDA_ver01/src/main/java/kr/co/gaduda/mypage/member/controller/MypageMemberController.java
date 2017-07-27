@@ -249,5 +249,11 @@ public class MypageMemberController implements ServletContextAware{
 		return Pages.VIEW_MYFURARR;
 	}
 	
+	// 마이페이지 내 방 가져오기
+	@RequestMapping(value = URLs.URI_MYPAGE_MYROOM)
+	public String callMyRoom(HttpServletRequest request, Model model) {
+		return Pages.VIEW_MYROOM;
+	}
+	
 	
 }

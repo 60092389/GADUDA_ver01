@@ -63,7 +63,10 @@ public class Pages {
 	// 가구배치도 상세 페이지 뷰
 	public static final String VIEW_FURNITURE_ARR_DETAIL = furniture_arr_path + "/furniture_arr_detail";
 	
+	// 마이페이지 내 가구배치도 보기
 	public static final String VIEW_MYFURARR = myinfo_path + "/view_mypage_myfurarr";
+	// 마이페이지 내 방 보기
+	public static final String VIEW_MYROOM = myinfo_path + "/view_mypage_myroom";
 
 	
 	//private static final String room_path = mypage_path + "/RoomMake";

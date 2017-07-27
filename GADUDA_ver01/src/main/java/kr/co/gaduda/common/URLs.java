@@ -196,6 +196,10 @@ public class URLs {
 	public static final String URI_MYPAGE_MYFURARR  = "/myfurarr";
 	public static final String URI_MYPAGE_MYFURARR_FULL =  mypage_default + member_default + URI_MYPAGE_MYFURARR;
 	
+	//마이페이지 내방보기 부분
+	public static final String URI_MYPAGE_MYROOM  = "/myroom";
+	public static final String URI_MYPAGE_MYROOM_FULL =  mypage_default + member_default + URI_MYPAGE_MYROOM;
+	
 	
 	////////진섭 17-07-21 /////////////////////
 	// 방생성 관련

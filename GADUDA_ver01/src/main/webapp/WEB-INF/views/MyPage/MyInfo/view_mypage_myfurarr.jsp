@@ -13,20 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-	$("#btn_makeRoom").click(function(){
-		$("#btn_makeRoom_div").html('');
-		$.ajax({
-			url:"${URLs.URI_ROOMMAKE_INCLUDE_FULL}",
-			success:function(data){
-				$("#myPage_content5").html(data);
-			}
-		});
-	});
-});
 
-</script>	
 <body>
 	<!-- header include -->
 	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
@@ -93,7 +80,7 @@ $(document).ready(function(){
 	    	</div>
 		</c:forEach>
 		</div>
-		<div id="btn_makeRoom_div"><button class="w3-button w3-blue w3-hover-white" id="btn_makeRoom">새로운 방 생성 하기</button></div> 
+		<button class="w3-button w3-blue w3-hover-white">새로운 배치도 생성 하기</button>
 	</div>
 </div>
 	
