@@ -56,8 +56,8 @@
 								</select>
 							</div>
 						</td>
-						<td>　　</td>
-						<td>　　</td>
+						<td>　　　</td>
+						<td>　　　</td>
 					</tr>
 					<tr>
 						<td style="width: 150px" ><h3>컨셉</h3></td>
@@ -71,7 +71,7 @@
 								</select>
 							</div>
 						</td>
-						<td>　　</td>
+						<td>　　　</td>
 						<td>
 							<button class="w3-button w3-subcolor w3-padding"  type="submit">검색하기</button>
 						</td>
