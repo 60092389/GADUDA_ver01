@@ -177,6 +177,15 @@
 			select fur_kind_def_name from FURNITURE_KIND_DEFINE
 		]]>
 	</select>
+
+	<!-- 가구 상세보기 페이지에서 가구 아이템 이름이랑 가구 사이즈 가져오기 -->
+	<select id="get_fur_item" resultType="kr.co.gaduda.furniture.vo.FurnitureItemVO" parameterType="int">
+		<![CDATA[
+			select FUR_ITEM_NO, FUR_WIDTH, FUR_HEIGHT, FUR_DEPTH 
+			from FURNITURE_SIZE FS, FURNITURE F where FS.FUR_NO = F.FUR_NO 
+			and FS.FUR_NO = #{fur_no}
+		]]>
+	</select>
 	
 	
 	

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import kr.co.gaduda.furniture.dto.FurnitureScrapDTO;
 import kr.co.gaduda.furniture.vo.FurnitureDetailVO;
 import kr.co.gaduda.furniture.vo.FurnitureGoodListVO;
+import kr.co.gaduda.furniture.vo.FurnitureItemVO;
 import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
 import kr.co.gaduda.furniture.vo.FurnitureReplyListVO;
 import kr.co.gaduda.furniture.vo.FurnitureScrapListVO;
@@ -60,4 +61,5 @@ public interface IFurnitureService {
 	
 	//가구 종류 가져오기
 	public List<String> getFurDefKind();
+	
 }

@@ -11,6 +11,7 @@ import kr.co.gaduda.furniture.vo.FurnitureReplyListVO;
 import kr.co.gaduda.furniture.vo.FurnitureScrapListVO;
 import kr.co.gaduda.furniture.vo.FurnitureVO;
 import kr.co.gaduda.furniture.vo.FurnitureGoodListVO;
+import kr.co.gaduda.furniture.vo.FurnitureItemVO;
 
 public interface IFurnitureDao {
 	
@@ -87,5 +88,8 @@ public interface IFurnitureDao {
 	
 	//가구 종류 가져오기
 	public List<String> getFurDefKind();
+	
+	//가구 상세보기 페이지 가구 아이템 이름이랑 사이즈 가져오기
+	public FurnitureItemVO getFurItem(int fur_no);
 
 }

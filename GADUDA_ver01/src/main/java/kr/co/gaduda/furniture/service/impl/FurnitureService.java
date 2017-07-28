@@ -15,6 +15,7 @@ import kr.co.gaduda.furniture.dto.FurnitureScrapDTO;
 import kr.co.gaduda.furniture.service.IFurnitureService;
 import kr.co.gaduda.furniture.vo.FurnitureDetailVO;
 import kr.co.gaduda.furniture.vo.FurnitureGoodListVO;
+import kr.co.gaduda.furniture.vo.FurnitureItemVO;
 import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
 import kr.co.gaduda.furniture.vo.FurnitureReplyListVO;
 import kr.co.gaduda.furniture.vo.FurnitureScrapListVO;
@@ -49,8 +50,17 @@ public class FurnitureService implements IFurnitureService {
 	public FurnitureDetailVO furDetailView(int fur_no) {
 
 		FurnitureDetailVO furdeVO = new FurnitureDetailVO();
+		FurnitureItemVO furitemVO = new FurnitureItemVO();
 
 		furdeVO = furnitureDao.getDetailFurniture(fur_no);
+		furitemVO = furnitureDao.getFurItem(fur_no);
+		
+		String fur_item_no = furitemVO.getFur_item_no();
+		int fur_width = furitemVO.getFur_width();
+		int fur_height = furitemVO.getFur_height();
+		int fur_depth = furitemVO.getFur_depth();
+		
+		System.out.println(fur_width+"|"+fur_height+"|"+fur_depth);
 		
 		String fur_con = "";
 		String fur_kind = "";
@@ -66,6 +76,11 @@ public class FurnitureService implements IFurnitureService {
 			fur_kind = fur_kind_list.get(i) + "  " + fur_kind;
 		}
 		int fur_scrap = furnitureDao.getFurScrapCount(fur_no);
+		
+		furdeVO.setFur_item_no(fur_item_no);
+		furdeVO.setFur_width(fur_width);
+		furdeVO.setFur_height(fur_height);
+		furdeVO.setFur_depth(fur_depth);
 		
 		furdeVO.setFur_pic_loc(fur_pic_loc_list);
 		furdeVO.setFur_con(fur_con);

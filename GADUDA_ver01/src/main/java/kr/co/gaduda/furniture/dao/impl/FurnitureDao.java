@@ -15,6 +15,7 @@ import kr.co.gaduda.furniture.dto.FurnitureCateDTO;
 import kr.co.gaduda.furniture.dto.FurnitureScrapDTO;
 import kr.co.gaduda.furniture.vo.FurnitureDetailVO;
 import kr.co.gaduda.furniture.vo.FurnitureGoodListVO;
+import kr.co.gaduda.furniture.vo.FurnitureItemVO;
 import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
 import kr.co.gaduda.furniture.vo.FurnitureReplyListVO;
 import kr.co.gaduda.furniture.vo.FurnitureScrapListVO;
@@ -211,5 +212,10 @@ public class FurnitureDao implements IFurnitureDao {
 	// 가구 종류 가져오기
 	public List<String> getFurDefKind() {
 		return sqlSession.selectList(namespace + ".get_fur_def_kind");
+	}
+	
+	//가구 상세보기 페이지 가구 아이템 이름이랑 사이즈 가져오기
+	public FurnitureItemVO getFurItem(int fur_no){
+		return sqlSession.selectOne(namespace+".get_fur_item", fur_no);
 	}
 }

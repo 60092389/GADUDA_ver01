@@ -263,6 +263,7 @@ $(document).ready(function() {
  				<p><b>가격</b> 　　　　 <b>${furdeVO.fur_price } won</b></p> 
  				<p><b>종류</b> 　　　 　<b>${furdeVO.fur_kind }</b></p> 
  				<p><b>컨셉</b> 　　　 　<b>${furdeVO.fur_con }</b></p> 
+ 				<p><b>사이즈</b> 　　　 　<b>${furdeVO.fur_width }|${furdeVO.fur_height }|${furdeVO.fur_depth }</b></p> 
  				<b>소개</b>
  				<p>${furdeVO.fur_info }</p>
  				<br>
