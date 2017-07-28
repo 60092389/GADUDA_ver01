@@ -1,17 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ page import="kr.co.gaduda.common.URLs"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="kr.co.gaduda.common.URLs"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>GADUDA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style type="text/css">
 
 .roomMake_Progress_Button1_css{
-	border: 1px solid; 
-	width: 1030px; 
-	height: 50px;
+	width: 90%; 
+	text-align: right;
+	padding-bottom: 50px;
 }
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -19,12 +24,15 @@
 $(document).ready(function(){
 	$("#roomMake_Progress_Button_js").click(function(){
 		if(figure_num==''){
-			alert('Select Figure');
+			alert('모양을 선택하세요!');
 		}
 		else{
-			$(".roomMak_Progress_state1").css("background","yellow");
-			$(".roomMak_Progress_state2").css("background","pink");
-			$(".roomMak_Progress_state3").css("background","yellow");
+			//$(".roomMak_Progress_state1").css("background","yellow");
+			//$(".roomMak_Progress_state2").css("background","pink");
+			//$(".roomMak_Progress_state3").css("background","yellow");
+				$("#myBar").css("width","50%");
+				$("#ing").html("");
+				$("#ing").append("50%");
 			$.ajax({      
 				  url : "${URLs.URI_ROOMMAKE_CANVAS_FULL}",
 			 		success:function(data){
@@ -45,8 +53,8 @@ $(document).ready(function(){
 	
 </head>
 <body>
-<div class="roomMake_Progress_Button1_css">
-	<button id="roomMake_Progress_Button_js" >다음</button>
+<div class="w3-container roomMake_Progress_Button1_css">
+	<button class="w3-button w3-blue" id="roomMake_Progress_Button_js" >다음</button>
 </div>
 </body>
 </html>

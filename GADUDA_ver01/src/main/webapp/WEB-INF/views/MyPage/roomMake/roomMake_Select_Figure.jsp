@@ -7,30 +7,39 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
+.lenthinput {
+  display: inline-block;
+  width: 80px;
+  text-align: center;
+  margin: 10px;
+  color: black;
+  background: #FFFFFF;
+  border: 1px solid #999999;
+  border-radius: 3px;
+  outline: 0;
+}
 
 #myCanvas {
 	border:  1px solid;
 }
-.roomMake_Figure_Pic_css{
-  	display: inline-block;
-    width: 200px;
-    height: 250px;
-    border: 1px solid blue;
 
+.roomMake_Figure_Pic_css{
+	margin: 10px;
 }
 
 .roomMake_selectFigureName_css{
-    width: 200px;
-    height: 50px;
     text-align: center;
-
 }
 
 .roomMake_selectFigurePic_css{
-	width:200px; 
-	height:200px;
+	width:90%;
 }
 
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
@@ -198,113 +207,113 @@ $(document).ready(function() {
 	}
 	function TextPoition(){
 		if(figure_num==1){
-			$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input type='text' id='lengthText1Val1' readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val1' readonly>CM<div>");
 			$("#lengthText1").css("position","absolute").css("top",figure_Y[0]+280).css("left", (figure_X[1]+figure_X[0])/2+500);
 			$("#lengthText1Val1").val((figure_X[1]-figure_X[0])*10);
 			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText2' class='lengthText'><input type='text' id='lengthText1Val2' readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText2' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val2' readonly>CM<div>");
 			$("#lengthText2").css("position","absolute").css("top",(figure_Y[2]+figure_Y[1])/2+280).css("left", figure_X[1]+500);
 			$("#lengthText1Val2").val((figure_Y[2]-figure_Y[1])*10);
     	}
     	else if(figure_num==2){
     		
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input type='text' id='lengthText1Val1'readonly>CM<div>");
+    		$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val1'readonly>CM<div>");
     		$("#lengthText1").css("position","absolute").css("top",figure_Y[0]+280).css("left", (figure_X[0]+figure_X[1])/2+500);
     		$("#lengthText1Val1").val((figure_X[1]-figure_X[0])*10);
     		
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText2' class='lengthText'><input type='text' id='lengthText1Val2'readonly>CM<div>");
+    		$("#roomMake_Canvas_Body").append("<div id='lengthText2' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val2'readonly>CM<div>");
     		$("#lengthText2").css("position","absolute").css("top",(figure_Y[1]+figure_Y[2])/2+280).css("left", figure_X[1]+500);
     		$("#lengthText1Val2").val((figure_Y[2]-figure_Y[1])*10);
     		
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText3' class='lengthText'><input type='text' id='lengthText1Val3'readonly>CM<div>");
+    		$("#roomMake_Canvas_Body").append("<div id='lengthText3' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val3'readonly>CM<div>");
     		$("#lengthText3").css("position","absolute").css("top",figure_Y[2]+50+280).css("left", (figure_X[2]+figure_X[3])/2+500);
     		$("#lengthText1Val3").val((figure_X[2]-figure_X[3])*10);
     		
-			$("#roomMake_Canvas_Body").append("<div id='lengthText4' class='lengthText'><input type='text' id='lengthText1Val4'readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText4' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val4'readonly>CM<div>");
 			$("#lengthText4").css("position","absolute").css("top",(figure_Y[3]+figure_Y[4])/2+350).css("left", figure_X[3]+280);
 			$("#lengthText1Val4").val((figure_Y[3]-figure_Y[4])*10);
 			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText5' class='lengthText'><input type='text' id='lengthText1Val5'readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText5' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val5'readonly>CM<div>");
 			$("#lengthText5").css("position","absolute").css("top",figure_Y[4]+50+280).css("left", (figure_X[4]+figure_X[5])/2+380);
 			$("#lengthText1Val5").val((figure_X[4]-figure_X[5])*10);
 			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText6' class='lengthText'><input type='text' id='lengthText1Val6'readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText6' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val6'readonly>CM<div>");
 			$("#lengthText6").css("position","absolute").css("top",(figure_Y[5]+figure_Y[0])/2+280).css("left", figure_X[5]+280);
 			$("#lengthText1Val6").val((figure_Y[5]-figure_Y[0])*10);
     	}
     	else if(figure_num==3){
     		
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input type='text' id='lengthText1Val1'readonly>CM<div>");
+    		$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val1'readonly>CM<div>");
     		$("#lengthText1").css("position","absolute").css("top",figure_Y[0]+280).css("left", (figure_X[0]+figure_X[1])/2+500);
     		$("#lengthText1Val1").val((figure_X[1]-figure_X[0])*10);
 			
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText2' class='lengthText'><input type='text' id='lengthText1Val2'readonly>CM<div>");
+    		$("#roomMake_Canvas_Body").append("<div id='lengthText2' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val2'readonly>CM<div>");
     		$("#lengthText2").css("position","absolute").css("top",(figure_Y[1]+figure_Y[2])/2+280).css("left", figure_X[1]+500);
     		$("#lengthText1Val2").val((figure_Y[2]-figure_Y[1])*10);
 			
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText3' class='lengthText'><input type='text' id='lengthText1Val3'readonly>CM<div>");
+    		$("#roomMake_Canvas_Body").append("<div id='lengthText3' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val3'readonly>CM<div>");
     		$("#lengthText3").css("position","absolute").css("top",figure_Y[2]+280).css("left", (figure_X[2]+figure_X[3])/2+500);
     		$("#lengthText1Val3").val((figure_X[3]-figure_X[2])*10);
 			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText4' class='lengthText'><input type='text' id='lengthText1Val4'readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText4' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val4'readonly>CM<div>");
 			$("#lengthText4").css("position","absolute").css("top",(figure_Y[3]+figure_Y[4])/2+300).css("left", figure_X[3]+500);
 			$("#lengthText1Val4").val((figure_Y[4]-figure_Y[3])*10);
 			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText5' class='lengthText'><input type='text' id='lengthText1Val5'readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText5' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val5'readonly>CM<div>");
 			$("#lengthText5").css("position","absolute").css("top",figure_Y[4]+50+280).css("left", (figure_X[4]+figure_X[5])/2+380);
 			$("#lengthText1Val5").val((figure_X[4]-figure_X[5])*10);
 			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText6' class='lengthText'><input type='text' id='lengthText1Val6'readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText6' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val6'readonly>CM<div>");
 			$("#lengthText6").css("position","absolute").css("top",(figure_Y[5]+figure_Y[0])/2+280).css("left", figure_X[5]+280);
 			$("#lengthText1Val6").val((figure_Y[5]-figure_Y[0])*10);
     	}
 		else if(figure_num==4){
-			$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input type='text' id='lengthText1Val1'readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val1'readonly>CM<div>");
     		$("#lengthText1").css("position","absolute").css("top",figure_Y[0]+280).css("left", (figure_X[0]+figure_X[1])/2+500);
     		$("#lengthText1Val1").val((figure_X[1]-figure_X[0])*10);
     		
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText2' class='lengthText'><input type='text' id='lengthText1Val2'readonly>CM<div>");
+    		$("#roomMake_Canvas_Body").append("<div id='lengthText2' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val2'readonly>CM<div>");
     		$("#lengthText2").css("position","absolute").css("top",(figure_Y[1]+figure_Y[2])/2+300).css("left", figure_X[1]+500);
     		$("#lengthText1Val2").val((figure_Y[2]-figure_Y[1])*10);
     		
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText3' class='lengthText'><input type='text' id='lengthText1Val3'readonly>CM<div>");
+    		$("#roomMake_Canvas_Body").append("<div id='lengthText3' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val3'readonly>CM<div>");
     		$("#lengthText3").css("position","absolute").css("top",figure_Y[2]+330).css("left", (figure_X[2]+figure_X[3])/2+500);
     		$("#lengthText1Val3").val((figure_X[2]-figure_X[3])*10);
     		
-			$("#roomMake_Canvas_Body").append("<div id='lengthText4' class='lengthText'><input type='text' id='lengthText1Val4'readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText4' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val4'readonly>CM<div>");
 			$("#lengthText4").css("position","absolute").css("top",(figure_Y[3]+figure_Y[4])/2+300).css("left", figure_X[3]+500);
 			$("#lengthText1Val4").val((figure_Y[4]-figure_Y[3])*10);
 			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText5' class='lengthText'><input type='text' id='lengthText1Val5'readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText5' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val5'readonly>CM<div>");
 			$("#lengthText5").css("position","absolute").css("top",figure_Y[4]+330).css("left", (figure_X[4]+figure_X[5])/2+500);
 			$("#lengthText1Val5").val((figure_X[4]-figure_X[5])*10);
 			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText6' class='lengthText'><input type='text' id='lengthText1Val6'readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText6' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val6'readonly>CM<div>");
 			$("#lengthText6").css("position","absolute").css("top",(figure_Y[5]+figure_Y[0])/2+280).css("left", figure_X[5]+280);
 			$("#lengthText1Val6").val((figure_Y[5]-figure_Y[0])*10);
 		}
 		else if(figure_num==5){
-			$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input type='text' id='lengthText1Val1'readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val1'readonly>CM<div>");
     		$("#lengthText1").css("position","absolute").css("top",figure_Y[0]+280).css("left", (figure_X[0]+figure_X[1])/2+500);
     		$("#lengthText1Val1").val((figure_X[1]-figure_X[0])*10);
     		
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText2' class='lengthText'><input type='text' id='lengthText1Val2'readonly>CM<div>");
+    		$("#roomMake_Canvas_Body").append("<div id='lengthText2' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val2'readonly>CM<div>");
     		$("#lengthText2").css("position","absolute").css("top",(figure_Y[1]+figure_Y[2])/2+300).css("left", figure_X[1]+500);
     		$("#lengthText1Val2").val((figure_Y[2]-figure_Y[1])*10);
 			
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText3' class='lengthText'><input type='text' id='lengthText1Val3'readonly>CM<div>");
+    		$("#roomMake_Canvas_Body").append("<div id='lengthText3' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val3'readonly>CM<div>");
     		$("#lengthText3").css("position","absolute").css("top",figure_Y[2]+330).css("left", (figure_X[2]+figure_X[3])/2+500);
     		$("#lengthText1Val3").val((figure_X[2]-figure_X[3])*10);
     		
-			$("#roomMake_Canvas_Body").append("<div id='lengthText4' class='lengthText'><input type='text' id='lengthText1Val4'readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText4' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val4'readonly>CM<div>");
 			$("#lengthText4").css("position","absolute").css("top",(figure_Y[3]+figure_Y[4])/2+300).css("left", figure_X[3]+280);
 			$("#lengthText1Val4").val((figure_Y[3]-figure_Y[4])*10);
 			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText5' class='lengthText'><input type='text' id='lengthText1Val5'readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText5' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val5'readonly>CM<div>");
 			$("#lengthText5").css("position","absolute").css("top",figure_Y[4]+280).css("left", (figure_X[4]+figure_X[5])/2+450);
 			$("#lengthText1Val5").val((figure_X[5]-figure_X[4])*10);
 			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText6' class='lengthText'><input type='text' id='lengthText1Val6'readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText6' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val6'readonly>CM<div>");
 			$("#lengthText6").css("position","absolute").css("top",(figure_Y[5]+figure_Y[0])/2+280).css("left", figure_X[5]+280);
 			$("#lengthText1Val6").val((figure_Y[5]-figure_Y[0])*10);
 			
@@ -551,57 +560,29 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<div id="roomMake_Canvas_Body" width="1030" height="800">
+<div id="roomMake_Canvas_Body" class="w3-container">
+	
 	<canvas id="myCanvas" width="1030" height="800" />
-</div>
-</br>
 
-<div class="roomMake_SelectFigure_Pic_Menu_css" >
-		
-		<div class="roomMake_Figure_Pic_css" value="1"  >
-			<div>
-				<img src="/resources/Images/Room/roomMake_quadrangular.png" class="roomMake_selectFigurePic_css" alt="�ш���"  >
-			</div>	
-			<p class="roomMake_selectFigureName_css">
-				사각형
-			</p>
-		</div>
-		
-		<div class="roomMake_Figure_Pic_css" value="2" >
-			<div>
-				<img  class="roomMake_selectFigurePic_css" alt="�깊��" src="/resources/Images/Room/roomMake_seven.png" >
-			</div>	
-			<p class="roomMake_selectFigureName_css">
-				ㄱ형
-			</p>
-		</div>
-		
-		<div class="roomMake_Figure_Pic_css"  value='3' >
-			<div>
-				<img  class="roomMake_selectFigurePic_css" alt="�댄��" src="/resources/Images/Room/roomMake_L.png" >
-			</div>	
-			<p class="roomMake_selectFigureName_css">
-				ㄴ형
-			</p>
-		</div>
-		
-		<div class="roomMake_Figure_Pic_css"  value='4' >
-			<div>
-				<img  class="roomMake_selectFigurePic_css" alt=""  src="/resources/Images/Room/roomMake_reverse_seven.png">
-			</div>	
-			<p class="roomMake_selectFigureName_css">
-				역 ㄱ형
-			</p>
-		</div>
-		
-		<div class="roomMake_Figure_Pic_css" value='5' >
-			<div>
-				<img  class="roomMake_selectFigurePic_css" alt="���댄��" src="/resources/Images/Room/roomMake_reverse_L.png" >
-			</div>	
-			<p class="roomMake_selectFigureName_css">
-				역ㄴ형
-			</p>
-		</div>
+
+	<div class="roomMake_SelectFigure_Pic_Menu_css" >
+		<table class="w3-container">
+  			<tr>
+		    <th class="roomMake_selectFigureName_css">사각형</th>
+		    <th class="roomMake_selectFigureName_css">ㄱ자형</th>
+		    <th class="roomMake_selectFigureName_css">ㄴ자형</th>
+		    <th class="roomMake_selectFigureName_css">역 ㄱ자형</th>
+		    <th class="roomMake_selectFigureName_css">역 ㄴ자형</th>
+		  </tr>
+		  <tr>
+		    <th class="roomMake_Figure_Pic_css" value="1" ><img  class="roomMake_selectFigurePic_css" alt="사각형" src="/resources/Images/Room/roomMakequadrangular.png" ></th>
+		    <th class="roomMake_Figure_Pic_css" value="2" ><img  class="roomMake_selectFigurePic_css" alt="ㄱ자형" src="/resources/Images/Room/roomMakeseven.png" ></th>
+		    <th class="roomMake_Figure_Pic_css" value="3" ><img  class="roomMake_selectFigurePic_css" alt="ㄱ자형" src="/resources/Images/Room/roomMakeL.png" ></th>
+		    <th class="roomMake_Figure_Pic_css" value="4" ><img  class="roomMake_selectFigurePic_css" alt="역 ㄱ자형"  src="/resources/Images/Room/roomMakereverseseven.png"></th>
+		    <th class="roomMake_Figure_Pic_css" value="5" ><img  class="roomMake_selectFigurePic_css" alt="역 ㄴ자형" src="/resources/Images/Room/roomMakereverseL.png" ></th>
+		  </tr>
+		</table>
 	</div>
+</div>
 </body>
 </html>

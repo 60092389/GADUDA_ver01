@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-      <%@ page import="kr.co.gaduda.common.URLs"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="kr.co.gaduda.common.URLs"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>GADUDA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <style>
 
 #myCanvas {
@@ -72,6 +78,20 @@
 	height: 50px;
 }
 
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 0%;
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+
 
 
 </style>
@@ -79,6 +99,11 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	$("#myBar").css("width","75%");
+	$("#ing").html("");
+	$("#ing").append("75%");
+	
 	var canvas = document.getElementById("myCanvas");
 	var context = canvas.getContext("2d");
 
@@ -270,6 +295,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+	
 <div id="roomMake_Canvas_Body" width="1030" height="800">
 	<canvas id="myCanvas" width="1030" height="800" />
 </div>
@@ -283,7 +309,7 @@ $(document).ready(function(){
 		<div class="roomMake_RoomName_Menu_Name_css">
 
 			<div>방이름</div>
-			방이름:<input type="text" id="roomMake_RoomName_Menu_Name_js"name="roomMake_RoomName_Menu_Name">
+			<b>방이름:</b> <input type="text" id="roomMake_RoomName_Menu_Name_js"name="roomMake_RoomName_Menu_Name">
 		</div>
 
 </div>

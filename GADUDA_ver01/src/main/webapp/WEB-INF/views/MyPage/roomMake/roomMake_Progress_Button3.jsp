@@ -9,9 +9,9 @@
 <style type="text/css">
 
 .roomMake_Progress_Button3_css{
-	border: 1px solid; 
-	width: 1030px; 
-	height: 50px;
+	width: 90%; 
+	text-align: right;
+	padding-bottom: 50px;
 }
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -40,9 +40,9 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<div class="roomMake_Progress_Button3_css">
-<button id="roomMake_Progress_After2_Button_js">이전</button>
-<button id="roomMake_Progress_Next3_Button_js">저장</button>
+<div class="w3-container roomMake_Progress_Button3_css">
+	<button class="w3-button w3-red" id="roomMake_Progress_After2_Button_js">이전</button>
+	<button class="w3-button w3-blue" id="roomMake_Progress_Next3_Button_js" >다음</button>
 </div>
 
 </body>

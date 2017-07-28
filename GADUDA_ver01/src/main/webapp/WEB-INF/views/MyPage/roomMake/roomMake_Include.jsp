@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ page import="kr.co.gaduda.common.URLs"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="kr.co.gaduda.common.URLs"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>GADUDA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <style type="text/css">
 
 .roomMak_Progress_state_css{
@@ -17,7 +23,7 @@
     display:inline-table;
     float: center;
     width: 100px;
-    height: 100px;
+    height: 50px;
     border: 1px solid blue;
 }
 .content {
@@ -25,6 +31,21 @@
     vertical-align: middle;
     text-align: center;
 }
+
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 0%;
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
@@ -41,7 +62,7 @@ var figure_num='';
 var draggingImage = false;
 var length_num='';
 
-//벽시 생상 설정
+//벽지 생상 설정
 var roomMake_canvas_linoleum_color =  "white";
 //바닥 색상설정
 var roomMake_canvas_wallPaper_color = "black";
@@ -67,9 +88,8 @@ var roomMake_canvas_img_state_arr=[];
 
 
 $(document).ready(function() {
-	$(".roomMak_Progress_state1").css("background","pink");
-	$(".roomMak_Progress_state2").css("background","yellow");
-	$(".roomMak_Progress_state3").css("background","yellow");
+	$("#myBar").css("width","25%");
+	$("#ing").append("25%");
 	aaa();
 	
 	function aaa(){
@@ -92,35 +112,20 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-	
-	<div class="roomMak_Progress_state_css"> 
-	
-		<div class="roomMak_Progress_state1 roomMak_Progress_state_Ing" >
-			<p class="content">방 모야 선택</p>
-		</div>
-		
-		<div class=" roomMak_Progress_state_Ing">
-			<p class="content">--></p>
-		</div>
-		
-		<div class="roomMak_Progress_state2 roomMak_Progress_state_Ing">
-			<p class="content">방 구조 생성</p>
-		</div > 
-		
-		<div class=" roomMak_Progress_state_Ing">
-			<p class="content">--></p>
-		</div>
-		
-		<div class="roomMak_Progress_state3 roomMak_Progress_state_Ing">
-			<p class="content">제목 정하기</p>
-		</div> 
+<div class="w3-container">
+
+	<h1><b>내 방 만들기</b></h1>
+	<div class="w3-container" id="myProgress">
+  		<div id="myBar"><b id="ing"></b></div>
 	</div>
-	</br>
+	
+	<br>
+	<br>
 	
 	<div id="roomMake_Progress_Position"></div>
-	</br>
+	<br>
 	
 	<div id="roomMake_Progress_Button_Position"></div>
-
+</div>
 </body>
 </html>

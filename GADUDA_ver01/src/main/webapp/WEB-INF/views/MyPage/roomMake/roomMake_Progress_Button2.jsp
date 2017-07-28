@@ -9,19 +9,19 @@
 <style type="text/css">
 
 .roomMake_Progress_Button2_css{
-	border: 1px solid; 
-	width: 1030px; 
-	height: 50px;
+	width: 90%; 
+	text-align: right;
+	padding-bottom: 50px;
 }
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#roomMake_Progress_After_Button_js").click(function(){
-		$(".roomMak_Progress_state1").css("background","pink");
-		$(".roomMak_Progress_state2").css("background","yellow");
-		$(".roomMak_Progress_state3").css("background","yellow");
 		
+		$("#myBar").css("width","25%");
+		$("#ing").html("");
+		$("#ing").append("25%");
 		roomMake_canvas_img_kind_num_arr=[];
 		roomMake_canvas_img_kind_arr=[];
 		roomMake_canvas_img_X_arr=[];
@@ -47,9 +47,6 @@ $(document).ready(function() {
 	    });
 	});
 	$("#roomMake_Progress_Next_Button_js").click(function(){
-		$(".roomMak_Progress_state1").css("background","yellow");
-		$(".roomMak_Progress_state2").css("background","yellow");
-		$(".roomMak_Progress_state3").css("background","pink");
 		
 		
 		$.ajax({      
@@ -70,9 +67,9 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<div class="roomMake_Progress_Button2_css">
-<button id="roomMake_Progress_After_Button_js">이전</button>
-<button id="roomMake_Progress_Next_Button_js">다음</button>
+<div class="w3-container roomMake_Progress_Button2_css">
+	<button class="w3-button w3-red" id="roomMake_Progress_After_Button_js">이전</button>
+	<button class="w3-button w3-blue" id="roomMake_Progress_Next_Button_js" >다음</button>
 </div>
 </body>
 </html>
