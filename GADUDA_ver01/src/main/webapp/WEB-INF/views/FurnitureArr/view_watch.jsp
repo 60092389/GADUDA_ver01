@@ -14,6 +14,19 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<style>
+.styled-select select {
+   background: transparent;
+   border: none;
+   border-radius: 4px;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 268px;
+   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0
+		rgba(0, 0, 0, 0.12);
+}
+</style>
 <body>
 	<!-- header include -->
 	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
@@ -24,30 +37,48 @@
 	<input type="hidden" id="user_nickname" value="${ member.mem_nickname }">
 </div>
 
+
+<!-- select box -->
 <div class="w3-container" >
-	<div class="w3-main w3-content" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
+	<div class="w3-main w3-content w3-center" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
 		<form method="get" action=${URLs.URI_FURNITURE_WATCH_FULL }>
-			<table border=1>
-				<tr><th>방종류</th>
-				<td><select name="room_kind_def_name">
-					<option selected value="0" >전체</option>
-					<c:forEach var="roomkind" items="${roomKind}">
-						<option value="${roomkind}">${roomkind}</option>
-					</c:forEach>
-					</select>
-				</td>
-				</tr>
-				<tr><th>컨셉</th>
-				<td><select name="concept_name">
-					<option selected value="0">전체</option>
-					<c:forEach var="conceptKind" items="${conceptKind}">
-      					<option value="${conceptKind}">${conceptKind}</option>
-      				</c:forEach>
-				</select>
-				</td>
-				</tr>
-			</table>
-			<input type="submit" value="검색">
+			<div class="w3-container w3-center" id="furarrselectbox">
+				<table>
+					<tr>
+						<td style="width: 150px"><h3>방 종류</h3></td>
+						<td>
+							<div class="styled-select select" id="roomkindselect">
+								<select name="room_kind_def_name">
+									<option selected value="0" >전체</option>
+									<c:forEach var="roomkind" items="${roomKind}">
+										<option value="${roomkind}">${roomkind}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</td>
+						<td>　　</td>
+						<td>　　</td>
+					</tr>
+					<tr>
+						<td style="width: 150px" ><h3>컨셉</h3></td>
+						<td>
+							<div class="styled-select select" id="roomkindselect">
+								<select name="concept_name">
+									<option selected value="0">전체</option>
+									<c:forEach var="conceptKind" items="${conceptKind}">
+				      					<option value="${conceptKind}">${conceptKind}</option>
+				      				</c:forEach>
+								</select>
+							</div>
+						</td>
+						<td>　　</td>
+						<td>
+							<button class="w3-button w3-subcolor w3-padding"  type="submit">검색하기</button>
+						</td>
+					</tr>
+				</table>
+				
+			</div>
 		</form>
 	</div>
 
