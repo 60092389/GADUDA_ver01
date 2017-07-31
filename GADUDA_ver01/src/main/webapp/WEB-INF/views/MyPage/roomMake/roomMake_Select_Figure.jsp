@@ -575,7 +575,7 @@ $(document).ready(function() {
 		    <th class="roomMake_selectFigureName_css">역 ㄴ자형</th>
 		  </tr>
 		  <tr>
-		    <th class="roomMake_Figure_Pic_css" value="1" ><img  class="roomMake_selectFigurePic_css" alt="사각형" src="/resources/Images/Room/roomMakequadrangular.png" ></th>
+		    <th class="roomMake_Figure_Pic_css" value="1" ><img  class="roomMake_selectFigurePic_css" alt="사각형" src="/resources/Images/Room/roomMakequadrangula.png" ></th>
 		    <th class="roomMake_Figure_Pic_css" value="2" ><img  class="roomMake_selectFigurePic_css" alt="ㄱ자형" src="/resources/Images/Room/roomMakeseven.png" ></th>
 		    <th class="roomMake_Figure_Pic_css" value="3" ><img  class="roomMake_selectFigurePic_css" alt="ㄱ자형" src="/resources/Images/Room/roomMakeL.png" ></th>
 		    <th class="roomMake_Figure_Pic_css" value="4" ><img  class="roomMake_selectFigurePic_css" alt="역 ㄱ자형"  src="/resources/Images/Room/roomMakereverseseven.png"></th>

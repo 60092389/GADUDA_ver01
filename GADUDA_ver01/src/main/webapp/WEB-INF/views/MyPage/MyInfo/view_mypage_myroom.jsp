@@ -44,9 +44,51 @@ $(document).ready(function(){
 	<div class="w3-main w3-content" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
 		<div class="w3-container" id="myPage_content5">
 			<br>
+						<c:forEach var="myRoomList" items="${myRoomList }">
 			<div class="w3-padding-32 w3-main w3-content w3-margin-top w3-border-top">
-				내 방
+				<table class="w3-container w3-table w3-center">
+					<tr>
+	   					<th>No.<h1>${ myRoomList.room_no }</h1></th>
+						<th colspan="3">
+							<h1>${ myRoomList.room_name }</h1>
+						</th>
+						<th>${ myRoomList.room_create_date }</th>
+	  				</tr>
+					<tr>
+						<td colspan="3" rowspan="4">
+							<img src="${ myRoomList.room_shape_img_loc }" alt="${ myRoomList.room_name }" style="width:200px">
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<div class="w3-center">
+								<i class="material-icons" >favorite</i>
+							</div>
+						</td>
+						<td colspan="2">
+							내 방
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4"> </td>
+						<td>
+							<button class="w3-button w3-green w3-hover-white">수정하기</button> 
+							<button class="w3-button w3-red w3-hover-white">삭제하기</button> 
+						</td>
+					</tr>
+				</table>	
 	    	</div>
+		</c:forEach>
 		</div>
 		<div id="btn_makeRoom_div"><button class="w3-button w3-blue w3-hover-white" id="btn_makeRoom">새로운 방 생성 하기</button></div> 
 	</div>

@@ -16,92 +16,154 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>가두다</title>
-<script type="text/javascript">
-function RoomKind() {
-    document.getElementById("RoomkindDropdown").classList.toggle("show");
+<style>
+.dropbtn {
+    background: #fefefe;
+    color: white;
+    padding: 5px;
+    color: black;
+    font-size: 15px;
+    height: 30px;
+    width: 268px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0
+		rgba(0, 0, 0, 0.12);
 }
 
-function ConceptKind() {
-    document.getElementById("ConceptkindDropdown").classList.toggle("show");
+.dropdown {
+    position: relative;
+    display: inline-block;
 }
 
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    font-size: 14px;
+    min-width: 268px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
 }
 
-</script>
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #eee}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #eee;
+}
+</style>
 </head>
 <body>
-	<!-- header include -->
-	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
+<!-- header include -->
+<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
 	
-	<div class="w3-container" style="float: right">
-		<c:set var="mem" value="${ member }" />
-		<input type="hidden" id="mem_id" value="${mem.mem_id }">
-		<input type="hidden" id="user_nickname"value="${mem.mem_nickname }">
-	</div>
-<div class="w3-container w3-center mainSection">
-	<h1><b>가구검색하기</b></h1>
-  	<div>
-  		<div class="dropdown">
-    		<div class="w3-dropdown-hover">
-      			<button onclick="RoomKind()" class="dropbtn ">방 종류</a></button>
-      		<div id="RoomkindDropdown" class="dropdown-content" class="dropdown-content w3-bar-block w3-hover-white w3-card-4">
-      			<a href="/furniture/fur_list_get" class="w3-center">전체</a>
-      			<c:forEach var="roomkind" items="${roomKind}">
-      				<a href="/furniture/fur_list_get?room_kind_def_name=${roomkind}" class="w3-bar-item w3-button" id="c_room_kind" value="${roomkind}">${roomkind}</a>
-      			</c:forEach>
-      		</div>
-   		</div>
-   		
-   		<div class="dropdown">
-    		<div class="w3-dropdown-hover">
-      			<button onclick="ConceptKind()" class="dropbtn" >컨셉 종류</a></button>
-      		<div id="ConceptkindDropdown" class="dropdown-content" class="dropdown-content w3-bar-block w3-hover-white w3-card-4">
-      			<a href="/furniture/fur_list_get" class="w3-center">전체</a>
-      			<c:forEach var="conceptKind" items="${conceptKind}">
-      				<a href="/furniture/fur_list_get?concept_name=${conceptKind}" class="w3-bar-item w3-button" value="${conceptKind}">${conceptKind}</a>
-      			</c:forEach>
-      		</div>
-   		</div>
-   	</div>		
-   		<br>
-
-			<div class="w3-dropdown-hover" id="FurDropdown">
-      		<button class="w3-button">Furniture</button>
-      		<div class="w3-dropdown-content w3-bar-block w3-hover-white w3-card-4">
-      			<c:forEach var="furDefKind" items="${furDefKind}">
-      					<a href="/furniture/fur_list_get?fur_kind_def_name=${furDefKind}" class="w3-bar-item w3-button" value="${furDefKind}">${furDefKind}</a>
-      				</c:forEach>
-      		</div>
-    	</div>
+<div class="w3-container" style="float: right">
+	<c:set var="mem" value="${ member }" />
+	<input type="hidden" id="mem_id" value="${mem.mem_id }">
+	<input type="hidden" id="user_nickname"value="${mem.mem_nickname }">
 </div>
-<br>
-	<div class="w3-bar">
-  	<p>종류별로 정렬해서 보세용~</p>
-		<div class="w3-bar">
-  			<div class="w3-bar-item"><a href="/furniture/fur_list_get?array_option=furno">Furniture No.</a></div>
-  			<div class="w3-bar-item"><a href="/furniture/fur_list_get?array_option=good">Like</a></div>
-  			<div class="w3-bar-item"><a href="/furniture/fur_list_get?array_option=reply">Comment</a></div>
-		</div>
-	</div>
+
+
+<!-- select box -->
+<div class="w3-container" >
+	<div class="w3-main w3-content w3-center" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
+		<div class="w3-container w3-center" id="furarrselectbox">
+				<table>
+					<tr>
+						<td style="width: 300px"><h3>ROOM</h3></td>
+						<td style="width: 300px"><h3>CONCEPT</h3></td>
+						<td style="width: 300px"><h3>FURNITURE</h3></td>
+						<td style="width: 300px"><h3></h3></td>
+					</tr>
+					<tr>
+						<td>
+							<div class="styled-select select" id="roomkindselect">
+								<div class="dropdown">
+						    		<div class="w3-dropdown-hover">
+						      			<button onclick="RoomKind()" class="dropbtn">방 종류</a></button>
+						      		<div id="RoomkindDropdown" class="dropdown-content" class="dropdown-content w3-bar-block w3-hover-white w3-card-4">
+						      			<a href="/furniture/fur_list_get" class="w3-bar-item w3-center">전체</a>
+						      			<c:forEach var="roomkind" items="${roomKind}">
+						      				<a href="/furniture/fur_list_get?room_kind_def_name=${roomkind}" class="w3-bar-item" id="c_room_kind" value="${roomkind}">${roomkind}</a>
+						      			</c:forEach>
+						      		</div>
+						   		</div>
+							</div>
+						</td>
+						<td>
+							<div class="styled-select select" id="roomkindselect">
+								<div class="dropdown">
+						    		<div class="w3-dropdown-hover">
+						      			<button onclick="ConceptKind()" class="dropbtn" >컨셉 종류</a></button>
+						      		<div id="ConceptkindDropdown" class="dropdown-content" class="dropdown-content w3-bar-block w3-hover-white w3-card-4">
+						      			<a href="/furniture/fur_list_get" class="w3-center w3-bar-item">전체</a>
+						      			<c:forEach var="conceptKind" items="${conceptKind}">
+						      				<a href="/furniture/fur_list_get?concept_name=${conceptKind}" class="w3-bar-item" value="${conceptKind}">${conceptKind}</a>
+						      			</c:forEach>
+						      		</div>
+						   		</div>
+							</div>
+						</td>
+						<td>
+							<div class="styled-select select" id="roomkindselect">
+								<div class="dropdown">
+						    		<div class="w3-dropdown-hover">
+						      			<button onclick="ConceptKind()" class="dropbtn" >가구 종류</a></button>
+						      		<div id="ConceptkindDropdown" class="dropdown-content" class="dropdown-content w3-bar-block w3-hover-white w3-card-4">
+						      			<a href="/furniture/fur_list_get" class="w3-center w3-bar-item">전체</a>
+						      			<c:forEach var="furDefKind" items="${furDefKind}">
+						      				<a href="/furniture/fur_list_get?fur_kind_def_name=${furDefKind}" class="w3-bar-item" value="${furDefKind}">${furDefKind}</a>
+						      			</c:forEach>
+						      		</div>
+						   		</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+		</div>	
 </div>
 <br>
 	
 	<!-- First Grid(인기 가구 리스트) -->
-	<div class="w3-container">
-		<br>
+	<div class="w3-container w3-margin-top">
+		<div class="w3-padding w3-margin-2">
+			<div>
+      			<div class="w3-col w3-border-top">
+      				<div class="w3-col m2 w3-center">
+      					<a href="/furniture/fur_list_get?array_option=furno"><h5>가구 번호 ▼</h5></a>
+      				</div>
+      				<div class="w3-col m2 w3-center">
+      					<h5>가구 사진</h5>
+      				</div> 								
+        			<div class="w3-col m3 w3-center">
+        				<h5>가구 이름</h5>
+        			</div>
+        			<div class="w3-col m1 w3-center">
+        				<h5>브랜드 이름</h5>
+        			</div>
+        			<div class="w3-col m2 w3-center">
+        				<h5>가격</h5>
+        			</div>
+        			<div class="w3-col m1 w3-center">
+        				<a href="/furniture/fur_list_get?array_option=good"><h5>LIKE ▼</h5></a>
+					</div>
+					<div class="w3-col m1 w3-center">
+        				<div class="w3-bar-item"><a href="/furniture/fur_list_get?array_option=reply"><h5>REPL ▼</h5></a>
+					</div>
+				</div>
+        	</div>
+		</div>
 		<c:forEach var="fsl" items="${furList }">
 			<div class="w3-padding w3-margin-2">
 				<div class=" w3-center">

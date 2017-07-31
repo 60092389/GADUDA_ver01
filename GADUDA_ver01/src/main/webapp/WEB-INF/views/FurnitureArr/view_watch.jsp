@@ -45,7 +45,11 @@
 			<div class="w3-container w3-center" id="furarrselectbox">
 				<table>
 					<tr>
-						<td style="width: 150px"><h3>방 종류</h3></td>
+						<td style="width: 300px"><h3>ROOM</h3></td>
+						<td style="width: 300px"><h3>CONCEPT</h3></td>
+						<td style="width: 300px"></td>
+					</tr>
+					<tr>
 						<td>
 							<div class="styled-select select" id="roomkindselect">
 								<select name="room_kind_def_name">
@@ -56,11 +60,6 @@
 								</select>
 							</div>
 						</td>
-						<td>　　　</td>
-						<td>　　　</td>
-					</tr>
-					<tr>
-						<td style="width: 150px" ><h3>컨셉</h3></td>
 						<td>
 							<div class="styled-select select" id="roomkindselect">
 								<select name="concept_name">
@@ -71,9 +70,8 @@
 								</select>
 							</div>
 						</td>
-						<td>　　　</td>
 						<td>
-							<button class="w3-button w3-subcolor w3-padding"  type="submit">검색하기</button>
+							<button class="w3-button w3-subcolor w3-padding" type="submit">검색하기</button>
 						</td>
 					</tr>
 				</table>
@@ -83,8 +81,31 @@
 	</div>
 
 	<!-- First Grid(인기 가구 배치도 리스트) -->
-	<div class="w3-container">
-		<br>
+	<div class="w3-container w3-margin-top">
+			<div class="w3-padding w3-margin-2">
+				<div class=" w3-center">
+      				<div class="w3-col w3-border-top">
+      					<div class="w3-col m2">
+      						<h5>NO</h5>
+      					</div>
+      					<div class="w3-col m2 w3-center">
+      						<h5>사진</h5>
+      					</div> 								
+        				<div class="w3-col m3 w3-center">
+        					<h5>이름</h5>
+        				</div>
+        				<div class="w3-col m1 w3-center">
+        					<h5>작성자</h5>
+        				</div>
+        				<div class="w3-col m2 w3-center">
+        					<h5>컨셉</h5>
+        				</div>
+        				<div class="w3-col m2 w3-center">
+							<h5>Social</h5>
+						</div>
+					</div>
+        		</div>
+    		</div>
 		<c:forEach var="fal" items="${fur_arr_list }">
 			<div class="w3-padding w3-margin-2">
 				<div class=" w3-center">

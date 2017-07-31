@@ -2,22 +2,46 @@ package kr.co.gaduda.room.controller;
 
 
 import java.io.FileOutputStream;
+import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.codec.binary.Base64;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.gaduda.common.Pages;
 import kr.co.gaduda.common.URLs;
+import kr.co.gaduda.member.vo.MemberVO;
 import kr.co.gaduda.room.dto.RoomDTO;
+import kr.co.gaduda.room.service.impl.RoomService;
+import kr.co.gaduda.room.vo.RoomVO;
 
 @Controller
 @RequestMapping(value = "/room")
 public class RoomController {
+	
+	@Autowired
+	private RoomService roomService;
+	
+	// 마이페이지 내 방 가져오기
+	@RequestMapping(value = URLs.URI_MYPAGE_MYROOM)
+	public String callMyRoom(HttpServletRequest request, Model model) {
+		MemberVO memVO = (MemberVO) request.getSession().getAttribute("member");
+		String mem_id = memVO.getMem_id();
+		System.out.println(mem_id+"마이페이지 룸룸");
+		
+		List<RoomVO> myRoomList = roomService.callMyRoomList(mem_id);
+		System.out.println(myRoomList+"꺄");
+		
+		model.addAttribute("myRoomList", myRoomList);
+		return Pages.VIEW_MYROOM;
+	}
 
 	
 	@RequestMapping(value = URLs.URI_ROOMMAKE_INCLUDE, method = RequestMethod.GET)

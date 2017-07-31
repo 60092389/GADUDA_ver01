@@ -1,5 +1,9 @@
 package kr.co.gaduda.room.service;
 
-public interface IRoomService {
+import java.util.List;
 
+import kr.co.gaduda.room.vo.RoomVO;
+
+public interface IRoomService {
+	public List<RoomVO> callMyRoomList(String mem_id);
 }
