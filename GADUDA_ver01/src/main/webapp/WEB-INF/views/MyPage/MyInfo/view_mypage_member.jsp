@@ -36,16 +36,16 @@
 	<jsp:include page="/WEB-INF/views/MyPage/MyInfo/view_mypage_sidebar.jsp" flush="false" />
 	
 	<!-- Page Container -->
-	<div class="w3-main w3-content" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
+	<div class="w3-main w3-content" style="max-width: 1200px; margin-left: 300px">
 	
 		<div class="w3-row">
-			<div class="w3-col m3">
+			<div class="w3-container">
 				<!-- Profile -->
-				<div class="w3-container w3-card-2 w3-round w3-white w3-border">
+				<div class="w3-col m5 w3-round w3-white">
 					<c:set var="member" value="${ member }" />
 					<div class="w3-container">
 						<h4 class="w3-center">My Profile </h4>
-						<p class="w3-center"><img src=${ member.mem_profile_pic } class="w3-circle" style="height: 106px; width: 106px" alt="profile ficture"></p>
+						<p class="w3-center"><img src=${ member.mem_profile_pic } class="w3-circle" style="height: 200px; width: 200px" alt="profile ficture"></p>
 						<p class="w3-center"><i class="w3-margin-right w3-text-theme"></i><a onclick="document.getElementById('proficMod').style.display='block'">프로필 사진 변경</a></p>
 						
 						<hr>
@@ -57,13 +57,16 @@
 					</div>
 				</div>
 				<br>
-			</div>
+			
 
-			<!-- Middle Column -->
-			<div class="w3-col m7">
-
-				<h1 class="w3-center">여기에다 뭐 넣을지 생각해 보기</h1>
-				
+				<!-- Middle Column -->
+				<div class="w3-col m7">
+					<div class="w3-container w3-container">
+						<h3>내 가구 배치도 최근 반응</h3>
+						<h3>추천 배치도</h3>
+					</div>
+					
+				</div>
 			</div>
 			
 		</div>

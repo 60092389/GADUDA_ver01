@@ -79,10 +79,10 @@ $(document).ready(function(){
 		<h2><b>가구 스크랩 리스트</b></h2>
 		<br>
 		<c:forEach var="fsl" items="${fur_scrap_list }">
-		<div class="w3-padding-32 w3-main w3-content w3-margin-top w3-border-top">
+		<div class="w3-padding-16 w3-main w3-content w3-margin-top w3-border-top">
 			<table class="w3-container w3-table">
   				<tr>
-   					 <th colspan="4" class="w3-subcolor"><a href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fsl.fur_no }"><h6><b>${fsl.fur_name }</b></h6></a></th>
+   					 <th colspan="4" class="w3-sand w3-center"><a href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fsl.fur_no }"><b>No.${fsl.fur_no }　${fsl.fur_name }</b></a></th>
   				</tr>
   				<tr>
     				<th rowspan="3"><img alt="${fsl.fur_name }" src="${fsl.fur_pic_loc }" height="200px"></th>
@@ -96,15 +96,15 @@ $(document).ready(function(){
     				<th>
     					<div>
 							<i class="material-icons" >favorite</i>${fsl.fur_good_count }
-							<i class="material-icons">attachment</i>${fsl.fur_reply_count }
-							<i class="material-icons">cloud</i>${fsl.fur_scrap_count }
+							<i class="material-icons">attachment</i>${fsl.fur_scrap_count }
+							<i class="material-icons">cloud</i>${fsl.fur_reply_count }
 						</div>
     				</th> 
   				</tr>
   				<tr>
-    				<th>${fsl.fur_brand_name } | ${fsl.fur_price }</th> 
+    				<th>${fsl.fur_brand_name } 　　 ${fsl.fur_price }won</th> 
     				<th></th>
-    				<th><button class="w3-button" id="btn-scrap-delete" value="${fsl.fur_scrap_no}">삭제하기</button></th>
+    				<th><button class="w3-button w3-pale-red" id="btn-scrap-delete" value="${fsl.fur_scrap_no}">삭제하기</button></th>
   				</tr>
   
 			</table>

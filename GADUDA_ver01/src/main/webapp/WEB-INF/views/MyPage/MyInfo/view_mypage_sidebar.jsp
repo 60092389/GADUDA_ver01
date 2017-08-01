@@ -8,12 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class=" w3-sidebar " style="margin-top:200px; margin-left: 50px">
-	<div class="w3-col m2">
-		<nav class="w3-sidebar w3-bar-block w3-white w3-collapse" style="z-index:3;width:200px" id="mySidebar">
-			<div class="w3-container w3-display-container w3-padding-16">
-				<i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-				<h3 class="w3-wide w3-text-block"><b>MY PAGE</b></h3>
+<div style="margin-top: 200px; ">
+	<div class="w3-col m2" class=" w3-sidebar" id="mySidebar" >
+		<nav class="w3-sidebar w3-bar-block w3-collapse" id="mySidebar">
+			<div class="w3-container w3-padding-16">
+				 <h3 class="w3-bar-item">MY PAGE</h3>
 			</div>
 			<div class="w3-padding-64 w3-large w3-text-black">
 				<a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%> class="w3-bar-item w3-button">내 정보</a>
@@ -28,5 +27,7 @@
 		</nav>
 	</div>
 </div>
+<script>
+</script>
 </body>
 </html>

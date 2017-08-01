@@ -6,21 +6,15 @@
 <title>GADUDA</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<style>
-body, h1, h2, h3, h4, h5, h6 {font-family: "Lato", sans-serif}
-.w3-bar, h1, button { font-family: "Montserrat", sans-serif}
-.fa-anchor, .fa-coffee { font-size: 200px }
-</style>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>가두다</title>
 <script type="text/javascript">
 
 
@@ -28,8 +22,6 @@ $(document).ready(function(){
 	var mem_id = $('#user_id').val();
 	var mem_nickname = $('#user_nickname').val();
 	var mem_profile_pic = $("#user_profile_pic").val();
-	
-
 	
 	//스크랩삭제
 	$("#btn-scrap-delete").click(function(){
@@ -95,47 +87,43 @@ $(document).ready(function(){
 
 	<!--사이드 메뉴-->
 	<jsp:include page="/WEB-INF/views/MyPage/MyInfo/view_mypage_sidebar.jsp" flush="false" />
+
 	
 	<!-- Page Container -->
-	<div class="w3-main w3-content" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
-		<table cellspacing="0" border="1" class="tb_list tb_order_check _order_area">
-		<thead>
-			<th>가구배치도이미지</th>
-			<th>가구배치도제목</th>
-			<th>가구배치도 작성자닉네임</th>
-			<th>가구배치도 작성자아이디</th>
-			<th>가구배치도 컨셉</th>
-			<th>가구배치도 방종류</th>
-			<th>좋아요 수</th>
-			<th>스크랩 수</th>
-			<th>댓글 수</th>
-			<th>가구배치도 스크랩 날짜</th>
-			<th>가구배치도 스크랩번호</th>
-			<th>가구배치도 번호</th>
-			<th>삭제하기</th>
-		</thead>
-	
-		<tbody>
-			<c:forEach var="fasl" items="${fur_arr_scrap_list}">
-				<tr>
-					<td><img alt="가구배치도사진" src="${fasl.fur_arr_plan_img_loc }" width="200px" height="200px"></td>
-					<td>${fasl.fur_arr_plan_name }</td>
-					<td>${fasl.fur_arr_plan_mem_nickname }</td>
-					<td>${fasl.fur_arr_plan_mem_id }</td>
-					<td>${fasl.fur_arr_plan_concepts }</td>
-					<td>${fasl.fur_arr_plan_room_kind_names}</td>
-					<td>${fasl.fur_arr_plan_good_count }</td>
-					<td>${fasl.fur_arr_plan_scrap_count }</td>
-					<td>${fasl.fur_arr_plan_reply_count }</td>
-					<td>${fasl.fur_arr_plan_scrap_date }</td>
-					<td>${fasl.fur_arr_plan_scrap_no }</td>
-					<td>${fasl.fur_arr_plan_no }</td>
-					<td><button id="btn-scrap-delete" value="${fasl.fur_arr_plan_scrap_no }">삭제하기</button></td>
-					<!-- <td><input type="button" name="scrapdelete" id="scrapdelete" value="삭제하기"></td> -->
-				</tr>
-			</c:forEach>
-		</tbody>
-		</table>
+	<div class="w3-padding-32 w3-main mainSection w3-content w3-center ">
+		<h2><b>가구 배치도 스크랩 리스트</b></h2>
+		<br>
+		<c:forEach var="fasl" items="${fur_arr_scrap_list}">
+			<div class="w3-padding-16 w3-main w3-content w3-margin-top w3-border-top">
+				<table class="w3-container w3-table">
+					<tr>
+   						<th colspan="4" class="w3-sand w3-center"><a href="<%= URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL%>/?fur_arr_plan_no=${fasl.fur_arr_plan_no }"><b>No.${fasl.fur_arr_plan_no } 　${fasl.fur_arr_plan_name }</b></a></th>
+  					</tr>
+  					<tr>
+	    				<th rowspan="3" class="w3-padding-32"><img alt="${fasl.fur_arr_plan_name }" src="${fasl.fur_arr_plan_img_loc }" height="200px"></th>
+	   					<th class="w3-padding-32">${fasl.fur_arr_plan_mem_id }</th> 
+	    				<th class="w3-padding-32">${fasl.fur_arr_plan_mem_nickname }</th>
+	    				<th></th> 
+  					</tr>
+  					<tr>
+	   	 				<th class="w3-padding-32"> ${fasl.fur_arr_plan_scrap_date } | ${fasl.fur_arr_plan_scrap_no } </th> 
+	    				<th class="w3-padding-32">
+	    					<div >
+								<i class="material-icons" >favorite</i>${fasl.fur_arr_plan_good_count }
+								<i class="material-icons">attachment</i>${fsl.fur_reply_count }
+								<i class="material-icons">cloud</i>${fasl.fur_arr_plan_reply_count }
+							</div>
+	    				</th> 
+	    				<th></th>
+  					</tr>
+  					<tr>
+	    				<th class="w3-padding-32">${fasl.fur_arr_plan_concepts }</th> 
+	    				<th class="w3-padding-32">${fasl.fur_arr_plan_room_kind_names}</th>
+	    				<th><button class="w3-button w3-pale-red" id="btn-scrap-delete" value="${fasl.fur_arr_plan_scrap_no }">삭제하기</button></th>
+  					</tr>
+				</table>
+			</div>
+		</c:forEach>
 	</div>
 </div>
 </body>
