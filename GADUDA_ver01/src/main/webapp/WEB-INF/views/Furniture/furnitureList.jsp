@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<title>GADUDA</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
@@ -16,6 +15,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>가두다</title>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#c_room_kind').click(function() {
+		alert("!!");
+	});
+</script>
 <style>
 .dropbtn {
     background: #fefefe;
@@ -79,59 +84,80 @@
 <div class="w3-container" >
 	<div class="w3-main w3-content w3-center" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
 		<div class="w3-container w3-center" id="furarrselectbox">
-				<table>
+			<table>
+				<c:set var="roomconcept" value="${ roomconcept }" />
 					<tr>
 						<td style="width: 300px"><h3>ROOM</h3></td>
 						<td style="width: 300px"><h3>CONCEPT</h3></td>
-						<td style="width: 300px"><h3>FURNITURE</h3></td>
-						<td style="width: 300px"><h3></h3></td>
+						<c:choose>
+							<c:when test="${ roomconcept eq 0 }">
+								<td style="width: 300px"><h3></h3></td>
+								<td style="width: 300px"><h3></h3></td>
+							</c:when>
+							<c:otherwise>
+								<td style="width: 300px"><h3>FURNITURE</h3></td>
+								<td style="width: 300px"><h3></h3></td>
+							</c:otherwise>
+						</c:choose>
 					</tr>
 					<tr>
 						<td>
 							<div class="styled-select select" id="roomkindselect">
 								<div class="dropdown">
-						    		<div class="w3-dropdown-hover">
-						      			<button onclick="RoomKind()" class="dropbtn">방 종류</a></button>
-						      		<div id="RoomkindDropdown" class="dropdown-content" class="dropdown-content w3-bar-block w3-hover-white w3-card-4">
-						      			<a href="/furniture/fur_list_get" class="w3-bar-item w3-center">전체</a>
-						      			<c:forEach var="roomkind" items="${roomKind}">
-						      				<a href="/furniture/fur_list_get?room_kind_def_name=${roomkind}" class="w3-bar-item" id="c_room_kind" value="${roomkind}">${roomkind}</a>
-						      			</c:forEach>
-						      		</div>
+						    		<div class="w3-dropdown-hover" onclick="myFunction()">
+							      			<button onclick="RoomKind()" class="dropbtn listbtn">방 종류</button>
+							      		<div id="RoomkindDropdown" class="dropdown-content" class="dropdown-content w3-bar-block w3-hover-white w3-card-4">
+							      			<a href="/furniture/fur_list_get" class="w3-bar-item w3-center">전체</a>
+							      			<c:forEach var="roomkind" items="${roomKind}">
+							      				<a href="/furniture/fur_list_get?room_kind_def_name=${roomkind}" class="w3-bar-item" id="c_room_kind" value="${roomkind}">${roomkind}</a>
+							      			</c:forEach>
+							      		</div>
+							      	</div>
 						   		</div>
 							</div>
 						</td>
 						<td>
 							<div class="styled-select select" id="roomkindselect">
 								<div class="dropdown">
-						    		<div class="w3-dropdown-hover">
-						      			<button onclick="ConceptKind()" class="dropbtn" >컨셉 종류</a></button>
-						      		<div id="ConceptkindDropdown" class="dropdown-content" class="dropdown-content w3-bar-block w3-hover-white w3-card-4">
-						      			<a href="/furniture/fur_list_get" class="w3-center w3-bar-item">전체</a>
-						      			<c:forEach var="conceptKind" items="${conceptKind}">
-						      				<a href="/furniture/fur_list_get?concept_name=${conceptKind}" class="w3-bar-item" value="${conceptKind}">${conceptKind}</a>
-						      			</c:forEach>
-						      		</div>
+						    		<div class="w3-dropdown-hover" onclick="myFunction()">
+							      			<button onclick="ConceptKind()" class="dropbtn listbtn" >컨셉 종류</button>
+							      		<div id="ConceptkindDropdown" class="dropdown-content" class="dropdown-content w3-bar-block w3-hover-white w3-card-4">
+							      			<a href="/furniture/fur_list_get" class="w3-center w3-bar-item">전체</a>
+							      			<c:forEach var="conceptKind" items="${conceptKind}">
+							      				<a href="/furniture/fur_list_get?concept_name=${conceptKind}" class="w3-bar-item" value="${conceptKind}">${conceptKind}</a>
+							      			</c:forEach>
+							      		</div>
+							      	</div>
 						   		</div>
 							</div>
 						</td>
-						<td>
-							<div class="styled-select select" id="roomkindselect">
-								<div class="dropdown">
-						    		<div class="w3-dropdown-hover">
-						      			<button onclick="ConceptKind()" class="dropbtn" >가구 종류</a></button>
-						      		<div id="ConceptkindDropdown" class="dropdown-content" class="dropdown-content w3-bar-block w3-hover-white w3-card-4">
-						      			<a href="/furniture/fur_list_get" class="w3-center w3-bar-item">전체</a>
-						      			<c:forEach var="furDefKind" items="${furDefKind}">
-						      				<a href="/furniture/fur_list_get?fur_kind_def_name=${furDefKind}" class="w3-bar-item" value="${furDefKind}">${furDefKind}</a>
-						      			</c:forEach>
-						      		</div>
-						   		</div>
-							</div>
-						</td>
+						<c:choose>
+							<c:when test="${ roomconcept eq 0 }">
+							<td></td>
+							<td></td>
+							</c:when>
+							<c:otherwise>
+							<td>
+								<div class="styled-select select" id="roomkindselect">
+									<div class="dropdown">
+									    <div class="w3-dropdown-hover">
+									      	<button onclick="ConceptKind()" class="dropbtn" >가구 종류</button>
+										      <div id="ConceptkindDropdown" class="dropdown-content" class="dropdown-content w3-bar-block w3-hover-white w3-card-4">
+										      	<a href="/furniture/fur_list_get" class="w3-center w3-bar-item">전체</a>
+										      	<c:forEach var="furDefKind" items="${furDefKind}">
+										      		<a href="/furniture/fur_list_get?fur_kind_def_name=${furDefKind}" class="w3-bar-item" value="${furDefKind}">${furDefKind}</a>
+										      	</c:forEach>
+										      </div>
+									   	</div>
+									   </div>
+								</div>
+							</td>
+							</c:otherwise>
+						</c:choose>
 					</tr>
 				</table>
-		</div>	
+		</div>
+	</div>	
 </div>
 <br>
 	
@@ -197,6 +223,7 @@
 	</div>
 
 </div>
+
 
 </body>
 </html>

@@ -66,6 +66,7 @@ public class FurnitureController {
 		List<String> furConceptKind = furnitureService.getConceptKind();
 		model.addAttribute("conceptKind", furConceptKind);
 		
+		
 		List<String> furDefKind = furnitureService.getFurDefKind();
 		model.addAttribute("furDefKind", furDefKind);
 
@@ -76,7 +77,12 @@ public class FurnitureController {
 			System.out.println(furList.get(i).toString());
 		}
 		model.addAttribute("furList", furList);
-
+		model.addAttribute("roomconcept", "1");
+		
+		if(room_kind_def_name == null && concept_name == null && fur_kind_def_name == null){
+			model.addAttribute("roomconcept", "0");
+		}
+		
 		return Pages.VIEW_FURNITURE_LIST;
 	}
 

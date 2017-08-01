@@ -18,6 +18,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#roomMake_Progress_After2_Button_js").click(function(){
+		
 		$(".roomMak_Progress_state1").css("background","pink");
 		$(".roomMak_Progress_state2").css("background","yellow");
 		$(".roomMak_Progress_state3").css("background","yellow");

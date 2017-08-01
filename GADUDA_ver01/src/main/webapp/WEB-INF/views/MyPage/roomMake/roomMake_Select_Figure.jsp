@@ -207,7 +207,7 @@ $(document).ready(function() {
 	}
 	function TextPoition(){
 		if(figure_num==1){
-			$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val1' readonly>CM<div>");
+			$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val1' readonly>MM<div>");
 			$("#lengthText1").css("position","absolute").css("top",figure_Y[0]+280).css("left", (figure_X[1]+figure_X[0])/2+500);
 			$("#lengthText1Val1").val((figure_X[1]-figure_X[0])*10);
 			
