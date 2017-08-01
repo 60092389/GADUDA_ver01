@@ -283,5 +283,10 @@ public class FurnitureService implements IFurnitureService {
 	public List<String> getFurDefKind(){
 		return furnitureDao.getFurDefKind();
 	}
+	
+	//방 종류에 따라 가구 가져오기
+	public List<String> getFurNameForRoom(String room_kind_def_name){
+		return furnitureDao.getFurNameForRoom(room_kind_def_name);
+	}
 
 }

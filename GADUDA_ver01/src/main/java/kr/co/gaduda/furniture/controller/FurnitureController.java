@@ -68,6 +68,11 @@ public class FurnitureController {
 		
 		
 		List<String> furDefKind = furnitureService.getFurDefKind();
+		
+		if(room_kind_def_name != null){
+			furDefKind = furnitureService.getFurNameForRoom(room_kind_def_name);
+		}
+		
 		model.addAttribute("furDefKind", furDefKind);
 
 		List<FurnitureListViewVO> furList = furnitureService.furnitureList(room_kind_def_name, concept_name,

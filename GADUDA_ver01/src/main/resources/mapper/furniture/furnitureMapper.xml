@@ -177,6 +177,17 @@
 			select fur_kind_def_name from FURNITURE_KIND_DEFINE
 		]]>
 	</select>
+	
+	<!-- 방 종류에 따라 가구 종류 가져오기 -->
+	<select id="get_fur_name_for_room" resultType="String">
+		<![CDATA[
+			select FD.FUR_KIND_DEF_NAME 
+			from FURNITURE_ROOM_KIND FR, FURNITURE_KIND FK, FURNITURE_KIND_DEFINE FD, ROOM_KIND_DEFINE RK 
+			where FR.FUR_NO = FK.FUR_NO and FK.FUR_KIND_DEF_NO = FD.FUR_KIND_DEF_NO and FR.ROOM_KIND_DEF_NO = RK.ROOM_KIND_DEF_NO 
+			and RK.ROOM_KIND_DEF_NAME = #{room_kind_def_name}
+			group by FD.FUR_KIND_DEF_NAME
+		]]>
+	</select>
 
 	<!-- 가구 상세보기 페이지에서 가구 아이템 이름이랑 가구 사이즈 가져오기 -->
 	<select id="get_fur_item" resultType="kr.co.gaduda.furniture.vo.FurnitureItemVO" parameterType="int">

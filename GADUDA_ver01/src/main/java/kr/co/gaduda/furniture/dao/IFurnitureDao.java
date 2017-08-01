@@ -88,6 +88,9 @@ public interface IFurnitureDao {
 	
 	//가구 종류 가져오기
 	public List<String> getFurDefKind();
+
+	//방 종류에 따라 가구 가져오기
+	public List<String> getFurNameForRoom(String room_kind_def_name);
 	
 	//가구 상세보기 페이지 가구 아이템 이름이랑 사이즈 가져오기
 	public FurnitureItemVO getFurItem(int fur_no);
