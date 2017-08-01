@@ -95,7 +95,7 @@ $(document).ready(function() {
 								<td style="width: 300px"><h3></h3></td>
 							</c:when>
 							<c:otherwise>
-								<td style="width: 300px"><h3>FURNITURE</h3></td>
+								<td style="width: 300px"><h3>가구 종류</h3></td>
 								<td style="width: 300px"><h3></h3></td>
 							</c:otherwise>
 						</c:choose>
