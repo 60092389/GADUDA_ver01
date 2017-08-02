@@ -12,7 +12,7 @@
 	<div class="w3-col m2" class=" w3-sidebar" id="mySidebar" >
 		<nav class="w3-sidebar w3-bar-block w3-collapse" id="mySidebar">
 			<div class="w3-container w3-padding-16">
-				 <h3 class="w3-bar-item">MY PAGE</h3>
+				 <h3 class="w3-bar-item"><a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%> class="w3-button">MY PAGE</a></h3>
 			</div>
 			<div class="w3-padding-64 w3-large w3-text-black">
 				<a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%> class="w3-bar-item w3-button">내 정보</a>

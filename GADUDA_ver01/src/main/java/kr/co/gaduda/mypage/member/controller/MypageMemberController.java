@@ -265,7 +265,33 @@ public class MypageMemberController implements ServletContextAware{
 
 		return Pages.VIEW_MYFURARR;
 	}
+	
+	// 팔로우회원 가구배치도 가져오기
+	@RequestMapping(value = URLs.URI_FOLLOW_FURARR, method = RequestMethod.GET)
+	public String callFolFurArr(@RequestParam(value = "fol_mem_id") String fol_mem_id, Model model) {
 
+		System.out.println("emfdjdh");
+		System.out.println(fol_mem_id);
+		List<MemberFurArrVO> fol_arrList = memberService.callMyFurArr(fol_mem_id);
+		
+		for (int i = 0; i < fol_arrList.size(); i++){
+			int fur_arr_plan_no = fol_arrList.get(i).getFur_arr_plan_no();
+			
+			int scrap_no = memberService.getCountScrap(fur_arr_plan_no);
+			String furArrCon = memberService.getFurCon(fur_arr_plan_no);
+			String furArrRoomKind = memberService.getRoomKind(fur_arr_plan_no);
+			String furArrHashTag = memberService.getHashTag(fur_arr_plan_no);
+			
+			fol_arrList.get(i).setFur_arr_plan_scrap_num(scrap_no);
+			fol_arrList.get(i).setFur_arr_plan_room_kind(furArrRoomKind);
+			fol_arrList.get(i).setFur_arr_plan_concept(furArrCon);
+			fol_arrList.get(i).setFur_arr_plan_hash_tag(furArrHashTag);
+			
+		}
+		model.addAttribute("arrList", fol_arrList);
+
+		return Pages.VIEW_FOLFURARR;
+	}	
 	
 	
 }

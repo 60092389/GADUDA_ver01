@@ -7,35 +7,31 @@
 
 	<insert id="joinMember">
   		<![CDATA[
-  		
-  		insert into member(mem_id,mem_pw,mem_name,mem_nickname,mem_profile_pic) 
-  		values(#{mem_id},#{mem_pw},#{mem_name},#{mem_id},'/resources/Images/MemberImage/member_basic_image.PNG')
+  			insert into member(mem_id,mem_pw,mem_name,mem_nickname,mem_profile_pic) 
+  			values(#{mem_id},#{mem_pw},#{mem_name},#{mem_id},'/resources/Images/MemberImage/member_basic_image.PNG')
   		]]>
 	</insert>
 
 	<select id="idchk" resultType="integer">
-  	<![CDATA[
-  	select count(*) from member where mem_id=#{mem_id}
-  	
-  	]]>
+	  	<![CDATA[
+	  		select count(*) from member where mem_id=#{mem_id}
+	  	]]>
 	</select>
 
 	<select id="pwchk" resultType="integer">
-  	<![CDATA[
-  	select count(*) from member where mem_pw=#{mem_pw} and mem_id=#{mem_id}
-  	]]>
+	  	<![CDATA[
+	  		select count(*) from member where mem_pw=#{mem_pw} and mem_id=#{mem_id}
+	  	]]>
 	</select>
 
 	<select id="loginMember" resultType="kr.co.gaduda.member.vo.MemberVO">
   		<![CDATA[
   			select mem_id,mem_name,mem_nickname,mem_intro,mem_pw,mem_sex,mem_birth,mem_profile_pic 
   			from member where mem_id=#{mem_id} and mem_pw=#{mem_pw}
-  		
   		]]>
 	</select>
 
 	<delete id="deletemember">
-  	
   		<![CDATA[
   			delete from member where mem_id=#{mem_id} and mem_pw=#{mem_pw}
   		]]>
@@ -43,31 +39,29 @@
 
 	<!-- 비밀번호 확인 -->
 	<select id="chkmem_pw" resultType="int">
-  	<![CDATA[
-  	select count(*) from member where mem_id=#{mem_id} and mem_pw=#{mem_pw}
-  	]]>
-
+	  	<![CDATA[
+	  		select count(*) from member where mem_id=#{mem_id} and mem_pw=#{mem_pw}
+	  	]]>
 	</select>
 
 	<update id="update_mem">
-  	<![CDATA[
-  	update member set mem_nickname=#{mem_nickname},mem_sex=#{mem_sex},mem_birth=#{mem_birth},mem_intro=#{mem_intro} 
-where mem_id=#{mem_id}
-  	]]>
+	  	<![CDATA[
+	  		update member set mem_nickname=#{mem_nickname},mem_sex=#{mem_sex},mem_birth=#{mem_birth},mem_intro=#{mem_intro} 
+			where mem_id=#{mem_id}
+	  	]]>
 	</update>
 
 	<update id="update_mem_pw">
-  	<![CDATA[ 
-  	
-  	update member set mem_pw=#{mem_pw} where mem_id=#{mem_id} 
-  	]]>
+	  	<![CDATA[ 
+	  		update member set mem_pw=#{mem_pw} where mem_id=#{mem_id} 
+	  	]]>
 	</update>
 
 	<!-- 이미지 업로드경로 업데이트 -->
 	<update id="update_img">
-  	<![CDATA[
-  	update member set mem_profile_pic=#{mem_profile_pic} where mem_id=#{mem_id}
-  	]]>
+  		<![CDATA[
+  			update member set mem_profile_pic=#{mem_profile_pic} where mem_id=#{mem_id}
+  		]]>
 	</update>
 
 
@@ -114,30 +108,34 @@ where mem_id=#{mem_id}
   		]]>
 	</select>
 	
-	
+	<!-- 팔로우 변경 -->
 	<update id="follow_change1">
-  	<![CDATA[
-  		update follow set fol_kind=2 where mem_id=#{mem_id} and fol_mem_id=#{fol_mem_id}
-			]]>
+	  	<![CDATA[
+	  		update follow set fol_kind=2 where mem_id=#{mem_id} and fol_mem_id=#{fol_mem_id}
+		]]>
 	</update>
 	<update id="follow_change2">
-  	<![CDATA[
-  		update follow set fol_kind=1 where mem_id=#{fol_mem_id} and fol_mem_id=#{mem_id}
-			]]>
+	  	<![CDATA[
+	  		update follow set fol_kind=1 where mem_id=#{fol_mem_id} and fol_mem_id=#{mem_id}
+		]]>
 	</update>
 	<update id="unfollow_change1">
-  	<![CDATA[
-  		update follow set fol_kind=3 where mem_id=#{mem_id} and fol_mem_id=#{fol_mem_id}
-			]]>
+	  	<![CDATA[
+	  		update follow set fol_kind=3 where mem_id=#{mem_id} and fol_mem_id=#{fol_mem_id}
+		]]>
 	</update>
 	<update id="unfollow_change2">
-  	<![CDATA[
-  		update follow set fol_kind=3 where mem_id=#{fol_mem_id} and fol_mem_id=#{mem_id}
-			]]>
+	  	<![CDATA[
+	  		update follow set fol_kind=3 where mem_id=#{fol_mem_id} and fol_mem_id=#{mem_id}
+		]]>
 	</update>
+	
+	<!-- 로그인한 회원이 다른 회원 팔로우하기 -->
+	
 	
 	
 <!-- 내 가구 배치도 리스트 보기07/27 -->
+
 	<!-- 내 가구 배치도 가져오기 -->
 	<select id="callMyFurArr" parameterType="String"
 		resultType="kr.co.gaduda.member.vo.MemberFurArrVO">
@@ -150,9 +148,10 @@ where mem_id=#{mem_id}
 	<!-- 내 가구 배치도 스크랩 가져오기 -->
 	<select id="count_scrap" resultType="int">
 		<![CDATA[
-		select count(*) from furniture_arr_plan_scrap where fur_arr_plan_no=#{fur_arr_plan_no}
+			select count(*) from furniture_arr_plan_scrap where fur_arr_plan_no=#{fur_arr_plan_no}
 		]]>
 	</select>
+	
 	<!-- 배치도 컨셉 가져오기 -->
 	<select id="fur_arr_con" resultType="String">
    		<![CDATA[
@@ -162,6 +161,7 @@ where mem_id=#{mem_id}
      		 AND p.fur_arr_plan_no=#{fur_arr_plan_no}
    		]]>
 	</select>
+	
 	<!-- 배치도 방종류 가져오기 -->
 	<select id="fur_arr_room_kind" resultType="String">
   		 <![CDATA[
@@ -170,6 +170,7 @@ where mem_id=#{mem_id}
       		and FARK.FUR_ARR_PLAN_NO = #{fur_arr_plan_no}
    		 ]]>
 	</select>
+	
 	<!-- 해당 배치도의 해시태그 -->
 	<select id="fur_arr_hashtag" resultType ="String">
 		select fur_arr_hashtag_name from furniture_arr_plan_hashtag 

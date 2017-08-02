@@ -44,7 +44,7 @@
 				<div class="w3-col m5 w3-round w3-white">
 					<c:set var="member" value="${ member }" />
 					<div class="w3-container">
-						<h4 class="w3-center">My Profile </h4>
+						<h4 class="w3-center">My Profile</h4>
 						<p class="w3-center"><img src=${ member.mem_profile_pic } class="w3-circle" style="height: 200px; width: 200px" alt="profile ficture"></p>
 						<p class="w3-center"><i class="w3-margin-right w3-text-theme"></i><a onclick="document.getElementById('proficMod').style.display='block'">프로필 사진 변경</a></p>
 						

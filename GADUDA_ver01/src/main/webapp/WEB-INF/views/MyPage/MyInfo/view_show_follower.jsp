@@ -15,7 +15,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 </head>
 
 <body>
@@ -37,16 +36,15 @@
 	<!-- Page Container -->
 	<div class="w3-main w3-content" style="max-width: 1200px; margin-left: 300px">
 		<div class="w3-row">
-			<div class="w3-container">
+			<div class="w3-content w3-center">
 				<!-- Follower List -->
 				<h3>Follower List</h3>
 				<c:forEach var="follower_list" items="${follower_list }">
-					<div class="w3-col m3 w3-round w3-white w3-border w3-margin">
-						<h4 class="w3-center">Follower Profile</h4>
-						<p class="w3-center"><img src="${follower_list.mem_profile_pic}" class="w3-circle" style="height: 200px; width: 200px" alt="follower ficture"></p>
-						<p class="w3-center"><button class="w3-button w3-white">${follower_list.fol_mem_id }</button></p>
-						<p class="w3-center"><button onclick="follow('${follower_list.fol_mem_id}');" class="w3-button w3-white">${follower_list.status_fol_kind }</button></p>
-						<p class="w3-center"><button class="w3-button w3-blue">${follower_list.fol_mem_id }님의 가구 배치도</button></p>
+					<div class="w3-col w3-round w3-white w3-border-top w3-padding">
+						<div class="w3-col m2 w3-center"><img src="${follower_list.mem_profile_pic}" class="w3-circle" style="height: 50px; width: 50px" alt="follower ficture"></div>
+						<div class="w3-col m3 w3-center"><button class="w3-button w3-white">${follower_list.fol_mem_id }</button></div>
+						<div class="w3-col m4 w3-center"><button onclick="follow('${follower_list.fol_mem_id}');" class="w3-button w3-white">${follower_list.status_fol_kind }</button></div>
+						<div class="w3-col m3 w3-center"><a href="${URLs.URI_FOLLOW_FURARR_FULL }?fol_mem_id=${follower_list.fol_mem_id}" value="${follower_list.fol_mem_id}" class="w3-button w3-blue">가구 배치도</a></div>
 					</div>
 				</c:forEach>
 			</div>

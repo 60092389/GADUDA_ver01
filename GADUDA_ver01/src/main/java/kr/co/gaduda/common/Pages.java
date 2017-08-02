@@ -67,6 +67,10 @@ public class Pages {
 	public static final String VIEW_MYFURARR = myinfo_path + "/view_mypage_myfurarr";
 	// 마이페이지 내 방 보기
 	public static final String VIEW_MYROOM = myinfo_path + "/view_mypage_myroom";
+	
+	//팔로우 회원 가구배치도 보기
+	public static final String VIEW_FOLFURARR = myinfo_path + "/view_follow_member_furarr";
+	
 
 	
 	//private static final String room_path = mypage_path + "/RoomMake";

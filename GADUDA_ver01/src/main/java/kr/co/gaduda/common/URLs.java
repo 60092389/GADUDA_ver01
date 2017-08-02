@@ -73,8 +73,7 @@ public class URLs {
 
 	// 팔로워 리스트 페이지
 	public static final String URI_MYPAGE_MEMBER_FOLLOWER = "/follower";
-	public static final String URI_MYPAGE_MEMBER_FOLLOWER_FULL = mypage_default + member_default
-			+ URI_MYPAGE_MEMBER_FOLLOWER;
+	public static final String URI_MYPAGE_MEMBER_FOLLOWER_FULL = mypage_default + member_default + URI_MYPAGE_MEMBER_FOLLOWER;
 	// 팔로잉 리스트 페이지
 	public static final String URI_MYPAGE_MEMBER_FOLLOWING = "/following";
 	public static final String URI_MYPAGE_MEMBER_FOLLOWING_FULL = mypage_default + member_default
@@ -199,6 +198,10 @@ public class URLs {
 	//마이페이지 내방보기 부분
 	public static final String URI_MYPAGE_MYROOM  = "/myroom";
 	public static final String URI_MYPAGE_MYROOM_FULL =  room_default + URI_MYPAGE_MYROOM;
+	
+	//팔로우 회원 배치도 가져오기
+	public static final String URI_FOLLOW_FURARR = "/folfurarr";
+	public static final String URI_FOLLOW_FURARR_FULL = mypage_default + member_default + URI_FOLLOW_FURARR;
 	
 	
 	////////진섭 17-07-21 /////////////////////
