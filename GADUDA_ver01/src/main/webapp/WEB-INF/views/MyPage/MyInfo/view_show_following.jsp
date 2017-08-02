@@ -11,46 +11,41 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table border="1">
-<h1>나를 팔로우한 리스트</h1>
-<%-- ${URLs.URI_MYPAGE_FOLLOW_CHK_FULL}?fol_mem_id=${following_list.fol_mem_id} --%>
-		<thead>
-			<th>나를 팔로우한 아이디</th>
-			<th>내가 팔로우 했는지 여부</th>
-		</thead>
-
-		<tbody>
-			<c:forEach var="following_list" items="${following_list }">
-			
-				<tr>
-					<td>${following_list.fol_mem_id}</td>
-					<td><button onclick="follow('${following_list.fol_mem_id}');">${following_list.status_fol_kind }</button></td>
-				</tr>
-				</c:forEach>
-			
-		</tbody>
-
-	</table>
+	<!-- Main MenuBar -->
+	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
 	
-	<script type="text/javascript">
-		function follow(fol_mem_id){
-			
-			var data = {"fol_mem_id" : fol_mem_id};
-			
-						
-			
-			$.ajax({
-				url : "${URLs.URI_MYPAGE_FOLLOW_CHK_FULL}",
-				type : 'GET',
-				data : data,
-				
-				success : function(){
-					location.reload();
-				}
-			
-			});
-			
-		}
-	</script>
+	
+	<div class="w3-container" style="float: right">
+		<c:set var="member" value="${ member }" />
+		<input type="hidden" id="user_id" value="${ member.mem_id }">
+		<input type="hidden" id="user_nickname"
+			value="${ member.mem_nickname }">
+	</div>
+	
+<div class="w3-container ">
+	<!--사이드 메뉴-->
+	<jsp:include page="/WEB-INF/views/MyPage/MyInfo/view_mypage_sidebar.jsp" flush="false" />
+	
+	<!-- Page Container -->
+	<div class="w3-main w3-content" style="max-width: 1200px; margin-left: 300px">
+		<div class="w3-row">
+			<div class="w3-container">
+				<!-- Following List -->
+				<h3>Following List</h3>
+				<c:forEach var="following_list" items="${following_list }">
+					<div class="w3-col m3 w3-round w3-white w3-border w3-margin">
+						<h4 class="w3-center">Following Profile</h4>
+						<p class="w3-center"><img src="${following_list.mem_profile_pic}" class="w3-circle" style="height: 200px; width: 200px" alt="follower ficture"></p>
+						<p class="w3-center"><button class="w3-button w3-white">${following_list.fol_mem_id}</button></p>
+						<p class="w3-center"><button class="w3-button w3-white">${following_list.status_fol_kind }</button></p>
+						<p class="w3-center"><button class="w3-button w3-blue">${following_list.fol_mem_id }님의 가구 배치도</button></p>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
 </body>
 </html>

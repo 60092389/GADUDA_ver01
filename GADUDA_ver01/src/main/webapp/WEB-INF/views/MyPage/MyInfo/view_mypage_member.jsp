@@ -62,6 +62,7 @@
 				<!-- Middle Column -->
 				<div class="w3-col m7">
 					<div class="w3-container w3-container">
+						
 						<h3>내 가구 배치도 최근 반응</h3>
 						<h3>추천 배치도</h3>
 					</div>
@@ -118,6 +119,19 @@
 			<h1 class="modal-title" style="margin: 20px; margin-top: 30px;">회원탈퇴</h1> 
 
 			<jsp:include page="/WEB-INF/views/MyPage/MyInfo/view_del_member.jsp" flush="false" />
+
+		</div>
+	</div>
+
+	<!--팔로워 띄우기-->
+	<div id="follower" class="w3-modal">
+		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px">
+		
+			<h1 class="modal-title" style="margin: 20px; margin-top: 30px;">FOLLOWER</h1> 
+			
+			<c:forEach var="follower_list" items="${follower_list }">
+				${follower_list.fol_mem_id }	
+			</c:forEach>
 
 		</div>
 	</div>

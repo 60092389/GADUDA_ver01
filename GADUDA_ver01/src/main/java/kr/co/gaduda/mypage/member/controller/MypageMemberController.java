@@ -153,6 +153,23 @@ public class MypageMemberController implements ServletContextAware{
 		followDTO.setMem_id(mem_id);
 		List<Follower_VO> follower_list=memberService.follower_list(followDTO);
 		
+		for(int i=0; i<follower_list.size(); i++){
+			Follower_VO follower_VO = new Follower_VO();
+			
+			follower_VO.setFol_mem_id(follower_list.get(i).getFol_mem_id());
+			
+			followDTO.setFol_mem_id(follower_VO.getFol_mem_id());
+			
+			int fol_kind = memberService.following_available(followDTO);
+			follower_list.get(i).setFol_kind(fol_kind);
+			
+			if(follower_list.get(i).getFol_kind()==1){
+				follower_list.get(i).setStatus_fol_kind("FOLLOW");
+			}else{
+				follower_list.get(i).setStatus_fol_kind("UNFOLLOW");
+			}
+	}
+		
 		model.addAttribute("follower_list",follower_list);
 		
 		return Pages.VIEW_MYPAGE_MEMBER_FOLLOWER;
@@ -211,7 +228,7 @@ public class MypageMemberController implements ServletContextAware{
 		System.out.println(fol_mem_id);
 		int fol_kind=memberService.following_available(followDTO);
 		if(fol_kind==1){
-					memberService.follow_change(followDTO);
+			memberService.follow_change(followDTO);
 		}else{
 			
 					memberService.unfollow_change(followDTO);
@@ -248,12 +265,7 @@ public class MypageMemberController implements ServletContextAware{
 
 		return Pages.VIEW_MYFURARR;
 	}
-	
-	// 마이페이지 내 방 가져오기
-	@RequestMapping(value = URLs.URI_MYPAGE_MYROOM)
-	public String callMyRoom(HttpServletRequest request, Model model) {
-		return Pages.VIEW_MYROOM;
-	}
+
 	
 	
 }

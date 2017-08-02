@@ -73,42 +73,44 @@ where mem_id=#{mem_id}
 
 
 
+	<!-- 내가 팔로우 한 사람 : 팔로잉(1,3) || 나를 팔로우 한 사람 : 팔로워(2,3) || 맞팔(3)-->
 
-
-	<!-- 내가 팔로우한 인원수 -->
+	<!-- 인원 수 세기 -->
+	<!-- 나를 팔로우한 인원 수(팔로워 - 2,3) -->
 	<select id="follower_info" resultType="integer">
-	<![CDATA[
-	
-		select count(*) from follow where mem_id=#{mem_id} and (fol_kind=1 or fol_kind=3)
-	]]>
+		<![CDATA[
+			select count(*) from follow where mem_id=#{mem_id} and (fol_kind=2 or fol_kind=3)
+		]]>
 	</select>
-	<!-- 나를 팔로우한 인원수 -->
+	
+	<!-- 내가 팔로우한 인원 수(팔로잉 - 1,3) -->
 	<select id="following_info" resultType="integer">
-	<![CDATA[
-	
-	select count(*) from follow where mem_id=#{mem_id} and (fol_kind=2 or fol_kind=3) 
-	
-	]]>
-
+		<![CDATA[
+			select count(*) from follow where mem_id=#{mem_id} and (fol_kind=1 or fol_kind=3) 
+		]]>
 	</select>
-	<!-- 내가 팔로우한 아이디 보기 -->
+	
+	<!-- 리스트 가져오기 -->
+	<!-- 나를 팔로우한 사람 아이디, 사진 가져오기 (팔로워 - 2,3) -->
 	<select id="follower_list" resultType="kr.co.gaduda.member.vo.Follower_VO">
-	<![CDATA[
-	select fol_mem_id from follow where mem_id=#{mem_id} and (fol_kind=1 or fol_kind=3)
-	]]>
-
+		<![CDATA[
+			select fo.FOL_MEM_ID, me.MEM_PROFILE_PIC from follow fo, member me 
+  			where me.mem_id = fo.fol_mem_id and fo.mem_id=#{mem_id} and (fo.fol_kind=2 or fo.fol_kind=3)
+		]]>
 	</select>
-
-	<!-- 나를 팔로우한 아이디 보기 -->
+	
+	<!-- 내가 팔로우 한 사람 아이디, 사진 가져오기 (팔로잉 - 1,3) -->
 	<select id="following_list" resultType="kr.co.gaduda.member.vo.Following_VO">
-  	<![CDATA[
-  	select fol_mem_id from follow where mem_id=#{mem_id} and (fol_kind=2 or fol_kind=3)
-  	]]>
+  		<![CDATA[
+  			select fo.FOL_MEM_ID, me.MEM_PROFILE_PIC from follow fo, member me 
+  			where me.mem_id = fo.fol_mem_id and fo.mem_id=#{mem_id} and (fo.fol_kind=1 or fo.fol_kind=3)
+  		]]>
 	</select>
-	<!--상대가 나를 팔로우 했을때 내가 팔로우 했는지 안했는지 -->
+	
+	<!-- 나를 팔로우 하는 사람(팔로워)를 내가 팔로우(팔로잉) 했는지 안했는지 -->
 	<select id="following_available" resultType="integer">
   	  	<![CDATA[
-		select count(*) from follow where mem_id=#{mem_id} and fol_mem_id=#{fol_mem_id} and (fol_kind=1 or fol_kind=3)
+			select count(*) from follow where mem_id=#{mem_id} and fol_mem_id=#{fol_mem_id} and (fol_kind=1 or fol_kind=3)
   		]]>
 	</select>
 	
