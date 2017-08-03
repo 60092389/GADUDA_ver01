@@ -294,12 +294,29 @@ $(document).ready(function(){
 			});
 			
 		}
-		
+	//새로 팔로우 하기	
 	function newfollow(fol_mem_id){
 		var data = {"fol_mem_id" : fol_mem_id};
 		alert(fol_mem_id);
 			$.ajax({
 				url : "${URLs.URI_MYPAGE_NEW_FOLLOW_FULL}",
+				type : 'GET',
+				data : data,
+				
+				success : function(){
+					location.reload();
+					alert("성공");
+				}
+			
+			});
+			
+		}
+	//언팔하기
+	function delfollow(fol_mem_id){
+		var data = {"fol_mem_id" : fol_mem_id};
+		alert(fol_mem_id);
+			$.ajax({
+				url : "${URLs.URI_MYPAGE_DEL_FOLLOW_FULL}",
 				type : 'GET',
 				data : data,
 				
@@ -359,18 +376,27 @@ if(login_id != repl_id){
     			<!-- ★★★★★★★★★★★★★★★★★★★★★★★★★★사용자가 팔로우한 사람이면 다른 아이콘 뜨도록 해야합니다.★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ -->
     			<c:set var="followox" value="${followox }"/>
     				
+    				<!-- 사용자랑 게시자랑 같을때 -->
     				<c:if test="${ followox eq 0 }">
-    					<button onclick="newfollow('${detailVO.mem_id}');" class="w3-button w3-blue">팔로우하기</button>
+    					<a class="w3-button" href=<%=URLs.URI_MYPAGE_MEMBER_FULL%>>마이페이지</a>
     				</c:if>
+    				<!-- 둘다 팔로우 안한 상태일때 -->
     				<c:if test="${ followox eq 1 }">
-    					<button onclick="follow('${detailVO.mem_id}');" class="w3-button w3-blue">언팔로우하기</button>
+    					<button onclick="newfollow('${detailVO.mem_id}');" class="w3-button w3-blue">팔로우하기${followox }</button>
     				</c:if>
+    				<!-- 게시자만 팔로우 -->
     				<c:if test="${ followox eq 2 }">
-    					<button onclick="follow('${detailVO.mem_id}');" class="w3-button w3-blue">팔로우하기</button>
+    					<button onclick="follow('${detailVO.mem_id}');" class="w3-button w3-blue">팔로우하기${followox }</button>
     					<p>당신을 팔로우 합니다.</p>
     				</c:if>
+    				<!-- 나만 팔로우 한 상태일때 -->
     				<c:if test="${ followox eq 3 }">
-    					<a class="w3-button" href=<%=URLs.URI_MYPAGE_MEMBER_FULL%>>마이페이지</a>
+    					<button onclick="delfollow('${detailVO.mem_id}');" class="w3-button w3-blue">언팔로우하기${followox }</button>
+    				</c:if>
+    				<!-- 둘다 팔로우 -->
+    				<c:if test="${ followox eq 4 }">
+    					<button onclick="follow('${detailVO.mem_id}');" class="w3-button w3-blue">언팔로우하기${followox }</button>
+    					<p>당신을 팔로우 합니다.</p>
     				</c:if>
     		</p>
 	 			<a class="w3-button w3-border w3-round" href="${URLs.URI_FOLLOW_FURARR_FULL }?fol_mem_id=${detailVO.mem_id}" value="${detailVO.mem_id}">작성자의 다른 가구배치도 보러가기</a>

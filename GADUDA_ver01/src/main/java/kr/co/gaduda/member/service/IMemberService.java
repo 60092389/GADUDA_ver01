@@ -32,6 +32,9 @@ public interface IMemberService {
 	
 	public int addfollow(FollowDTO followDTO);
 	public int add2follow(FollowDTO followDTO);
+	public void delfollow(FollowDTO followDTO);
+	
+	public int unfollow_available(FollowDTO followDTO);
 	
 	//나의 가구배치도 정보 가져오기
 	public List<MemberFurArrVO> callMyFurArr(String mem_id);

@@ -236,7 +236,7 @@
 	<!-- 작성자가 나를 팔로우 했는지 확인하기 - 1 -->
 	<select id="mem_fol_me" resultType="int">
 		<![CDATA[
-			select count(*) from follow where mem_id=#{mem_id} and fol_mem_id=#{fol_mem_id} and fol_kind = 2
+			select count(*) from follow where mem_id=#{mem_id} and fol_mem_id=#{fol_mem_id} and (fol_kind=2 or fol_kind=3)
 		]]>
 	</select>
 	

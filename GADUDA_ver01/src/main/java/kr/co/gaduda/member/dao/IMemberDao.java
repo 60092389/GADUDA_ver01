@@ -33,6 +33,9 @@ public interface IMemberDao {
 	public void unfollow_change1(FollowDTO followDTO);
 	public int addfollow(FollowDTO followDTO);
 	public int add2follow(FollowDTO followDTO);
+	public int unfollow_available(FollowDTO followDTO);
+	public void delfollow(FollowDTO followDTO);
+	public void del2follow(FollowDTO followDTO);
 	
 	public void member_log(Map<String, Object> memberInfo);
 	

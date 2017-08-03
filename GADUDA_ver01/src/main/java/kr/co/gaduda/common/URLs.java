@@ -11,7 +11,6 @@ public class URLs {
 	private static final String furniture_arr_default = "/furniture_arr";
 	private static final String mypage_scrap_default = "/mypage/scrap";
 	
-	//내방
 	private static final String room_default="/room";
 
 	// 로그아웃
@@ -91,6 +90,10 @@ public class URLs {
 	//새로 팔로우하기
 	public static final String URI_MYPAGE_NEW_FOLLOW="/new_follow";
 	public static final String URI_MYPAGE_NEW_FOLLOW_FULL= mypage_default+member_default + URI_MYPAGE_NEW_FOLLOW;
+	
+	//언팔하기
+	public static final String URI_MYPAGE_DEL_FOLLOW="/del_follow";
+	public static final String URI_MYPAGE_DEL_FOLLOW_FULL= mypage_default+member_default + URI_MYPAGE_DEL_FOLLOW;
 	
 	// 가구스크랩
 	public static final String URI_FURNITURE_SCRAP = "/furniture_scrap";

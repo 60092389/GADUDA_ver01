@@ -120,6 +120,15 @@ public class MemberService implements IMemberService {
 	public int add2follow(FollowDTO followDTO){
 		return memberDAO.add2follow(followDTO);
 	}
+	@Override
+	public void delfollow(FollowDTO followDTO){
+		memberDAO.delfollow(followDTO);
+		memberDAO.del2follow(followDTO);
+	}
+	@Override
+	public int unfollow_available(FollowDTO followDTO) {
+		return memberDAO.unfollow_available(followDTO);
+	}
 	
 	@Override
 	public List<MemberFurArrVO> callMyFurArr(String mem_id) {

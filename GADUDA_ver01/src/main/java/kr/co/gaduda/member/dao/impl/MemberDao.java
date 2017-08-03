@@ -146,6 +146,21 @@ public class MemberDao implements IMemberDao {
 	}
 	
 	@Override
+	public void delfollow(FollowDTO followDTO){
+		memberSqlSession.delete(namespace + ".delfollow", followDTO);
+	}
+	
+	@Override
+	public void del2follow(FollowDTO followDTO){
+		memberSqlSession.delete(namespace + ".del2follow", followDTO);
+	}
+	
+	@Override
+	public int unfollow_available(FollowDTO followDTO) {
+		return memberSqlSession.selectOne(namespace + ".unfollow_available", followDTO);
+	}
+	
+	@Override
 	   public void member_log(Map<String, Object> memberInfo) {
 	      
 	            

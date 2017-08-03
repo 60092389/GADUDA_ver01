@@ -87,15 +87,23 @@ public class Furniture_arrController {
 		FollowDTO followdto = new FollowDTO();
 		followdto.setMem_id(mem_id);
 		followdto.setFol_mem_id(fol_mem_id);
-		int followint = furniture_arrService.getFollowing(followdto);
-		int memfolmeint = furniture_arrService.memFolMe(followdto);
-		if(memfolmeint == 1){
-			followint = 2;
+		
+		int followint = furniture_arrService.getFollowing(followdto); //맞팔
+		int memfolmeint = furniture_arrService.memFolMe(followdto); //나만 팔로우
+		
+		int followox = 0;
+		if(mem_id.equals(fol_mem_id)){ //자기 게시물 봤을 떄
+			followox = 0;
+		}else if(followint==0 && memfolmeint==0){ //둘다 아무도 팔로우 안함
+			followox = 1;
+		}else if(followint==0 && memfolmeint==1){ //작성자만 팔로우O
+			followox = 2;
+		}else if(followint==1 && memfolmeint==0){ //나만 팔로우
+			followox = 3;
+		}else if(followint==1 && memfolmeint==1){ //맞팔
+			followox = 4;
 		}
-		if(mem_id.equals(fol_mem_id)){
-			followint = 3;
-		}
-		model.addAttribute("followox", followint);
+		model.addAttribute("followox", followox);
 		model.addAttribute("detailVO", detailVO);
 		model.addAttribute("arr_fur", arr_fur);
 		model.addAttribute("reply_list", fur_arr_reply_list);

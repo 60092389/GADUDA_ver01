@@ -43,7 +43,25 @@
 					<div class="w3-col w3-round w3-white w3-border-top w3-padding">
 						<div class="w3-col m2 w3-center"><img src="${following_list.mem_profile_pic}" class="w3-circle" style="height: 50px; width: 50px" alt="follower ficture"></div>
 						<div class="w3-col m3 w3-center"><button class="w3-button w3-white">${following_list.fol_mem_id }</button></div>
-						<div class="w3-col m4 w3-center"><button onclick="follow('${following_list.fol_mem_id}');" class="w3-button w3-white">${following_list.status_fol_kind }</button></div>
+						<div class="w3-col m4 w3-center">
+						<c:set var="followox" value="${ following_list.status_fol_kind }"/>
+							<!-- 둘다 팔로우 안한 상태일때 -->
+		    				<c:if test="${ followox eq '1' }">
+		    					<button onclick="newfollow('${following_list.fol_mem_id}');" class="w3-button w3-blue">팔로우하기${followox }</button>
+		    				</c:if>
+		    				<!-- 게시자만 팔로우 -->
+		    				<c:if test="${ followox eq '2' }">
+		    					<button onclick="follow('${following_list.fol_mem_id}');" class="w3-button w3-blue">팔로우하기${followox }</button>
+		    				</c:if>
+		    				<!-- 나만 팔로우 한 상태일때 -->
+		    				<c:if test="${ followox eq '3' }">
+		    					<button onclick="delfollow('${following_list.fol_mem_id}');" class="w3-button w3-blue">언팔로우하기${followox }</button>
+		    				</c:if>
+		    				<!-- 둘다 팔로우 -->
+		    				<c:if test="${ followox eq '4' }">
+		    					<button onclick="follow('${following_list.fol_mem_id}');" class="w3-button w3-blue">언팔로우하기${followox }</button>
+		    				</c:if>
+						</div>
 						<div class="w3-col m3 w3-center"><button class="w3-button w3-blue">가구 배치도</button></div>
 					</div>
 				</c:forEach>
@@ -53,21 +71,56 @@
 	</div>
 </div>
 <script type="text/javascript">
-	function follow(fol_mem_id){
-		var data = {"fol_mem_id" : fol_mem_id};
+function follow(fol_mem_id){
+	var data = {"fol_mem_id" : fol_mem_id};
+	alert(fol_mem_id);
+		$.ajax({
+			url : "${URLs.URI_MYPAGE_FOLLOW_CHK_FULL}",
+			type : 'GET',
+			data : data,
 			
-			$.ajax({
-				url : "${URLs.URI_MYPAGE_FOLLOW_CHK_FULL}",
-				type : 'GET',
-				data : data,
-				
-				success : function(){
-					location.reload();
-				}
+			success : function(){
+				location.reload();
+				alert("성공");
+			}
+		
+		});
+		
+	}
+//새로 팔로우 하기	
+function newfollow(fol_mem_id){
+	var data = {"fol_mem_id" : fol_mem_id};
+	alert(fol_mem_id);
+		$.ajax({
+			url : "${URLs.URI_MYPAGE_NEW_FOLLOW_FULL}",
+			type : 'GET',
+			data : data,
 			
-			});
+			success : function(){
+				location.reload();
+				alert("성공");
+			}
+		
+		});
+		
+	}
+//언팔하기
+function delfollow(fol_mem_id){
+	var data = {"fol_mem_id" : fol_mem_id};
+	alert(fol_mem_id);
+		$.ajax({
+			url : "${URLs.URI_MYPAGE_DEL_FOLLOW_FULL}",
+			type : 'GET',
+			data : data,
 			
-		}
+			success : function(){
+				location.reload();
+				alert("성공");
+			}
+		
+		});
+		
+	}
 </script>
 </body>
 </html>

@@ -108,6 +108,13 @@
   		]]>
 	</select>
 	
+	<!-- (언팔용)나를 팔로우 하는 사람(팔로워)를 내가 팔로우(팔로잉) 했는지 안했는지 -->
+	<select id="unfollow_available" resultType="integer">
+  	  	<![CDATA[
+			select count(*) from follow where mem_id=#{mem_id} and fol_mem_id=#{fol_mem_id} and (fol_kind=2 or fol_kind=3)
+  		]]>
+	</select>
+	
 	<!-- 팔로우 변경 -->
 	<update id="follow_change1">
 	  	<![CDATA[
@@ -144,6 +151,18 @@
 			values(seq_fol.nextval,#{fol_mem_id},#{mem_id},2,sysdate)
 		]]>
 	</insert>
+	
+	<!-- 나를 팔로우 하지 않는 사람일 때, 언팔하면 삭제하기 -->
+	<delete id="delfollow">
+		<![CDATA[
+			delete from follow where mem_id=#{mem_id} and fol_mem_id=#{fol_mem_id}
+		]]>
+	</delete>
+	<delete id="del2follow">
+		<![CDATA[
+			delete from follow where mem_id=#{fol_mem_id} and fol_mem_id=#{mem_id}
+		]]>
+	</delete>
 	
 	
 	
