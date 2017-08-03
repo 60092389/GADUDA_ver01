@@ -269,18 +269,17 @@ $(document).ready(function(){
 		roomMake_Canvas_DrawCanvas();
 		
 	});
-	
-	//踰쎌� ���� 蹂�寃�
-	$("input[name=roomMake_Canvas_menu_wallPaper_color]").click(function(){
-		roomMake_canvas_wallPaper_color =$("input[name=roomMake_Canvas_menu_wallPaper_color]:checked").val();
+	//벽색 바꿈
+	$(".WallPaper_Color").click(function(){
+		roomMake_canvas_wallPaper_color =$(this).attr('value');
 		roomMake_Canvas_DrawCanvas();
 	});
 	
-	//諛��� ���� 蹂�寃�
-	$("input[name=roomMake_Canvas_menu_linoleum_color]").click(function(){
-		roomMake_canvas_linoleum_color  =$("input[name=roomMake_Canvas_menu_linoleum_color]:checked").val();
+	//바닥 색 바꿈
+	$(".Linoleum_Color").click(function(){
+		roomMake_canvas_linoleum_color =$(this).attr('value');
 		roomMake_Canvas_DrawCanvas();
-	});		
+	});	
 	
 	
 	
@@ -681,72 +680,21 @@ $(document).ready(function(){
 					<div id="roomMake_Canvas_Menu_WallPaper_Color_ChekboxArea">
 						<table>
 							<tr>
-								<td>
-									<div style="background: red; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_wallPaper_color" value="red">
-									</div>
-								</td>
-								<td>
-									<div style="background: orange; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_wallPaper_color" value="orange">
-									</div>
-								</td>
-								<td>
-									<div style="background: yellow; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_wallPaper_color" value="yellow">
-									</div>
-								</td>
-								<td>
-									<div style="background: green; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_wallPaper_color" value="green">
-									</div>
-								</td>
-								<td>
-									<div style="background: #84bae8; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_wallPaper_color" value="#84bae8">
-									</div>
-								</td>
-								<td>
-									<div style="background: blue; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_wallPaper_color" value="blue">
-									</div>
-								</td>
-								<td>
-									<div style="background: #8000ff; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_wallPaper_color" value="#8000ff">
-									</div>
-								</td>
-								<td>
-									<div style="background: #ff00ff; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_wallPaper_color" value="#ff00ff">
-									</div>
-								</td>
-								<td>
-									<div style="background: pink; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_wallPaper_color" value="pink">
-									</div>
-								</td>
-								<td>
-									<div style="background: white; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_wallPaper_color" value="white">
-									</div>
-								</td>
-								<td>
-									<div style="background: #d9d9d9; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_wallPaper_color" value="#d9d9d9">
-									</div>
-								</td>
-								<td>
-									<div style="background: #595959; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_wallPaper_color" value="#595959">
-									</div>
-								</td>
-								<td>
-									<div style="background: black; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_wallPaper_color" value="black">
-									</div>
-								</td>
-								
+								<td><div class="WallPaper_Color" value="#ffddd6" style="background: #ffddd6; height: 50px; width: 50px" ></div></td>
+								<td><div class="WallPaper_Color" value="#fce4c7" style="background: #fce4c7; height: 50px; width: 50px"></div></td>
+								<td><div class="WallPaper_Color" value="#fffdcc" style="background: #fffdcc; height: 50px; width: 50px"></div></td>
+								<td><div class="WallPaper_Color" value="#d8ffda" style="background: #d8ffda; height: 50px; width: 50px"></div></td>
+								<td><div class="WallPaper_Color" value="#d8fff3" style="background: #d8fff3; height: 50px; width: 50px"></div></td>
+								<td><div class="WallPaper_Color" value="#c1e8ff" style="background: #c1e8ff; height: 50px; width: 50px"></div></td>
+								<td><div class="WallPaper_Color" value="#c1c1ff" style="background: #c1c1ff; height: 50px; width: 50px"></div></td>
+								<td><div class="WallPaper_Color" value="#f1ceff" style="background: #f1ceff; height: 50px; width: 50px"></div></td>
+								<td><div class="WallPaper_Color" value="#ffc1e5" style="background: #ffc1e5; height: 50px; width: 50px"></div></td>
+								<td><div class="WallPaper_Color" value="#fafafa" style="background: #fafafa; height: 50px; width: 50px"></div></td>
+								<td><div class="WallPaper_Color" value="#d9d9d9" style="background: #d9d9d9; height: 50px; width: 50px"></div></td>
+								<td><div class="WallPaper_Color" value="#686868" style="background: #686868; height: 50px; width: 50px"></div></td>
+								<td><div class="WallPaper_Color" value="#222222" style="background: #222222; height: 50px; width: 50px"></div></td>
+								<td><div class="WallPaper_Color" value="#d8b572" style="background: #d8b572; height: 50px; width: 50px"></div></td>
+								<td><div class="WallPaper_Color" value="#a55d00" style="background: #a55d00; height: 50px; width: 50px"></div></td>
 							</tr>
 						</table>
 					</div>
@@ -760,72 +708,21 @@ $(document).ready(function(){
 					<div id="roomMake_Canvas_Menu_Linoleum_Color_ChekboxArea">
 						<table>
 							<tr>
-								<td>
-									<div style="background: red; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_linoleum_color" value="red">
-									</div>
-								</td>
-								<td>
-									<div style="background: orange; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_linoleum_color" value="orange">
-									</div>
-								</td>
-								<td>
-									<div style="background: yellow; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_linoleum_color" value="yellow">
-									</div>
-								</td>
-								<td>
-									<div style="background: green; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_linoleum_color" value="green">
-									</div>
-								</td>
-								<td>
-									<div style="background: #84bae8; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_linoleum_color" value="#84bae8">
-									</div>
-								</td>
-								<td>
-									<div style="background: blue; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_linoleum_color" value="blue">
-									</div>
-								</td>
-								<td>
-									<div style="background: #8000ff; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_linoleum_color" value="#8000ff">
-									</div>
-								</td>
-								<td>
-									<div style="background: #ff00ff; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_linoleum_color" value="#ff00ff">
-									</div>
-								</td>
-								<td>
-									<div style="background: pink; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_linoleum_color" value="pink">
-									</div>
-								</td>
-								<td>
-									<div style="background: white; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_linoleum_color" value="white">
-									</div>
-								</td>
-								<td>
-									<div style="background: #d9d9d9; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_linoleum_color" value="#d9d9d9">
-									</div>
-								</td>
-								<td>
-									<div style="background: #595959; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_linoleum_color" value="#595959">
-									</div>
-								</td>
-								<td>
-									<div style="background: black; height: 50px; width: 50px">
-										<input class="w3-display-center w3-radio" type="radio" name="roomMake_Canvas_menu_linoleum_color" value="black">
-									</div>
-								</td>
-								
+								<td><div class="Linoleum_Color" value="#ffddd6" style="background: #ffddd6; height: 50px; width: 50px" ></div></td>
+								<td><div class="Linoleum_Color" value="#fce4c7" style="background: #fce4c7; height: 50px; width: 50px"></div></td>
+								<td><div class="Linoleum_Color" value="#fffdcc" style="background: #fffdcc; height: 50px; width: 50px"></div></td>
+								<td><div class="Linoleum_Color" value="#d8ffda" style="background: #d8ffda; height: 50px; width: 50px"></div></td>
+								<td><div class="Linoleum_Color" value="#d8fff3" style="background: #d8fff3; height: 50px; width: 50px"></div></td>
+								<td><div class="Linoleum_Color" value="#c1e8ff" style="background: #c1e8ff; height: 50px; width: 50px"></div></td>
+								<td><div class="Linoleum_Color" value="#c1c1ff" style="background: #c1c1ff; height: 50px; width: 50px"></div></td>
+								<td><div class="Linoleum_Color" value="#f1ceff" style="background: #f1ceff; height: 50px; width: 50px"></div></td>
+								<td><div class="Linoleum_Color" value="#ffc1e5" style="background: #ffc1e5; height: 50px; width: 50px"></div></td>
+								<td><div class="Linoleum_Color" value="#fafafa" style="background: #fafafa; height: 50px; width: 50px"></div></td>
+								<td><div class="Linoleum_Color" value="#d9d9d9" style="background: #d9d9d9; height: 50px; width: 50px"></div></td>
+								<td><div class="Linoleum_Color" value="#686868" style="background: #686868; height: 50px; width: 50px"></div></td>
+								<td><div class="Linoleum_Color" value="#222222" style="background: #222222; height: 50px; width: 50px"></div></td>
+								<td><div class="Linoleum_Color" value="#d8b572" style="background: #d8b572; height: 50px; width: 50px"></div></td>
+								<td><div class="Linoleum_Color" value="#a55d00" style="background: #a55d00; height: 50px; width: 50px"></div></td>
 							</tr>
 						</table>
 					</div>
