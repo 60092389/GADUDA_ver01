@@ -62,25 +62,14 @@ $(document).ready(function(){
 						<td></td>
 					</tr>
 					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
 						<td>
-							<div class="w3-center">
-								<i class="material-icons" >favorite</i>
-							</div>
 						</td>
-						<td colspan="2">
-							내 방
+						<td>
+							<b>No.${ myRoomList.room_shape_no }　　 ${ myRoomList.room_shape_name }</b>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="4"> </td>
+						<td></td>
 						<td>
 							<button class="w3-button w3-green w3-hover-white">수정하기</button> 
 							<button class="w3-button w3-red w3-hover-white">삭제하기</button> 

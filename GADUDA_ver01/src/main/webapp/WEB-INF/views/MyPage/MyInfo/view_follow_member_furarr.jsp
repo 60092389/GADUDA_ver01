@@ -36,7 +36,7 @@
 			<div class="w3-padding-32 w3-main w3-content w3-margin-top w3-border-top">
 				<table class="w3-container w3-table w3-center">
 					<tr>
-	   					<th>No.<h1>${ arrList.fur_arr_plan_no }</h1></th>
+	   					<th>${ arrList.mem_id }의 배치도<h1>${ arrList.fur_arr_plan_no }</h1></th>
 						<th colspan="3">
 							<a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${ arrList.fur_arr_plan_no }"><h1>${ arrList.fur_arr_name }</h1></a>
 						</th>
