@@ -62,7 +62,7 @@
 		    					<button onclick="follow('${following_list.fol_mem_id}');" class="w3-button w3-blue">언팔로우하기${followox }</button>
 		    				</c:if>
 						</div>
-						<div class="w3-col m3 w3-center"><button class="w3-button w3-blue">가구 배치도</button></div>
+						<div class="w3-col m3 w3-center"><a href="${URLs.URI_FOLLOW_FURARR_FULL }?fol_mem_id=${following_list.fol_mem_id}" value="${following_list.fol_mem_id}" class="w3-button w3-blue">가구 배치도</a></div>
 					</div>
 				</c:forEach>
 			</div>
