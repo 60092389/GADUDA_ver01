@@ -130,15 +130,27 @@
 		]]>
 	</update>
 	
-	<!-- 로그인한 회원이 다른 회원 팔로우하기 -->
+	<!-- 팔로우 추가 -->
+	<insert id="addfollow">
+		<![CDATA[
+			insert into follow(fol_no,mem_id,fol_mem_id,fol_kind,fol_date) 
+			values(seq_fol.nextval,#{mem_id},#{fol_mem_id},1,sysdate)
+		]]>
+	</insert>
+	
+	<insert id="add2follow">
+		<![CDATA[
+			insert into follow(fol_no,mem_id,fol_mem_id,fol_kind,fol_date) 
+			values(seq_fol.nextval,#{fol_mem_id},#{mem_id},2,sysdate)
+		]]>
+	</insert>
 	
 	
 	
 <!-- 내 가구 배치도 리스트 보기07/27 -->
 
 	<!-- 내 가구 배치도 가져오기 -->
-	<select id="callMyFurArr" parameterType="String"
-		resultType="kr.co.gaduda.member.vo.MemberFurArrVO">
+	<select id="callMyFurArr" parameterType="String" resultType="kr.co.gaduda.member.vo.MemberFurArrVO">
 		<![CDATA[
 			select FAI.FUR_ARR_PLAN_NO, FUR_ARR_PLAN_IMG_LOC, FUR_ARR_CREATE_DATE, FUR_ARR_NAME, FAP.FUR_ARR_CONTENTS, MEM_ID, ROOM_NO, FUR_ARR_PLAN_GOOD_NUM, FUR_ARR_PLAN_REPL_NUM 
 			from FURNITURE_ARRANGEMENT_IMAGE FAI, FURNITURE_ARRANGEMENT_PLAN FAP 

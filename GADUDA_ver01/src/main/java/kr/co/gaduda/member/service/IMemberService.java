@@ -30,6 +30,9 @@ public interface IMemberService {
 	public void follow_change(FollowDTO followDTO);
 	public void unfollow_change(FollowDTO followDTO);
 	
+	public int addfollow(FollowDTO followDTO);
+	public int add2follow(FollowDTO followDTO);
+	
 	//나의 가구배치도 정보 가져오기
 	public List<MemberFurArrVO> callMyFurArr(String mem_id);
 	public int getCountScrap(int fur_arr_plan_no);

@@ -44,7 +44,7 @@
 						<div class="w3-col m2 w3-center"><img src="${following_list.mem_profile_pic}" class="w3-circle" style="height: 50px; width: 50px" alt="follower ficture"></div>
 						<div class="w3-col m3 w3-center"><button class="w3-button w3-white">${following_list.fol_mem_id }</button></div>
 						<div class="w3-col m4 w3-center"><button onclick="follow('${following_list.fol_mem_id}');" class="w3-button w3-white">${following_list.status_fol_kind }</button></div>
-						<div class="w3-col m3 w3-center"><a href="${URLs.URI_FOLLOW_FURARR_FULL }?fol_mem_id=${following_list.fol_mem_id}" value="${following_list.fol_mem_id}" class="w3-button w3-blue">가구 배치도</a></div>
+						<div class="w3-col m3 w3-center"><button class="w3-button w3-blue">가구 배치도</button></div>
 					</div>
 				</c:forEach>
 			</div>

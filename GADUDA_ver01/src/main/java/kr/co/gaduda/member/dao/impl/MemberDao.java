@@ -136,6 +136,16 @@ public class MemberDao implements IMemberDao {
 	}
 	
 	@Override
+	public int addfollow(FollowDTO followDTO){
+		return memberSqlSession.update(namespace + ".addfollow", followDTO);
+	}
+	
+	@Override
+	public int add2follow(FollowDTO followDTO){
+		return memberSqlSession.update(namespace + ".add2follow", followDTO);
+	}
+	
+	@Override
 	   public void member_log(Map<String, Object> memberInfo) {
 	      
 	            

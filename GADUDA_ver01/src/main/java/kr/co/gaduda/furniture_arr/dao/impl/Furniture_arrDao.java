@@ -1,5 +1,7 @@
 package kr.co.gaduda.furniture_arr.dao.impl;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +23,7 @@ import kr.co.gaduda.furniture_arr.vo.Furniture_arrDetailVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 import kr.co.gaduda.furniture_arr.vo.Other_Furniture_arrVO;
+import kr.co.gaduda.member.dto.FollowDTO;
 
 @Repository
 public class Furniture_arrDao implements IFurniture_arrDao {
@@ -258,5 +261,20 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 	public List<String> getConceptKind() {
 		return furarrsqlSession.selectList(namespace + ".get_concept_kind");
 	}
+	
+	
+	//가구배치도 작성자를 내가 팔로우 했는지/아닌지
+	@Override
+	public int getFollowing(FollowDTO followdto){
+		return furarrsqlSession.selectOne(namespace+".get_following", followdto);
+	}
+	
+	//작성자가 나를 팔로우 했는지 확인하기
+	@Override
+	public int memFolMe(FollowDTO followdto){
+		return furarrsqlSession.selectOne(namespace+".mem_fol_me", followdto);
+	}
+	
+
 
 }

@@ -27,6 +27,9 @@ import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrDetailVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
+import kr.co.gaduda.member.dto.FollowDTO;
+import kr.co.gaduda.member.vo.Follower_VO;
+import kr.co.gaduda.member.vo.MemberVO;
 
 @Controller
 @RequestMapping(value="/furniture_arr")
@@ -70,7 +73,7 @@ public class Furniture_arrController {
 	
 	//가구배치도 상세페이지로 이동
 	@RequestMapping(value=URLs.URI_FURNITURE_ARR_DETAIL_VIEW)
-	public String furnitureDetailInfo(int fur_arr_plan_no, Model model){
+	public String furnitureDetailInfo(int fur_arr_plan_no, Model model, HttpServletRequest request){
 		
 		Furniture_arrDetailVO detailVO = furniture_arrService.getFurArrDetailInfo(fur_arr_plan_no);
 		
@@ -78,6 +81,21 @@ public class Furniture_arrController {
 		
 		List<FurnitureArrReplyListVO> fur_arr_reply_list = furniture_arrService.getFurArrReplyList(fur_arr_plan_no);
 		
+		MemberVO memVO = (MemberVO) request.getSession().getAttribute("member");
+		String mem_id = memVO.getMem_id();
+		String fol_mem_id = detailVO.getMem_id();
+		FollowDTO followdto = new FollowDTO();
+		followdto.setMem_id(mem_id);
+		followdto.setFol_mem_id(fol_mem_id);
+		int followint = furniture_arrService.getFollowing(followdto);
+		int memfolmeint = furniture_arrService.memFolMe(followdto);
+		if(memfolmeint == 1){
+			followint = 2;
+		}
+		if(mem_id.equals(fol_mem_id)){
+			followint = 3;
+		}
+		model.addAttribute("followox", followint);
 		model.addAttribute("detailVO", detailVO);
 		model.addAttribute("arr_fur", arr_fur);
 		model.addAttribute("reply_list", fur_arr_reply_list);

@@ -164,9 +164,9 @@ public class MypageMemberController implements ServletContextAware{
 			follower_list.get(i).setFol_kind(fol_kind);
 			
 			if(follower_list.get(i).getFol_kind()==1){
-				follower_list.get(i).setStatus_fol_kind("FOLLOW");
+				follower_list.get(i).setStatus_fol_kind("언팔하기");
 			}else{
-				follower_list.get(i).setStatus_fol_kind("UNFOLLOW");
+				follower_list.get(i).setStatus_fol_kind("팔로우하기");
 			}
 	}
 		
@@ -200,9 +200,9 @@ public class MypageMemberController implements ServletContextAware{
 				following_list.get(i).setFol_kind(fol_kind);
 				
 				if(following_list.get(i).getFol_kind()==1){
-					following_list.get(i).setStatus_fol_kind("FOLLOW");
+					following_list.get(i).setStatus_fol_kind("언팔하기");
 				}else{
-					following_list.get(i).setStatus_fol_kind("UNFOLLOW");
+					following_list.get(i).setStatus_fol_kind("팔로우하기");
 				}
 		}
 		
@@ -230,11 +230,28 @@ public class MypageMemberController implements ServletContextAware{
 		if(fol_kind==1){
 			memberService.follow_change(followDTO);
 		}else{
-			
 					memberService.unfollow_change(followDTO);
 		}
+		return jsonObj;
+	}
 	
+	//새로 팔로우하기
+	@RequestMapping(value=URLs.URI_MYPAGE_NEW_FOLLOW)
+	@ResponseBody
+	public JSONObject newFollow(HttpServletRequest request, HttpServletResponse response,Model model, String fol_mem_id) throws Exception{
+		response.setContentType("application/json;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		System.out.println("팔로우 새로하기");
 		
+		JSONObject jsonObj = new JSONObject();
+		MemberVO memVO = (MemberVO) request.getSession().getAttribute("member");
+		String mem_id=memVO.getMem_id();
+		FollowDTO followDTO = new FollowDTO();
+		followDTO.setMem_id(mem_id);
+		followDTO.setFol_mem_id(fol_mem_id);
+		System.out.println(fol_mem_id);
+		memberService.addfollow(followDTO);
+		memberService.add2follow(followDTO);
 		return jsonObj;
 	}
 	

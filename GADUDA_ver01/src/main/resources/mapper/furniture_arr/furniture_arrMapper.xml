@@ -27,20 +27,21 @@
 
 	<!-- 배치도 컨셉 가져오기 -->
 	<select id="fur_arr_con" resultType="String">
-   <![CDATA[
-      select CONCEPT_NAME 
-      from FUrNITURE_ARRANGEMENT_PLAN P, FUrNITURE_ARR_PLAN_CONCEPT C, CONCEPT A 
-      where P.FUR_ARR_PLAN_NO = C.FUR_ARR_PLAN_NO AND C.CONCEPT_NO = A.CONCEPT_NO 
-      AND p.fur_arr_plan_no=#{fur_arr_plan_no}
-   ]]>
+	   <![CDATA[
+	      select CONCEPT_NAME 
+	      from FUrNITURE_ARRANGEMENT_PLAN P, FUrNITURE_ARR_PLAN_CONCEPT C, CONCEPT A 
+	      where P.FUR_ARR_PLAN_NO = C.FUR_ARR_PLAN_NO AND C.CONCEPT_NO = A.CONCEPT_NO 
+	      AND p.fur_arr_plan_no=#{fur_arr_plan_no}
+	   ]]>
 	</select>
+	
 	<!-- 배치도 방종류 가져오기 -->
 	<select id="fur_arr_room_kind" resultType="String">
-   <![CDATA[
-      select r.room_name
-      from furniture_arrangement_plan p, room r
-      where p.room_no=r.room_no and p.fur_arr_plan_no=#{fur_arr_plan_no}
-   ]]>
+	   <![CDATA[
+	      select r.room_name
+	      from furniture_arrangement_plan p, room r
+	      where p.room_no=r.room_no and p.fur_arr_plan_no=#{fur_arr_plan_no}
+	   ]]>
 	</select>
 
 	<!-- 배치도 좋아요 수 올리기 -->
@@ -50,6 +51,7 @@
 		where FUR_ARR_PLAN_NO=#{fur_arr_plan_no}
       ]]>
 	</update>
+	
 	<!-- 배치도 좋아요 수 내리기 -->
 	<update id="downgood">
       <![CDATA[
@@ -57,6 +59,7 @@
 		where FUR_ARR_PLAN_NO=#{fur_arr_plan_no}
       ]]>
 	</update>
+	
 	<!-- 배치도 댓글 수 올리기 -->
 	<update id="uprepl">
       <![CDATA[
@@ -64,6 +67,7 @@
 		where FUR_ARR_PLAN_NO=#{fur_arr_plan_no}
       ]]>
 	</update>
+	
 	<!-- 배치도 댓글 수 내리기 -->
 	<update id="downrepl">
       <![CDATA[
@@ -73,46 +77,46 @@
 	</update>
 
 	<select id="get_arr_fur_room_kind" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrVO">
-	<![CDATA[
-		select p.FUR_ARR_PLAN_NO,ai.FUR_ARR_PLAN_IMG_LOC,p.FUR_ARR_NAME,p.mem_id,r.ROOM_NAME,p.FUR_ARR_PLAN_GOOD_NUM,p.FUR_ARR_PLAN_REPL_NUM
-		from furniture_arrangement_plan p, furniture_arr_room_kind rk, room_kind_define kd,furniture_arrangement_image ai,room r
-		where p.fur_arr_plan_no=rk.FUR_ARR_PLAN_NO and rk.ROOM_KIND_DEF_NO=kd.ROOM_KIND_DEF_NO and p.FUR_ARR_PLAN_NO=ai.FUR_ARR_PLAN_NO 
-		and p.ROOM_NO=r.ROOM_NO 
-		and kd.room_kind_def_name=#{room_kind_def_name}
-	]]>
+		<![CDATA[
+			select p.FUR_ARR_PLAN_NO,ai.FUR_ARR_PLAN_IMG_LOC,p.FUR_ARR_NAME,p.mem_id,r.ROOM_NAME,p.FUR_ARR_PLAN_GOOD_NUM,p.FUR_ARR_PLAN_REPL_NUM
+			from furniture_arrangement_plan p, furniture_arr_room_kind rk, room_kind_define kd,furniture_arrangement_image ai,room r
+			where p.fur_arr_plan_no=rk.FUR_ARR_PLAN_NO and rk.ROOM_KIND_DEF_NO=kd.ROOM_KIND_DEF_NO and p.FUR_ARR_PLAN_NO=ai.FUR_ARR_PLAN_NO 
+			and p.ROOM_NO=r.ROOM_NO and kd.room_kind_def_name=#{room_kind_def_name}
+		]]>
 	</select>
 
 	<select id="count_fur_arr_roomkind" resultType="int">
-	<![CDATA[
-	select count(*)
-from furniture_arrangement_plan p, furniture_arr_room_kind rk, room_kind_define kd,furniture_arrangement_image ai,room r
-where p.fur_arr_plan_no=rk.FUR_ARR_PLAN_NO and rk.ROOM_KIND_DEF_NO=kd.ROOM_KIND_DEF_NO and p.FUR_ARR_PLAN_NO=ai.FUR_ARR_PLAN_NO 
-and p.ROOM_NO=r.ROOM_NO 
-and kd.room_kind_def_name=#{room_kind_def_name}
-	]]>
+		<![CDATA[
+			select count(*)
+			from furniture_arrangement_plan p, furniture_arr_room_kind rk, room_kind_define kd,furniture_arrangement_image ai,room r
+			where p.fur_arr_plan_no=rk.FUR_ARR_PLAN_NO and rk.ROOM_KIND_DEF_NO=kd.ROOM_KIND_DEF_NO and p.FUR_ARR_PLAN_NO=ai.FUR_ARR_PLAN_NO 
+			and p.ROOM_NO=r.ROOM_NO 
+			and kd.room_kind_def_name=#{room_kind_def_name}
+		]]>
 	</select>
 
 	<select id="get_arr_fur_con" resultType="String">
-	<![CDATA[
-		select c.concept_name
-		from furniture_arrangement_plan p, furniture_arr_room_kind rk, room_kind_define kd,furniture_arr_plan_concept pc,concept c
-		where p.fur_arr_plan_no=rk.FUR_ARR_PLAN_NO and rk.ROOM_KIND_DEF_NO=kd.ROOM_KIND_DEF_NO and p.fur_arr_plan_no=pc.fur_arr_plan_no and pc.concept_no=c.concept_no
-		and kd.room_kind_def_name=#{room_kind_def_name}
-	]]>
+		<![CDATA[
+			select c.concept_name
+			from furniture_arrangement_plan p, furniture_arr_room_kind rk, room_kind_define kd,furniture_arr_plan_concept pc,concept c
+			where p.fur_arr_plan_no=rk.FUR_ARR_PLAN_NO and rk.ROOM_KIND_DEF_NO=kd.ROOM_KIND_DEF_NO and p.fur_arr_plan_no=pc.fur_arr_plan_no and pc.concept_no=c.concept_no
+			and kd.room_kind_def_name=#{room_kind_def_name}
+		]]>
 	</select>
 
 	<select id="count_scrap" resultType="int">
-	<![CDATA[
-	select count(*) from furniture_arr_plan_scrap where fur_arr_plan_no=#{fur_arr_plan_no}
-	]]>
+		<![CDATA[
+			select count(*) from furniture_arr_plan_scrap where fur_arr_plan_no=#{fur_arr_plan_no}
+		]]>
 	</select>
+	
 	<select id="get_arr_fur_concept" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrVO">
-	<![CDATA[
-	select p.FUR_ARR_PLAN_NO,ai.FUR_ARR_PLAN_IMG_LOC,p.FUR_ARR_NAME,p.MEM_ID,c.CONCEPT_NAME,r.ROOM_NAME,p.FUR_ARR_PLAN_GOOD_NUM,p.FUR_ARR_PLAN_REPL_NUM
-from furniture_arrangement_plan p, furniture_arr_plan_concept pc,furniture_arrangement_image ai,concept c,room r
-where p.fur_arr_plan_no=pc.fur_arr_plan_no and p.fur_arr_plan_no=ai.fur_arr_plan_no and pc.concept_no=c.concept_no and p.room_no=r.room_no
-and c.concept_name=#{concept_name}
-	]]>
+		<![CDATA[
+			select p.FUR_ARR_PLAN_NO,ai.FUR_ARR_PLAN_IMG_LOC,p.FUR_ARR_NAME,p.MEM_ID,c.CONCEPT_NAME,r.ROOM_NAME,p.FUR_ARR_PLAN_GOOD_NUM,p.FUR_ARR_PLAN_REPL_NUM
+			from furniture_arrangement_plan p, furniture_arr_plan_concept pc,furniture_arrangement_image ai,concept c,room r
+			where p.fur_arr_plan_no=pc.fur_arr_plan_no and p.fur_arr_plan_no=ai.fur_arr_plan_no and pc.concept_no=c.concept_no and p.room_no=r.room_no
+			and c.concept_name=#{concept_name}
+		]]>
 	</select>
 
 	<!-- /////////////////////////////////////////////////////////// -->
@@ -173,17 +177,16 @@ and c.concept_name=#{concept_name}
 
 	<!-- 배치도 방종류 가져오기 -->
 	<select id="fur_arr_room_kinds" resultType="String">
-  	 <![CDATA[
-    	select room_kind_def_name from furniture_arr_room_kind fark, room_kind_define rkd
-  		where fark.room_kind_def_no = rkd.room_kind_def_no
-  		and fur_arr_plan_no = #{fur_arr_plan_no}
-  	 ]]>
+	  	 <![CDATA[
+	    	select room_kind_def_name from furniture_arr_room_kind fark, room_kind_define rkd
+	  		where fark.room_kind_def_no = rkd.room_kind_def_no
+	  		and fur_arr_plan_no = #{fur_arr_plan_no}
+	  	 ]]>
 	</select>
 
 
 	<!-- 해당 회원이 해당 배치도를 스크랩 했나 안했나~ -->
-	<select id="fur_arr_scrap_chk" resultType="int"
-		parameterType="kr.co.gaduda.furniture_arr.dto.FurnitureArrScrapDTO">
+	<select id="fur_arr_scrap_chk" resultType="int" parameterType="kr.co.gaduda.furniture_arr.dto.FurnitureArrScrapDTO">
 		select count(*) from furniture_arr_plan_scrap where
 		fur_arr_plan_no=#{fur_arr_plan_no} and mem_id=#{mem_id}
 	</select>
@@ -193,20 +196,20 @@ and c.concept_name=#{concept_name}
 		insert into
 		furniture_arr_plan_scrap(fur_arr_plan_scrap_no, mem_id,
 		fur_arr_plan_no, fur_arr_plan_scrap_date)
-		values(seq_fur_arr_plan_scrap.nextval, #{mem_id}, #{fur_arr_plan_no},
-		sysdate)
+		values(seq_fur_arr_plan_scrap.nextval, #{mem_id}, #{fur_arr_plan_no}, sysdate)
 	</insert>
 
 	<!-- 스크랩 한 사람 목록 가져오기 -->
-	<select id="fur_arr_scrap_list"
-		resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO">
+	<select id="fur_arr_scrap_list" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO">
 		<![CDATA[
-			select m.mem_id, m.mem_nickname, fa.fur_arr_plan_scrap_date from FURNITURE_ARR_PLAN_SCRAP fa, member m where fa.mem_id = m.mem_id and fur_arr_plan_no = #{fur_arr_plan_no}
+			select m.mem_id, m.mem_nickname, fa.fur_arr_plan_scrap_date from FURNITURE_ARR_PLAN_SCRAP fa, member m where fa.mem_id = m.mem_id 
+			and fur_arr_plan_no = #{fur_arr_plan_no}
 		]]>
 	</select>
 
 	<!-- 가구배치도 상세페이지 끝 -->
 	<!-- ///////////////////////////////////////////////////////////////// -->
+	
 	<!-- 방종류 가져오기 -->
 	<select id="get_room_kind" resultType="String">
 		<![CDATA[
@@ -220,6 +223,24 @@ and c.concept_name=#{concept_name}
 			select concept_name from CONCEPT
 		]]>
 	</select>
+	
+	
+	
+	<!-- 가구배치도 작성자를 내가 팔로우 했는지/아닌지 -->
+	<select id="get_following" resultType="int">
+		<![CDATA[
+			select count(*) from follow where mem_id=#{mem_id} and fol_mem_id=#{fol_mem_id} and (fol_kind=1 or fol_kind=3)
+		]]>
+	</select>
+	
+	<!-- 작성자가 나를 팔로우 했는지 확인하기 - 1 -->
+	<select id="mem_fol_me" resultType="int">
+		<![CDATA[
+			select count(*) from follow where mem_id=#{mem_id} and fol_mem_id=#{fol_mem_id} and fol_kind = 2
+		]]>
+	</select>
+	
+	
 
 
 </mapper>

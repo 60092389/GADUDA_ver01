@@ -9,6 +9,7 @@ import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrDetailVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
+import kr.co.gaduda.member.dto.FollowDTO;
 
 public interface IFurniture_arrService {
 	public List<Furniture_arrVO> furArrList();
@@ -46,5 +47,11 @@ public interface IFurniture_arrService {
 	
 	//가구 방 컨셉 가져오기
 	public List<String> getConceptKind();
+	
+	//가구배치도 작성자를 내가 팔로우 했는지/아닌지
+	public int getFollowing(FollowDTO followdto);
+	
+	//작성자가 나를 팔로우 했는지 확인하기
+	public int memFolMe(FollowDTO followdto);
 	
 }

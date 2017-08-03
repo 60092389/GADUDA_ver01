@@ -18,6 +18,7 @@ import kr.co.gaduda.furniture_arr.vo.Furniture_arrDetailVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 import kr.co.gaduda.furniture_arr.vo.Other_Furniture_arrVO;
+import kr.co.gaduda.member.dto.FollowDTO;
 
 @Service
 public class Furniture_arrService implements IFurniture_arrService {
@@ -405,5 +406,18 @@ public class Furniture_arrService implements IFurniture_arrService {
 	public List<String> getConceptKind(){
 		return furniture_arrDao.getConceptKind();
 	}
+	
+	//가구배치도 작성자를 내가 팔로우 했는지/아닌지
+	@Override
+	public int getFollowing(FollowDTO followdto){
+		return furniture_arrDao.getFollowing(followdto);
+	}
+	
+	//작성자가 나를 팔로우 했는지 확인하기
+	@Override
+	public int memFolMe(FollowDTO followdto){
+		return furniture_arrDao.memFolMe(followdto);
+	}
+		
 
 }

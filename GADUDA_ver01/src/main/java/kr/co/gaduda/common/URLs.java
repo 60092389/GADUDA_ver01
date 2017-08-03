@@ -87,6 +87,10 @@ public class URLs {
 	public static final String URI_MYPAGE_FOLLOW_CHK="/follow_chk";
 	public static final String URI_MYPAGE_FOLLOW_CHK_FULL= mypage_default+member_default + URI_MYPAGE_FOLLOW_CHK;
 	
+	//새로 팔로우하기
+	public static final String URI_MYPAGE_NEW_FOLLOW="/new_follow";
+	public static final String URI_MYPAGE_NEW_FOLLOW_FULL= mypage_default+member_default + URI_MYPAGE_NEW_FOLLOW;
+	
 	// 가구스크랩
 	public static final String URI_FURNITURE_SCRAP = "/furniture_scrap";
 	public static final String URI_FURNITURE_SCRAP_FULL = mypage_scrap_default + URI_FURNITURE_SCRAP;

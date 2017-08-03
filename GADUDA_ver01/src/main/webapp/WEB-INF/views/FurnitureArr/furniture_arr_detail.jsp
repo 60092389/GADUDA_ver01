@@ -276,6 +276,41 @@ $(document).ready(function(){
 	
 	
 });
+//팔로우 관련
+
+	function follow(fol_mem_id){
+		var data = {"fol_mem_id" : fol_mem_id};
+		alert(fol_mem_id);
+			$.ajax({
+				url : "${URLs.URI_MYPAGE_FOLLOW_CHK_FULL}",
+				type : 'GET',
+				data : data,
+				
+				success : function(){
+					location.reload();
+					alert("성공");
+				}
+			
+			});
+			
+		}
+		
+	function newfollow(fol_mem_id){
+		var data = {"fol_mem_id" : fol_mem_id};
+		alert(fol_mem_id);
+			$.ajax({
+				url : "${URLs.URI_MYPAGE_NEW_FOLLOW_FULL}",
+				type : 'GET',
+				data : data,
+				
+				success : function(){
+					location.reload();
+					alert("성공");
+				}
+			
+			});
+			
+		}
 
 var login_id = $('#user_id').val();
 var repl_id = $('#repl_id').val();
@@ -318,12 +353,27 @@ if(login_id != repl_id){
     <div>
     	<div id="user_action">
     		<div class="w3-col m3">
-    		<p style="color: orange;">
-    			<img class="w3-circle" src="${detailVO.mem_profile_pic }" alt="${detailVO.mem_id }" style="width:10%"> <b>　　${detailVO.mem_id }</b>
-    			<button class="w3-button w3-hover-white w3-center" name="subject"><img src="/resources/Images/icon/attachment.png" style="width: 40px"></button></p>
+    		<p>	
+    			<img class="w3-circle" src="${detailVO.mem_profile_pic }" alt="${detailVO.mem_id }" style="width:10%"><h3><b>${detailVO.fur_arr_name }</b></h3>
+    			<b class="w3-medium" style="color: blue;">${detailVO.mem_id }　　</b>
     			<!-- ★★★★★★★★★★★★★★★★★★★★★★★★★★사용자가 팔로우한 사람이면 다른 아이콘 뜨도록 해야합니다.★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ -->
-	 			<h3><b>${detailVO.fur_arr_name }</b></h3>
-	 			<br>
+    			<c:set var="followox" value="${followox }"/>
+    				
+    				<c:if test="${ followox eq 0 }">
+    					<button onclick="newfollow('${detailVO.mem_id}');" class="w3-button w3-blue">팔로우하기</button>
+    				</c:if>
+    				<c:if test="${ followox eq 1 }">
+    					<button onclick="follow('${detailVO.mem_id}');" class="w3-button w3-blue">언팔로우하기</button>
+    				</c:if>
+    				<c:if test="${ followox eq 2 }">
+    					<button onclick="follow('${detailVO.mem_id}');" class="w3-button w3-blue">팔로우하기</button>
+    					<p>당신을 팔로우 합니다.</p>
+    				</c:if>
+    				<c:if test="${ followox eq 3 }">
+    					<a class="w3-button" href=<%=URLs.URI_MYPAGE_MEMBER_FULL%>>마이페이지</a>
+    				</c:if>
+    		</p>
+	 			<a class="w3-button w3-border w3-round" href="${URLs.URI_FOLLOW_FURARR_FULL }?fol_mem_id=${detailVO.mem_id}" value="${detailVO.mem_id}">작성자의 다른 가구배치도 보러가기</a>
 	 			<p><b>Date</b> 　　　　 <b>${detailVO.fur_arr_create_date }</b></p> 
 	 			<p><b>종류</b> 　　　 　<b>${detailVO.fur_arr_rooms }</b></p> 
 	 			<p><b>컨셉</b> 　　　 　<b>${detailVO.fur_arr_concepts }</b></p> 
@@ -348,7 +398,7 @@ if(login_id != repl_id){
 					<br>
 					<div class="w3-border w3-round" style="width: 150px">
 						<button class="w3-button w3-hover-white" name="subject"><i class="material-icons">cloud</i></button> 
-						<button class="w3-button w3-hover-white" >Repl ${detailVO.fur_arr_plan_repl_num }</button>
+						<button class="w3-button w3-hover-white" >댓글 ${detailVO.fur_arr_plan_repl_num }</button>
 					</div>
 					<br>
 	 			</div>

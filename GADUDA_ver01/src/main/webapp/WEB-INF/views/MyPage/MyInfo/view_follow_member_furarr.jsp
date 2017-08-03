@@ -27,9 +27,10 @@
 <div class="w3-container ">
 	<!--사이드 메뉴-->
 	<jsp:include page="/WEB-INF/views/MyPage/MyInfo/view_mypage_sidebar.jsp" flush="false" />
+	
 	<!-- Page Container -->
 	<div class="w3-main w3-content" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
-		<div class="w3-container">
+		<div class="w3-container" id="myPage_content5">
 			<br>
 			<c:forEach var="arrList" items="${arrList }">
 			<div class="w3-padding-32 w3-main w3-content w3-margin-top w3-border-top">
@@ -37,7 +38,7 @@
 					<tr>
 	   					<th>No.<h1>${ arrList.fur_arr_plan_no }</h1></th>
 						<th colspan="3">
-							<h1>${ arrList.mem_id }님의　<a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${ arrList.fur_arr_plan_no }" class="w3-button">${ arrList.fur_arr_name }</a></h1>
+							<a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${ arrList.fur_arr_plan_no }"><h1>${ arrList.fur_arr_name }</h1></a>
 						</th>
 						<th>${ arrList.fur_arr_create_date }</th>
 	  				</tr>
