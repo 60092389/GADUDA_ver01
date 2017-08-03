@@ -11,6 +11,7 @@ public class URLs {
 	private static final String furniture_arr_default = "/furniture_arr";
 	private static final String mypage_scrap_default = "/mypage/scrap";
 	
+	//내방
 	private static final String room_default="/room";
 
 	// 로그아웃
