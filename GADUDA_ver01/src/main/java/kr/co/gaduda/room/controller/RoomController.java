@@ -126,13 +126,12 @@ public class RoomController {
 			byte[] file = Base64.decodeBase64(RoomMake_Canvas_Img_MyRoom);
 			
 			String fileName = UUID.randomUUID().toString();
-			stream = new FileOutputStream("c:\\Users\\shama\\git\\GADUDA_ver01\\GADUDA_ver01\\src\\main\\webapp\\resources\\Images\\User_Myroom\\" + fileName + ".png");
+			stream = new FileOutputStream("d:\\stsproject\\GADUDA_ver01_4\\GADUDA_ver01\\src\\main\\webapp\\resources\\Images\\User_Myroom\\" + fileName + ".png");
 			stream.write(file);
-			
 			MemberVO memberVO= (MemberVO)request.getSession().getAttribute("member");
 			roomDTO.setUserId(memberVO.getMem_id());
 			
-			String room_img_src="c:/Users/shama/git/GADUDA_ver01/GADUDA_ver01/src/main/webapp/resources/Images/User_Myroom/" + fileName + ".png";
+			String room_img_src="d:/stsproject/GADUDA_ver01_4/GADUDA_ver01/src/main/webapp/resources/Images/User_Myroom/" + fileName + ".png";
 			roomDTO.setRoom_Img_src(room_img_src);
 			if(roomService.insertRoom(roomDTO)==1){
 				data.put("MSG", "저장완료");

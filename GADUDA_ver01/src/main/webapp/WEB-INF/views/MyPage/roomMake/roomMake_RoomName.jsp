@@ -269,7 +269,7 @@ $(document).ready(function(){
 							var myroom_data = { "myroom_Name": myroom_name, "room_Img": myroom_Img  };
 
 							$.ajax({
-								type : "post",
+								type : "POST",
 								data :myroom_data,
 								url : "${URLs.URI_ROOMMAKE_FULL}",
 								success : function(data) {

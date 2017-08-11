@@ -9,11 +9,8 @@
 <!-- 방 기본 정보 리스트 가져오기 -->
 	<select id="call_my_room_list" resultType="kr.co.gaduda.room.vo.RoomVO">
 		<![CDATA[
-			select ro.room_no, mem_id, room_name, room_create_date, rs.room_shape_no, room_shape_name, room_shape_img_loc 
-			from room ro, create_room_length_value cr, room_shape rs 
-			where cr.room_no = ro.room_no 
-    		and cr.room_shape_no = rs.room_shape_no 
-   			and ro.mem_id = #{mem_id}
+			select ROOM_NO, ROOM_NAME, MEM_ID, ROOM_CREATE_DATE, ROOM_IMG_SRC from room 
+			where mem_id = #{mem_id}
 		]]>
 	</select>
 	<insert id="insert_my_room" >
