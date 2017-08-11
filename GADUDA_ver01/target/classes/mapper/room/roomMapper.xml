@@ -16,5 +16,10 @@
    			and ro.mem_id = #{mem_id}
 		]]>
 	</select>
+	<insert id="insert_my_room" >
+	<![CDATA[
+		  INSERT INTO ROOM VALUES (SEQ_ROOM.NEXTVAL,#{myroom_Name},#{userId},SYSDATE,#{room_Img_src})
+	]]>
+	</insert>
   	
 </mapper>

@@ -2,7 +2,9 @@ package kr.co.gaduda.room.controller;
 
 
 import java.io.FileOutputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.gaduda.common.Pages;
@@ -107,16 +110,13 @@ public class RoomController {
 	
 	
 	
-	@RequestMapping(value = URLs.URI_ROOMMAKE ,method = RequestMethod.POST)
-	public ModelAndView roomMake(RoomDTO roomDTO) throws Exception {
+	@RequestMapping(value = URLs.URI_ROOMMAKE , method = RequestMethod.POST, produces = { "application/json" })
+	public @ResponseBody Map<String, Object> roomMake(RoomDTO roomDTO, HttpServletRequest request) throws Exception {
 		
 		FileOutputStream stream = null;
-		
-		ModelAndView mav = new ModelAndView();
+		Map<String, Object> data = new HashMap<String, Object>();
 		
 		try {
-			
-			System.out.println("binary file " + roomDTO.getRoom_Img());
 			
 			if (roomDTO.getRoom_Img() == null || roomDTO.getRoom_Img() == "") {
 				throw new Exception();
@@ -125,25 +125,27 @@ public class RoomController {
 			String RoomMake_Canvas_Img_MyRoom = roomDTO.getRoom_Img().replaceAll("data:image/png;base64,", "");
 			byte[] file = Base64.decodeBase64(RoomMake_Canvas_Img_MyRoom);
 			
-			System.out.println("file :::::::: " + file + " || " + file.length);
-			
-		
 			String fileName = UUID.randomUUID().toString();
-			
-			stream = new FileOutputStream("c:\\img\\" + fileName + ".png");
+			stream = new FileOutputStream("c:\\Users\\shama\\git\\GADUDA_ver01\\GADUDA_ver01\\src\\main\\webapp\\resources\\Images\\User_Myroom\\" + fileName + ".png");
 			stream.write(file);
-			stream.close();
 			
-			System.out.println("저장 완료");
-			mav.addObject("msg", "ok");
+			MemberVO memberVO= (MemberVO)request.getSession().getAttribute("member");
+			roomDTO.setUserId(memberVO.getMem_id());
+			
+			String room_img_src="c:/Users/shama/git/GADUDA_ver01/GADUDA_ver01/src/main/webapp/resources/Images/User_Myroom/" + fileName + ".png";
+			roomDTO.setRoom_Img_src(room_img_src);
+			if(roomService.insertRoom(roomDTO)==1){
+				data.put("MSG", "저장완료");
+			}else{
+				throw new Exception();
+			}
 		} catch (Exception e) {
-			System.out.println("저장 실패");
-			mav.addObject("msg", "no");
-			return mav;
+			data.put("MSG", "저장실패");
 		} finally {
 			stream.close();
 		}
-		return mav;
+		data.put("URL", URLs.URI_MYPAGE_MEMBER_FULL);
+		return data;
 	}
 	
 }

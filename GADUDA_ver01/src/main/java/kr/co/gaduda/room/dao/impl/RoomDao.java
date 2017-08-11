@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.gaduda.room.dao.IRoomDao;
+import kr.co.gaduda.room.dto.RoomDTO;
 import kr.co.gaduda.room.vo.RoomVO;
 
 @Repository
@@ -25,5 +26,8 @@ public class RoomDao implements IRoomDao {
 	public String shsh(){
 		return roomSqlSession.selectOne(namespace+".getTime");
 	}
-
+	@Override
+	public int insertRoom(RoomDTO roomDTO) {
+		return roomSqlSession.insert(namespace+".insert_my_room",roomDTO);
+	}
 }

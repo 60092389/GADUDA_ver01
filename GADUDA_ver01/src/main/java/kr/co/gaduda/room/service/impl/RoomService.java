@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.gaduda.room.dao.IRoomDao;
+import kr.co.gaduda.room.dto.RoomDTO;
 import kr.co.gaduda.room.service.IRoomService;
 import kr.co.gaduda.room.vo.RoomVO;
 
@@ -18,5 +19,10 @@ public class RoomService implements IRoomService {
 	@Override
 	public List<RoomVO> callMyRoomList(String mem_id){
 		return roomDao.callMyRoomList(mem_id);
+	}
+
+	@Override
+	public int insertRoom(RoomDTO roomDTO) {
+		return roomDao.insertRoom(roomDTO);
 	}
 }

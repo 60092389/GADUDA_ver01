@@ -258,27 +258,28 @@ $(document).ready(function(){
 	
 	$("#roomMake_Progress_Next3_Button_js").click(function(){
 		var myroom_name = $("#roomMake_RoomName_Menu_Name_js").val();
-		html2canvas(
-				$("#roomMake_Canvas_Body"),
-				{
-					onrendered : function(canvas) {
-						var myroom_Img=canvas.toDataURL("image/png");
-						var myroom_data = { "myroom_Name": myroom_name, "room_Img": myroom_Img  };
+		if(myroom_name==''){
+			alert('방이름 입력하시오');
+		}else{
+			html2canvas(
+					$("#roomMake_Canvas_Body"),
+					{
+						onrendered : function(canvas) {
+							var myroom_Img=canvas.toDataURL("image/png");
+							var myroom_data = { "myroom_Name": myroom_name, "room_Img": myroom_Img  };
 
-						$.ajax({
-							type : "post",
-							data :myroom_data,
-							url : "${URLs.URI_ROOMMAKE_FULL}",
-							success : function(data) {
-								alert(data.msg);
-								try {
-								} catch (e) {
-									alert('server Error!!');
+							$.ajax({
+								type : "post",
+								data :myroom_data,
+								url : "${URLs.URI_ROOMMAKE_FULL}",
+								success : function(data) {
+									alert(data.MSG);
+									location.href=data.URL;
 								}
-							}
-						});
-					}
-				});
+							});
+						}
+			});
+		}
 	});
 	
 });
