@@ -1,7 +1,5 @@
 package kr.co.gaduda.furniture_arr.dao.impl;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-
 import java.util.List;
 import java.util.Map;
 
@@ -12,9 +10,9 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
-import kr.co.gaduda.furniture.vo.FurnitureVO;
 import kr.co.gaduda.furniture_arr.dao.IFurniture_arrDao;
 import kr.co.gaduda.furniture_arr.dto.FurnitureArrScrapDTO;
+import kr.co.gaduda.furniture_arr.dto.Furniture_arrDTO;
 import kr.co.gaduda.furniture_arr.dto.OtherFurnitureDTO;
 import kr.co.gaduda.furniture_arr.vo.Arrangement_furnituresVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrGoodListVO;
@@ -24,6 +22,7 @@ import kr.co.gaduda.furniture_arr.vo.Furniture_arrMemberVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 import kr.co.gaduda.furniture_arr.vo.Other_Furniture_arrVO;
+import kr.co.gaduda.furniture_arr.vo.crawling_furnitureVO;
 import kr.co.gaduda.member.dto.FollowDTO;
 
 @Repository
@@ -276,6 +275,50 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 		return furarrsqlSession.selectOne(namespace+".mem_fol_me", followdto);
 	}
 	
+	@Override
+	   public List<crawling_furnitureVO> getCrawling_fur(Furniture_arrDTO faDTO) {
+	      String fur_kind = faDTO.getFur_concept().trim();
+	   
+	      
+	   /*   Criteria cri = new Criteria("craw_fur_kind_name");
+	      cri.regex(fur_kind);
+	      
+	      Criteria cri2 = new Criteria("craw_fur_size");
+	      
+	      cri.andOperator(cri2.ne(null));*/
+	      
+	      
+	      
+	      
+	      //Query query = new Query(cri);
+	   
+	     Criteria cri = new Criteria("craw_fur_kind_name");
+	     cri.regex(fur_kind);
+	     
+	     cri.andOperator(new Criteria("craw_fur_size").ne(""));
+	    
+	      Query query=new Query(cri);
+	      
+	      /*Query query = new Query(new Criteria().andOperator(Criteria.where("craw_fur_kind_name").regex(fur_kind))
+	            .andOperator(Criteria.where("craw_fur_size").ne(null))            
+	            );*/
+	      
+	      // Query(Criteria.where("craw_fur_kind_name").regex("cri"));
+	      
+	       /* Query query = new Query(new Criteria()
+	        .andOperator(Criteria.where("craw_fur_kind_name").regex(faDTO.
+	        getFur_concept())));*/
+	       
+	      /*System.out.println("서비스안에서 가구 컨셉" + faDTO.getFur_concept());
+	      // Query query = new Query(new Criteria()
+	      // .andOperator(Criteria.where("craw_fur_kind_name").is("/"+faDTO.getFur_concept()+"/")));
+	      String fur_kind_name = faDTO.getFur_concept();
 
+	      Query query = new Query(new Criteria().andOperator(Criteria.where("craw_fur_kind_name").is(fur_kind_name)));
+	      query.limit(10);*/
+//	      query.addCriteria(Criteria.where("craw_fur_kind_name").regex(faDTO.getFur_concept()));
+
+	      return mongoTemplate.find(query, crawling_furnitureVO.class, "crawling_furniture");
+	   }
 
 }

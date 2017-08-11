@@ -1,6 +1,7 @@
 package kr.co.gaduda.furniture_arr.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,16 +21,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.gaduda.common.Pages;
 import kr.co.gaduda.common.URLs;
 import kr.co.gaduda.furniture_arr.service.IFurniture_arrService;
-import kr.co.gaduda.furniture_arr.service.impl.Furniture_arrService;
 import kr.co.gaduda.furniture_arr.vo.Arrangement_furnituresVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrGoodListVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrDetailVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
+import kr.co.gaduda.furniture_arr.vo.crawling_furnitureVO;
 import kr.co.gaduda.member.dto.FollowDTO;
-import kr.co.gaduda.member.vo.Follower_VO;
-import kr.co.gaduda.member.vo.MemberFurArrVO;
 import kr.co.gaduda.member.vo.MemberVO;
 
 @Controller
@@ -88,7 +87,42 @@ public class Furniture_arrController {
 		FollowDTO followdto = new FollowDTO();
 		followdto.setMem_id(mem_id);
 		followdto.setFol_mem_id(fol_mem_id);
+		///////////////////////////
 		
+	      
+	      String arr_furniture="" ;
+	     
+	      
+	      List<crawling_furnitureVO> craw_fur_detail = new ArrayList<crawling_furnitureVO>();
+	      
+	      Map<Integer, List<crawling_furnitureVO>> map_craw_fur_detail = new HashMap<Integer, List<crawling_furnitureVO>>();
+	      
+//	      List<real_crawling_furnitureVO> real_vo = new ArrayList<real_crawling_furnitureVO>();
+	      
+	      for (int i = 0; i < arr_fur.size(); i++) {
+
+	         int fur_no = arr_fur.get(i).getFur_no();
+	         arr_furniture = arr_fur.get(i).getFur_name();
+	         
+	         System.out.println("컨트롤러안에"+arr_furniture);
+	         
+	         craw_fur_detail = furniture_arrService.craw_fur_list(fur_no);
+	         System.out.println("디테일 사이즈 "+craw_fur_detail.size());
+	         craw_fur_detail.get(i).setArr_fur_name(arr_furniture);
+
+	         
+	         map_craw_fur_detail.put(i, craw_fur_detail);
+	         for(int j = 0 ; j<craw_fur_detail.size();j++){
+	         
+	         System.out.println("사이즈 없는거 안나와야됨"+"순서="+j+"ㅋ"+craw_fur_detail.get(j).getCraw_fur_size()+"컨트롤러안에 가구 아이디 : "+craw_fur_detail.get(j).get_id());
+	         
+	         }
+	      }
+	      
+	      model.addAttribute("craw_fur_detail", map_craw_fur_detail);
+	      
+
+		///////////////////////////
 		int followint = furniture_arrService.getFollowing(followdto); //맞팔
 		int memfolmeint = furniture_arrService.memFolMe(followdto); //나만 팔로우
 		

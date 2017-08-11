@@ -9,6 +9,7 @@ import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrDetailVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
+import kr.co.gaduda.furniture_arr.vo.crawling_furnitureVO;
 import kr.co.gaduda.member.dto.FollowDTO;
 
 public interface IFurniture_arrService {
@@ -53,5 +54,7 @@ public interface IFurniture_arrService {
 	
 	//작성자가 나를 팔로우 했는지 확인하기
 	public int memFolMe(FollowDTO followdto);
+	
+	public List<crawling_furnitureVO> craw_fur_list(int fur_no);
 	
 }

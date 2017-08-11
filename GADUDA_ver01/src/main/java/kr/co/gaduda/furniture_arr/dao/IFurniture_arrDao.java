@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.co.gaduda.furniture_arr.dto.FurnitureArrScrapDTO;
+import kr.co.gaduda.furniture_arr.dto.Furniture_arrDTO;
 import kr.co.gaduda.furniture_arr.dto.OtherFurnitureDTO;
 import kr.co.gaduda.furniture_arr.vo.Arrangement_furnituresVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrGoodListVO;
@@ -13,6 +14,7 @@ import kr.co.gaduda.furniture_arr.vo.Furniture_arrMemberVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 import kr.co.gaduda.furniture_arr.vo.Other_Furniture_arrVO;
+import kr.co.gaduda.furniture_arr.vo.crawling_furnitureVO;
 import kr.co.gaduda.member.dto.FollowDTO;
 
 public interface IFurniture_arrDao {
@@ -115,5 +117,7 @@ public interface IFurniture_arrDao {
 	
 	//작성자가 나를 팔로우 했는지 확인하기
 	public int memFolMe(FollowDTO followdto);
+	
+	public List<crawling_furnitureVO> getCrawling_fur(Furniture_arrDTO faDTO);
 	
 }

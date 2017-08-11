@@ -532,15 +532,61 @@ if(mem_id != repl_id){
 	<!-- ★★★★★★★★★★★★★★★크롤링 완성 후 수정하기★★★★★★★★★★★★★★ -->
 	<!-- 가구배치도에 사용된 가구와 비슷한 가구 추천 리스트 -->
 	<div class="w3-padding-large">
-		<div class="w3-container w3-left">
-			<div id="recom_fur" class="w3-content">
-				<div class="title"><h4><b>가구 추천 리스트</b></h4></div>
-				<div class="w3-bar">
+         <div class="w3-container w3-left">
+            <div id="recom_fur" class="w3-content">
+               <div class="title">
+                  <h4>
+                     <b>가구 추천 리스트</b>
+                  </h4>
+               </div>
 
-				</div>
-			</div>
-		</div>
-	</div>
+
+               <div class="w3-bar">
+
+                  <c:forEach var="craw_fur4" items="${craw_fur_detail }">
+
+                     <div class="w3-container w3-border-top">
+
+                        <div class="w3-container" style="white-space: nowrap; overflow-x: scroll;">
+                           <c:forEach var="craw_fur" items="${craw_fur4.value }">
+                              <ul class="recommand_ul"
+                                 style="white-space: nowrap; overflow: auto; display: inline-block; list-style: none;">
+                                 <div class="w3-container" style="position: absolute; left: 400px;">
+                                    <h5 style="margin-bottom: 15px;">${craw_fur.arr_fur_name }</h5>
+                                 </div>
+                                 <br />
+                                 <div class="w3-container w3-margin">
+                                    <li class="recommand_li" style="float: left; margin: 20px;">
+                                       <a href=${craw_fur.craw_fur_brand_site }><img
+                                          src="${craw_fur.craw_fur_img }"
+                                          style="width: 150px; height: 150px;"><br>${craw_fur.craw_fur_name }<br>${craw_fur.craw_fur_brand }<br>${craw_fur.craw_fur_price }원<br>${craw_fur.craw_fur_kind_name }</a>
+                                    </li>
+                                 </div>
+
+                              </ul>
+                           </c:forEach>
+                        </div>
+                        <%--  <c:forEach var="craw_fur" items="${craw_fur4.value }" >
+                                 
+                                    <li class="recommand_li" style="float: left; margin: 20px;">
+                                       <a href=${craw_fur.craw_fur_brand_site }><img
+                                          src="${craw_fur.craw_fur_img }"
+                                          style="width: 150px; height: 150px;"><br>${craw_fur.craw_fur_name }<br>${craw_fur.craw_fur_brand }<br>${craw_fur.craw_fur_price }<br>${craw_fur.craw_fur_kind_name }</a>
+                                    </li>
+                     
+                              
+                              </c:forEach> --%>
+
+                     </div>
+                  </c:forEach>
+               </div>
+
+
+
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
 
 <!-- Modal -->

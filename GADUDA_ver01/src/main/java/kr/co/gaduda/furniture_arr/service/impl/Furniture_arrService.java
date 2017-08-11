@@ -7,8 +7,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.gaduda.furniture.service.IFurnitureService;
 import kr.co.gaduda.furniture_arr.dao.IFurniture_arrDao;
 import kr.co.gaduda.furniture_arr.dto.FurnitureArrScrapDTO;
+import kr.co.gaduda.furniture_arr.dto.Furniture_arrDTO;
 import kr.co.gaduda.furniture_arr.dto.OtherFurnitureDTO;
 import kr.co.gaduda.furniture_arr.service.IFurniture_arrService;
 import kr.co.gaduda.furniture_arr.vo.Arrangement_furnituresVO;
@@ -19,6 +21,7 @@ import kr.co.gaduda.furniture_arr.vo.Furniture_arrMemberVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 import kr.co.gaduda.furniture_arr.vo.Other_Furniture_arrVO;
+import kr.co.gaduda.furniture_arr.vo.crawling_furnitureVO;
 import kr.co.gaduda.member.dto.FollowDTO;
 
 @Service
@@ -26,6 +29,8 @@ public class Furniture_arrService implements IFurniture_arrService {
 
 	@Autowired
 	private IFurniture_arrDao furniture_arrDao;
+	@Autowired
+	   private IFurnitureService furnitureService;
 
 	@Override
 	public List<Furniture_arrVO> furArrList() {
@@ -425,6 +430,58 @@ public class Furniture_arrService implements IFurniture_arrService {
 	public int memFolMe(FollowDTO followdto){
 		return furniture_arrDao.memFolMe(followdto);
 	}
+	
+	@Override
+	   public List<crawling_furnitureVO> craw_fur_list(int fur_no) {
+
+	      System.out.println("가구번호 들어오는지 확인" + fur_no);
+
+	      Furniture_arrDTO faDTO = new Furniture_arrDTO();
+
+	   
+	      faDTO.setFur_concept(furnitureService.furDetailView(fur_no).getFur_kind());
+	      faDTO.setMax_fur_width(furnitureService.furDetailView(fur_no).getFur_width()+150);
+	      faDTO.setMin_fur_width(furnitureService.furDetailView(fur_no).getFur_width()-150);
+	      faDTO.setMax_fur_depth(furnitureService.furDetailView(fur_no).getFur_depth()+150);
+	      faDTO.setMin_fur_depth(furnitureService.furDetailView(fur_no).getFur_depth()-150);
+	      faDTO.setMax_fur_height(furnitureService.furDetailView(fur_no).getFur_height()+150);
+	      faDTO.setMin_fur_height(furnitureService.furDetailView(fur_no).getFur_height()-150);
+
+	      
+	      List<crawling_furnitureVO> final_craw_fur = furniture_arrDao.getCrawling_fur(faDTO);
+	      System.out.println("111111111111" + final_craw_fur.size());
+	      
+	      List<crawling_furnitureVO> final_craw_fur2 = new ArrayList<crawling_furnitureVO>();
+	      String size_arr[];
+	      String size_arr2;
+
+	      for (int i = 0; i < final_craw_fur.size(); i++) {
+	         String arr_fur_size = final_craw_fur.get(i).getCraw_fur_size();
+
+	         size_arr2 = arr_fur_size.replace("[ ", "").replace("]", "").replaceAll("\"", "");
+
+	         size_arr = size_arr2.split(" , ");
+	         int[] int_size_arr = new int[size_arr.length];
+
+	         for (int j = 0; j < int_size_arr.length; j++) {
+
+	            int_size_arr[j] = Integer.parseInt(size_arr[j]);
+
+	            if (j == 2 && !arr_fur_size.isEmpty()
+	                  && (int_size_arr[0] > faDTO.getMin_fur_width() && int_size_arr[0] < faDTO.getMax_fur_width())
+	                  && (int_size_arr[1] > faDTO.getMin_fur_depth() && int_size_arr[1] < faDTO.getMax_fur_depth())
+	                  && (int_size_arr[2] > faDTO.getMin_fur_height()
+	                        && int_size_arr[2] < faDTO.getMax_fur_height())) {
+	               final_craw_fur2.add(final_craw_fur.get(i));
+	            }
+	         }
+	         
+	      }
+
+	      
+	      return final_craw_fur2;
+
+	   }
 		
 
 }
