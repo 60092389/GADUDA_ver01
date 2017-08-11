@@ -37,7 +37,8 @@
 			</a>
 		</div>
 		<div class="w3-container">
-			<div class="w3-col m1 "><button style="margin-top: 150px" class="w3-button" onclick="plusDivsA(-1)">&#10094;</button></div>
+			<div class="w3-col m1 ">
+			<button style="margin-top: 150px" class="w3-button" onclick="plusDivsA(-1)">&#10094;</button></div>
 			<c:forEach var="fal" items="${fur_arr_list }">
 				<div class="arrSlides w3-col m3 w3-round w3-margin w3-padding w3-border">
 					<table class="w3-container w3-padding" >
@@ -84,7 +85,8 @@
 			</a>
 		</div>
 		<div class="w3-container">
-			<div class="w3-col m1 "><button style="margin-top: 150px" class="w3-button" onclick="plusDivs(-1)">&#10094;</button></div>
+			<div class="w3-col m1 ">
+			<button style="margin-top: 150px" class="w3-button" id="furbtnpre" onclick="plusDivs(-1)">&#10094;</button></div>
 			<c:forEach var="fsl" items="${fur_list }">
 				<div class="furSlides w3-col m3 w3-round w3-margin w3-padding w3-border">
 					<table class="w3-container w3-padding" >
@@ -120,7 +122,7 @@
 
 <!-- 도로록 자바스크립트 -->
 <script>
-var slideIndex = 3;
+var slideIndex = 1;
 showDivs(slideIndex);
 
 function plusDivs(n) {
@@ -130,34 +132,34 @@ function plusDivs(n) {
 function showDivs(n) {
   var i;
   var x = document.getElementsByClassName("furSlides");
-  if (n > x.length) {slideIndex = 1}    
+  if (n >= x.length) {slideIndex = 1}    
   if (n < 1) {slideIndex = x.length}
   for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none"; 
+     x[i].style.display = "none";
   }
   x[slideIndex-1].style.display = "block";  
   x[slideIndex].style.display = "block";  
-  x[slideIndex+1].style.display = "block";  
+  x[slideIndex+1].style.display = "block"; 
 }
 
 var slideIndexA = 1;
-showDivs(slideIndexA);
+showDivsA(slideIndexA);
 
 function plusDivsA(n) {
- 	showDivs(slideIndexA += n);
+ 	showDivsA(slideIndexA += n);
 }
 
 function showDivsA(n) {
   var i;
-  var x = document.getElementsByClassName("arrSlides");
-  if (n > x.length) {slideIndexA = 1}    
-  if (n < 1) {slideIndexA = x.length}
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none"; 
+  var a = document.getElementsByClassName("arrSlides");
+  if (n >= a.length) {slideIndexA = 1}    
+  if (n < 1) {slideIndexA = a.length}
+  for (i = 0; i < a.length; i++) {
+     a[i].style.display = "none"; 
   }
-  x[slideIndexA-1].style.display = "block";  
-  x[slideIndexA].style.display = "block"; 
-  x[slideIndexA+1].style.display = "block";  
+  a[slideIndexA-1].style.display = "block";  
+  a[slideIndexA].style.display = "block"; 
+  a[slideIndexA+1].style.display = "block";  
 }
 </script>
 </body>

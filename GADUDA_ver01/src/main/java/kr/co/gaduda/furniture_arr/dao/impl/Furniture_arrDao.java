@@ -20,6 +20,7 @@ import kr.co.gaduda.furniture_arr.vo.Arrangement_furnituresVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrGoodListVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrDetailVO;
+import kr.co.gaduda.furniture_arr.vo.Furniture_arrMemberVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 import kr.co.gaduda.furniture_arr.vo.Other_Furniture_arrVO;
@@ -59,15 +60,15 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 		return furarrsqlSession.selectOne(namespace + ".fur_arr_room_kind", fur_arr_plan_no);
 	}
 	
-	
-	
-	
-	
 	@Override
-	public List<Furniture_arrVO> getFurArr_roomkind(String room_kind_def_name) {
-		
+	public List<Furniture_arrVO> getFurArr_roomkind(String room_kind_def_name) {	
 		return furarrsqlSession.selectList(namespace+".get_arr_fur_room_kind",room_kind_def_name);
-
+	}
+	
+	//2017-08-07 추가(수정)
+	@Override
+	public Furniture_arrMemberVO getFurArrUser(String mem_id){
+		return furarrsqlSession.selectOne(namespace+".get_for_arrlist_user", mem_id);
 	}
 
 	@Override

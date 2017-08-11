@@ -4,12 +4,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<title>GADUDA</title>
+<title>가두다</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="/resources/Css/Bootstrap/bootstrap.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -17,8 +19,11 @@
 $(document).ready(function() {
 	
 
-	$('.good_list').click('show.bs.modal', function(){
-		$('#myLikeModal').show();
+	$('.good_list').click('show.modal', function(){
+			$('#myLikeModal').show();
+			$('.modal.in').modal('hide')
+			//$('.modal-backdrop').remove();
+			//$('.in').remove();
 		var goodfurno = $('#fur_no').val();
 
 		var trans_object = {
@@ -219,8 +224,49 @@ $(document).ready(function() {
 });
 </script>
 
+<style>
+.modal-backdrop {
+	height : 20px !important
+}
+
+</style>
 </head>
 <body>
+
+<!-- Modal -->
+<!-- 좋아요 -->
+	<div id="myLikeModal" class="w3-modal" style="margin-top: 0px; margin-bottom: 0px;">	
+		<!-- 여기도 좋아요 한사람 많아지면 바꿔야 될거같은데 -->
+		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px;margin-bottom: 300px">
+			<img class="w3-image" src="/resources/Images/basic/like.jpg">
+			<div class="w3-section w3-center">
+				<div class="good_list_show w3-margin">
+				</div>
+			</div>
+			<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+				<button onclick="document.getElementById('myLikeModal').style.display='none'"
+					type="button" class="w3-button w3-red">취소</button>
+			</div>
+		</div>
+	</div>
+
+	
+<!-- 스크랩 -->	
+	<div id="myScrapModal" class="w3-modal">	
+		<!-- 여기도 좋아요 한사람 많아지면 바꿔야 될거같은데 -->
+		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px; ">
+			<img class="w3-image" src="/resources/Images/basic/scrap.jpg">
+			<div class="w3-section">
+				<div class="scrap_list_show w3-margin"></div>
+			</div>
+			<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+				<button onclick="document.getElementById('myScrapModal').style.display='none'"
+					type="button" class="w3-button w3-red">취소</button>
+			</div>
+		</div>
+	</div>
+	
+	
 <!-- 메뉴 -->
 <jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
 
@@ -263,27 +309,27 @@ $(document).ready(function() {
  				<p><b>가격</b> 　　　　 <b>${furdeVO.fur_price } won</b></p> 
  				<p><b>종류</b> 　　　 　<b>${furdeVO.fur_kind }</b></p> 
  				<p><b>컨셉</b> 　　　 　<b>${furdeVO.fur_con }</b></p> 
- 				<p><b>사이즈</b> 　　　 　<b>${furdeVO.fur_width }|${furdeVO.fur_height }|${furdeVO.fur_depth }</b></p> 
+ 				<p><b>사이즈</b> 　　　 <b>W ${furdeVO.fur_width }　| H ${furdeVO.fur_height }　| D ${furdeVO.fur_depth }</b></p> 
  				<b>소개</b>
  				<p>${furdeVO.fur_info }</p>
  				<br>
  				<br>
  				<div class="w3-center">
  					<div class="w3-border w3-round" style="width: 150px">
-						<button class="w3-button w3-white w3-hover-white" name="subject" id="btn_good" value="${furdeVO.fur_no }"><i class="material-icons">favorite</i></button> 
+						<button class="w3-button w3-white w3-hover-white" name="subject" id="btn_good" value="${furdeVO.fur_no }">좋아요</button> 
 						<button onclick="document.getElementById('myLikeModal').style.display='block'" class="good_list w3-button w3-white w3-hover-white" 
-								data-toggle="modal" data-target="#myLikeModal">Like${furdeVO.fur_good_num }</button>
+								data-toggle="modal" data-target="#myLikeModal">${furdeVO.fur_good_num }</button>
 					</div>
 					<br>
 					<div class="w3-border w3-round" style="width: 150px">
-						<button class="w3-button w3-white w3-hover-white" name="subject" id="btn_scrap" value="${furdeVO.fur_no }"><i class="material-icons">attachment</i></button> 
+						<button class="w3-button w3-white w3-hover-white" name="subject" id="btn_scrap" value="${furdeVO.fur_no }">스크랩</button> 
 						<button onclick="document.getElementById('myScrapModal').style.display='block'" class="scrap_list w3-button w3-white w3-hover-white" 
-								data-toggle="modal" data-target="#myScrapModal">Scrap${furdeVO.fur_scrap_num }</button>
+								data-toggle="modal" data-target="#myScrapModal">${furdeVO.fur_scrap_num }</button>
 					</div>
 					<br>
 					<div class="w3-border w3-round" style="width: 150px">
-						<button class="w3-button w3-white w3-hover-white" name="subject"><i class="material-icons">cloud</i></button> 
-						<button class="w3-button w3-white w3-hover-white" >Repl${furdeVO.fur_repl_num }</button>
+						<button class="w3-button w3-white w3-hover-white" name="subject">댓글</button> 
+						<button class="w3-button w3-white w3-hover-white" >${furdeVO.fur_repl_num }</button>
 					</div>
  				</div>
 			</div>
@@ -369,39 +415,6 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
-
-<!-- Modal -->
-<!-- 좋아요 -->
-	<div id="myLikeModal" class="w3-modal">	
-		<!-- 여기도 좋아요 한사람 많아지면 바꿔야 될거같은데 -->
-		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px; ">
-			<h1 class="modal-title" style="margin: 20px; margin-top: 30px;">좋아요 누른 사람</h1>
-			<div class="w3-section">
-				<div class="good_list_show w3-margin">
-				</div>
-			</div>
-			<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-				<button onclick="document.getElementById('myLikeModal').style.display='none'"
-					type="button" class="w3-button w3-red">Cancel</button>
-			</div>
-		</div>
-	</div>
-
-	
-<!-- 스크랩 -->	
-	<div id="myScrapModal" class="w3-modal">	
-		<!-- 여기도 좋아요 한사람 많아지면 바꿔야 될거같은데 -->
-		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px; ">
-			<h1 class="modal-title" style="margin: 20px; margin-top: 30px;">스크랩 한 사람</h1>
-			<div class="w3-section">
-				<div class="scrap_list_show w3-margin"></div>
-			</div>
-			<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-				<button onclick="document.getElementById('myScrapModal').style.display='none'"
-					type="button" class="w3-button w3-red">Cancel</button>
-			</div>
-		</div>
-	</div>
 	
 <!-- 사진 도로록 자바스크립트 -->
 <script>

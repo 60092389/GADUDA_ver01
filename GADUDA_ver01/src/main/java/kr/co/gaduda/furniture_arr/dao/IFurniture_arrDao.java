@@ -9,6 +9,7 @@ import kr.co.gaduda.furniture_arr.vo.Arrangement_furnituresVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrGoodListVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrDetailVO;
+import kr.co.gaduda.furniture_arr.vo.Furniture_arrMemberVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 import kr.co.gaduda.furniture_arr.vo.Other_Furniture_arrVO;
@@ -28,6 +29,8 @@ public interface IFurniture_arrDao {
 	public String getArrFurCon(String room_kind_def_name);
 	public int getCountScrap(int fur_arr_plan_no);
 	public List<Furniture_arrVO> getFurArr_concept(String concept_name);
+	//2017-08-07 추가(수정)
+	public Furniture_arrMemberVO getFurArrUser(String mem_id);
 //	-----------------------------------------------------------------------------//	
 	
 	/////////////////////////////////////////////////////////

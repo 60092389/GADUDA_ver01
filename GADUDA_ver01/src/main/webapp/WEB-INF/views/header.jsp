@@ -15,7 +15,9 @@
 				href="javascript:void(0);" onclick="myFunction()"
 				title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a> <a
 				href=<%=URLs.URI_MAIN_HOME%>
-				class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"><h2>GADUDA</h2></a>
+				class="w3-bar-item w3-button w3-hide-small w3-margin-top w3-hover-white">
+				<img class="w3-margin" src="/resources/Images/basic/logo.jpg" style="height:50px">
+				</a>
 			<div style="float: right">
 			<c:set var="member" value="${ member }" />
 			<c:choose>
@@ -38,13 +40,13 @@
 		<div class="w3-bar w3-subcolor w3-left-align w3-large">
 			<div style="float: right">
 				<a href=<%=URLs.URI_FURNITURE_LIST_LOOKAROUND_GET_FULL%>
-					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Furniture</a>
+					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">가구</a>
 				<a href=<%=URLs.URI_FURNITURE_WATCH_FULL%>
-					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Arrangement</a>
-				<a href=<%=URLs.URI_MAIN_TO_RECOM%>
-					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Recommend</a>
+					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">가구 배치도</a>
+				<!-- <a href=<%=URLs.URI_MAIN_TO_RECOM%>
+					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">추천</a> -->
 				<a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%>
-					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">My Page</a>
+					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">마이페이지</a>
 				<br>
 			</div>
 		</div>
@@ -55,7 +57,7 @@
 	
 		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px">
 		
-			<h1 class="modal-title" style="margin: 20px; margin-top: 30px;">LOGIN</h1> 
+			<h1 class="modal-title" style="margin: 20px; margin-top: 30px;"><img class="w3-image" src="/resources/Images/basic/login.jpg"></h1> 
 			
 			<jsp:include page="/WEB-INF/views/Member/view_login.jsp" flush="false" />
 
@@ -65,7 +67,7 @@
 	<div id="joinUser" class="w3-modal">
 		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px">
 		
-			<h1 class="modal-title" style="margin: 20px; margin-top: 30px;">JOIN</h1> 
+			<h1 class="modal-title" style="margin: 20px; margin-top: 30px;"><img class="w3-image" src="/resources/Images/basic/join.jpg"></h1> 
 
 			<jsp:include page="/WEB-INF/views/Member/view_join.jsp" flush="false" />
 

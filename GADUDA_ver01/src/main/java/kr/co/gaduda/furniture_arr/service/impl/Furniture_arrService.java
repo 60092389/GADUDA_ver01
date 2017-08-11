@@ -15,6 +15,7 @@ import kr.co.gaduda.furniture_arr.vo.Arrangement_furnituresVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrGoodListVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrDetailVO;
+import kr.co.gaduda.furniture_arr.vo.Furniture_arrMemberVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 import kr.co.gaduda.furniture_arr.vo.Other_Furniture_arrVO;
@@ -34,11 +35,17 @@ public class Furniture_arrService implements IFurniture_arrService {
 		for (int i = 0; i < fur_arr_list.size(); i++) {
 
 			int fur_arr_plan_no = fur_arr_list.get(i).getFur_arr_plan_no();
+			//2017-08-07 추가(수정)
+			String mem_id = fur_arr_list.get(i).getMem_id();
+			Furniture_arrMemberVO memVO = furniture_arrDao.getFurArrUser(mem_id);
+			fur_arr_list.get(i).setMem_nickname(memVO.getMem_nickname());
+			fur_arr_list.get(i).setMem_profile_pic(memVO.getMem_profile_pic());
 
 			List<String> furArrRoomKind = furniture_arrDao.FurArrRoomKind(fur_arr_plan_no);
 			List<String> furArrCon = furniture_arrDao.getFurCon(fur_arr_plan_no);
 			String furArrRoomKind_final = "";
 			String furArrCon_final = "";
+			
 			
 			for (int j = 0; j < furArrCon.size(); j++) {
 				String concept = furArrCon.get(j);

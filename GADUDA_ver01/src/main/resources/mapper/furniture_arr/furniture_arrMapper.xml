@@ -13,7 +13,7 @@
 
 	<select id="get_arr_info" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrVO">
 		<![CDATA[
-			select FAI.FUR_ARR_PLAN_NO, FUR_ARR_PLAN_IMG_LOC, FUR_ARR_NAME, MEM_ID, FUR_ARR_PLAN_GOOD_NUM, FUR_ARR_PLAN_REPL_NUM
+			select FAI.FUR_ARR_PLAN_NO, FUR_ARR_PLAN_IMG_LOC, FUR_ARR_NAME, MEM_ID, FUR_ARR_PLAN_GOOD_NUM, FUR_ARR_PLAN_REPL_NUM, FUR_ARR_CREATE_DATE
 			from FURNITURE_ARRANGEMENT_IMAGE FAI, FURNITURE_ARRANGEMENT_PLAN FAP
 			where FAI.FUR_ARR_PLAN_NO = FAP.FUR_ARR_PLAN_NO
 		]]>
@@ -42,6 +42,14 @@
 	      from furniture_arrangement_plan p, room r
 	      where p.room_no=r.room_no and p.fur_arr_plan_no=#{fur_arr_plan_no}
 	   ]]>
+	</select>
+	
+	<!-- 2017-08-07 추가(수정) -->
+	<!-- 가구 배치도 리스트 보기 회원정보 가져오기 -->
+	<select id="get_for_arrlist_user" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrMemberVO">
+		<![CDATA[
+			select mem_id, mem_nickname, mem_profile_pic from member where mem_id = #{mem_id}
+		]]>
 	</select>
 
 	<!-- 배치도 좋아요 수 올리기 -->

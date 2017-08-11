@@ -12,8 +12,147 @@
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	var mem_nickname = $('#user_nickname').val();
+	var mem_profile_pic = $("#user_profile_pic").val();
+	
+	
+	//좋아요 누를시
+	$('.btn-fur-arr-good').click(function(){
+		
+		var mem_id = $('#user_id_li').val();
+		var fur_arr_plan_no = $(this).val();
+		var now_date = new Date();
+		
+		
+		var trans_object = {
+			'mem_id' : mem_id,
+			'mem_nickname' : mem_nickname,
+			'fur_arr_plan_no' : fur_arr_plan_no,
+			'mem_profile_pic' : mem_profile_pic,
+			'fur_arr_plan_good_date' : now_date
+		}
+		
+
+		var trans_json = JSON.stringify(trans_object); //json으로 반환//
+
+		$.ajax({
+			url : "${URLs.URI_FURNITURE_ARR_GOOD_UP_FULL}",
+			type : 'POST',
+			dataType : 'json',
+			data : trans_json,
+			contentType : 'application/json',
+			mimeType : 'application/json',
+			success : function(retVal){
+				alert("좋아요 결과" + " / " + retVal.val);
+				
+				location.reload();
+			},
+			error : function(retVal, status, er){
+				alert("에러 : " + retval + " status : " + status + " er : " + er);
+				location.reload();
+			}
+		
+		});
+		
+
+	});
+	
+	
+	//좋아요 갯수 누르면 좋아요목록 보이기
+	$('.good_list').click('show.bs.modal', function(){
+		
+		$('#myModal').focus();
+		var fur_arr_plan_no = $(this).val();
+		
+		var trans_object = {
+			'fur_arr_plan_no' : fur_arr_plan_no
+
+		}
+
+		var trans_json = JSON.stringify(trans_object); //json으로 반환//
+
+		$.ajax({
+			url : "${URLs.URI_FURNITURE_ARR_GOOD_LIST_FULL}",
+			type : 'POST',
+			dataType : 'json',
+			data : trans_json,
+			contentType : 'application/json',
+			mimeType : 'application/json',
+			success : function(retVal){
+				
+				$(".good_list_show").html("");
+				
+				for(var i=0; i<retVal.goodList.length; i++){
+					$(".good_list_show").append("<tr>");
+					$(".good_list_show").append("<td>사진 : " + retVal.goodList[i].mem_profile_pic + "</td>");
+					$(".good_list_show").append("<td>" + retVal.goodList[i].mem_nickname + "</td>");
+					$(".good_list_show").append("<td>" + retVal.goodList[i].mem_id + "</td>");
+					$(".good_list_show").append("<td>" + retVal.goodList[i].fur_arr_plan_good_date + "</td>");
+					$(".good_list_show").append("</tr>");
+				}
+				
+			},
+			error : function(retVal, status, er){
+				alert("에러 : " + retval + " status : " + status + " er : " + er);
+
+			}
+		
+		});
+		
+
+	});
+	
+	//스크랩하기
+	$(".btn-scrap-add").click(function(){
+		
+		var fur_arr_plan_no = $(this).val();
+		var mem_id = $('#user_id_li').val();
+		var write_id = $('#write_id').val();
+		
+			var trans_object = {
+					'mem_id' : mem_id,
+					'fur_arr_plan_no' : fur_arr_plan_no
+				}
+			var trans_json = JSON.stringify(trans_object); //json으로 반환//
+			$.ajax({
+				url : "${URLs.URI_FURNITURE_ARR_SCRAP_ADD_FULL}",
+				type : 'POST',
+				dataType : 'json',
+				data : trans_json,
+				contentType : 'application/json',
+				mimeType : 'application/json',
+				success : function(retVal){
+					//alert("좋아요 목록" + " / " + retVal.goodList[].mem_id);
+					//alert("결과값 : " + retVal.result);
+					
+					if(retVal.resultNum == 1){
+						alert("스크랩에 추가 되었습니다.");
+					}else if(retVal.resultNum == 2){
+						alert("이미 스크랩한 가구배치도입니다.");
+					}
+					
+					location.reload();
+				},
+				error : function(retVal, status, er){
+					alert("에러 : " + retval + " status : " + status + " er : " + er);
+
+				}
+			
+			});
+		
+
+	});
+	
+	
+});
+
+</script>
 <style>
 .styled-select select {
    background: transparent;
@@ -31,16 +170,17 @@
 	<!-- header include -->
 	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
 
+<!-- 로그인 정보 -->
 <div class="w3-container" style="float: right">
 	<c:set var="member" value="${ member }" />
 	<input type="hidden" id="user_id" value="${ member.mem_id }">
 	<input type="hidden" id="user_nickname" value="${ member.mem_nickname }">
+	<input type="hidden" id="user_profile_pic" value="${ member.mem_profile_pic }">
 </div>
-
 
 <!-- select box -->
 <div class="w3-container" >
-	<div class="w3-main w3-content w3-center" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
+	<div class="w3-main w3-content w3-center mainSection">
 		<form method="get" action=${URLs.URI_FURNITURE_WATCH_FULL }>
 			<div class="w3-container w3-center" id="furarrselectbox">
 				<table>
@@ -71,7 +211,7 @@
 							</div>
 						</td>
 						<td>
-							<button class="w3-button w3-subcolor w3-padding" type="submit">검색하기</button>
+							<button class="w3-button w3-subcolor w3-padding w3-round" type="submit">검색하기</button>
 						</td>
 					</tr>
 				</table>
@@ -81,68 +221,94 @@
 	</div>
 
 	<!-- First Grid(인기 가구 배치도 리스트) -->
-	<div class="w3-container w3-margin-top">
-			<div class="w3-padding w3-margin-2">
-				<div class=" w3-center">
-      				<div class="w3-col w3-border-top">
-      					<div class="w3-col m2">
-      						<h5>NO</h5>
-      					</div>
-      					<div class="w3-col m2 w3-center">
-      						<h5>사진</h5>
-      					</div> 								
-        				<div class="w3-col m3 w3-center">
-        					<h5>이름</h5>
-        				</div>
-        				<div class="w3-col m1 w3-center">
-        					<h5>작성자</h5>
-        				</div>
-        				<div class="w3-col m2 w3-center">
-        					<h5>컨셉</h5>
-        				</div>
-        				<div class="w3-col m2 w3-center">
-							<h5>Social</h5>
-						</div>
-					</div>
-        		</div>
-    		</div>
-		<c:forEach var="fal" items="${fur_arr_list }">
-			<div class="w3-padding w3-margin-2">
-				<div class=" w3-center">
-      				<a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${fal.fur_arr_plan_no}">
-      					<div class="w3-col w3-border-top w3-padding">
-      						<div class="w3-col m2 w3-padding-32">
-      							No.<h1>${fal.fur_arr_plan_no}</h1>
-      						</div>
-      						<div class="w3-col m2 w3-display-container w3-center">
-      							<img src="${fal.fur_arr_plan_img_loc }" alt="${fal.fur_arr_name }" style="width:90%">
-      							<div class="w3-display-bottomright w3-margin-top w3-center">
-      								<span class="w3-padding w3-subcolor w3-opacity"><b>${fal.fur_arr_room_kind }</b></span>
-      							</div>
-      						</div> 								
-        					<div class="w3-col m3 w3-padding-64 w3-center">
-        						<h5><b>${fal.fur_arr_name }</b></h5>
-        					</div>
-        					<div class="w3-col m1 w3-padding-64 w3-center">
-        						<p>${fal.mem_id }</p>
-        					</div>
-        					<div class="w3-col m2 w3-padding-64 w3-center">
-        						<p>${fal.fur_arr_con }</p>
-        					</div>
-        					<div class="w3-col m2 w3-padding-64 w3-center">
-								<i class="material-icons" >favorite</i>${fal.fur_arr_plan_good_num}
-								<i class="material-icons">attachment</i>${fal.fur_arr_plan_scrap_num }
-								<i class="material-icons">cloud</i>${fal.fur_arr_plan_repl_num }
-							</div>
-						</div>
-        			</a>
-        		</div>
-    		</div>
-		</c:forEach>
+	<div class="w3-margin-top">
+		<div class=" w3-container">
+		
+			<div class="w3-content">
+				<c:forEach var="fur_arr_list" items="${fur_arr_list }">
+					<div class="w3-round w3-display-center w3-white">
+						
+						<!-- 배치도 보기 -->
+						<div class="w3-border w3-round w3-margin w3-padding w3-center">
+			      				<table class="w3-container w3-center">
+									  <tr>
+									    <td rowspan="2" colspan="2" style="width:80px;height:80px">
+									    	<img class="w3-circle" src="${fur_arr_list.mem_profile_pic }" alt="${fur_arr_list.mem_id }" style="width:75px;height:75px">
+									    </td>
+									    <td colspan="3"><b>${fur_arr_list.mem_id }(${fur_arr_list.mem_nickname })</b></td>
+									    <td rowspan="5" style="height: 200px">
+									    	<img class="w3-margin-top w3-margin-bottom" src="${fur_arr_list.fur_arr_plan_img_loc }" alt="${fur_arr_list.fur_arr_name }" style="height:100%">
+									    </td>
+									  </tr>
+									  <tr>
+									    <td colspan="3">${fur_arr_list.fur_arr_create_date }</td>
+									  </tr>
+									  <tr>
+									    <td colspan="5"><a class="w3-margin-top w3-margin-bottom w3-container w3-button" style="font-size: 20px;" 
+									    					href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${fur_arr_list.fur_arr_plan_no}">${fur_arr_list.fur_arr_name }</a></td>
+									  </tr>
+									  
+									  <tr></tr>
+									  <tr>
+									  </tr>
+									  <tr>
+									    <td colspan="5">
+									    	<div>
+										    	<div class="w3-col m3 w3-border w3-round w3-margin-right">
+										    		<button class="btn-fur-arr-good w3-button w3-hover-white" value="${fur_arr_list.fur_arr_plan_no}">좋아요</button>
+										    		<input type="hidden" id="user_id_li" value="${ member.mem_id }">
+										    		<button onclick="document.getElementById('myModal').style.display='block'" 
+										    				class="good_list w3-button w3-hover-white" value="${fur_arr_list.fur_arr_plan_no}"
+										    				data-toggle="modal" data-target="#myModal">
+										    				${fur_arr_list.fur_arr_plan_good_num}
+										    		</button>
+										    	</div>
+										    	<div class="w3-col m3 w3-border w3-round w3-margin-right">
+										    		<button class="btn-scrap-add w3-button w3-hover-white" value="${fur_arr_list.fur_arr_plan_no}">스크랩</button>
+										    		<input type="hidden" id="write_id" value="${ fur_arr_list.mem_id }">
+										    		<button class="w3-button w3-hover-white">${fur_arr_list.fur_arr_plan_scrap_num }</button>
+										    	</div>
+										    	<div class="w3-col m3 w3-border w3-round w3-margin-right">
+										    		<button class="w3-button w3-hover-white">댓글</button>
+										    		<button class="w3-button w3-hover-white">${fur_arr_list.fur_arr_plan_repl_num }</button>
+										    	</div>
+									    	</div>
+									    </td>
+									    <td class="w3-right-align w3-padding-right">
+									    	<span class="w3-opacity w3-black">Room ${fur_arr_list.fur_arr_room_kind }<br>Concept ${fur_arr_list.fur_arr_con }</span>
+									    </td>
+									  </tr>
+								</table>
+		        		</div>
+		    		</div>
+				</c:forEach>
+			</div>
+			<!-- 내 배치도 스크랩 리스트 보러가기 -->
+			<div class="w3-border w3-round w3-margin w3-padding" style="position: fixed; width: 30px">
+				스크랩 리스트 보러가기<br>
+				팔로우 리스트 보러가기
+			</div>
+		</div>
 	</div>
 	
-		
-</div>
-	<br><br>
+<!-- Modal -->
+<!-- 좋아요 -->
+	<div class="w3-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 1000px" >
+			<div class="modal-content" style="margin: 20px">
+				<h1>좋아요 누른 사람</h1>
+				<div class="modal-body">
+					<table border="1">
+						<tbody class="good_list_show"></tbody>
+					</table>
+				</div>
+				<button
+					onclick="document.getElementById('myModal').style.display='none'"
+					type="button" class="w3-button w3-red">Cancel</button>
+			</div>
+		</div>
+	</div>
+	
+
 </body>
 </html>

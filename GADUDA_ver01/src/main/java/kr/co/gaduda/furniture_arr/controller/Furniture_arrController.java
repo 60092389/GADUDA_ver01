@@ -29,6 +29,7 @@ import kr.co.gaduda.furniture_arr.vo.Furniture_arrScrapListVO;
 import kr.co.gaduda.furniture_arr.vo.Furniture_arrVO;
 import kr.co.gaduda.member.dto.FollowDTO;
 import kr.co.gaduda.member.vo.Follower_VO;
+import kr.co.gaduda.member.vo.MemberFurArrVO;
 import kr.co.gaduda.member.vo.MemberVO;
 
 @Controller
@@ -108,6 +109,8 @@ public class Furniture_arrController {
 		model.addAttribute("arr_fur", arr_fur);
 		model.addAttribute("reply_list", fur_arr_reply_list);
 		
+		Map<String, Object> retVal = new HashMap<String, Object>();
+		retVal.put("result", fur_arr_reply_list);
 		return Pages.VIEW_FURNITURE_ARR_DETAIL;
 	}
 	
@@ -144,7 +147,7 @@ public class Furniture_arrController {
 	@RequestMapping(value = URLs.URI_FURNITURE_ARR_GOOD_UP, method = RequestMethod.POST, produces = { "application/json" })
 	public @ResponseBody Map<String, Object> furnitureArrGoodInsert(
 			@RequestBody Map<String, Object> furnitureArrGoodInfo){
-		
+		System.out.println("꺄ㅕ르");
 		Map<String, Object> retVal = new HashMap<String, Object>();
 		
 		int result = furniture_arrService.furnitureArrGood(furnitureArrGoodInfo);
@@ -207,7 +210,6 @@ public class Furniture_arrController {
 		System.out.println("여기있는데");
 		
 		Map<String, Object> retVal = new HashMap<String, Object>();
-		System.out.println("??");
 		
 		int real_fur_arr_plan_no = Integer.parseInt(scrap_info.get("fur_arr_plan_no").toString());
 		System.out.println(real_fur_arr_plan_no);

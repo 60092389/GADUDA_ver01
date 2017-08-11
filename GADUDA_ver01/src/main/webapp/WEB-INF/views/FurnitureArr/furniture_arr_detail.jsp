@@ -15,6 +15,7 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
+	
 	var mem_id = $('#user_id').val();
 	var mem_nickname = $('#user_nickname').val();
 	var mem_profile_pic = $("#user_profile_pic").val();
@@ -23,10 +24,10 @@ $(document).ready(function(){
 	
 	//좋아요 누를시
 	$('.btn-fur-arr-good').click(function(){
-		//var fur_arr_plan_no = $('#fur_arr_plan_no').val();
 		
-		//alert(mem_id + " / " + mem_nickname + " / " + fur_arr_plan_no 
-		//		+ " / " + now_date);
+		var mem_id = $('#user_id_li').val();
+		var fur_arr_plan_no = $(this).val();
+		var now_date = new Date();
 		
 		var trans_object = {
 			'mem_id' : mem_id,
@@ -36,7 +37,6 @@ $(document).ready(function(){
 			'fur_arr_plan_good_date' : now_date
 		}
 		
-		//alert(mem_id + "/" + mem_nickname + "/" + fur_no);
 
 		var trans_json = JSON.stringify(trans_object); //json으로 반환//
 
@@ -75,6 +75,7 @@ $(document).ready(function(){
 			'fur_arr_plan_no' : fur_arr_plan_no
 
 		}
+		
 
 		var trans_json = JSON.stringify(trans_object); //json으로 반환//
 
@@ -86,17 +87,15 @@ $(document).ready(function(){
 			contentType : 'application/json',
 			mimeType : 'application/json',
 			success : function(retVal){
-				//alert("좋아요 목록" + " / " + retVal.goodList[].mem_id);
 				
 				$(".good_list_show").html("");
 				
-				for(var i=0; i<retVal.goodList.length; i++){
-					$(".good_list_show").append("<tr>");
-					$(".good_list_show").append("<td>사진 : " + retVal.goodList[i].mem_profile_pic + "</td>");
-					$(".good_list_show").append("<td>" + retVal.goodList[i].mem_nickname + "</td>");
-					$(".good_list_show").append("<td>" + retVal.goodList[i].mem_id + "</td>");
-					$(".good_list_show").append("<td>" + retVal.goodList[i].fur_arr_plan_good_date + "</td>");
-					$(".good_list_show").append("</tr>");
+			
+				for(var i =0; i < retVal.goodList.length; i++){ 
+					$(".good_list_show").append("<div>");
+					$(".good_list_show").append("<p><b>" + retVal.goodList[i].mem_id +"</b>　"+retVal.goodList[i].mem_nickname+"</p>");
+					//$(".good_list_show").append("<h6>[" + retVal.goodList[i].fur_arr_plan_good_date+"]</h6>");
+					$(".good_list_show").append("</div>");
 				}
 				
 			},
@@ -114,11 +113,9 @@ $(document).ready(function(){
 	//댓글 작성
 	$("#reply_write").click(function(){
 
-		//var fur_arr_plan_no = $("#fur_arr_plan_no").val();
 		var reply_text = $("#reply_text").val();
 		var mem_id = $("#repl_mem_id").val();
 		
-		//alert(mem_id + " / " + reply_text);
 		
 		var trans_object = {
 			'fur_arr_plan_no' : fur_arr_plan_no,
@@ -130,7 +127,6 @@ $(document).ready(function(){
 
 		}
 
-		//alert(mem_id + "/" + mem_nickname + "/" + fur_no);
 
 		var trans_json = JSON.stringify(trans_object); //json으로 반환//
 
@@ -162,14 +158,12 @@ $(document).ready(function(){
 		
 		var _id = $(this).val();
 
-		//alert(_id);
 		
 		var trans_object = {
 			'_id' : _id,
 			'fur_arr_plan_no' : fur_arr_plan_no
 		}
 
-		//alert(mem_id + "/" + mem_nickname + "/" + fur_no);
 
 		var trans_json = JSON.stringify(trans_object); //json으로 반환//
 
@@ -234,14 +228,12 @@ $(document).ready(function(){
 		var fur_arr_plan_no = $(this).val();
 		var mem_id = $('#sc_user_id').val();
 		
-		alert(fur_arr_plan_no+","+mem_id);
 		
 		var trans_object = {
 			'mem_id' : mem_id,
 			'fur_arr_plan_no' : fur_arr_plan_no
 		}
 
-		//alert(mem_id + "/" + mem_nickname + "/" + fur_no);
 
 		var trans_json = JSON.stringify(trans_object); //json으로 반환//
 
@@ -253,7 +245,6 @@ $(document).ready(function(){
 			contentType : 'application/json',
 			mimeType : 'application/json',
 			success : function(retVal){
-				//alert("좋아요 목록" + " / " + retVal.goodList[].mem_id);
 				//alert("결과값 : " + retVal.result);
 				
 				if(retVal.resultNum == 1){
@@ -280,7 +271,6 @@ $(document).ready(function(){
 
 	function follow(fol_mem_id){
 		var data = {"fol_mem_id" : fol_mem_id};
-		alert(fol_mem_id);
 			$.ajax({
 				url : "${URLs.URI_MYPAGE_FOLLOW_CHK_FULL}",
 				type : 'GET',
@@ -297,7 +287,6 @@ $(document).ready(function(){
 	//새로 팔로우 하기	
 	function newfollow(fol_mem_id){
 		var data = {"fol_mem_id" : fol_mem_id};
-		alert(fol_mem_id);
 			$.ajax({
 				url : "${URLs.URI_MYPAGE_NEW_FOLLOW_FULL}",
 				type : 'GET',
@@ -329,15 +318,13 @@ $(document).ready(function(){
 			
 		}
 
-var login_id = $('#user_id').val();
 var repl_id = $('#repl_id').val();
-if(login_id != repl_id){
+if(mem_id != repl_id){
 	$('.btn-reply-delete').hide();
 }
 
 </script>
 
-</head>
 <body>
 <!-- 메뉴 -->
 <jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
@@ -349,6 +336,7 @@ if(login_id != repl_id){
 	<input type="hidden" id="user_nickname" value="${ member.mem_nickname }">
 	<c:set var="fur_arr" value="${ detailVO }" />
 	<input type="hidden" id="fur_arr_plan_no" value="${ detailVO.fur_arr_plan_no }">
+	<input type="hidden" id="user_profile_pic" value="${ member.mem_profile_pic }">
 </div>
 
 <!-- 메인 화면 -->
@@ -410,21 +398,22 @@ if(login_id != repl_id){
 	 			<br>
 	 			<div class="w3-center">
 	 				<div class="w3-border w3-round " style="width: 150px">
-						<button class="btn-fur-arr-good w3-button w3-hover-white" name="subject" id="btn_good" value="${detailVO.fur_arr_plan_no }"><i class="material-icons">favorite</i></button> 
+						<button class="btn-fur-arr-good w3-button w3-hover-white" value="${detailVO.fur_arr_plan_no}" name="subject" id="btn_good" value="${detailVO.fur_arr_plan_no }">좋아요</button> 
+						<input type="hidden" id="user_id_li" value="${ member.mem_id }">
 						<button onclick="document.getElementById('myModal').style.display='block'" class="good_list w3-button w3-hover-white" 
-								data-toggle="modal" data-target="#myModal">Like ${detailVO.fur_arr_plan_good_num }</button>
+								data-toggle="modal" data-target="#myModal">${detailVO.fur_arr_plan_good_num }</button>
 					</div>
 					<br>
 					<div class="w3-border w3-round" style="width: 150px">
-						<button class="w3-button w3-hover-white" name="subject" id="btn-scrap-add" value="${detailVO.fur_arr_plan_no }"><i class="material-icons">attachment</i></button> 
+						<button class="w3-button w3-hover-white" name="subject" id="btn-scrap-add" value="${detailVO.fur_arr_plan_no }">스크랩</button> 
 						<input type="hidden" id="sc_user_id" value="${ member.mem_id }">
 						<button onclick="document.getElementById('myScrapModal').style.display='block'" class="scrap_list w3-button w3-white w3-hover-white" 
-								data-toggle="modal" data-target="#myScrapModal" value="${detailVO.fur_arr_plan_no }">Scrap ${detailVO.fur_arr_plan_scrap_num }</button>
+								data-toggle="modal" data-target="#myScrapModal" value="${detailVO.fur_arr_plan_no }">${detailVO.fur_arr_plan_scrap_num }</button>
 					</div>
 					<br>
 					<div class="w3-border w3-round" style="width: 150px">
-						<button class="w3-button w3-hover-white" name="subject"><i class="material-icons">cloud</i></button> 
-						<button class="w3-button w3-hover-white" >댓글 ${detailVO.fur_arr_plan_repl_num }</button>
+						<button class="w3-button w3-hover-white" name="subject">댓글</button> 
+						<button class="w3-button w3-hover-white" >${detailVO.fur_arr_plan_repl_num }</button>
 					</div>
 					<br>
 	 			</div>
@@ -448,7 +437,6 @@ if(login_id != repl_id){
 						<b>　　　${reply.mem_id }(${reply.mem_nickname })</b>　　　${reply.fur_arr_plan_rep_contents }
 						<input type="hidden" id="repl_id" value="${ reply.mem_id }">
 						<b class="w3-right" style="font-size: 11px">
-						
 						<c:set value="${reply.mem_id }" var="repl"/>
 						<c:set value="${member.mem_id }" var="user"/>
 						<c:if test="${repl == user}">
@@ -560,11 +548,10 @@ if(login_id != repl_id){
 	<div class="w3-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 1000px" >
 			<div class="modal-content" style="margin: 20px">
-				<h1>좋아요 누른 사람</h1>
-				<div class="modal-body">
-					<table border="1">
-						<tbody class="good_list_show"></tbody>
-					</table>
+				<img class="w3-image" src="/resources/Images/basic/like.jpg">
+				<div class="w3-section w3-center">
+					<div class="good_list_show w3-margin">
+					</div>
 				</div>
 				<button
 					onclick="document.getElementById('myModal').style.display='none'"
@@ -577,7 +564,7 @@ if(login_id != repl_id){
 	<div id="myScrapModal" class="w3-modal">	
 		<!-- 여기도 좋아요 한사람 많아지면 바꿔야 될거같은데 -->
 		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px; ">
-			<h1 class="modal-title" style="margin: 20px; margin-top: 30px;">스크랩 한 사람</h1>
+			<img class="w3-image" src="/resources/Images/basic/scrap.jpg">
 			<div class="w3-section">
 				<div class="scrap_list_show w3-margin"></div>
 			</div>
