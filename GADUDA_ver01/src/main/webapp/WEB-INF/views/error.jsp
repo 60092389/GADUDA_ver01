@@ -21,7 +21,7 @@
 	<div class="w3-margin-left" style="margin-top: 200px;" id="home">
 		<div class="w3-center">
 			<a onclick="document.getElementById('loginUser').style.display='block'">
-				<img class="w3-image" src="/resources/Images/basic/error.jpg">
+				<img class="w3-image" src="/resources/Images/basic/error.jpg" style="width: 500px;">
 			</a>
 		</div>
   	</div>
