@@ -44,36 +44,17 @@ $(document).ready(function(){
 	<div class="w3-main w3-content" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
 		<div class="w3-container" id="myPage_content5">
 			<br>
-						<c:forEach var="myRoomList" items="${myRoomList }">
-			<div class="w3-padding-32 w3-main w3-content w3-margin-top w3-border-top">
+			<c:forEach var="myRoomList" items="${myRoomList }">
+			<div class="w3-padding w3-main w3-content w3-margin-top w3-border-top w3-center">
 				<table class="w3-container w3-table w3-center">
 					<tr>
-	   					<th>No.<h1>${ myRoomList.room_no }</h1></th>
-						<th colspan="3">
-							<h1>${ myRoomList.room_name }</h1>
-						</th>
-						<th>${ myRoomList.room_create_date }</th>
+	   					<td>No.<h3>${ myRoomList.room_no }</h3></td>
+						<td><h3>${ myRoomList.room_name }</h3></td>
+						<td>${ myRoomList.room_create_date }</td>
 	  				</tr>
 					<tr>
-						<td colspan="3" rowspan="4">
-							<img src="${ myRoomList.room_shape_img_loc }" alt="${ myRoomList.room_name }" style="width:200px">
-						</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>
-						</td>
-						<td>
-							<b>No.${ myRoomList.room_shape_no }　　 ${ myRoomList.room_shape_name }</b>
-						</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>
-							<button class="w3-button w3-green w3-hover-white">수정하기</button> 
-							<button class="w3-button w3-red w3-hover-white">삭제하기</button> 
-						</td>
+						<td colspan="2"><img src="${ myRoomList.room_img_loc }" alt="${ myRoomList.room_name }" style="width:200px"></td>
+						<td><button class="w3-button w3-red w3-hover-white">삭제하기</button> </td>
 					</tr>
 				</table>	
 	    	</div>
