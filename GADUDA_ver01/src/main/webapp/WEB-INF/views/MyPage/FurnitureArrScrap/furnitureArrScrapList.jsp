@@ -97,7 +97,7 @@ $(document).ready(function(){
 			<div class="w3-padding-16 w3-main w3-content w3-margin-top w3-border-top">
 				<table class="w3-container w3-table">
 					<tr>
-   						<th colspan="4" class="w3-sand w3-center"><a href="<%= URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL%>/?fur_arr_plan_no=${fasl.fur_arr_plan_no }"><b>No.${fasl.fur_arr_plan_no } 　${fasl.fur_arr_plan_name }</b></a></th>
+   						<th colspan="4" class="w3-blue w3-button w3-center"><a href="<%= URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL%>/?fur_arr_plan_no=${fasl.fur_arr_plan_no }"><b>No.${fasl.fur_arr_plan_no } 　${fasl.fur_arr_plan_name }</b></a></th>
   					</tr>
   					<tr>
 	    				<th rowspan="3" class="w3-padding-32"><img alt="${fasl.fur_arr_plan_name }" src="${fasl.fur_arr_plan_img_loc }" height="200px"></th>
@@ -119,7 +119,7 @@ $(document).ready(function(){
   					<tr>
 	    				<th class="w3-padding-32">${fasl.fur_arr_plan_concepts }</th> 
 	    				<th class="w3-padding-32">${fasl.fur_arr_plan_room_kind_names}</th>
-	    				<th><button class="w3-button w3-pale-red" id="btn-scrap-delete" value="${fasl.fur_arr_plan_scrap_no }">삭제하기</button></th>
+	    				<th><button class="w3-button w3-red" id="btn-scrap-delete" value="${fasl.fur_arr_plan_scrap_no }">삭제하기</button></th>
   					</tr>
 				</table>
 			</div>

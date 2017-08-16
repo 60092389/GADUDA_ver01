@@ -233,8 +233,6 @@ $(document).ready(function(){
 						
 						<!-- 배치도 보기 -->
 						<div class="w3-border w3-round w3-margin w3-padding w3-center">
-								<a class="w3-margin-top w3-margin-bottom w3-container w3-button w3-hover-white"
-									href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${fur_arr_list.fur_arr_plan_no}">
 			      				<table class="w3-container w3-center">
 									  <tr>
 									    <td rowspan="2" colspan="2" style="width:80px;height:80px">
@@ -249,7 +247,8 @@ $(document).ready(function(){
 									    <td colspan="3">${fur_arr_list.fur_arr_create_date }</td>
 									  </tr>
 									  <tr>
-									    <td colspan="5"><h5>${fur_arr_list.fur_arr_name }</h5></td>
+									    <td colspan="5"><a class="w3-margin-top w3-margin-bottom w3-container w3-button w3-hover-white"
+										href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${fur_arr_list.fur_arr_plan_no}"><h5>${fur_arr_list.fur_arr_name }</h5></a></td>
 									  </tr>
 									  
 									  <tr></tr>
@@ -284,7 +283,7 @@ $(document).ready(function(){
 									    									<br>HashTag ${fur_arr_list.fur_arr_hashtag_name }</span>
 									    </td>
 									  </tr>
-								</table></a>
+								</table>
 		        		</div>
 		    		</div>
 				</c:forEach>
