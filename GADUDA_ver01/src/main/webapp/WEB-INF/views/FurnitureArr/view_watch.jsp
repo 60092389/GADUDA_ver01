@@ -88,13 +88,11 @@ $(document).ready(function(){
 				
 				$(".good_list_show").html("");
 				
-				for(var i=0; i<retVal.goodList.length; i++){
-					$(".good_list_show").append("<tr>");
-					$(".good_list_show").append("<td>사진 : " + retVal.goodList[i].mem_profile_pic + "</td>");
-					$(".good_list_show").append("<td>" + retVal.goodList[i].mem_nickname + "</td>");
-					$(".good_list_show").append("<td>" + retVal.goodList[i].mem_id + "</td>");
-					$(".good_list_show").append("<td>" + retVal.goodList[i].fur_arr_plan_good_date + "</td>");
-					$(".good_list_show").append("</tr>");
+				for(var i =0; i < retVal.goodList.length; i++){ 
+					$(".good_list_show").append("<div>");
+					$(".good_list_show").append("<p><b>" + retVal.goodList[i].mem_id +"</b>　"+retVal.goodList[i].mem_nickname+"</p>");
+					//$(".good_list_show").append("<h6>[" + retVal.goodList[i].fur_arr_plan_good_date+"]</h6>");
+					$(".good_list_show").append("</div>");
 				}
 				
 			},
@@ -165,6 +163,11 @@ $(document).ready(function(){
    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0
 		rgba(0, 0, 0, 0.12);
 }
+
+.modal-backdrop {
+	height : 20px !important
+}
+
 </style>
 <body>
 	<!-- header include -->
@@ -230,6 +233,8 @@ $(document).ready(function(){
 						
 						<!-- 배치도 보기 -->
 						<div class="w3-border w3-round w3-margin w3-padding w3-center">
+								<a class="w3-margin-top w3-margin-bottom w3-container w3-button w3-hover-white"
+									href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${fur_arr_list.fur_arr_plan_no}">
 			      				<table class="w3-container w3-center">
 									  <tr>
 									    <td rowspan="2" colspan="2" style="width:80px;height:80px">
@@ -244,8 +249,7 @@ $(document).ready(function(){
 									    <td colspan="3">${fur_arr_list.fur_arr_create_date }</td>
 									  </tr>
 									  <tr>
-									    <td colspan="5"><a class="w3-margin-top w3-margin-bottom w3-container w3-button" style="font-size: 20px;" 
-									    					href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${fur_arr_list.fur_arr_plan_no}">${fur_arr_list.fur_arr_name }</a></td>
+									    <td colspan="5"><h5>${fur_arr_list.fur_arr_name }</h5></td>
 									  </tr>
 									  
 									  <tr></tr>
@@ -255,30 +259,32 @@ $(document).ready(function(){
 									    <td colspan="5">
 									    	<div>
 										    	<div class="w3-col m3 w3-border w3-round w3-margin-right">
-										    		<button class="btn-fur-arr-good w3-button w3-hover-white" value="${fur_arr_list.fur_arr_plan_no}">좋아요</button>
+										    		<button class="btn-fur-arr-good w3-button w3-hover-white w3-white" value="${fur_arr_list.fur_arr_plan_no}">좋아요</button>
 										    		<input type="hidden" id="user_id_li" value="${ member.mem_id }">
 										    		<button onclick="document.getElementById('myModal').style.display='block'" 
-										    				class="good_list w3-button w3-hover-white" value="${fur_arr_list.fur_arr_plan_no}"
+										    				class="good_list w3-button w3-hover-white w3-white" value="${fur_arr_list.fur_arr_plan_no}"
 										    				data-toggle="modal" data-target="#myModal">
 										    				${fur_arr_list.fur_arr_plan_good_num}
 										    		</button>
 										    	</div>
 										    	<div class="w3-col m3 w3-border w3-round w3-margin-right">
-										    		<button class="btn-scrap-add w3-button w3-hover-white" value="${fur_arr_list.fur_arr_plan_no}">스크랩</button>
+										    		<button class="btn-scrap-add w3-button w3-hover-white w3-white" value="${fur_arr_list.fur_arr_plan_no}">스크랩</button>
 										    		<input type="hidden" id="write_id" value="${ fur_arr_list.mem_id }">
-										    		<button class="w3-button w3-hover-white">${fur_arr_list.fur_arr_plan_scrap_num }</button>
+										    		<button class="w3-button w3-hover-white w3-white">${fur_arr_list.fur_arr_plan_scrap_num }</button>
 										    	</div>
 										    	<div class="w3-col m3 w3-border w3-round w3-margin-right">
-										    		<button class="w3-button w3-hover-white">댓글</button>
-										    		<button class="w3-button w3-hover-white">${fur_arr_list.fur_arr_plan_repl_num }</button>
+										    		<button class="w3-button w3-hover-white w3-white">댓글</button>
+										    		<button class="w3-button w3-hover-white w3-white">${fur_arr_list.fur_arr_plan_repl_num }</button>
 										    	</div>
 									    	</div>
 									    </td>
-									    <td class="w3-right-align w3-padding-right">
-									    	<span class="w3-opacity w3-black">Room ${fur_arr_list.fur_arr_room_kind }<br>Concept ${fur_arr_list.fur_arr_con }</span>
+									     <td class="w3-right-align w3-padding-right">
+									    	<span class="w3-opacity w3-black">Room ${fur_arr_list.fur_arr_room_kind }
+									    									<br>Concept ${fur_arr_list.fur_arr_con }
+									    									<br>HashTag ${fur_arr_list.fur_arr_hashtag_name }</span>
 									    </td>
 									  </tr>
-								</table>
+								</table></a>
 		        		</div>
 		    		</div>
 				</c:forEach>
@@ -291,24 +297,23 @@ $(document).ready(function(){
 		</div>
 	</div>
 	
+
 <!-- Modal -->
 <!-- 좋아요 -->
-	<div class="w3-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 1000px" >
-			<div class="modal-content" style="margin: 20px">
-				<h1>좋아요 누른 사람</h1>
-				<div class="modal-body">
-					<table border="1">
-						<tbody class="good_list_show"></tbody>
-					</table>
+	<div id="myModal" class="w3-modal" style="margin-top: 0px; margin-bottom: 0px;">	
+		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px;margin-bottom: 300px">
+				<img class="w3-image" src="/resources/Images/basic/like.jpg">
+				<div class="w3-section w3-center">
+					<div class="good_list_show w3-margin">
+					</div>
 				</div>
-				<button
-					onclick="document.getElementById('myModal').style.display='none'"
-					type="button" class="w3-button w3-red">Cancel</button>
+				<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+				<button onclick="document.getElementById('myModal').style.display='none'"
+					type="button" class="w3-button w3-red">취소</button>
+				</div>
 			</div>
 		</div>
-	</div>
-	
-
+	</div>	
+	<jsp:include page="/WEB-INF/views/footer.jsp" flush="false" />
 </body>
 </html>

@@ -14,6 +14,19 @@ public class Furniture_arrVO {
 	private String fur_arr_create_date;
 	private String mem_nickname;
 	private String mem_profile_pic;
+	
+	//2017-08-11추가
+	private String fur_arr_hashtag_name;
+	
+	
+
+	public String getFur_arr_hashtag_name() {
+		return fur_arr_hashtag_name;
+	}
+
+	public void setFur_arr_hashtag_name(String fur_arr_hashtag_name) {
+		this.fur_arr_hashtag_name = fur_arr_hashtag_name;
+	}
 
 	public String getFur_arr_create_date() {
 		return fur_arr_create_date;

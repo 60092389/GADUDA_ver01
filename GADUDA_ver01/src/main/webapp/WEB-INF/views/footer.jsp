@@ -6,8 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-	<div class="w3-container w3-center">
-		<h6>신박한 조 프로젝트</h6>
+	<div class="w3-container w3-center w3-padding">
+		<h6>sinparkhanjo　project　gaduda</h6>
 	</div>
 </body>	
 </html>

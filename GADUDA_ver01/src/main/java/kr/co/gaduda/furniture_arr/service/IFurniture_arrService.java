@@ -57,4 +57,8 @@ public interface IFurniture_arrService {
 	
 	public List<crawling_furnitureVO> craw_fur_list(int fur_no);
 	
+	//2017.08.11 HashTagSearch Sujung
+	public List<Integer> searchHashTag(String hashtag_name);
+	public Furniture_arrVO getFurArrHashTag(int fur_arr_plan_no);
+	
 }

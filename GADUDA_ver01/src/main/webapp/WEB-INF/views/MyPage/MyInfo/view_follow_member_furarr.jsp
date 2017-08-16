@@ -25,12 +25,12 @@
 </div>
 
 <div class="w3-container ">
-	<!--사이드 메뉴-->
-	<jsp:include page="/WEB-INF/views/MyPage/MyInfo/view_mypage_sidebar.jsp" flush="false" />
+
 	
 	<!-- Page Container -->
-	<div class="w3-main w3-content" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
-		<div class="w3-container" id="myPage_content5">
+	<div class="w3-main mainSection w3-container" >
+		<div class="w3-container">
+		<a href="${URLs.URI_MYPAGE_MYFURARR_FULL}" class="w3-button w3-blue">내 배치도 보러가기</a>
 			<br>
 			<c:forEach var="arrList" items="${arrList }">
 			<div class="w3-padding-32 w3-main w3-content w3-margin-top w3-border-top">

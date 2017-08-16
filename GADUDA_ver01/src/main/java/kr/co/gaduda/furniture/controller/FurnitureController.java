@@ -180,6 +180,7 @@ public class FurnitureController {
 		}
 
 		retVal.put("list_good", list_good);
+		System.out.println("뭐야"+list_good);
 
 		return retVal;
 

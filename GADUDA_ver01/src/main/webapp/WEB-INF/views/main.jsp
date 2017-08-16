@@ -20,14 +20,17 @@
 	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
 	
   	<!-- 메인 사진 -->
-	<div class="w3-center mainSection">
-		<div style="width: 100%;">
-			<img class="w3-image" src="/resources/Images/basic/main.jpg" style="width: 100%">
+	<div class="mainSection">
+		<div style="float: right; margin-right: 20px">
+			<input class="w3-input" name="hashtag_search" value='' id="hashtag_search" placeholder="해시태그 검색" type="text" />
+		</div>
+		<div class="w3-center w3-container">
+			<img class="w3-image" src="/resources/Images/basic/main.jpg" style="height: 300px">
 		</div>
 	</div>
 	
 	<!-- 오늘의 가구 배치도 -->
-	<div class="w3-container w3-center w3-border-top w3-margin-top">
+	<div class="w3-container w3-center w3-margin-top">
 		<div class="w3-container">
 			<img class="w3-margin" src="/resources/Images/basic/furarr.jpg" style="height:50px">
 		</div>

@@ -106,7 +106,6 @@ $(document).ready(function(){
 		
 		});
 		
-
 	});
 	
 	
@@ -324,7 +323,12 @@ if(mem_id != repl_id){
 }
 
 </script>
+<style>
+.modal-backdrop {
+	height : 20px !important
+}
 
+</style>
 <body>
 <!-- 메뉴 -->
 <jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
@@ -340,7 +344,7 @@ if(mem_id != repl_id){
 </div>
 
 <!-- 메인 화면 -->
-<div class="w3-main w3-container mainSection">
+<div class="w3-main w3-container mainSection" style="width: 1200px">
 
 	<!-- 가구 배치도 이름 보기 -->
 	<div class="w3-padding-64 w3-margin-bottom w3-center">
@@ -371,23 +375,26 @@ if(mem_id != repl_id){
     				<!-- 둘다 팔로우 안한 상태일때 -->
     				<c:if test="${ followox eq 1 }">
     					<button onclick="newfollow('${detailVO.mem_id}');" class="w3-button w3-blue">팔로우하기${followox }</button>
+    					<a class="w3-button w3-border w3-round" href="${URLs.URI_FOLLOW_FURARR_FULL }?fol_mem_id=${detailVO.mem_id}" value="${detailVO.mem_id}">작성자의 다른 가구배치도 보러가기</a>
     				</c:if>
     				<!-- 게시자만 팔로우 -->
     				<c:if test="${ followox eq 2 }">
     					<button onclick="follow('${detailVO.mem_id}');" class="w3-button w3-blue">팔로우하기${followox }</button>
+    					<a class="w3-button w3-border w3-round" href="${URLs.URI_FOLLOW_FURARR_FULL }?fol_mem_id=${detailVO.mem_id}" value="${detailVO.mem_id}">작성자의 다른 가구배치도 보러가기</a>
     					<p>당신을 팔로우 합니다.</p>
     				</c:if>
     				<!-- 나만 팔로우 한 상태일때 -->
     				<c:if test="${ followox eq 3 }">
     					<button onclick="delfollow('${detailVO.mem_id}');" class="w3-button w3-blue">언팔로우하기${followox }</button>
+    					<a class="w3-button w3-border w3-round" href="${URLs.URI_FOLLOW_FURARR_FULL }?fol_mem_id=${detailVO.mem_id}" value="${detailVO.mem_id}">작성자의 다른 가구배치도 보러가기</a>
     				</c:if>
     				<!-- 둘다 팔로우 -->
     				<c:if test="${ followox eq 4 }">
     					<button onclick="follow('${detailVO.mem_id}');" class="w3-button w3-blue">언팔로우하기${followox }</button>
     					<p>당신을 팔로우 합니다.</p>
+    					<a class="w3-button w3-border w3-round" href="${URLs.URI_FOLLOW_FURARR_FULL }?fol_mem_id=${detailVO.mem_id}" value="${detailVO.mem_id}">작성자의 다른 가구배치도 보러가기</a>
     				</c:if>
     		</p>
-	 			<a class="w3-button w3-border w3-round" href="${URLs.URI_FOLLOW_FURARR_FULL }?fol_mem_id=${detailVO.mem_id}" value="${detailVO.mem_id}">작성자의 다른 가구배치도 보러가기</a>
 	 			<p><b>Date</b> 　　　　 <b>${detailVO.fur_arr_create_date }</b></p> 
 	 			<p><b>종류</b> 　　　 　<b>${detailVO.fur_arr_rooms }</b></p> 
 	 			<p><b>컨셉</b> 　　　 　<b>${detailVO.fur_arr_concepts }</b></p> 
@@ -423,56 +430,12 @@ if(mem_id != repl_id){
 </div>
 
 <div>
-	<!-- 댓글 -->
-	<div id="more_comments" class="w3-container w3-left">
-		<!-- 댓글 보기 -->
-		<div class="w3-content w3-border-bottom ">
-			<a><h5><b>댓글 더보기</b></h5></a>
-			<!-- ★★★★★★★★★★★★★★★★★★★★★★★댓글이 많아지는 경우에는 더보기 버튼 눌러야 더나오는 걸로 수정하거나, 최근 댓글만 보여주기 ★★★★★★★★★★★★★★★★★★★★★★★-->
-			<!-- 댓글 리스트 불러오기 -->
-			<c:forEach var="reply" items="${reply_list }">
-				<div id="repllistcall" class="w3-padding w3-margin-left">
-					<div>
-						<img class="w3-circle" alt="${reply.mem_id }" src="${reply.mem_profile_pic }" style="width:25px; height: 25px" >
-						<b>　　　${reply.mem_id }(${reply.mem_nickname })</b>　　　${reply.fur_arr_plan_rep_contents }
-						<input type="hidden" id="repl_id" value="${ reply.mem_id }">
-						<b class="w3-right" style="font-size: 11px">
-						<c:set value="${reply.mem_id }" var="repl"/>
-						<c:set value="${member.mem_id }" var="user"/>
-						<c:if test="${repl == user}">
-							<button class="w3-button btn-reply-delete" style="size: 15px" value="${reply._id }"> delete</button>
-						</c:if>${reply.fur_arr_plan_rep_write_date }</b>
-					</div>		
-				</div>
-			</c:forEach>
-		</div>
-		<!-- 댓글 달기 -->
-		<div class="w3-content w3-border-bottom ">
-			<div id="replwritediv" class="w3-padding w3-margin-left">
-				<c:choose>
-					<c:when test="${ empty member }">
-							<a onclick="document.getElementById('loginUser').style.display='block'"
-								class="w3-center w3-button w3-hover-white"><h6>로그인을 하여 의견을 남겨주세요 *^^*</h6></a>	
-					</c:when>
-					<c:otherwise>
-						<p>
-							<img class="w3-circle" alt="${member.mem_id }" src="${member.mem_profile_pic }" style="width:25px; height: 25px" >
-							<b>　　　${member.mem_id }(${member.mem_nickname })</b>
-							<input type="hidden" id="repl_mem_id" value="${member.mem_id }">
-							<input class="w3-margin-left" type="text" id="reply_text" placeholder="댓글 입력" size="60px">
-							<button class="w3-button w3-right" id="reply_write">댓글쓰기</button>
-						</p>
-					</c:otherwise>
-				</c:choose>
-			</div>
-		</div>
-	</div>
 
 	<!-- 가구에 사용된 제품 -->
 	<div class="w3-padding-large">
 		<div class="w3-container w3-left">
 			<div id="recommend_items" class="w3-content">
-				<div class="title"><h4><b>배치도에 사용된 제품</b></h4></div>
+				<div class="title"><h2><b>배치도에 사용된 제품</b></h2></div>
 				<div class="w3-bar">
 					<c:forEach var="fur" items="${arr_fur }">
 						<div class="w3-container w3-border-top">
@@ -506,7 +469,7 @@ if(mem_id != repl_id){
 	<div class="w3-padding-large">
 		<div class="w3-container w3-left">
 			<div id="other_arr_fur" class="w3-content">
-				<div class="title"><h4><b>작성자의 다른 가구배치도</b></h4></div>
+				<div class="title"><h2><b>작성자의 다른 가구배치도</b></h2></div>
 				<div class="w3-bar">
 					<c:forEach var="otherFurArr" items="${detailVO.other_furniture_arrList }">
 						<div class="w3-container w3-border-top">
@@ -535,9 +498,9 @@ if(mem_id != repl_id){
          <div class="w3-container w3-left">
             <div id="recom_fur" class="w3-content">
                <div class="title">
-                  <h4>
+                  <h2>
                      <b>가구 추천 리스트</b>
-                  </h4>
+                  </h2>
                </div>
 
 
@@ -587,21 +550,66 @@ if(mem_id != repl_id){
          </div>
       </div>
    </div>
+  	<!-- 댓글 -->
+	<div id="more_comments" class="w3-container w3-left">
+		<!-- 댓글 보기 -->
+		<div class="w3-content w3-border-bottom ">
+			<a><h2><b>댓글</b></h2></a>
+			<!-- ★★★★★★★★★★★★★★★★★★★★★★★댓글이 많아지는 경우에는 더보기 버튼 눌러야 더나오는 걸로 수정하거나, 최근 댓글만 보여주기 ★★★★★★★★★★★★★★★★★★★★★★★-->
+			<!-- 댓글 리스트 불러오기 -->
+			<c:forEach var="reply" items="${reply_list }">
+				<div id="repllistcall" class="w3-padding w3-margin-left">
+					<div>
+						<img class="w3-circle" alt="${reply.mem_id }" src="${reply.mem_profile_pic }" style="width:25px; height: 25px" >
+						<b>　　　${reply.mem_id }(${reply.mem_nickname })</b>　　　${reply.fur_arr_plan_rep_contents }
+						<input type="hidden" id="repl_id" value="${ reply.mem_id }">
+						<b class="w3-right" style="font-size: 11px">
+						<c:set value="${reply.mem_id }" var="repl"/>
+						<c:set value="${member.mem_id }" var="user"/>
+						<c:if test="${repl == user}">
+							<button class="w3-button btn-reply-delete" style="size: 15px" value="${reply._id }"> delete</button>
+						</c:if>${reply.fur_arr_plan_rep_write_date }</b>
+					</div>		
+				</div>
+			</c:forEach>
+		</div>
+		<!-- 댓글 달기 -->
+		<div class="w3-content w3-border-bottom ">
+			<div id="replwritediv" class="w3-padding w3-margin-left">
+				<c:choose>
+					<c:when test="${ empty member }">
+							<a onclick="document.getElementById('loginUser').style.display='block'"
+								class="w3-center w3-button w3-hover-white"><h6>로그인을 하여 의견을 남겨주세요 *^^*</h6></a>	
+					</c:when>
+					<c:otherwise>
+						<p>
+							<img class="w3-circle" alt="${member.mem_id }" src="${member.mem_profile_pic }" style="width:25px; height: 25px" >
+							<b>　　　${member.mem_id }(${member.mem_nickname })</b>
+							<input type="hidden" id="repl_mem_id" value="${member.mem_id }">
+							<input class="w3-margin-left" type="text" id="reply_text" placeholder="댓글 입력" size="60px">
+							<button class="w3-button w3-right" id="reply_write">댓글쓰기</button>
+						</p>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+	</div>
+	<jsp:include page="/WEB-INF/views/footer.jsp" flush="false" />
 </div>
 
 <!-- Modal -->
 <!-- 좋아요 -->
-	<div class="w3-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 1000px" >
-			<div class="modal-content" style="margin: 20px">
+	<div id="myModal" class="w3-modal" style="margin-top: 0px; margin-bottom: 0px;">	
+		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px;margin-bottom: 300px">
 				<img class="w3-image" src="/resources/Images/basic/like.jpg">
 				<div class="w3-section w3-center">
 					<div class="good_list_show w3-margin">
 					</div>
 				</div>
-				<button
-					onclick="document.getElementById('myModal').style.display='none'"
-					type="button" class="w3-button w3-red">Cancel</button>
+				<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+				<button onclick="document.getElementById('myModal').style.display='none'"
+					type="button" class="w3-button w3-red">취소</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -609,14 +617,14 @@ if(mem_id != repl_id){
 <!-- 스크랩 -->	
 	<div id="myScrapModal" class="w3-modal">	
 		<!-- 여기도 좋아요 한사람 많아지면 바꿔야 될거같은데 -->
-		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px; ">
+		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px;margin-bottom: 300px">
 			<img class="w3-image" src="/resources/Images/basic/scrap.jpg">
 			<div class="w3-section">
 				<div class="scrap_list_show w3-margin"></div>
 			</div>
 			<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
 				<button onclick="document.getElementById('myScrapModal').style.display='none'"
-					type="button" class="w3-button w3-red">Cancel</button>
+					type="button" class="w3-button w3-red">취소</button>
 			</div>
 		</div>
 	</div>

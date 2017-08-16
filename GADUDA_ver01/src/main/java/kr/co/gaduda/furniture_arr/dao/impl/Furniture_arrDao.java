@@ -32,7 +32,7 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 
 	@Autowired
 	SqlSession furarrsqlSession;
-	
+
 	@Autowired
 	MongoTemplate mongoTemplate;
 
@@ -58,37 +58,36 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 		// TODO Auto-generated method stub
 		return furarrsqlSession.selectOne(namespace + ".fur_arr_room_kind", fur_arr_plan_no);
 	}
-	
+
 	@Override
-	public List<Furniture_arrVO> getFurArr_roomkind(String room_kind_def_name) {	
-		return furarrsqlSession.selectList(namespace+".get_arr_fur_room_kind",room_kind_def_name);
+	public List<Furniture_arrVO> getFurArr_roomkind(String room_kind_def_name) {
+		return furarrsqlSession.selectList(namespace + ".get_arr_fur_room_kind", room_kind_def_name);
 	}
-	
-	//2017-08-07 추가(수정)
+
+	// 2017-08-07 추가(수정)
 	@Override
-	public Furniture_arrMemberVO getFurArrUser(String mem_id){
-		return furarrsqlSession.selectOne(namespace+".get_for_arrlist_user", mem_id);
+	public Furniture_arrMemberVO getFurArrUser(String mem_id) {
+		return furarrsqlSession.selectOne(namespace + ".get_for_arrlist_user", mem_id);
 	}
 
 	@Override
 	public int countFurArr_roomkind(String room_kind_def_name) {
-		return furarrsqlSession.selectOne(namespace+".count_fur_arr_roomkind",room_kind_def_name);
+		return furarrsqlSession.selectOne(namespace + ".count_fur_arr_roomkind", room_kind_def_name);
 	}
 
 	@Override
 	public String getArrFurCon(String room_kind_def_name) {
-		return furarrsqlSession.selectOne(namespace+".get_arr_fur_con",room_kind_def_name);
+		return furarrsqlSession.selectOne(namespace + ".get_arr_fur_con", room_kind_def_name);
 	}
 
 	@Override
 	public int getCountScrap(int fur_arr_plan_no) {
-		return furarrsqlSession.selectOne(namespace+".count_scrap",fur_arr_plan_no);
+		return furarrsqlSession.selectOne(namespace + ".count_scrap", fur_arr_plan_no);
 	}
 
-	
 	@Override
 	public List<Furniture_arrVO> getFurArr_concept(String concept_name) {
-		return furarrsqlSession.selectList(namespace+".get_arr_fur_concept",concept_name);
+		return furarrsqlSession.selectList(namespace + ".get_arr_fur_concept", concept_name);
 	}
 
 	////////////////////////////////////////////////////////////////////////
@@ -241,15 +240,15 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 	public int insertFurArrScrap(FurnitureArrScrapDTO furnitureArrScrapDTO) {
 		return furarrsqlSession.insert(namespace + ".fur_arr_plan_scrap", furnitureArrScrapDTO);
 	}
-	
-	//가구 스크랩 리스트 가져오기 --07.26
+
+	// 가구 스크랩 리스트 가져오기 --07.26
 	@Override
-	public List<Furniture_arrScrapListVO> furArrScrapList(int fur_arr_plan_no){
-		return furarrsqlSession.selectList(namespace+".fur_arr_scrap_list",fur_arr_plan_no);
+	public List<Furniture_arrScrapListVO> furArrScrapList(int fur_arr_plan_no) {
+		return furarrsqlSession.selectList(namespace + ".fur_arr_scrap_list", fur_arr_plan_no);
 	}
 
 	// 가구 배치도 스크랩 끝
-	
+
 	// 가구 방 종류 가져오기
 	@Override
 	public List<String> getRoomKind() {
@@ -261,64 +260,78 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 	public List<String> getConceptKind() {
 		return furarrsqlSession.selectList(namespace + ".get_concept_kind");
 	}
-	
-	
-	//가구배치도 작성자를 내가 팔로우 했는지/아닌지
-	@Override
-	public int getFollowing(FollowDTO followdto){
-		return furarrsqlSession.selectOne(namespace+".get_following", followdto);
-	}
-	
-	//작성자가 나를 팔로우 했는지 확인하기
-	@Override
-	public int memFolMe(FollowDTO followdto){
-		return furarrsqlSession.selectOne(namespace+".mem_fol_me", followdto);
-	}
-	
-	@Override
-	   public List<crawling_furnitureVO> getCrawling_fur(Furniture_arrDTO faDTO) {
-	      String fur_kind = faDTO.getFur_concept().trim();
-	   
-	      
-	   /*   Criteria cri = new Criteria("craw_fur_kind_name");
-	      cri.regex(fur_kind);
-	      
-	      Criteria cri2 = new Criteria("craw_fur_size");
-	      
-	      cri.andOperator(cri2.ne(null));*/
-	      
-	      
-	      
-	      
-	      //Query query = new Query(cri);
-	   
-	     Criteria cri = new Criteria("craw_fur_kind_name");
-	     cri.regex(fur_kind);
-	     
-	     cri.andOperator(new Criteria("craw_fur_size").ne(""));
-	    
-	      Query query=new Query(cri);
-	      
-	      /*Query query = new Query(new Criteria().andOperator(Criteria.where("craw_fur_kind_name").regex(fur_kind))
-	            .andOperator(Criteria.where("craw_fur_size").ne(null))            
-	            );*/
-	      
-	      // Query(Criteria.where("craw_fur_kind_name").regex("cri"));
-	      
-	       /* Query query = new Query(new Criteria()
-	        .andOperator(Criteria.where("craw_fur_kind_name").regex(faDTO.
-	        getFur_concept())));*/
-	       
-	      /*System.out.println("서비스안에서 가구 컨셉" + faDTO.getFur_concept());
-	      // Query query = new Query(new Criteria()
-	      // .andOperator(Criteria.where("craw_fur_kind_name").is("/"+faDTO.getFur_concept()+"/")));
-	      String fur_kind_name = faDTO.getFur_concept();
 
-	      Query query = new Query(new Criteria().andOperator(Criteria.where("craw_fur_kind_name").is(fur_kind_name)));
-	      query.limit(10);*/
-//	      query.addCriteria(Criteria.where("craw_fur_kind_name").regex(faDTO.getFur_concept()));
+	// 가구배치도 작성자를 내가 팔로우 했는지/아닌지
+	@Override
+	public int getFollowing(FollowDTO followdto) {
+		return furarrsqlSession.selectOne(namespace + ".get_following", followdto);
+	}
 
-	      return mongoTemplate.find(query, crawling_furnitureVO.class, "crawling_furniture");
-	   }
+	// 작성자가 나를 팔로우 했는지 확인하기
+	@Override
+	public int memFolMe(FollowDTO followdto) {
+		return furarrsqlSession.selectOne(namespace + ".mem_fol_me", followdto);
+	}
+
+	@Override
+	public List<crawling_furnitureVO> getCrawling_fur(Furniture_arrDTO faDTO) {
+		String fur_kind = faDTO.getFur_concept().trim();
+
+		/*
+		 * Criteria cri = new Criteria("craw_fur_kind_name");
+		 * cri.regex(fur_kind);
+		 * 
+		 * Criteria cri2 = new Criteria("craw_fur_size");
+		 * 
+		 * cri.andOperator(cri2.ne(null));
+		 */
+
+		// Query query = new Query(cri);
+
+		Criteria cri = new Criteria("craw_fur_kind_name");
+		cri.regex(fur_kind);
+
+		cri.andOperator(new Criteria("craw_fur_size").ne(""));
+
+		Query query = new Query(cri);
+
+		/*
+		 * Query query = new Query(new
+		 * Criteria().andOperator(Criteria.where("craw_fur_kind_name").regex(
+		 * fur_kind)) .andOperator(Criteria.where("craw_fur_size").ne(null)) );
+		 */
+
+		// Query(Criteria.where("craw_fur_kind_name").regex("cri"));
+
+		/*
+		 * Query query = new Query(new Criteria()
+		 * .andOperator(Criteria.where("craw_fur_kind_name").regex(faDTO.
+		 * getFur_concept())));
+		 */
+
+		/*
+		 * System.out.println("서비스안에서 가구 컨셉" + faDTO.getFur_concept()); // Query
+		 * query = new Query(new Criteria() //
+		 * .andOperator(Criteria.where("craw_fur_kind_name").is("/"+faDTO.
+		 * getFur_concept()+"/"))); String fur_kind_name =
+		 * faDTO.getFur_concept();
+		 * 
+		 * Query query = new Query(new
+		 * Criteria().andOperator(Criteria.where("craw_fur_kind_name").is(
+		 * fur_kind_name))); query.limit(10);
+		 */
+		// query.addCriteria(Criteria.where("craw_fur_kind_name").regex(faDTO.getFur_concept()));
+
+		return mongoTemplate.find(query, crawling_furnitureVO.class, "crawling_furniture");
+	}
+
+	// 2017.08.11 HashTagSearch Sujung
+	public List<Integer> searchHashTag(String hashtag_name) {
+		return furarrsqlSession.selectList(namespace + ".search_hashTag", hashtag_name);
+	}
+
+	public Furniture_arrVO getFurArrHashTag(int fur_arr_plan_no) {
+		return furarrsqlSession.selectOne(namespace + ".get_arr_info_hash", fur_arr_plan_no);
+	}
 
 }

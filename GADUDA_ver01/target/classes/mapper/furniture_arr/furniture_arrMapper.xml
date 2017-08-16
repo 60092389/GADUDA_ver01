@@ -15,7 +15,7 @@
 		<![CDATA[
 			select FAI.FUR_ARR_PLAN_NO, FUR_ARR_PLAN_IMG_LOC, FUR_ARR_NAME, MEM_ID, FUR_ARR_PLAN_GOOD_NUM, FUR_ARR_PLAN_REPL_NUM, FUR_ARR_CREATE_DATE
 			from FURNITURE_ARRANGEMENT_IMAGE FAI, FURNITURE_ARRANGEMENT_PLAN FAP
-			where FAI.FUR_ARR_PLAN_NO = FAP.FUR_ARR_PLAN_NO
+			where FAI.FUR_ARR_PLAN_NO = FAP.FUR_ARR_PLAN_NO order by FUR_ARR_CREATE_DATE DESC
 		]]>
 	</select>
 
@@ -245,6 +245,18 @@
 	<select id="mem_fol_me" resultType="int">
 		<![CDATA[
 			select count(*) from follow where mem_id=#{mem_id} and fol_mem_id=#{fol_mem_id} and (fol_kind=2 or fol_kind=3)
+		]]>
+	</select>
+	
+	<!-- 2017.08.11 HashTagSearch Sujung-->
+	<select id="search_hashTag" parameterType="String" resultType="int">
+		select FUR_ARR_PLAN_NO from FURNITURE_ARR_PLAN_HASHTAG where FUR_ARR_HASHTAG_NAME = #{HASHTAG_NAME}
+	</select>
+	<select id="get_arr_info_hash" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrVO">
+		<![CDATA[
+			select FAI.FUR_ARR_PLAN_NO, FUR_ARR_PLAN_IMG_LOC, FUR_ARR_NAME, MEM_ID, FUR_ARR_PLAN_GOOD_NUM, FUR_ARR_PLAN_REPL_NUM, FUR_ARR_CREATE_DATE
+			from FURNITURE_ARRANGEMENT_IMAGE FAI, FURNITURE_ARRANGEMENT_PLAN FAP
+			where FAI.FUR_ARR_PLAN_NO = FAP.FUR_ARR_PLAN_NO and FAI.FUR_ARR_PLAN_NO = #{FUR_ARR_PLAN_NO}
 		]]>
 	</select>
 	

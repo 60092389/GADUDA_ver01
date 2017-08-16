@@ -10,28 +10,24 @@
 
 	<!-- 메인 로고, 로그인, 회원가입 -->
 	<div class="w3-top">
-		<div class="w3-bar w3-basiccolor w3-right-align w3-large">
-			<a class="w3-basiccolor w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-large"
-				href="javascript:void(0);" onclick="myFunction()"
-				title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a> <a
-				href=<%=URLs.URI_MAIN_HOME%>
-				class="w3-bar-item w3-button w3-hide-small w3-margin-top w3-hover-white">
-				<img class="w3-margin" src="/resources/Images/basic/logo.jpg" style="height:50px">
-				</a>
+		<div class="w3-bar w3-basiccolor w3-right-align">
+			<a href=<%=URLs.URI_MAIN_HOME%>
+				class="w3-bar-item w3-button w3-margin-top w3-hover-white">
+				<img class="w3-margin" src="/resources/Images/basic/logo.jpg" style="height:50px"></a>
 			<div style="float: right">
 			<c:set var="member" value="${ member }" />
 			<c:choose>
 				<c:when test="${ empty member }">
 					<a onclick="document.getElementById('loginUser').style.display='block'"
-						class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"><h6>LOGIN</h6></a>
+						class=" w3-button w3-padding w3-hover-white"><h6>LOGIN</h6></a>
 					<a onclick="document.getElementById('joinUser').style.display='block'"
-						class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"><h6>JOIN</h6></a>
+						class=" w3-button w3-padding w3-hover-white"><h6>JOIN</h6></a>
 				</c:when>
 				<c:otherwise>
 					<a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%>
-						class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"><h6>${ member.mem_name }님</h6></a>
+						class="w3-bar-item w3-button w3-padding w3-hover-white"><h6>${ member.mem_name }님</h6></a>
 					<a href=<%=URLs.URI_LOGOUT_FULL%>
-						class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"><h6>logout</h6></a>
+						class="w3-bar-item w3-button w3-padding w3-hover-white"><h6>logout</h6></a>
 				</c:otherwise>
 			</c:choose>
 			</div>

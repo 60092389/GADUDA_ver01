@@ -25,6 +25,7 @@ public interface IFurniture_arrDao {
 	public List<String> getFurCon(int fur_arr_plan_no);
 
 	public String getRoomKind(int fur_arr_plan_no);
+	
 //-----------------------------------------------------------------------------//
 	public List<Furniture_arrVO> getFurArr_roomkind(String room_kind_def_name);
 	public int countFurArr_roomkind(String room_kind_def_name);
@@ -118,6 +119,11 @@ public interface IFurniture_arrDao {
 	//작성자가 나를 팔로우 했는지 확인하기
 	public int memFolMe(FollowDTO followdto);
 	
+	//비슷한 가구 찾기
 	public List<crawling_furnitureVO> getCrawling_fur(Furniture_arrDTO faDTO);
+	
+	//2017.08.11 HashTagSearch Sujung
+	public List<Integer> searchHashTag(String hashtag_name);
+	public Furniture_arrVO getFurArrHashTag(int fur_arr_plan_no);
 	
 }
