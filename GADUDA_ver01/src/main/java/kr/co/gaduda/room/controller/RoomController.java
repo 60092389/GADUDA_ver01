@@ -112,7 +112,6 @@ public class RoomController {
 	
 	@RequestMapping(value = URLs.URI_ROOMMAKE , method = RequestMethod.POST, produces = { "application/json" })
 	public @ResponseBody Map<String, Object> roomMake(RoomDTO roomDTO, HttpServletRequest request) throws Exception {
-		
 		FileOutputStream stream = null;
 		Map<String, Object> data = new HashMap<String, Object>();
 		
