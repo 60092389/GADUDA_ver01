@@ -93,7 +93,7 @@
 						<tr>
 							<td colspan="3" style="height: 200px">
 								<a href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fsl.fur_no }">
-									<img src="${fsl.fur_pic_loc }" alt="${fsl.fur_no  }" style="height:100%; ">
+									<img src="${fsl.fur_pic_loc  }"  alt="${fsl.fur_no  }" style="height:100%; ">
 								</a>
 							</td>
 						</tr>
