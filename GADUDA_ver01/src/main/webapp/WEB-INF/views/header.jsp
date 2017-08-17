@@ -14,22 +14,32 @@
 			<a href=<%=URLs.URI_MAIN_HOME%>
 				class="w3-bar-item w3-button w3-margin-top w3-hover-white">
 				<img class="w3-margin" src="/resources/Images/basic/logo.jpg" style="height:50px"></a>
-			<div style="float: right">
-			<c:set var="member" value="${ member }" />
-			<c:choose>
-				<c:when test="${ empty member }">
-					<a onclick="document.getElementById('loginUser').style.display='block'"
-						class=" w3-button w3-padding w3-hover-white"><h6>LOGIN</h6></a>
-					<a onclick="document.getElementById('joinUser').style.display='block'"
-						class=" w3-button w3-padding w3-hover-white"><h6>JOIN</h6></a>
-				</c:when>
-				<c:otherwise>
-					<a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%>
-						class="w3-bar-item w3-button w3-padding w3-hover-white"><h6>${ member.mem_name }님</h6></a>
-					<a href=<%=URLs.URI_LOGOUT_FULL%>
-						class="w3-bar-item w3-button w3-padding w3-hover-white"><h6>logout</h6></a>
-				</c:otherwise>
-			</c:choose>
+			<div>
+				<div style="float: right">
+					<div style="float: left; margin-top: 30px; margin-right:10px">
+						<form action="${URLs.URI_FURNITURE_HASHTAG_FULL } ">
+							<div style="float: left; white-space : inherit; display: inline;">
+								<input class="w3-input w3-margin" style="height: 30px; width: 150px; display: inline;" name="hashtag_search" value='' placeholder="해시태그 검색" type="text" />
+								<button class="w3-padding w3-button w3-white w3-border w3-round w3-hover-white" type="submit" style="display: inline;">검색</button>
+							</div>
+						</form>
+					</div>
+					<c:set var="member" value="${ member }" />
+					<c:choose>
+						<c:when test="${ empty member }">
+							<a onclick="document.getElementById('loginUser').style.display='block'"
+								class=" w3-button w3-padding w3-hover-white"><h6>LOGIN</h6></a>
+							<a onclick="document.getElementById('joinUser').style.display='block'"
+								class=" w3-button w3-padding w3-hover-white"><h6>JOIN</h6></a>
+						</c:when>
+						<c:otherwise>
+							<a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%>
+								class="w3-bar-item w3-button w3-padding w3-hover-white"><h6>${ member.mem_name }님</h6></a>
+							<a href=<%=URLs.URI_LOGOUT_FULL%>
+								class="w3-bar-item w3-button w3-padding w3-hover-white"><h6>logout</h6></a>
+						</c:otherwise>
+					</c:choose>
+				</div>
 			</div>
 		</div>
 		<!-- 기본 목록 -->
@@ -49,10 +59,6 @@
 					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">마이페이지</a>
 				</c:otherwise>
 			</c:choose>
-				<div style="float: right; margin: 10px;">
-					<form action="${URLs.URI_FURNITURE_HASHTAG_FULL } ">
-						<input class="w3-input" style="height: 30px; width: 120px" name="hashtag_search" value='' placeholder="해시태그 검색" type="text" /></form>
-				</div>
 			</div>
 		</div>
 	</div>
