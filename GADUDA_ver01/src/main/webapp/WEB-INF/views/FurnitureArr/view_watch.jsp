@@ -288,11 +288,6 @@ $(document).ready(function(){
 		    		</div>
 				</c:forEach>
 			</div>
-			<!-- 내 배치도 스크랩 리스트 보러가기 -->
-			<div class="w3-border w3-round w3-margin w3-padding" style="position: fixed; width: 30px">
-				스크랩 리스트 보러가기<br>
-				팔로우 리스트 보러가기
-			</div>
 		</div>
 	</div>
 	

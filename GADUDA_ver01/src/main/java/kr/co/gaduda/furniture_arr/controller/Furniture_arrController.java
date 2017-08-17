@@ -256,5 +256,26 @@ public class Furniture_arrController {
 		return retVal;
 	}
 	
+	//hashtag검색
+	@RequestMapping(value=URLs.URI_FURNITURE_HASHTAG, method=RequestMethod.GET)
+	public String furnifure_arr_hash(@RequestParam(value="hashtag_search")String hashtag_search,
+			Model model){
+		
+		List<Integer> hashFurNo = furniture_arrService.searchHashTag(hashtag_search);
+		
+		List<Furniture_arrVO> HashFurArr = new ArrayList<Furniture_arrVO>();
+		for(int i = 0; i < hashFurNo.size(); i++){
+			int fur_no = hashFurNo.get(i);
+			System.out.println(fur_no);
+			Furniture_arrVO arrVO = furniture_arrService.getFurArrHashTag(fur_no);
+			System.out.println(arrVO);
+			HashFurArr.add(arrVO);
+		}
+		
+		model.addAttribute("HashTag",hashtag_search);
+		model.addAttribute("fur_arr_list",HashFurArr);
+		return Pages.VIEW_FURNITURE_HASH_VIEW;
+	}
+	
 	
 }

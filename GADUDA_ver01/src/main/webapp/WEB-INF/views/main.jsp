@@ -21,9 +21,6 @@
 	
   	<!-- 메인 사진 -->
 	<div class="mainSection">
-		<div style="float: right; margin-right: 20px">
-			<input class="w3-input" name="hashtag_search" value='' id="hashtag_search" placeholder="해시태그 검색" type="text" />
-		</div>
 		<div class="w3-center w3-container">
 			<img class="w3-image" src="/resources/Images/basic/main.jpg" style="height: 300px">
 		</div>

@@ -43,6 +43,7 @@ $(document).ready(function(){
 	<!-- Page Container -->
 	<div class="w3-main w3-content" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
 		<div class="w3-container" id="myPage_content5">
+			<div class="w3-margin" id="btn_makeRoom_div"><button class="w3-button w3-blue w3-hover-white" id="btn_makeRoom">새로운 방 생성 하기</button></div>
 			<br>
 			<c:forEach var="myRoomList" items="${myRoomList }">
 			<div class="w3-padding w3-main w3-content w3-margin-top w3-border-top w3-center">
@@ -59,8 +60,7 @@ $(document).ready(function(){
 				</table>	
 	    	</div>
 		</c:forEach>
-		</div>
-		<div id="btn_makeRoom_div"><button class="w3-button w3-blue w3-hover-white" id="btn_makeRoom">새로운 방 생성 하기</button></div> 
+		</div> 
 	</div>
 </div>
 	

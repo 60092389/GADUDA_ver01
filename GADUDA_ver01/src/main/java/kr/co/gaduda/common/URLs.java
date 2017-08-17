@@ -135,6 +135,11 @@ public class URLs {
 	// 가구 배치도 페이지
 	public static final String URI_FURNITURE_WATCH = "/fur_arr";
 	public static final String URI_FURNITURE_WATCH_FULL = furniture_arr_default + URI_FURNITURE_WATCH;
+	
+	//17-08-17
+	//hashtag 검색
+	public static final String URI_FURNITURE_HASHTAG = "/hashtag_search";
+	public static final String URI_FURNITURE_HASHTAG_FULL = furniture_arr_default + URI_FURNITURE_HASHTAG;
 
 	////////////////////////////////// 17-07-07
 	////////////////////////////////// 11:43////////////////////////////////////////////////

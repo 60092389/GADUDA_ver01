@@ -41,9 +41,18 @@
 					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">가구 배치도</a>
 				<!-- <a href=<%=URLs.URI_MAIN_TO_RECOM%>
 					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">추천</a> -->
-				<a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%>
+				<c:choose>
+				<c:when test="${ empty member }">
+				</c:when>
+				<c:otherwise>
+					<a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%>
 					class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">마이페이지</a>
-				<br>
+				</c:otherwise>
+			</c:choose>
+				<div style="float: right; margin: 10px;">
+					<form action="${URLs.URI_FURNITURE_HASHTAG_FULL } ">
+						<input class="w3-input" style="height: 30px; width: 120px" name="hashtag_search" value='' placeholder="해시태그 검색" type="text" /></form>
+				</div>
 			</div>
 		</div>
 	</div>

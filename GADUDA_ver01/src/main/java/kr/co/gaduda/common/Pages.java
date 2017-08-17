@@ -56,6 +56,7 @@ public class Pages {
 	public static final String VIEW_FURNITURE_DETAIL_VIEW = furniture_path + VIEW_FURNITURE_DETAIL;
 
 	public static final String VIEW_FURNITURE_WATCH_VIEW = furniture_arr_path + "/view_watch";
+	public static final String VIEW_FURNITURE_HASH_VIEW = furniture_arr_path + "/hashtag_search";
 
 	// 가구구경 페이지뷰
 	public static final String VIEW_FURNITURE_LIST = furniture_path + "/furnitureList";
