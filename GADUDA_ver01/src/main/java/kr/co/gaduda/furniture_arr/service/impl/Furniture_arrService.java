@@ -460,7 +460,7 @@ public class Furniture_arrService implements IFurniture_arrService {
 
 	      
 	      List<crawling_furnitureVO> final_craw_fur = furniture_arrDao.getCrawling_fur(faDTO);
-	      System.out.println("111111111111" + final_craw_fur.size());
+	      System.out.println("111111111111 " + final_craw_fur.size());
 	      
 	      List<crawling_furnitureVO> final_craw_fur2 = new ArrayList<crawling_furnitureVO>();
 	      String size_arr[];
@@ -476,8 +476,10 @@ public class Furniture_arrService implements IFurniture_arrService {
 
 	         for (int j = 0; j < int_size_arr.length; j++) {
 
-	            int_size_arr[j] = Integer.parseInt(size_arr[j]);
+	            //int_size_arr[j] = Integer.parseInt(size_arr[j]);
 
+	        	int_size_arr[j] = int_size_arr[j];
+	        	System.out.println(int_size_arr[j]);
 	            if (j == 2 && !arr_fur_size.isEmpty()
 	                  && (int_size_arr[0] > faDTO.getMin_fur_width() && int_size_arr[0] < faDTO.getMax_fur_width())
 	                  && (int_size_arr[1] > faDTO.getMin_fur_depth() && int_size_arr[1] < faDTO.getMax_fur_depth())
