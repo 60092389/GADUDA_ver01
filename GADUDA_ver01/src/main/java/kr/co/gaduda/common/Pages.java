@@ -15,7 +15,8 @@ public class Pages {
 	private static final String arrange_path = "/Arrangement";
 	private static final String furniture_arr_path = "/FurnitureArr";
 	
-
+	private static final String design_room_path = "/Design_Room";
+	
 	private static final String follow_path = mypage_path + "/Follow";
 	private static final String my_page_furniture_arr_path = mypage_path + "/FurnitureArr";
 	private static final String furniture_arr_scrap_path = mypage_path + "/FurnitureArrScrap";
@@ -84,5 +85,14 @@ public class Pages {
 	public static final String VIEW_ROOMMAKE_CNAVAS=room_path+"/roomMake_Canvas";
 	public static final String VIEW_ROOMMAKE_ROOMNAME=room_path+"/roomMake_RoomName";
 	
+	
+	public static final String VIEW_DESIGNROOM_INCLUDE =design_room_path+"/designRoom_Include";
+	public static final String VIEW_DESIGNROOM_CANVAS =design_room_path+"/designRoom_Canvas";
+	public static final String VIEW_DESIGNROOM_SELECT =design_room_path+"/designRoom_Select";
+	public static final String VIEW_DESIGNROOM_NAME =design_room_path+"/designRoom_Name";
+	
+	public static final String VIEW_DESIGNROOM_BUTTON1 =design_room_path+"/designRoom_Button1";
+	public static final String VIEW_DESIGNROOM_BUTTON2=design_room_path+"/designRoom_Button2";
+	public static final String VIEW_DESIGNROOM_BUTTON3=design_room_path+"/designRoom_Button3";
 	
 }

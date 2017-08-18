@@ -244,4 +244,35 @@ public class URLs {
 	public static final String URI_ROOMMAKE = "/roomMake";
 	public static final String URI_ROOMMAKE_FULL = room_default+URI_ROOMMAKE;
 	
+	public static final String URI_DESIGNROOM_INCLUDE= "/designRoom_Include";
+	public static final String URI_DESIGNROOM_INCLUDE_FULL = room_default+URI_DESIGNROOM_INCLUDE;
+	
+	public static final String URI_DESIGNROOM_SELECT= "/designRoom_Select";
+	public static final String URI_DESIGNROOM_SELECT_FULL = room_default+URI_DESIGNROOM_SELECT;
+	
+	
+	public static final String URI_DESIGNROOM_SELECT_ROOM="/designRoom_Select_Room"; 
+	public static final String URI_DESIGNROOM_SELECT_ROOM_FULL=room_default+URI_DESIGNROOM_SELECT_ROOM;
+	
+	public static final String URI_DESIGNROOM_CANVAS= "/designRoom_Canvas";
+	public static final String URI_DESIGNROOM_CANVAS_FULL = room_default+URI_DESIGNROOM_CANVAS;
+	
+	public static final String URI_DESIGNROOM_NAME= "/designRoom_Name";
+	public static final String URI_DESIGNROOM_NAME_FULL = room_default+URI_DESIGNROOM_NAME;
+	
+	public static final String URI_DESIGNROOM_CANVAS_FURNITURE_DATA= "/designRoom_Canvas_Furniture_Data";
+	public static final String URI_DESIGNROOM_CANVAS_FURNITURE_DATA_FULL = room_default + URI_DESIGNROOM_CANVAS_FURNITURE_DATA;
+	
+	public static final String URI_DESIGNROOM_MENU= "/designRoom_Menu1";
+	public static final String URI_DESIGNROOM_MENU_FULL = room_default+URI_DESIGNROOM_MENU;
+	
+	public static final String URI_DESIGNROOM_BUTTON1= "/designRoom_Button1";
+	public static final String URI_DESIGNROOM_BUTTON1_FULL = room_default+URI_DESIGNROOM_BUTTON1;
+	
+	public static final String URI_DESIGNROOM_BUTTON2= "/designRoom_Button2";
+	public static final String URI_DESIGNROOM_BUTTON2_FULL = room_default+URI_DESIGNROOM_BUTTON2;
+	
+	public static final String URI_DESIGNROOM_BUTTON3= "/designRoom_Button3";
+	public static final String URI_DESIGNROOM_BUTTON3_FULL = room_default+URI_DESIGNROOM_BUTTON3;
+	
 }

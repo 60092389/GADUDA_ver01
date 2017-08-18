@@ -13,10 +13,55 @@
 			where mem_id = #{mem_id}
 		]]>
 	</select>
+	
 	<insert id="insert_my_room" >
 	<![CDATA[
 		  INSERT INTO ROOM VALUES (SEQ_ROOM.NEXTVAL,#{myroom_Name},#{userId},SYSDATE,#{room_Img_src})
 	]]>
 	</insert>
+
+
+
+	
+	<select id="get_Room_info" resultType="kr.co.gaduda.room.vo.RoomVO">
+  <![CDATA[
+  		SELECT ROOM_NAME, ROOM_IMG_SRC
+		FROM ROOM
+		WHERE MEM_ID = #{UserId}
+  		]]>
+	</select>
+
+
+
+	<select id="get_Fur_pic" resultType="kr.co.gaduda.room.vo.Furniture_Pic_VO">
+  <![CDATA[
+  	SELECT FUR_NO,FUR_PIC_KIND,FUR_PIC_LOC 
+	FROM FURNITURE_PICTURE
+  		]]>
+	</select>
+
+	<select id="get_Fur_info" resultType="kr.co.gaduda.room.vo.Funrniture_VO">
+ 	<![CDATA[
+ 	SELECT F.FUR_NO, F.FUR_NAME, FB.FUR_BRAND_NAME, F.FUR_PRICE,FK.FUR_KIND_DEF_NAME, FS.FUR_WIDTH, FS.FUR_HEIGHT,FS.FUR_DEPTH,
+	FS.FUR_WEIGHT,F.FUR_INFO
+	FROM FURNITURE F, FURNITURE_SIZE FS, FURNITURE_BRAND FB,
+	(SELECT FK.FUR_NO ,FKD.FUR_KIND_DEF_NAME
+	FROM FURNITURE_KIND FK, FURNITURE_KIND_DEFINE FKD
+	WHERE FK.FUR_KIND_DEF_NO = FKD.FUR_KIND_DEF_NO) FK
+
+	WHERE F.FUR_NO=FS.FUR_NO
+	AND F.FUR_BRAND_NO= FB.FUR_BRAND_NO 
+	AND FK.FUR_NO= F.FUR_NO
+	]]>
+	</select>
+	
+	<select id="get_basic_img" resultType="kr.co.gaduda.room.vo.Furniture_Basic_Img">
+ 	<![CDATA[
+ 		SELECT FBI.FUR_NO,FABI.FUR_ARR_BASIC_IMG_NAME,FABI.FUR_ARR_BASIC_IMG_KIND,FABI.FUR_ARR_BASIC_IMG_LOC
+		FROM FURNITURE_BASIC_IMAGE FBI, FURNITURE_ARR_BASIC_IMAGE FABI
+		WHERE FBI.FUR_ARR_BASIC_IMG_NO=FABI.FUR_ARR_BASIC_IMG_NO
+	]]>
+	</select>
+	
   	
 </mapper>

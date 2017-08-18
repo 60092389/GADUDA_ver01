@@ -5,6 +5,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <title>GADUDA</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#designRoom_button").click(function(){
+		$("#designRoom_body").html("");
+		
+		$.ajax({
+			url: "${URLs.URI_DESIGNROOM_INCLUDE_FULL}",
+			type:"GET",
+			success:function(data){
+				$("#designRoom_body").html(data);		
+			}
+		});
+	});
+});
+</script>
+
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -29,8 +48,9 @@
 	<jsp:include page="/WEB-INF/views/MyPage/MyInfo/view_mypage_sidebar.jsp" flush="false" />
 	
 	<!-- Page Container -->
-	<div class="w3-main w3-content" style="max-width: 1200px; margin-top: 200px; margin-left: 300px">
+	<div class="w3-main w3-content" style="max-width: 1200px; margin-top: 200px; margin-left: 300px" id ='designRoom_body'>
 		<div class="w3-container" id="myPage_content5">
+		
 			<br>
 			<c:forEach var="arrList" items="${arrList }">
 			<div class="w3-padding-32 w3-main w3-content w3-margin-top w3-border-top">
@@ -80,7 +100,7 @@
 	    	</div>
 		</c:forEach>
 		</div>
-		<button class="w3-button w3-blue w3-hover-white">새로운 배치도 생성 하기</button>
+		<button class="w3-button w3-blue w3-hover-white" id="designRoom_button">새로운 배치도 생성 하기</button>
 	</div>
 </div>
 	

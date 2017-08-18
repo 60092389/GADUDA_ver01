@@ -1,6 +1,7 @@
 package kr.co.gaduda.room.controller;
 
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,12 +15,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.gaduda.common.Pages;
 import kr.co.gaduda.common.URLs;
 import kr.co.gaduda.member.vo.MemberVO;
+import kr.co.gaduda.room.dto.DesignRoom_DTO;
 import kr.co.gaduda.room.dto.RoomDTO;
 import kr.co.gaduda.room.service.impl.RoomService;
 import kr.co.gaduda.room.vo.Funrniture_VO;
@@ -125,15 +128,24 @@ public class RoomController {
 			byte[] file = Base64.decodeBase64(RoomMake_Canvas_Img_MyRoom);
 
 			String fileName = UUID.randomUUID().toString();
+			
+			
+			
 			stream = new FileOutputStream(
-					"d:\\stsproject\\GADUDA_ver01_4\\GADUDA_ver01\\src\\main\\webapp\\resources\\Images\\User_Myroom\\"
+					"C:\\Users\\shama\\git\\GADUDA_ver01\\GADUDA_ver01\\src\\main\\webapp\\resources\\Images\\User_Myroom\\"
 							+ fileName + ".png");
+
+//			stream = new FileOutputStream(
+//					"d:\\stsproject\\GADUDA_ver01_4\\GADUDA_ver01\\src\\main\\webapp\\resources\\Images\\User_Myroom\\"
+//							+ fileName + ".png");
+			
 			stream.write(file);
 			MemberVO memberVO = (MemberVO) request.getSession().getAttribute("member");
 			roomDTO.setUserId(memberVO.getMem_id());
-
-			String room_img_src = "d:/stsproject/GADUDA_ver01_4/GADUDA_ver01/src/main/webapp/resources/Images/User_Myroom/"
+			
+			String room_img_src = "/resources/Images/User_Myroom/"
 					+ fileName + ".png";
+			
 			roomDTO.setRoom_Img_src(room_img_src);
 			if (roomService.insertRoom(roomDTO) == 1) {
 				data.put("MSG", "저장완료");
@@ -183,6 +195,55 @@ public class RoomController {
 
 		return mav;
 	}
+	
+	
+	@RequestMapping(value ="/ss7", method = RequestMethod.POST)
+	public void designRoom(@RequestParam(value="fig_img_src[]")List<String>fig_img_src,
+						   @RequestParam(value="fig_num[]")List<Integer>fig_num,
+						   @RequestParam(value="fig_img_X[]")List<Integer>fig_img_X,
+						   @RequestParam(value="fig_img_Y[]")List<Integer>fig_img_Y,
+						   @RequestParam(value="fig_img_width_length[]")List<Integer>fig_img_width_length,
+						   @RequestParam(value="fig_img_height_length[]")List<Integer>fig_img_height_length,
+						   @RequestParam(value="fig_img_state[]")List<String>fig_img_state) throws Exception {
+		
+		List<DesignRoom_DTO> list = new ArrayList<DesignRoom_DTO>();
+		
+		for(int i=0;i<fig_img_src.size();i++){
+			DesignRoom_DTO designRoon_DTO = new DesignRoom_DTO();
+			designRoon_DTO.setFig_img_src(fig_img_src.get(i));
+			designRoon_DTO.setFig_num(fig_num.get(i));
+			designRoon_DTO.setFig_img_X(fig_img_X.get(i));
+			designRoon_DTO.setFig_img_Y(fig_img_Y.get(i));
+			designRoon_DTO.setFig_img_width_length(fig_img_width_length.get(i));
+			designRoon_DTO.setFig_img_height_length(fig_img_height_length.get(i));
+			designRoon_DTO.setFig_img_state(fig_img_state.get(i));
+			
+			list.add(designRoon_DTO);
+		}
+		
+		for(int i=0; i<list.size(); i++){
+			DesignRoom_DTO dto =list.get(i);
+			System.out.println(dto.getFig_img_src());
+			System.out.println("나랏말씀이 궁극에 달아");
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@RequestMapping(value = URLs.URI_DESIGNROOM_BUTTON1, method = RequestMethod.GET)
 	public ModelAndView designRoom_Button1() {
