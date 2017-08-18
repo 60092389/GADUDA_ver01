@@ -199,7 +199,7 @@ $(document).ready(function() {
       							No.<h1>${fsl.fur_no }</h1>
       						</div>
       						<div class="w3-col m2">
-      							<img src="${fsl.fur_pic_loc }" alt="${fsl.fur_no }" style="width:90%">
+      							<img src="${fsl.fur_pic_loc }" alt="${fsl.fur_no }" style="width: 200px; max-height: 300px">
       						</div> 								
         					<div class="w3-col m3 w3-padding-64 w3-center">
         						<h5><b>${fsl.fur_name }</b></h5>

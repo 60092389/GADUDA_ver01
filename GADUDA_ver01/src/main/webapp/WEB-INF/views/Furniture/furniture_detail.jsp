@@ -255,11 +255,11 @@ $(document).ready(function() {
 	<!-- 가구 사진 보기(도도록) -->
 	<div class="w3-row-padding w3-content w3-col m9">
 		<div class="w3-twothird w3-display-container w3-padding-16">
-			<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+			<button class="w3-col m1 w3-button w3-white" onclick="plusDivs(-1)" style="margin-top: 40% ;margin-right: 10px">&#10094;</button>
 			<c:forEach var="pic" items="${furdeVO.fur_pic_loc }">
-				<img class="mySlides" src="${pic}" style="width:80%; max-height: 100%" >
+				<img class="w3-col m5 mySlides" id="fur_img" src="${pic}" style="width:450px; max-height: 100%" >
 			</c:forEach>
-  			<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+  			<button class="w3-col m1 w3-button w3-white" onclick="plusDivs(1)" style="margin-top: 40%; margin-left: 10px">&#10095;</button>
   			<!-- ★★★★★★★★★★★★★★★★★★★★★★★사진이 가끔가다가 여러개 나와서 밑에 댓글이 저 밑으로감 ★★★★★★★★★★★★★★★★★★★★★★★-->
 		</div>
     </div>
