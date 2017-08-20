@@ -2,6 +2,7 @@ package kr.co.gaduda.member.service;
 
 import java.util.List;
 
+import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
 import kr.co.gaduda.member.dto.FollowDTO;
 import kr.co.gaduda.member.dto.MemberDTO;
 import kr.co.gaduda.member.vo.Follower_VO;
@@ -42,4 +43,7 @@ public interface IMemberService {
 	public String getFurCon(int fur_arr_plan_no);
 	public String getRoomKind(int fur_arr_plan_no);
 	public String getHashTag(int fur_arr_plan_no);
+	
+	//마이페이지에 최근에본 가구 정보 가져가기
+	public List<FurnitureListViewVO> getRecentFindFur(String mem_id);
 }

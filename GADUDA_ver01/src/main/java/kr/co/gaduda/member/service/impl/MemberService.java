@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.gaduda.furniture.dao.impl.FurnitureDao;
+import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
 import kr.co.gaduda.member.dao.impl.MemberDao;
 import kr.co.gaduda.member.dto.FollowDTO;
 import kr.co.gaduda.member.dto.MemberDTO;
@@ -13,12 +15,17 @@ import kr.co.gaduda.member.service.IMemberService;
 import kr.co.gaduda.member.vo.Follower_VO;
 import kr.co.gaduda.member.vo.Following_VO;
 import kr.co.gaduda.member.vo.MemberFurArrVO;
+import kr.co.gaduda.member.vo.MemberLogVO;
 import kr.co.gaduda.member.vo.MemberVO;
 @Service
 public class MemberService implements IMemberService {
 	
 	@Autowired
 	private MemberDao memberDAO;
+	
+	@Autowired
+	private FurnitureDao furnitureDao;
+	
 	@Override
 	public int joinMember(MemberDTO memberDTO) {
 		return memberDAO.joinMember(memberDTO);
@@ -168,6 +175,56 @@ public class MemberService implements IMemberService {
 			furArrHashTag = hashtag.get(i) + " " + furArrHashTag;
 		}
 		return furArrHashTag;
+	}
+	
+	@Override
+	public List<FurnitureListViewVO> getRecentFindFur(String mem_id) {
+		
+		List<MemberLogVO> log_list = memberDAO.getMember_log_url(mem_id);
+		
+		String[] part;
+		
+		List<Integer> find_fur_no_list = new ArrayList<Integer>();
+		
+		List<FurnitureListViewVO> recent_view_fur_list = new ArrayList<FurnitureListViewVO>();
+		FurnitureListViewVO recent_view_fur;
+		
+		for(int i=0; i<log_list.size(); i++){
+			String url = log_list.get(i).getMem_acc_loc();
+			//System.out.println(url);
+			
+			part = url.split("/");
+			String fur_no_part = part[5];
+			
+			String fur_no_str = fur_no_part.replaceAll("\\D", "");
+			//System.out.println(fur_no_str);
+			
+			int fur_no = Integer.parseInt(fur_no_str);
+			//System.out.println(fur_no);
+			
+			find_fur_no_list.add(fur_no);
+		}
+		
+		//중복값까지 제거한 최근 본 가구 번호들
+		List<Integer> fur_no_list = new ArrayList<Integer>();
+		
+		//중복된 값 제거
+		for(int j=0; j<find_fur_no_list.size(); j++){
+			if(!fur_no_list.contains(find_fur_no_list.get(j))){
+				fur_no_list.add(find_fur_no_list.get(j));
+			}
+		}
+
+		//최근본순서로 리스트에 저장
+		for(int i=fur_no_list.size()-1; i>=0; i--){
+			System.out.println(fur_no_list.get(i));
+			recent_view_fur = new FurnitureListViewVO();
+			recent_view_fur = furnitureDao.getFindRecentFur(fur_no_list.get(i));
+			//System.out.println(recent_view_fur);
+			recent_view_fur_list.add(recent_view_fur);	
+		}
+		
+		return recent_view_fur_list;
 	}
 
 }

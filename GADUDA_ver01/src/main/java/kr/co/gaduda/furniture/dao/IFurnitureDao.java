@@ -94,5 +94,8 @@ public interface IFurnitureDao {
 	
 	//가구 상세보기 페이지 가구 아이템 이름이랑 사이즈 가져오기
 	public FurnitureItemVO getFurItem(int fur_no);
+	
+	//최근에 본 가구 목록 가져오기
+	public FurnitureListViewVO getFindRecentFur(int fur_no);
 
 }

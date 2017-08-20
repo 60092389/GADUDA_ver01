@@ -63,7 +63,10 @@
 				<div class="w3-col m7">
 					<div class="w3-container w3-container">
 						
-						<h3>내 가구 배치도 최근 반응</h3>
+						<h3>내 가구 배치도 최근 반응?????</h3>
+						<c:forEach var = "fur_list" items="${recent_view_fur_list }">
+							<p>${fur_list.fur_name } </p>
+						</c:forEach>
 						<h3>추천 배치도</h3>
 					</div>
 					

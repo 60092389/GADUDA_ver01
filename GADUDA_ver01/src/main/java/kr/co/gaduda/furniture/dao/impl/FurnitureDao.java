@@ -223,4 +223,13 @@ public class FurnitureDao implements IFurnitureDao {
 	public FurnitureItemVO getFurItem(int fur_no){
 		return sqlSession.selectOne(namespace+".get_fur_item", fur_no);
 	}
+	
+	
+	//최근에 본 가구 불러오기
+	@Override
+	public FurnitureListViewVO getFindRecentFur(int fur_no) {
+
+		return sqlSession.selectOne(namespace+".recent_view_fur", fur_no);
+	}
+	
 }

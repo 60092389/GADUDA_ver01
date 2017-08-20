@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.gaduda.common.Pages;
 import kr.co.gaduda.common.URLs;
+import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
 import kr.co.gaduda.member.dto.FollowDTO;
 import kr.co.gaduda.member.dto.MemberDTO;
 import kr.co.gaduda.member.service.impl.MemberService;
@@ -53,8 +54,13 @@ public class MypageMemberController implements ServletContextAware {
 		followDTO.setMem_id(mem_id);
 		int follower = memberService.follower_info(followDTO);
 		int following = memberService.following_info(followDTO);
+		
+		List<FurnitureListViewVO> recent_view_fur_list = memberService.getRecentFindFur(mem_id);
+		
+		
 		model.addAttribute("follower", follower);
 		model.addAttribute("following", following);
+		model.addAttribute("recent_view_fur_list", recent_view_fur_list);
 
 		return Pages.VIEW_MYPAGE_MEMBER;
 	}

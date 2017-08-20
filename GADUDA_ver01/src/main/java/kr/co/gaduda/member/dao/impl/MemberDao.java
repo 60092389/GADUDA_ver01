@@ -1,13 +1,17 @@
 package kr.co.gaduda.member.dao.impl;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import kr.co.gaduda.member.dao.IMemberDao;
@@ -16,6 +20,7 @@ import kr.co.gaduda.member.dto.MemberDTO;
 import kr.co.gaduda.member.vo.Follower_VO;
 import kr.co.gaduda.member.vo.Following_VO;
 import kr.co.gaduda.member.vo.MemberFurArrVO;
+import kr.co.gaduda.member.vo.MemberLogVO;
 import kr.co.gaduda.member.vo.MemberVO;
 
 @Repository
@@ -204,5 +209,39 @@ public class MemberDao implements IMemberDao {
 	public List<String> getHashTag(int fur_arr_plan_no) {
 		return memberSqlSession.selectList(namespace + ".fur_arr_hashtag", fur_arr_plan_no);
 	}
+	
+	//멤버로그가져오기
+	@Override
+	public List<MemberLogVO> getMember_log_url(String mem_id) {
+
+		//오늘 날짜
+		Date d=new Date();
+	   
+	    SimpleDateFormat formatType=new SimpleDateFormat("yyyy-MM-dd");
+	    String date=formatType.format(d);
+	    
+	    Calendar cal = new GregorianCalendar();
+		cal.add(Calendar.DATE, -1);
+		
+		//어제날짜
+		Date yester = cal.getTime();
+		SimpleDateFormat formatype = new SimpleDateFormat("yyyy-MM-dd");
+		String yester_date = formatype.format(yester);
+	      
+		
+		//String tagName = "fur_no";
+		//System.out.println("나알짜아 : " + date);
+		
+		Query query = new Query(new Criteria().andOperator(Criteria.where("mem_id").is(mem_id),
+				Criteria.where("mem_acc_loc").regex("fur_no"),
+				new Criteria().orOperator(Criteria.where("mem_log_create_date").is(date),
+						Criteria.where("mem_log_create_date").is(yester_date))
+				));
+
+		query.limit(10);
+		
+		return mongoTemplate.find(query, MemberLogVO.class, "member_log");
+	}
+
 
 }

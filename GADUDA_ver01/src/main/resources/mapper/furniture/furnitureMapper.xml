@@ -198,6 +198,23 @@
 		]]>
 	</select>
 	
+		
+	<!-- 마이페이지에 최근에 본 가구 목록 가져오기 -->
+	<select id="recent_view_fur" resultType="kr.co.gaduda.furniture.vo.FurnitureListViewVO" parameterType="int">
+		<![CDATA[
+			select f.fur_no, fur_name, fur_good_num, fur_repl_num, fur_pic_loc, 
+    			(select count(*) from furniture_scrap where fur_no=#{fur_no}) fur_scrap_num,
+   				fur_brand_name
+			from furniture f, furniture_picture fp, furniture_brand fb
+			where f.fur_no = fp.fur_no
+			and f.fur_brand_no = fb.fur_brand_no
+			and f.fur_no = #{fur_no}
+			and fp.fur_pic_kind = 
+				(select fur_pic_kind from furniture_picture 
+					where fur_no = #{fur_no} and rownum = 1)
+		]]>
+	
+	</select>
 	
 	
 	

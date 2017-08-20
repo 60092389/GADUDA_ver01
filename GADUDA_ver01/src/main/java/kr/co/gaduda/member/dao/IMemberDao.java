@@ -8,6 +8,7 @@ import kr.co.gaduda.member.dto.MemberDTO;
 import kr.co.gaduda.member.vo.Follower_VO;
 import kr.co.gaduda.member.vo.Following_VO;
 import kr.co.gaduda.member.vo.MemberFurArrVO;
+import kr.co.gaduda.member.vo.MemberLogVO;
 import kr.co.gaduda.member.vo.MemberVO;
 
 public interface IMemberDao {
@@ -46,4 +47,7 @@ public interface IMemberDao {
 	public List<String> getFurCon(int fur_arr_plan_no);
 	public List<String> getRoomKind(int fur_arr_plan_no);
 	public List<String> getHashTag(int fur_arr_plan_no);
+	
+	//해당 회원 로그 가져오기
+	public List<MemberLogVO> getMember_log_url(String mem_id);
 } 
