@@ -14,6 +14,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
+import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.member.dao.IMemberDao;
 import kr.co.gaduda.member.dto.FollowDTO;
 import kr.co.gaduda.member.dto.MemberDTO;
@@ -241,6 +242,22 @@ public class MemberDao implements IMemberDao {
 		query.limit(10);
 		
 		return mongoTemplate.find(query, MemberLogVO.class, "member_log");
+	}
+	
+	@Override
+	public List<FurnitureArrReplyListVO> MyFurArrReplyList(String mem_id){
+		
+
+		Query query = new Query(new Criteria().andOperator(Criteria.where("fur_arr_writer").is(mem_id)));
+
+		List<FurnitureArrReplyListVO> list = mongoTemplate.find(query, FurnitureArrReplyListVO.class,
+				"furniture_arrangement_reply");
+		
+		query.limit(20);
+		
+
+		return list;
+
 	}
 
 

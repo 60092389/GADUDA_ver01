@@ -63,11 +63,23 @@
 				<div class="w3-col m7">
 					<div class="w3-container w3-container">
 						
-						<h3>내 가구 배치도 최근 반응?????</h3>
+						<h3>추천가구</h3>
 						<c:forEach var = "fur_list" items="${recent_view_fur_list }">
 							<p>${fur_list.fur_name } </p>
 						</c:forEach>
-						<h3>추천 배치도</h3>
+						<h3>배치도 댓글</h3>
+						<c:forEach var="repllist" items="${repllist }">
+							<c:set value="${repllist.mem_id }" var="repl"/>
+							<c:set value="${member.mem_id }" var="user"/>
+							<c:choose>
+								<c:when test="${repl == user}">
+									
+								</c:when>
+								<c:otherwise>
+									번호: ${repllist.fur_arr_plan_no }　아이디: ${repllist.mem_id }　내용: ${repllist.fur_arr_plan_rep_contents }<br>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
 					</div>
 					
 				</div>

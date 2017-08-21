@@ -3,6 +3,7 @@ package kr.co.gaduda.member.service;
 import java.util.List;
 
 import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
+import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.member.dto.FollowDTO;
 import kr.co.gaduda.member.dto.MemberDTO;
 import kr.co.gaduda.member.vo.Follower_VO;
@@ -46,4 +47,7 @@ public interface IMemberService {
 	
 	//마이페이지에 최근에본 가구 정보 가져가기
 	public List<FurnitureListViewVO> getRecentFindFur(String mem_id);
+	
+	//나의 가구 배치도 내용 가져오기
+	public List<FurnitureArrReplyListVO> MyFurArrReplyList(String mem_id);
 }

@@ -3,6 +3,7 @@ package kr.co.gaduda.member.dao;
 import java.util.List;
 import java.util.Map;
 
+import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.member.dto.FollowDTO;
 import kr.co.gaduda.member.dto.MemberDTO;
 import kr.co.gaduda.member.vo.Follower_VO;
@@ -50,4 +51,7 @@ public interface IMemberDao {
 	
 	//해당 회원 로그 가져오기
 	public List<MemberLogVO> getMember_log_url(String mem_id);
+	
+	//댓글 알림
+	public List<FurnitureArrReplyListVO> MyFurArrReplyList(String mem_id);
 } 

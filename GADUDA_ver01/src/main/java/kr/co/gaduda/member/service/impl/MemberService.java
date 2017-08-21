@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.gaduda.furniture.dao.impl.FurnitureDao;
 import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
+import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.member.dao.impl.MemberDao;
 import kr.co.gaduda.member.dto.FollowDTO;
 import kr.co.gaduda.member.dto.MemberDTO;
@@ -225,6 +226,11 @@ public class MemberService implements IMemberService {
 		}
 		
 		return recent_view_fur_list;
+	}
+	
+	@Override
+	public List<FurnitureArrReplyListVO> MyFurArrReplyList(String mem_id){
+		return memberDAO.MyFurArrReplyList(mem_id);
 	}
 
 }
