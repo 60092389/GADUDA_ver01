@@ -277,23 +277,28 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 	public List<crawling_furnitureVO> getCrawling_fur(Furniture_arrDTO faDTO) {
 		String fur_kind = faDTO.getFur_concept().trim();
 
-		/*
-		 * Criteria cri = new Criteria("craw_fur_kind_name");
-		 * cri.regex(fur_kind);
-		 * 
-		 * Criteria cri2 = new Criteria("craw_fur_size");
-		 * 
-		 * cri.andOperator(cri2.ne(null));
-		 */
+		int max_fur_width=faDTO.getMax_fur_width();
+	      int min_fur_width=faDTO.getMin_fur_width();
+	      int max_fur_depth=faDTO.getMax_fur_depth();
+	      int min_fur_depth=faDTO.getMin_fur_depth();
+	      int max_fur_height=faDTO.getMax_fur_height();
+	      int min_fur_height=faDTO.getMin_fur_height();
+	      
+	      
 
-		// Query query = new Query(cri);
+	      Criteria cri = new Criteria("craw_fur_kind_name");
+	      cri.regex(fur_kind);
+	      
+	      
+	      
+	      cri.andOperator(new Criteria("craw_fur_size.0").gte(min_fur_width).lte(max_fur_width),
+	            new Criteria("craw_fur_size.1").gte(min_fur_depth).lte(max_fur_depth),
+	            new Criteria("craw_fur_size.2").gte(min_fur_height).lte(max_fur_height),
+	            new Criteria("craw_fur_size").ne("")/*,cri2.regex(fur_concept)*/);
 
-		Criteria cri = new Criteria("craw_fur_kind_name");
-		cri.regex(fur_kind);
-
-		cri.andOperator(new Criteria("craw_fur_size").ne(""));
-
-		Query query = new Query(cri);
+	      
+	      Query query = new Query(cri);
+	      query.limit(20);
 
 		/*
 		 * Query query = new Query(new

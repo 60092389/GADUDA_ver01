@@ -105,10 +105,14 @@ public class Furniture_arrController {
 	         arr_furniture = arr_fur.get(i).getFur_name();
 	         
 	         System.out.println("컨트롤러안에"+arr_furniture);
-	         
-	         craw_fur_detail = furniture_arrService.craw_fur_list(fur_no);
-	         System.out.println("디테일 사이즈 "+craw_fur_detail.size());
-	         craw_fur_detail.get(i).setArr_fur_name(arr_furniture);
+	         try {
+				
+	        	 craw_fur_detail = furniture_arrService.craw_fur_list(fur_no);
+	        	 System.out.println("디테일 사이즈 "+craw_fur_detail.size());
+	        	 craw_fur_detail.get(i).setArr_fur_name(arr_furniture);
+			} catch (Exception e) {
+				 craw_fur_detail = furniture_arrService.craw_fur_list(fur_no);
+			}
 
 	         
 	         map_craw_fur_detail.put(i, craw_fur_detail);

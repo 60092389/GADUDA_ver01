@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.gaduda.furniture.dao.IFurnitureDao;
 import kr.co.gaduda.furniture.dto.FurnitureCateDTO;
+import kr.co.gaduda.furniture.dto.FurnitureDTO;
 import kr.co.gaduda.furniture.dto.FurnitureScrapDTO;
 import kr.co.gaduda.furniture.vo.FurnitureDetailVO;
 import kr.co.gaduda.furniture.vo.FurnitureGoodListVO;
@@ -20,6 +21,7 @@ import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
 import kr.co.gaduda.furniture.vo.FurnitureReplyListVO;
 import kr.co.gaduda.furniture.vo.FurnitureScrapListVO;
 import kr.co.gaduda.furniture.vo.FurnitureVO;
+import kr.co.gaduda.furniture_arr.vo.crawling_furnitureVO;
 
 @Repository
 public class FurnitureDao implements IFurnitureDao {
@@ -231,5 +233,35 @@ public class FurnitureDao implements IFurnitureDao {
 
 		return sqlSession.selectOne(namespace+".recent_view_fur", fur_no);
 	}
+
+	@Override
+	public List<crawling_furnitureVO> getCrawling_furniture(FurnitureDTO furnitureDTO) {
+		String fur_kind=furnitureDTO.getFur_concept().trim();
+		int max_fur_width=furnitureDTO.getMax_fur_width();
+	      int min_fur_width=furnitureDTO.getMin_fur_width();
+	      int max_fur_depth=furnitureDTO.getMax_fur_depth();
+	      int min_fur_depth=furnitureDTO.getMin_fur_depth();
+	      int max_fur_height=furnitureDTO.getMax_fur_height();
+	      int min_fur_height=furnitureDTO.getMin_fur_height();
+	      
+	    
+	      Criteria cri = new Criteria("craw_fur_kind_name");
+	      cri.regex(fur_kind);
+	      /*Criteria cri2 = new Criteria("craw_fur_concept_name");*/
+	      
+	      
+	      cri.andOperator(new Criteria("craw_fur_size.0").gte(min_fur_width).lte(max_fur_width),
+	            new Criteria("craw_fur_size.1").gte(min_fur_depth).lte(max_fur_depth),
+	            new Criteria("craw_fur_size.2").gte(min_fur_height).lte(max_fur_height),
+	            new Criteria("craw_fur_size").ne("")/*,cri2.regex(fur_concept)*/);
+
+	      
+	      Query query = new Query(cri);
+	      query.limit(20);
+	
+	      return mongoTemplate.find(query, crawling_furnitureVO.class,"crawling_furniture");
+	}
+	
+	
 	
 }

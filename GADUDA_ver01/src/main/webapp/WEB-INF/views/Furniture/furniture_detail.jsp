@@ -243,7 +243,11 @@ $(document).ready(function() {
 	<c:set var="fur" value="${ furdeVO }" />
 	<input type="hidden" id="fur_no" value="${ furdeVO.fur_no }">
 </div>
+<c:forEach var="craw_fur" items="${ getCrawling }">
+${craw_fur.craw_fur_brand_site }<br>${craw_fur.craw_fur_name }<br>${craw_fur.craw_fur_price }<br>${craw_fur.craw_fur_brand }<br>${craw_fur.craw_fur_kind_name }
 
+
+</c:forEach>
 <!-- 메인 화면 -->
 <div class="w3-main w3-container mainSection" style="width: 1200px">
 	

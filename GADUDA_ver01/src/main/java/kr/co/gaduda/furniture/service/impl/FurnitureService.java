@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.gaduda.furniture.dao.IFurnitureDao;
 import kr.co.gaduda.furniture.dto.FurnitureCateDTO;
+import kr.co.gaduda.furniture.dto.FurnitureDTO;
 import kr.co.gaduda.furniture.dto.FurnitureScrapDTO;
 import kr.co.gaduda.furniture.service.IFurnitureService;
 import kr.co.gaduda.furniture.vo.FurnitureDetailVO;
@@ -20,6 +21,7 @@ import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
 import kr.co.gaduda.furniture.vo.FurnitureReplyListVO;
 import kr.co.gaduda.furniture.vo.FurnitureScrapListVO;
 import kr.co.gaduda.furniture.vo.FurnitureVO;
+import kr.co.gaduda.furniture_arr.vo.crawling_furnitureVO;
 
 @Service
 public class FurnitureService implements IFurnitureService {
@@ -31,15 +33,15 @@ public class FurnitureService implements IFurnitureService {
 	public List<FurnitureVO> furList() {
 
 		List<FurnitureVO> fur_list = furnitureDao.getFurniture();
-		for (int i = 0; i < fur_list.size() ; i++) {
-			
+		for (int i = 0; i < fur_list.size(); i++) {
+
 			int fur_no = fur_list.get(i).getFur_no();
 
 			List<String> fur_pic_loc = furnitureDao.fur_pic_loc_Get(fur_no);
 			int fur_scrap = furnitureDao.getFurScrapCount(fur_no);
 			fur_list.get(i).setFur_scrap_num(fur_scrap);
 			String fur_pic_loc_main = fur_pic_loc.get(0).toString();
-			
+
 			fur_list.get(i).setFur_pic_loc(fur_pic_loc_main);
 		}
 
@@ -48,54 +50,54 @@ public class FurnitureService implements IFurnitureService {
 
 	@Override
 	public FurnitureDetailVO furDetailView(int fur_no) {
-		   
-	      FurnitureDetailVO furdeVO = new FurnitureDetailVO();
-	      FurnitureItemVO furitemVO = new FurnitureItemVO();
-	      
-	      furdeVO = furnitureDao.getDetailFurniture(fur_no);
-	      furitemVO = furnitureDao.getFurItem(fur_no);
-	      
-	      String fur_item_no = furitemVO.getFur_item_no();
-	      int fur_width = furitemVO.getFur_width();
-	      int fur_height = furitemVO.getFur_height();
-	      int fur_depth = furitemVO.getFur_depth();
-	      
-	      System.out.println(fur_width+"|"+fur_height+"|"+fur_depth);
-	      
-	      String fur_con = "";
-	      String fur_kind = "";
-	      List<String> fur_pic_loc_list = furnitureDao.fur_pic_loc_Get(fur_no);
-	      List<String> fur_con_list = furnitureDao.fur_pic_con_Get(fur_no);
-	      
-	      for (int i = 0; i < fur_con_list.size(); i++) {
-	         fur_con = fur_con_list.get(i) + "  " + fur_con;
-	      }
-	      
-	      List<String> fur_kind_list = furnitureDao.fur_pic_kind_Get(fur_no);
-	      for (int i = 0; i < fur_kind_list.size(); i++) {
-	         fur_kind = fur_kind_list.get(i) + "  " + fur_kind;
-	      }
-	      int fur_scrap = furnitureDao.getFurScrapCount(fur_no);
-	      
-	      furdeVO.setFur_item_no(fur_item_no);
-	      furdeVO.setFur_width(fur_width);
-	      furdeVO.setFur_height(fur_height);
-	      furdeVO.setFur_depth(fur_depth);
-	      
-	      furdeVO.setFur_pic_loc(fur_pic_loc_list);
-	      furdeVO.setFur_con(fur_con);
-	      furdeVO.setFur_kind(fur_kind);
-	      furdeVO.setFur_scrap_num(fur_scrap);
 
-	      return furdeVO;
-	   }
+		FurnitureDetailVO furdeVO = new FurnitureDetailVO();
+		FurnitureItemVO furitemVO = new FurnitureItemVO();
+
+		furdeVO = furnitureDao.getDetailFurniture(fur_no);
+		furitemVO = furnitureDao.getFurItem(fur_no);
+
+		String fur_item_no = furitemVO.getFur_item_no();
+		int fur_width = furitemVO.getFur_width();
+		int fur_height = furitemVO.getFur_height();
+		int fur_depth = furitemVO.getFur_depth();
+
+		System.out.println(fur_width + "|" + fur_height + "|" + fur_depth);
+
+		String fur_con = "";
+		String fur_kind = "";
+		List<String> fur_pic_loc_list = furnitureDao.fur_pic_loc_Get(fur_no);
+		List<String> fur_con_list = furnitureDao.fur_pic_con_Get(fur_no);
+
+		for (int i = 0; i < fur_con_list.size(); i++) {
+			fur_con = fur_con_list.get(i) + "  " + fur_con;
+		}
+
+		List<String> fur_kind_list = furnitureDao.fur_pic_kind_Get(fur_no);
+		for (int i = 0; i < fur_kind_list.size(); i++) {
+			fur_kind = fur_kind_list.get(i) + "  " + fur_kind;
+		}
+		int fur_scrap = furnitureDao.getFurScrapCount(fur_no);
+
+		furdeVO.setFur_item_no(fur_item_no);
+		furdeVO.setFur_width(fur_width);
+		furdeVO.setFur_height(fur_height);
+		furdeVO.setFur_depth(fur_depth);
+
+		furdeVO.setFur_pic_loc(fur_pic_loc_list);
+		furdeVO.setFur_con(fur_con);
+		furdeVO.setFur_kind(fur_kind);
+		furdeVO.setFur_scrap_num(fur_scrap);
+
+		return furdeVO;
+	}
 
 	@Override
 	public List<String> furDetailViewPic(int fur_no) {
 		List<String> fur_pic_loc_list = furnitureDao.fur_pic_loc_Get(fur_no);
 		return fur_pic_loc_list;
 	}
-	
+
 	@Override
 	public List<FurnitureReplyListVO> FurnitureReplList(int fur_no) {
 		List<FurnitureReplyListVO> fur_repl_list = furnitureDao.FurnitureReplList(fur_no);
@@ -267,26 +269,43 @@ public class FurnitureService implements IFurnitureService {
 	public List<FurnitureScrapListVO> furScrapList(int fur_no) {
 		return furnitureDao.furScrapList(fur_no);
 	}
-	//가구 방 종류 가져오기
+
+	// 가구 방 종류 가져오기
 	@Override
-	public List<String> getRoomKind(){
+	public List<String> getRoomKind() {
 		return furnitureDao.getRoomKind();
 	}
-	
-	//가구 컨셉 종류 가져오기
-	@Override 
-	public List<String> getConceptKind(){
+
+	// 가구 컨셉 종류 가져오기
+	@Override
+	public List<String> getConceptKind() {
 		return furnitureDao.getConceptKind();
 	}
-	
-	//가구 종류 가져오기
-	public List<String> getFurDefKind(){
+
+	// 가구 종류 가져오기
+	public List<String> getFurDefKind() {
 		return furnitureDao.getFurDefKind();
 	}
-	
-	//방 종류에 따라 가구 가져오기
-	public List<String> getFurNameForRoom(String room_kind_def_name){
+
+	// 방 종류에 따라 가구 가져오기
+	public List<String> getFurNameForRoom(String room_kind_def_name) {
 		return furnitureDao.getFurNameForRoom(room_kind_def_name);
 	}
 
+	@Override
+	public List<crawling_furnitureVO> craw_furniture_list(int fur_no) {
+		FurnitureDTO furDTO = new FurnitureDTO();
+		furDTO.setFur_concept(furDetailView(fur_no).getFur_kind());
+
+		furDTO.setMax_fur_width(furDetailView(fur_no).getFur_width() + 150);
+		furDTO.setMin_fur_width(furDetailView(fur_no).getFur_width() - 150);
+		furDTO.setMax_fur_depth(furDetailView(fur_no).getFur_depth() + 150);
+		furDTO.setMin_fur_depth(furDetailView(fur_no).getFur_depth() - 150);
+		furDTO.setMax_fur_height(furDetailView(fur_no).getFur_height() + 150);
+		furDTO.setMin_fur_height(furDetailView(fur_no).getFur_height() - 150);
+		
+		List<crawling_furnitureVO> craw_furniture = furnitureDao.getCrawling_furniture(furDTO);
+		
+		return craw_furniture;
+	}
 }

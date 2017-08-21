@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import kr.co.gaduda.furniture.dto.FurnitureScrapDTO;
 import kr.co.gaduda.furniture.vo.FurnitureDetailVO;
 import kr.co.gaduda.furniture.vo.FurnitureGoodListVO;
-import kr.co.gaduda.furniture.vo.FurnitureItemVO;
 import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
 import kr.co.gaduda.furniture.vo.FurnitureReplyListVO;
 import kr.co.gaduda.furniture.vo.FurnitureScrapListVO;
 import kr.co.gaduda.furniture.vo.FurnitureVO;
+import kr.co.gaduda.furniture_arr.vo.crawling_furnitureVO;
 
 public interface IFurnitureService {
 
@@ -64,5 +64,7 @@ public interface IFurnitureService {
 	
 	//방 종류에 따라 가구 가져오기
 	public List<String> getFurNameForRoom(String room_kind_def_name);
+	
+	public List<crawling_furnitureVO> craw_furniture_list(int fur_no);
 	
 }

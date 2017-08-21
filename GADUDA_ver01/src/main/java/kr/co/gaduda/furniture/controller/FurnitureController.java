@@ -27,7 +27,7 @@ import kr.co.gaduda.furniture.vo.FurnitureGoodListVO;
 import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
 import kr.co.gaduda.furniture.vo.FurnitureReplyListVO;
 import kr.co.gaduda.furniture.vo.FurnitureScrapListVO;
-import kr.co.gaduda.furniture.vo.FurnitureVO;
+import kr.co.gaduda.furniture_arr.vo.crawling_furnitureVO;
 
 @Controller
 @RequestMapping(value = "/furniture")
@@ -41,7 +41,18 @@ public class FurnitureController {
 		FurnitureDetailVO furdeVO = furnitureService.furDetailView(fur_no);
 		List<String> furdepic_list = furnitureService.furDetailViewPic(fur_no);
 		List<FurnitureReplyListVO> fur_repl_list = furnitureService.FurnitureReplList(fur_no);
+		
+		List<crawling_furnitureVO> getCrawling = furnitureService.craw_furniture_list(fur_no);
+	      
+	      for(int i=0;i<getCrawling.size();i++){
+	         System.out.println(getCrawling.get(i).getCraw_fur_kind_name());
+	         System.out.println(getCrawling.get(i).getCraw_fur_size());
+	         System.out.println(getCrawling.get(i).getCraw_fur_price());
+	      
+	      }
 
+	      model.addAttribute("getCrawling",getCrawling);
+		
 		model.addAttribute("furdeVO", furdeVO);
 		model.addAttribute("furdepic_list", furdepic_list);
 		model.addAttribute("fur_repl_list", fur_repl_list);

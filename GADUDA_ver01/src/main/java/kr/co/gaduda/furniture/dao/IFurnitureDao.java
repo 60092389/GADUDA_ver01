@@ -4,14 +4,16 @@ import java.util.List;
 import java.util.Map;
 
 import kr.co.gaduda.furniture.dto.FurnitureCateDTO;
+import kr.co.gaduda.furniture.dto.FurnitureDTO;
 import kr.co.gaduda.furniture.dto.FurnitureScrapDTO;
 import kr.co.gaduda.furniture.vo.FurnitureDetailVO;
+import kr.co.gaduda.furniture.vo.FurnitureGoodListVO;
+import kr.co.gaduda.furniture.vo.FurnitureItemVO;
 import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
 import kr.co.gaduda.furniture.vo.FurnitureReplyListVO;
 import kr.co.gaduda.furniture.vo.FurnitureScrapListVO;
 import kr.co.gaduda.furniture.vo.FurnitureVO;
-import kr.co.gaduda.furniture.vo.FurnitureGoodListVO;
-import kr.co.gaduda.furniture.vo.FurnitureItemVO;
+import kr.co.gaduda.furniture_arr.vo.crawling_furnitureVO;
 
 public interface IFurnitureDao {
 	
@@ -97,5 +99,7 @@ public interface IFurnitureDao {
 	
 	//최근에 본 가구 목록 가져오기
 	public FurnitureListViewVO getFindRecentFur(int fur_no);
+	
+	public List<crawling_furnitureVO> getCrawling_furniture(FurnitureDTO furnitureDTO);
 
 }
