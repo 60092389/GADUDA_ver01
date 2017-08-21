@@ -260,7 +260,12 @@
 		]]>
 	</select>
 	
+	<!-- 해당 가구배치도의 작성자 가져오기 -->
+	<select id="get_fur_arr_writer" parameterType="int" resultType="String">
+		<![CDATA[
+			select mem_id from furniture_arrangement_plan where fur_arr_plan_no = #{fur_arr_plan_no}
+		]]>
 	
-
+	</select>
 
 </mapper>

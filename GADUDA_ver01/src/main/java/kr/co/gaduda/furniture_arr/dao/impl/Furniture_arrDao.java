@@ -338,5 +338,11 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 	public Furniture_arrVO getFurArrHashTag(int fur_arr_plan_no) {
 		return furarrsqlSession.selectOne(namespace + ".get_arr_info_hash", fur_arr_plan_no);
 	}
+	
+	@Override
+	public String getFurArrWriter(int fur_arr_plan_no) {
+		
+		return furarrsqlSession.selectOne(namespace + ".get_fur_arr_writer", fur_arr_plan_no);
+	}
 
 }

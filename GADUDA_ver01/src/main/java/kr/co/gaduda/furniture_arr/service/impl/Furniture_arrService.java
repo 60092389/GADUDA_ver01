@@ -364,6 +364,10 @@ public class Furniture_arrService implements IFurniture_arrService {
 		int result = 0;
 
 		int fur_arr_plan_no = Integer.parseInt((String) furArrReplyInfo.get("fur_arr_plan_no"));
+		
+		String fur_arr_writer = furniture_arrDao.getFurArrWriter(fur_arr_plan_no);
+		
+		furArrReplyInfo.put("fur_arr_writer", fur_arr_writer);
 
 		System.out.println("댓글 입력의 fur_arr_plan_no : " + fur_arr_plan_no);
 

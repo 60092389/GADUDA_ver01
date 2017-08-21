@@ -126,4 +126,7 @@ public interface IFurniture_arrDao {
 	public List<Integer> searchHashTag(String hashtag_name);
 	public Furniture_arrVO getFurArrHashTag(int fur_arr_plan_no);
 	
+	//해당 가구배치도의 작성자 가져오기
+	public String getFurArrWriter(int fur_arr_plan_no);
+	
 }
