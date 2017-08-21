@@ -139,7 +139,6 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 		List<FurnitureArrReplyListVO> list = mongoTemplate.find(query, FurnitureArrReplyListVO.class,
 				"furniture_arrangement_reply");
 
-		System.out.println("가구배치도댓글들");
 
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i).getFur_arr_plan_rep_contents());
@@ -166,7 +165,6 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 		Query query = new Query(new Criteria().andOperator(Criteria.where("_id").is(furArrReplyInfo.get("_id"))));
 
 		mongoTemplate.remove(query, "furniture_arrangement_reply");
-		System.out.println("댓글 삭제 성공");
 	}
 
 	@Override
@@ -198,7 +196,6 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 				Criteria.where("mem_id").is(furnitureArrGoodInfo.get("mem_id"))));
 		result = (int) mongoTemplate.count(query, "furniture_arrangement_good");
 
-		System.out.println("furnitureGoodChk 갯수확인 : " + result);
 
 		return result;
 	}
@@ -209,7 +206,6 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 				Criteria.where("fur_arr_plan_no").is(furnitureArrGoodInfo.get("fur_arr_plan_no")),
 				Criteria.where("mem_id").is(furnitureArrGoodInfo.get("mem_id"))));
 		mongoTemplate.remove(query, "furniture_arrangement_good");
-		System.out.println("좋아요 삭제 성공!");
 	}
 
 	@Override
@@ -277,7 +273,7 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 	public List<crawling_furnitureVO> getCrawling_fur(Furniture_arrDTO faDTO) {
 		String fur_kind = faDTO.getFur_concept().trim();
 
-		int max_fur_width=faDTO.getMax_fur_width();
+		  int max_fur_width=faDTO.getMax_fur_width();
 	      int min_fur_width=faDTO.getMin_fur_width();
 	      int max_fur_depth=faDTO.getMax_fur_depth();
 	      int min_fur_depth=faDTO.getMin_fur_depth();

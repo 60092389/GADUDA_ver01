@@ -208,6 +208,11 @@
   		where fur_arr_plan_no = #{fur_arr_plan_no}
 	</select>	
 	
+	<!-- 2017.08.21 내 가구 배치도 넘버 찾기 -->
+	<select id = "get_fur_arr_no" parameterType="String" resultType="int">
+		select fur_arr_plan_no from FURNITURE_ARRANGEMENT_PLAN where mem_id = ${mem_id}
+	</select>
+	
 	
 	
 </mapper>

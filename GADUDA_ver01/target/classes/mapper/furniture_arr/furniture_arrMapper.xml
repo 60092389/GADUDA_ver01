@@ -13,9 +13,9 @@
 
 	<select id="get_arr_info" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrVO">
 		<![CDATA[
-			select FAI.FUR_ARR_PLAN_NO, FUR_ARR_PLAN_IMG_LOC, FUR_ARR_NAME, MEM_ID, FUR_ARR_PLAN_GOOD_NUM, FUR_ARR_PLAN_REPL_NUM, FUR_ARR_CREATE_DATE
+			select * from (select FAI.FUR_ARR_PLAN_NO, FUR_ARR_PLAN_IMG_LOC, FUR_ARR_NAME, MEM_ID, FUR_ARR_PLAN_GOOD_NUM, FUR_ARR_PLAN_REPL_NUM, FUR_ARR_CREATE_DATE
 			from FURNITURE_ARRANGEMENT_IMAGE FAI, FURNITURE_ARRANGEMENT_PLAN FAP
-			where FAI.FUR_ARR_PLAN_NO = FAP.FUR_ARR_PLAN_NO order by FUR_ARR_CREATE_DATE DESC
+			where FAI.FUR_ARR_PLAN_NO = FAP.FUR_ARR_PLAN_NO order by FUR_ARR_CREATE_DATE DESC ) where rownum < 15 order by FUR_ARR_PLAN_GOOD_NUM DESC
 		]]>
 	</select>
 
@@ -260,7 +260,12 @@
 		]]>
 	</select>
 	
+	<!-- 해당 가구배치도의 작성자 가져오기 -->
+	<select id="get_fur_arr_writer" parameterType="int" resultType="String">
+		<![CDATA[
+			select mem_id from furniture_arrangement_plan where fur_arr_plan_no = #{fur_arr_plan_no}
+		]]>
 	
-
+	</select>
 
 </mapper>

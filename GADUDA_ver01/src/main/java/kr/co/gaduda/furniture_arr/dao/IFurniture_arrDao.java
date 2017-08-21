@@ -25,20 +25,25 @@ public interface IFurniture_arrDao {
 	public List<String> getFurCon(int fur_arr_plan_no);
 
 	public String getRoomKind(int fur_arr_plan_no);
-	
-//-----------------------------------------------------------------------------//
-	public List<Furniture_arrVO> getFurArr_roomkind(String room_kind_def_name);
-	public int countFurArr_roomkind(String room_kind_def_name);
-	public String getArrFurCon(String room_kind_def_name);
-	public int getCountScrap(int fur_arr_plan_no);
-	public List<Furniture_arrVO> getFurArr_concept(String concept_name);
-	//2017-08-07 추가(수정)
-	public Furniture_arrMemberVO getFurArrUser(String mem_id);
-//	-----------------------------------------------------------------------------//	
-	
-	/////////////////////////////////////////////////////////
-	// 가구배치도 상세페이지
 
+	// ---------------------------------가구 배치도
+	// 관련----------------------------------//
+	public List<Furniture_arrVO> getFurArr_roomkind(String room_kind_def_name);
+
+	public int countFurArr_roomkind(String room_kind_def_name);
+
+	public String getArrFurCon(String room_kind_def_name);
+
+	public int getCountScrap(int fur_arr_plan_no);
+
+	public List<Furniture_arrVO> getFurArr_concept(String concept_name);
+
+	// 2017-08-07 추가 사용자 가구배치도 가져오기(수정)
+	public Furniture_arrMemberVO getFurArrUser(String mem_id);
+	// -----------------------------------------------------------------------------//
+
+	// ---------------------------------가구배치도
+	// 상세페이지----------------------------------//
 	// 가구배치도 기본정보 가져오기
 	public Furniture_arrDetailVO getFurArrDetailBasic(int fur_arr_plan_no);
 
@@ -75,8 +80,6 @@ public interface IFurniture_arrDao {
 	// 가구배치도 댓글 횟수 다운
 	public int furnitureArrReplyNumDown(int fur_arr_plan_no);
 
-	/////////////////////////////////////////////////////////
-
 	// 가구배치도 좋아요 업
 	public void insertFurnitureArrGood(Map<String, Object> furnitureArrGoodInfo);
 
@@ -100,33 +103,32 @@ public interface IFurniture_arrDao {
 
 	// 가구배치도 스크랩 하기
 	public int insertFurArrScrap(FurnitureArrScrapDTO furnitureArrScrapDTO);
-	
+
 	// 가구배치도 스크랩 리스트 --07.26 추가
 	public List<Furniture_arrScrapListVO> furArrScrapList(int fur_arr_plan_no);
-	
-	//가구배치도 상세페이지 끝
-	/////////////////////////////////////////////////////////////////////////
-	
-	//방 종류 가져오기
+
+	// 방 종류 가져오기
 	public List<String> getRoomKind();
-	
-	//컨셉 종류 가져오기
+
+	// 컨셉 종류 가져오기
 	public List<String> getConceptKind();
-	
-	//가구배치도 작성자를 내가 팔로우 했는지/아닌지
+
+	// 가구배치도 작성자를 내가 팔로우 했는지/아닌지
 	public int getFollowing(FollowDTO followdto);
-	
-	//작성자가 나를 팔로우 했는지 확인하기
+
+	// 작성자가 나를 팔로우 했는지 확인하기
 	public int memFolMe(FollowDTO followdto);
-	
-	//비슷한 가구 찾기
+
+	// 비슷한 가구 찾기
 	public List<crawling_furnitureVO> getCrawling_fur(Furniture_arrDTO faDTO);
-	
-	//2017.08.11 HashTagSearch Sujung
+
+	// 해당 가구배치도의 작성자 가져오기
+	public String getFurArrWriter(int fur_arr_plan_no);
+
+	// -----------------------------------------------------------------------------//
+
+	// 2017.08.11 HashTag검색 Sujung
 	public List<Integer> searchHashTag(String hashtag_name);
 	public Furniture_arrVO getFurArrHashTag(int fur_arr_plan_no);
-	
-	//해당 가구배치도의 작성자 가져오기
-	public String getFurArrWriter(int fur_arr_plan_no);
-	
+
 }
