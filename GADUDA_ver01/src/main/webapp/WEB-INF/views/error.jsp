@@ -18,7 +18,7 @@
 <div>
 	<!-- header include -->
 	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
-	<div class="w3-margin-left" style="margin-top: 200px;" id="home">
+	<div class="w3-margin-left" style="margin-top: 400px;" id="home">
 		<div class="w3-center">
 			<h2>잘못된 접근입니다.</h2>
    		 	<h1 class="w3-text-white"><span class="w3-padding w3-black w3-opacity-min" ><a onclick="history.back();">이전 페이지로 돌아가기</a></span></h1>
