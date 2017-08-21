@@ -29,49 +29,56 @@
 	
 	<!-- Page Container -->
 	<div class="w3-main mainSection w3-container" >
-		<div class="w3-container">
-		<a href="${URLs.URI_MYPAGE_MYFURARR_FULL}" class="w3-button w3-blue">내 배치도 보러가기</a>
-			<br>
-			<c:forEach var="arrList" items="${arrList }">
-			<div class="w3-padding-32 w3-main w3-content w3-margin-top w3-border-top">
-				<table class="w3-container w3-table w3-center">
-					<tr>
-	   					<th>${ arrList.mem_id }의 배치도<h1>${ arrList.fur_arr_plan_no }</h1></th>
-						<th colspan="3">
-							<a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${ arrList.fur_arr_plan_no }"><h1>${ arrList.fur_arr_name }</h1></a>
-						</th>
-						<th>${ arrList.fur_arr_create_date }</th>
-	  				</tr>
-					<tr>
-						<td colspan="3" rowspan="4">
-							<img src="${ arrList.fur_arr_plan_img_loc }" alt="${ arrList.fur_arr_name }" style="width:200px">
-						</td>
-						<td class="w3-center">종류</td>
-						<td>${ arrList.fur_arr_plan_room_kind }</td>
-					</tr>
-					<tr>
-						<td class="w3-center">컨셉</td>
-						<td>${ arrList.fur_arr_plan_concept }</td>
-					</tr>
-					<tr>
-						<td class="w3-center">HashTag</td>
-						<td>${ arrList.fur_arr_plan_hash_tag }</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="w3-center">
-								<i class="material-icons" >favorite</i>${ arrList.fur_arr_plan_good_num }
-								<i class="material-icons">attachment</i>${ arrList.fur_arr_plan_scrap_num }
-								<i class="material-icons">cloud</i>${ arrList.fur_arr_plan_repl_num }
-							</div>
-						</td>
-						<td colspan="2">
-							${ arrList.fur_arr_contents }
-						</td>
-					</tr>
-				</table>	
-	    	</div>
-		</c:forEach>
+		<div class="w3-col m2 ">
+			<div class="w3-padding-32 w3-main w3-content w3-margin-top">
+				<a href="${URLs.URI_MYPAGE_MYFURARR_FULL}" class="w3-button w3-blue">내 배치도 보러가기</a>
+			</div>
+		</div>
+		<div class="w3-col m10">
+			<div class=" ">
+			<c:set var="fol_mem_id" value="${fol_mem_id }"/>
+			<h1>${fol_mem_id }의 배치도</h1>
+			<div class="w3-border-top">
+				<c:forEach var="arrList" items="${arrList }">
+					<table class="w3-container w3-table w3-center">
+						<tr>
+			   				<th></th>
+							<th colspan="3">
+								<a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${ arrList.fur_arr_plan_no }"><h1>${ arrList.fur_arr_name }</h1></a>
+							</th>
+							<th>${ arrList.fur_arr_create_date }</th>
+			  			</tr>
+						<tr>
+							<td colspan="3" rowspan="4">
+								<img src="${ arrList.fur_arr_plan_img_loc }" alt="${ arrList.fur_arr_name }" style="width:200px">
+							</td>
+							<td class="w3-center">종류</td>
+							<td>${ arrList.fur_arr_plan_room_kind }</td>
+						</tr>
+						<tr>
+							<td class="w3-center">컨셉</td>
+							<td>${ arrList.fur_arr_plan_concept }</td>
+						</tr>
+						<tr>
+							<td class="w3-center">HashTag</td>
+							<td>${ arrList.fur_arr_plan_hash_tag }</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="w3-center">
+									<i class="material-icons" >favorite</i>${ arrList.fur_arr_plan_good_num }
+									<i class="material-icons">attachment</i>${ arrList.fur_arr_plan_scrap_num }
+									<i class="material-icons">cloud</i>${ arrList.fur_arr_plan_repl_num }
+								</div>
+							</td>
+							<td colspan="2">
+								${ arrList.fur_arr_contents }
+							</td>
+						</tr>
+					</table>	
+				</c:forEach>
+			</div>
+			</div>
 		</div>
 	</div>
 </div>

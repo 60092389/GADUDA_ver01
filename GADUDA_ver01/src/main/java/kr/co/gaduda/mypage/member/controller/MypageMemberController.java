@@ -322,8 +322,6 @@ public class MypageMemberController implements ServletContextAware {
 	@RequestMapping(value = URLs.URI_FOLLOW_FURARR, method = RequestMethod.GET)
 	public String callFolFurArr(@RequestParam(value = "fol_mem_id") String fol_mem_id, Model model) {
 
-		System.out.println("emfdjdh");
-		System.out.println(fol_mem_id);
 		List<MemberFurArrVO> fol_arrList = memberService.callMyFurArr(fol_mem_id);
 
 		for (int i = 0; i < fol_arrList.size(); i++) {
@@ -340,6 +338,7 @@ public class MypageMemberController implements ServletContextAware {
 			fol_arrList.get(i).setFur_arr_plan_hash_tag(furArrHashTag);
 
 		}
+		model.addAttribute("fol_mem_id", fol_mem_id);
 		model.addAttribute("arrList", fol_arrList);
 
 		return Pages.VIEW_FOLFURARR;
