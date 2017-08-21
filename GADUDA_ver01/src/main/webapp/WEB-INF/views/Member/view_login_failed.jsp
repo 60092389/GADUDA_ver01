@@ -12,10 +12,10 @@
 	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
 	
 	<!-- Main사진 -->
-	<div class="w3-display-container w3-content w3-wide w3-center" style="max-width:90%;" id="home">
-  		<img class="w3-image" src="/resources/Images/image.jpg" alt="가구 배치도" width="90%">
+	<div class="w3-display-container w3-content w3-wide w3-center" style="max-width:90%; margin-top: 300px" id="home">
   		<div class="w3-display-middle w3-margin-top w3-center">
-   		 	<h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min" ><a onclick="document.getElementById('loginUser').style.display='block'">로그인하고 이용하기</a></span></h1>
+  			<h2>잘못된 아이디/비밀번호 입니다.</h2>
+   		 	<h1 class="w3-text-white"><span class="w3-padding w3-black w3-opacity-min" ><a onclick="document.getElementById('loginUser').style.display='block'">로그인하고 이용하기</a></span></h1>
   		</div>
   	</div>	
 </body>

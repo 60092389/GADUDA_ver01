@@ -20,9 +20,8 @@
 	<jsp:include page="/WEB-INF/views/header.jsp" flush="false" />
 	<div class="w3-margin-left" style="margin-top: 200px;" id="home">
 		<div class="w3-center">
-			<a onclick="document.getElementById('loginUser').style.display='block'">
-				<img class="w3-image" src="/resources/Images/basic/error.jpg" style="width: 500px;">
-			</a>
+			<h2>잘못된 접근입니다.</h2>
+   		 	<h1 class="w3-text-white"><span class="w3-padding w3-black w3-opacity-min" ><a onclick="history.back();">이전 페이지로 돌아가기</a></span></h1>
 		</div>
   	</div>
 </div>
