@@ -175,25 +175,7 @@ public class FurnitureService implements IFurnitureService {
 
 		List<FurnitureListViewVO> furBasicList = furnitureDao.getFurBasicList(furCateDTO);
 
-		List<FurnitureListViewVO> furResultList = new ArrayList<FurnitureListViewVO>();
-
-		for (int i = 0; i < furBasicList.size(); i++) {
-			FurnitureListViewVO vo = new FurnitureListViewVO();
-
-			vo.setFur_brand_name(furBasicList.get(i).getFur_brand_name());
-			vo.setFur_good_num(furBasicList.get(i).getFur_good_num());
-			vo.setFur_name(furBasicList.get(i).getFur_name());
-			vo.setFur_no(furBasicList.get(i).getFur_no());
-			vo.setFur_pic_loc(furnitureDao.getFurPicLoc(furBasicList.get(i).getFur_no()));
-			vo.setFur_price(furBasicList.get(i).getFur_price());
-			vo.setFur_repl_num(furBasicList.get(i).getFur_repl_num());
-			vo.setFur_scrap_num(furnitureDao.getFurScrapCount(furBasicList.get(i).getFur_no()));
-
-			furResultList.add(vo);
-
-		}
-
-		return furResultList;
+		return furBasicList;
 	}
 
 	@Override
