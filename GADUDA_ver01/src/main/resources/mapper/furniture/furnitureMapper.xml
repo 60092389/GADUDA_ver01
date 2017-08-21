@@ -212,6 +212,7 @@
 			and fp.fur_pic_kind = 
 				(select fur_pic_kind from furniture_picture 
 					where fur_no = #{fur_no} and rownum = 1)
+			and rownum = 1
 		]]>
 	
 	</select>
