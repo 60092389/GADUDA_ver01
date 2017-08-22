@@ -271,58 +271,33 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 
 	@Override
 	public List<crawling_furnitureVO> getCrawling_fur(Furniture_arrDTO faDTO) {
-		String fur_kind = faDTO.getFur_concept().trim();
+		// String fur_kind = faDTO.getFur_concept().trim();
 
-		  int max_fur_width=faDTO.getMax_fur_width();
-	      int min_fur_width=faDTO.getMin_fur_width();
-	      int max_fur_depth=faDTO.getMax_fur_depth();
-	      int min_fur_depth=faDTO.getMin_fur_depth();
-	      int max_fur_height=faDTO.getMax_fur_height();
-	      int min_fur_height=faDTO.getMin_fur_height();
-	      
-	      
+		String fur_kind = faDTO.getFur_kind().trim();
+		String fur_concept = faDTO.getFur_concept().trim();
+		
+		System.out.println("furkind : " + fur_kind);
+		System.out.println("fur_concept : " + fur_concept);
+		
+		int max_fur_width = faDTO.getMax_fur_width();
+		int min_fur_width = faDTO.getMin_fur_width();
+		int max_fur_depth = faDTO.getMax_fur_depth();
+		int min_fur_depth = faDTO.getMin_fur_depth();
+		int max_fur_height = faDTO.getMax_fur_height();
+		int min_fur_height = faDTO.getMin_fur_height();
 
-	      Criteria cri = new Criteria("craw_fur_kind_name");
-	      cri.regex(fur_kind);
-	      
-	      
-	      
-	      cri.andOperator(new Criteria("craw_fur_size.0").gte(min_fur_width).lte(max_fur_width),
-	            new Criteria("craw_fur_size.1").gte(min_fur_depth).lte(max_fur_depth),
-	            new Criteria("craw_fur_size.2").gte(min_fur_height).lte(max_fur_height),
-	            new Criteria("craw_fur_size").ne("")/*,cri2.regex(fur_concept)*/);
+		Criteria cri = new Criteria("craw_fur_kind_name");
+		cri.regex(fur_kind);
 
-	      
-	      Query query = new Query(cri);
-	      query.limit(20);
-
-		/*
-		 * Query query = new Query(new
-		 * Criteria().andOperator(Criteria.where("craw_fur_kind_name").regex(
-		 * fur_kind)) .andOperator(Criteria.where("craw_fur_size").ne(null)) );
-		 */
-
-		// Query(Criteria.where("craw_fur_kind_name").regex("cri"));
-
-		/*
-		 * Query query = new Query(new Criteria()
-		 * .andOperator(Criteria.where("craw_fur_kind_name").regex(faDTO.
-		 * getFur_concept())));
-		 */
-
-		/*
-		 * System.out.println("서비스안에서 가구 컨셉" + faDTO.getFur_concept()); // Query
-		 * query = new Query(new Criteria() //
-		 * .andOperator(Criteria.where("craw_fur_kind_name").is("/"+faDTO.
-		 * getFur_concept()+"/"))); String fur_kind_name =
-		 * faDTO.getFur_concept();
-		 * 
-		 * Query query = new Query(new
-		 * Criteria().andOperator(Criteria.where("craw_fur_kind_name").is(
-		 * fur_kind_name))); query.limit(10);
-		 */
-		// query.addCriteria(Criteria.where("craw_fur_kind_name").regex(faDTO.getFur_concept()));
-
+		cri.andOperator(new Criteria("craw_fur_size.0").gte(min_fur_width).lte(max_fur_width),
+				new Criteria("craw_fur_size.1").gte(min_fur_depth).lte(max_fur_depth),
+				new Criteria("craw_fur_size.2").gte(min_fur_height).lte(max_fur_height),
+				new Criteria("craw_fur_size").ne(""),
+				new Criteria("craw_fur_concpet_name").regex(fur_concept));
+		
+		Query query = new Query(cri);
+		query.limit(10);
+		
 		return mongoTemplate.find(query, crawling_furnitureVO.class, "crawling_furniture");
 	}
 
