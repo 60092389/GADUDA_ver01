@@ -115,11 +115,12 @@ public class RoomController {
 
 	@RequestMapping(value = URLs.URI_ROOMMAKE, method = RequestMethod.POST, produces = { "application/json" })
 	public @ResponseBody Map<String, Object> roomMake(RoomDTO roomDTO, HttpServletRequest request) throws Exception {
+		System.out.println("roommake 컨트롤러");
 		FileOutputStream stream = null;
 		Map<String, Object> data = new HashMap<String, Object>();
-
+		
 		try {
-
+			System.out.println("try문 들어옴");
 			if (roomDTO.getRoom_Img() == null || roomDTO.getRoom_Img() == "") {
 				throw new Exception();
 			}
@@ -132,7 +133,7 @@ public class RoomController {
 			
 			
 			stream = new FileOutputStream(
-					"C:\\Users\\shama\\git\\GADUDA_ver01\\GADUDA_ver01\\src\\main\\webapp\\resources\\Images\\User_Myroom\\"
+					"d:\\gaduda\\room\\"
 							+ fileName + ".png");
 
 //			stream = new FileOutputStream(
@@ -143,9 +144,9 @@ public class RoomController {
 			MemberVO memberVO = (MemberVO) request.getSession().getAttribute("member");
 			roomDTO.setUserId(memberVO.getMem_id());
 			
-			String room_img_src = "/resources/Images/User_Myroom/"
+			String room_img_src = "/roomimage/"
 					+ fileName + ".png";
-			
+			System.out.println("사진경로 : " + room_img_src);
 			roomDTO.setRoom_Img_src(room_img_src);
 			if (roomService.insertRoom(roomDTO) == 1) {
 				data.put("MSG", "저장완료");

@@ -155,14 +155,16 @@ public class MypageMemberController implements ServletContextAware {
 
 	@RequestMapping(value = URLs.URI_MYPAGE_MEMBER_IMAGE, method = RequestMethod.POST)
 	public String mem_img_upload(MemberDTO memberDTO, HttpServletRequest request, MultipartFile file) throws Exception {
-		String realpath = request.getSession().getServletContext().getRealPath("resources/Images/MemberImage/");
+		//String realpath = request.getSession().getServletContext().getRealPath("D:\\gaduda\\profile\\");
+		String realpath = "D:\\gaduda\\profile\\";
+		System.out.println("프로필사진 저장되는 경로" + realpath);
 		File f = new File(realpath + file.getOriginalFilename());
 		MemberVO memVO = (MemberVO) request.getSession().getAttribute("member");
 		String mem_id = memVO.getMem_id();
 
 		memberDTO.setMem_id(mem_id);
 		file.transferTo(f);
-		String path = "/resources/Images/MemberImage/";
+		String path = "/profileimage/";
 		String pic_path = path + file.getOriginalFilename();
 		memberDTO.setMem_profile_pic(pic_path);
 		memVO.setMem_profile_pic(pic_path);
