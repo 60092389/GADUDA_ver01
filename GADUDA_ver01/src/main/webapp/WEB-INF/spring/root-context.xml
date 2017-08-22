@@ -90,7 +90,8 @@
 	</bean>
 	
 	<!-- @Transactional 어노테이션 검색 -->
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:annotation-driven proxy-target-class="true" 
+		transaction-manager="transactionManager" />
 	
 	
 	
