@@ -34,7 +34,7 @@
 						</c:when>
 						<c:otherwise>
 							<a href=<%=URLs.URI_MYPAGE_MEMBER_FULL%>
-								class="w3-bar-item w3-button w3-padding w3-hover-white"><h6>${ member.mem_nickname }님</h6></a>
+								class="w3-bar-item w3-button w3-padding w3-hover-white"><h6>${ member.mem_name }님</h6></a>
 							<a href=<%=URLs.URI_LOGOUT_FULL%>
 								class="w3-bar-item w3-button w3-padding w3-hover-white"><h6>logout</h6></a>
 						</c:otherwise>

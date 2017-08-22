@@ -31,68 +31,88 @@
 	</div>
 	
 <div class="w3-container ">
-
 	<!--사이드 메뉴-->
 	<jsp:include page="/WEB-INF/views/MyPage/MyInfo/view_mypage_sidebar.jsp" flush="false" />
-	
 	<!-- Page Container -->
 	<div class="w3-main w3-content" style="max-width: 1200px; margin-left: 300px">
 	
-		<div class="w3-row">
+		<div>
 			<div class="w3-container">
 				<!-- Profile -->
-				<div class="w3-col m5 w3-round w3-white">
+				<div class="w3-white">
 					<c:set var="member" value="${ member }" />
 					<div class="w3-container">
-						<h4 class="w3-center">My Profile</h4>
-						<p class="w3-center"><img src=${ member.mem_profile_pic } class="w3-circle" style="height: 200px; width: 200px" alt="profile ficture"></p>
-						<p class="w3-center"><i class="w3-margin-right w3-text-theme"></i><a onclick="document.getElementById('proficMod').style.display='block'">프로필 사진 변경</a></p>
-						
+						<h4>My Profile</h4>
+						<div class="w3-col m5">
+							<img src=${ member.mem_profile_pic } class="w3-circle" style="height: 150px; width: 150px" alt="profile ficture">
+							<p class="w3-center"><i class="w3-margin-right w3-text-theme"></i><a onclick="document.getElementById('proficMod').style.display='block'">프로필 사진 변경</a></p>
+						</div>
+						<div class="w3-col m5">
+							<p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>${ member.mem_nickname }</p>
+							<p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>${ member.mem_birth }</p>
+							<p><i class="fa fa-male fa-fw w3-margin-right w3-text-theme"></i> <a href=${URLs.URI_MYPAGE_MEMBER_FOLLOWER_FULL }>팔로워 ${follower}</a></p>
+							<p><i class="fa fa-male fa-fw w3-margin-right w3-text-theme"></i> <a href=${URLs.URI_MYPAGE_MEMBER_FOLLOWING_FULL }>팔로잉 ${following }</a></p>
+							<a type="button" onclick="document.getElementById('profMod').style.display='block'" class="w3-button w3-theme-d2 w3-margin-bottom w3-center">프로필 수정하기</a>
+						</div>
 						<hr>
-						<p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>${ member.mem_nickname }</p>
-						<p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>${ member.mem_birth }</p>
-						<p><i class="fa fa-male fa-fw w3-margin-right w3-text-theme"></i> <a href=${URLs.URI_MYPAGE_MEMBER_FOLLOWER_FULL }>팔로워 ${follower}</a></p>
-						<p><i class="fa fa-male fa-fw w3-margin-right w3-text-theme"></i> <a href=${URLs.URI_MYPAGE_MEMBER_FOLLOWING_FULL }>팔로잉 ${following }</a></p>
-						<a type="button" onclick="document.getElementById('profMod').style.display='block'" class="w3-button w3-theme-d2 w3-margin-bottom w3-center">프로필 수정하기</a>
 					</div>
 				</div>
 				<br>
-			
 
 				<!-- Middle Column -->
-				<div class="w3-col m7">
-					<div class="w3-container w3-container">
-						
-						<h3>추천가구</h3>
-						<c:forEach var = "fur_list" items="${recent_view_fur_list }">
-							<p>${fur_list.fur_name } </p>
-						</c:forEach>
-						<h3>배치도 댓글</h3>
-						<c:forEach var="repllist" items="${repllist }">
-							<c:set value="${repllist.mem_id }" var="repl"/>
-							<c:set value="${member.mem_id }" var="user"/>
-							<c:choose>
-								<c:when test="${repl == user}">
+				<div class="w3-container" id="re_fur">
+					<h3>최근에 본 가구</h3>
+					<div class="w3-col m1"><button style="margin-top: 100px" class="w3-button" id="furbtnpre" onclick="plusDivs(-1)">&#10094;</button></div>
+					<c:forEach var="fur_list" items="${recent_view_fur_list }">
+						<div class="furSlides w3-col m3 w3-round w3-margin-right w3-padding w3-border" style="height: 220px">
+							<table class="w3-container w3-padding w3-center" >
+								<tr>
+									<td colspan="3" style="height: 130px">
+										<a href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fur_list.fur_no }">
+											<img src="${fur_list.fur_pic_loc }"  alt="${fur_list.fur_no  }" style="max-width:60% ;">
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2"><b class="w3-padding" style="font-size: 13px">${fur_list.fur_name }</b></td>
+								</tr>
+							</table>
+						</div>
+					</c:forEach>
+					<div class="w3-col m1"><button style="margin-top: 100px" class="w3-button" onclick="plusDivs(1)">&#10095;</button></div>
+				</div>
+				</br>
+				
+				<!-- Middle Column -->
+				<div class="w3-container" id="replt_arr">
+					<h3>내 배치도 반응</h3>
+					<c:forEach var="repllist" items="${repllist }">
+						<c:set value="${repllist.mem_id }" var="repl"/>
+						<c:set value="${member.mem_id }" var="user"/>
+						<c:choose>
+							<c:when test="${repl == user}">
 									
-								</c:when>
-								<c:otherwise>
-									번호: ${repllist.fur_arr_plan_no }　아이디: ${repllist.mem_id }　내용: ${repllist.fur_arr_plan_rep_contents }<br>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-					</div>
-					
+							</c:when>
+							<c:otherwise>
+								<div class="w3-container w3-margin-top">
+									<div class="w3-col m2"><b>${repllist.fur_arr_plan_no }</b>번 배치도에</div>
+									<div class="w3-col m4">
+										<img class="w3-circle" alt="${repllist.mem_id }" src="${repllist.mem_profile_pic }" style="width:25px; height: 25px" >　
+										<b>${repllist.mem_nickname }</b>님이
+									</div>
+									<div class="w3-col m6"> 댓글　<b>"${repllist.fur_arr_plan_rep_contents }"</b>　을 남기셨습니다.</div>
+								</div>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
 				</div>
 			</div>
-			
 		</div>
-
-		<!-- End Page Container -->
 	</div>
 </div>
 
-	<br>
-	<br>
+
+
 	
 	<!--프로필 사진 수정 창 띄우기-->
 	<div id="proficMod" class="w3-modal">
@@ -151,5 +171,28 @@
 		</div>
 	</div>
 <jsp:include page="/WEB-INF/views/footer.jsp" flush="false" />	
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+ 	showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("furSlides");
+  if (n >= x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";  
+  x[slideIndex].style.display = "block";  
+  x[slideIndex+1].style.display = "block"; 
+}
+
+</script>
 </body>
 </html>
