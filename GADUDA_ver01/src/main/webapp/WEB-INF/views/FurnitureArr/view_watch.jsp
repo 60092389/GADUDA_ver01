@@ -240,7 +240,7 @@ $(document).ready(function(){
 									    </td>
 									    <td colspan="3"><b>${fur_arr_list.mem_id }(${fur_arr_list.mem_nickname })</b></td>
 									    <td rowspan="5" style="height: 200px">
-									    	<img class="w3-margin-top w3-margin-bottom" src="${fur_arr_list.fur_arr_plan_img_loc }" alt="${fur_arr_list.fur_arr_name }" style="height:100%">
+									    	<img class="w3-margin-top w3-margin-bottom" src="${fur_arr_list.fur_arr_plan_img_loc }" alt="${fur_arr_list.fur_arr_plan_img_loc }" style="height:100%">
 									    </td>
 									  </tr>
 									  <tr>

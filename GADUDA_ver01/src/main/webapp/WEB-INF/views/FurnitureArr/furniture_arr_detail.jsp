@@ -558,24 +558,28 @@ if(mem_id != repl_id){
 			<!-- ★★★★★★★★★★★★★★★★★★★★★★★댓글이 많아지는 경우에는 더보기 버튼 눌러야 더나오는 걸로 수정하거나, 최근 댓글만 보여주기 ★★★★★★★★★★★★★★★★★★★★★★★-->
 			<!-- 댓글 리스트 불러오기 -->
 			<c:forEach var="reply" items="${reply_list }">
-				<div id="repllistcall" class="w3-padding w3-margin-left">
-					<div>
-						<img class="w3-circle" alt="${reply.mem_id }" src="${reply.mem_profile_pic }" style="width:25px; height: 25px" >
-						<b>　　　${reply.mem_id }(${reply.mem_nickname })</b>　　　${reply.fur_arr_plan_rep_contents }
-						<input type="hidden" id="repl_id" value="${ reply.mem_id }">
-						<b class="w3-right" style="font-size: 11px">
-						<c:set value="${reply.mem_id }" var="repl"/>
-						<c:set value="${member.mem_id }" var="user"/>
-						<c:if test="${repl == user}">
-							<button class="w3-button btn-reply-delete" style="size: 15px" value="${reply._id }"> delete</button>
-						</c:if>${reply.fur_arr_plan_rep_write_date }</b>
+				<div id="repllistcall" class="w3-padding">
+					<div class="w3-container">
+						<img class="w3-circle w3-col m1 w3-margin-right" alt="${reply.mem_id }" src="${reply.mem_profile_pic }" style="width:25px; height: 25px">
+						<div class="w3-col m2">${reply.mem_nickname }</div>
+						<div class="w3-col m6">${reply.fur_arr_plan_rep_contents }</div>
+						<div class="w3-col m2 w3-padding-top" style="font-size: 11px">${reply.fur_arr_plan_rep_write_date }</div>
+						<div class="w3-col m1">
+							<c:set value="${reply.mem_id }" var="repl"/>
+							<c:set value="${member.mem_id }" var="user"/>
+							
+							<c:if test="${repl == user}">
+								<button class="btn-reply-delete w3-button" style="font-size: 11px; size: 12px; padding-top: 0px; padding-bottom: 0px " value="${reply._id }"> delete</button>
+							</c:if>
+							<input type="hidden" id="repl_id" value="${ reply.mem_id }">
+						</div>
 					</div>		
 				</div>
 			</c:forEach>
 		</div>
 		<!-- 댓글 달기 -->
-		<div class="w3-content w3-border-bottom ">
-			<div id="replwritediv" class="w3-padding w3-margin-left">
+		<div class="w3-content w3-border-bottom">
+			<div id="replwritediv" class="w3-padding w3-container">
 				<c:choose>
 					<c:when test="${ empty member }">
 							<a onclick="document.getElementById('loginUser').style.display='block'"
@@ -587,7 +591,7 @@ if(mem_id != repl_id){
 							<b>　　　${member.mem_id }(${member.mem_nickname })</b>
 							<input type="hidden" id="repl_mem_id" value="${member.mem_id }">
 							<input class="w3-margin-left" type="text" id="reply_text" placeholder="댓글 입력" size="60px">
-							<button class="w3-button w3-right" id="reply_write">댓글쓰기</button>
+							<button class="w3-button" id="reply_write">댓글쓰기</button>
 						</p>
 					</c:otherwise>
 				</c:choose>

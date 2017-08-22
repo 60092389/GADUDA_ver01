@@ -5,11 +5,19 @@ public class FurnitureReplyListVO {
 	private String _id;
 	private String mem_id;
 	private String mem_nickname;
+	private String mem_profile_pic;
 	private String fur_rep_contents;
 	private String fur_rep_write_date;
 	private int fur_no;
 	
 	
+	
+	public String getMem_profile_pic() {
+		return mem_profile_pic;
+	}
+	public void setMem_profile_pic(String mem_profile_pic) {
+		this.mem_profile_pic = mem_profile_pic;
+	}
 	public int getFur_no() {
 		return fur_no;
 	}

@@ -184,17 +184,19 @@ $(document).ready(function() {
 	
 	//댓글쓰기
 	$("#replinput").click(function(){
-		alert("댓글?")
+		alert("댓글?");
 		var mem_nickname = $('#fur_memnick').val();
 		var fur_no = $('#fur_no').val();
 		var mem_id = $('#fur_mem_id').val();
 		var now_date = new Date();
  		var contents = $('#fur_repl').val();
+ 		var mem_profile_pic = $("#user_profile_pic").val();
 		
 		var trans_object = {
 				'mem_id' : mem_id,
 				'mem_nickname' : mem_nickname,
 				'fur_no' : fur_no,
+				'mem_profile_pic' : mem_profile_pic,
 				'fur_rep_contents' : contents,
 				'fur_rep_write_date' : now_date
 			}
@@ -242,6 +244,7 @@ $(document).ready(function() {
 	<input type="hidden" id="fur_memnick" value="${ member.mem_nickname }">
 	<c:set var="fur" value="${ furdeVO }" />
 	<input type="hidden" id="fur_no" value="${ furdeVO.fur_no }">
+	<input type="hidden" id="user_profile_pic" value="${ member.mem_profile_pic }">
 </div>
 <c:forEach var="craw_fur" items="${ getCrawling }">
 ${craw_fur.craw_fur_brand_site }<br>${craw_fur.craw_fur_name }<br>${craw_fur.craw_fur_price }<br>${craw_fur.craw_fur_brand }<br>${craw_fur.craw_fur_kind_name }
@@ -307,31 +310,35 @@ ${craw_fur.craw_fur_brand_site }<br>${craw_fur.craw_fur_name }<br>${craw_fur.cra
 </div>
 
 <div>
-	<!-- 댓글 -->
+	  	<!-- 댓글 -->
 	<div id="more_comments" class="w3-container w3-left">
+		<!-- 댓글 보기 -->
 		<div class="w3-content w3-border-bottom ">
-			<a><h5><b>댓글 더보기</b></h5></a>
+			<a><h2><b>댓글</b></h2></a>
 			<!-- ★★★★★★★★★★★★★★★★★★★★★★★댓글이 많아지는 경우에는 더보기 버튼 눌러야 더나오는 걸로 수정하거나, 최근 댓글만 보여주기 ★★★★★★★★★★★★★★★★★★★★★★★-->
 			<!-- 댓글 리스트 불러오기 -->
 			<c:forEach var="replyList" items="${fur_repl_list }">
-				<div id="repllistcall" class="w3-padding w3-margin-left">
-						<c:set value="${replyList.mem_id }" var="repl_id"/>
-						<c:set value="${member.mem_id }" var="user_id"/>
-						<div>
-							<!-- ★★★★★★★★★★★★★★★사진 왜 안나오는 거니★★★★★★★★★★★★★★ -->
-							<b style="width: 30px">${replyList.mem_id }(${replyList.mem_nickname })</b>　　　${replyList.fur_rep_contents }
-							<input type="hidden" id="repl_id" value="${replyList._id }">
-							<b class="w3-right" style="font-size: 11px">
+				<div id="repllistcall" class="w3-padding">
+					<div class="w3-container">
+						<img class="w3-circle w3-col m1 w3-margin-right" alt="${replyList.mem_id }" src="${replyList.mem_profile_pic }" style="width:25px; height: 25px">
+						<div class="w3-col m2">${replyList.mem_nickname }</div>
+						<div class="w3-col m6">${replyList.fur_rep_contents }</div>
+						<div class="w3-col m2 w3-padding-top" style="font-size: 11px">${replyList.fur_rep_write_date }</div>
+						<div class="w3-col m1">
+							<c:set value="${replyList.mem_id }" var="repl_id"/>
+							<c:set value="${member.mem_id }" var="user_id"/>
 							<c:if test="${repl_id == user_id}">
-								<button class="w3-button btn-reply-delete" style="size: 15px" value="${replyList._id }"> delete</button>
-							</c:if>${replyList.fur_rep_write_date }</b>
-						</div>		
+								<button class="btn-fur-reply-del w3-button" style="font-size: 11px; size: 12px; padding-top: 0px; padding-bottom: 0px " value="${replyList._id }"> delete</button>
+							</c:if>
+							<input type="hidden" id="repl_id" value="${ reply.mem_id }">
+						</div>
+					</div>		
 				</div>
 			</c:forEach>
 		</div>
 		<!-- 댓글 달기 -->
-		<div class="w3-content w3-border-bottom ">
-			<div id="replwritediv" class="w3-padding w3-margin-left">
+		<div class="w3-content w3-border-bottom">
+			<div id="replwritediv" class="w3-padding w3-container">
 				<c:choose>
 					<c:when test="${ empty member }">
 							<a onclick="document.getElementById('loginUser').style.display='block'"
@@ -341,14 +348,16 @@ ${craw_fur.craw_fur_brand_site }<br>${craw_fur.craw_fur_name }<br>${craw_fur.cra
 						<p>
 							<img class="w3-circle" alt="${member.mem_id }" src="${member.mem_profile_pic }" style="width:25px; height: 25px" >
 							<b>　　　${member.mem_id }(${member.mem_nickname })</b>
+							<input type="hidden" id="repl_mem_id" value="${member.mem_id }">
 							<input class="w3-margin-left" type="text" id="fur_repl" placeholder="댓글 입력" size="60px">
-							<button class="w3-button w3-right" id="replinput">댓글쓰기</button>
+							<button class="w3-button" id="replinput">댓글쓰기</button>
 						</p>
 					</c:otherwise>
 				</c:choose>
 			</div>
 		</div>
 	</div>
+
 	<!-- ★★★★★★★★★★★★★★★크롤링 완성 후 수정하기★★★★★★★★★★★★★★ -->
 	<!-- 가구 리뷰 리스트 -->
 	<div class="w3-padding-large">
