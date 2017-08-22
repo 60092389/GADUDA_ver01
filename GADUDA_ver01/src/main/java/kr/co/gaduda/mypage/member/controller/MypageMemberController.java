@@ -146,7 +146,8 @@ public class MypageMemberController implements ServletContextAware {
 		memVO.setMem_profile_pic(pic_path);
 		memberService.update_mem_pic(memberDTO);
 
-		return Pages.VIEW_MYPAGE_MEMBER;
+		//return Pages.VIEW_MYPAGE_MEMBER;
+		return "redirect:"+URLs.URI_MYPAGE_MEMBER_FULL;
 	}
 
 	@RequestMapping(value = URLs.URI_MYPAGE_MEMBER_FOLLOWER)
