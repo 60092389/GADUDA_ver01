@@ -276,6 +276,7 @@ public class Furniture_arrDao implements IFurniture_arrDao {
 		String fur_kind = faDTO.getFur_kind().trim();
 		String fur_concept = faDTO.getFur_concept().trim();
 		
+		
 		System.out.println("furkind : " + fur_kind);
 		System.out.println("fur_concept : " + fur_concept);
 		

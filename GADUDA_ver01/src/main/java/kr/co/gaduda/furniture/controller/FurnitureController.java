@@ -41,21 +41,24 @@ public class FurnitureController {
 		FurnitureDetailVO furdeVO = furnitureService.furDetailView(fur_no);
 		List<String> furdepic_list = furnitureService.furDetailViewPic(fur_no);
 		List<FurnitureReplyListVO> fur_repl_list = furnitureService.FurnitureReplList(fur_no);
-		
-		List<crawling_furnitureVO> getCrawling = furnitureService.craw_furniture_list(fur_no);
-	      
-	      for(int i=0;i<getCrawling.size();i++){
-	         System.out.println(getCrawling.get(i).getCraw_fur_kind_name());
-	         System.out.println(getCrawling.get(i).getCraw_fur_size());
-	         System.out.println(getCrawling.get(i).getCraw_fur_price());
-	      
-	      }
 
-	      model.addAttribute("getCrawling",getCrawling);
+		List<crawling_furnitureVO> getCrawling = furnitureService.craw_furniture_list(fur_no);
+
+		List<String> simple_review_list = furnitureService.get_simple_review(fur_no);
 		
+		for (int i = 0; i < getCrawling.size(); i++) {
+			System.out.println(getCrawling.get(i).getCraw_fur_kind_name());
+			System.out.println(getCrawling.get(i).getCraw_fur_size());
+			System.out.println(getCrawling.get(i).getCraw_fur_price());
+
+		}
+
+		model.addAttribute("getCrawling", getCrawling);
+
 		model.addAttribute("furdeVO", furdeVO);
 		model.addAttribute("furdepic_list", furdepic_list);
 		model.addAttribute("fur_repl_list", fur_repl_list);
+		model.addAttribute("simple_review_list", simple_review_list);
 
 		return Pages.VIEW_FURNITURE_DETAIL_VIEW;
 	}
@@ -73,17 +76,16 @@ public class FurnitureController {
 
 		List<String> furRoomKind = furnitureService.getRoomKind();
 		model.addAttribute("roomKind", furRoomKind);
-		
+
 		List<String> furConceptKind = furnitureService.getConceptKind();
 		model.addAttribute("conceptKind", furConceptKind);
-		
-		
+
 		List<String> furDefKind = furnitureService.getFurDefKind();
-		
-		if(room_kind_def_name != null){
+
+		if (room_kind_def_name != null) {
 			furDefKind = furnitureService.getFurNameForRoom(room_kind_def_name);
 		}
-		
+
 		model.addAttribute("furDefKind", furDefKind);
 
 		List<FurnitureListViewVO> furList = furnitureService.furnitureList(room_kind_def_name, concept_name,
@@ -94,11 +96,11 @@ public class FurnitureController {
 		}
 		model.addAttribute("furList", furList);
 		model.addAttribute("roomconcept", "1");
-		
-		if(room_kind_def_name == null && concept_name == null && fur_kind_def_name == null){
+
+		if (room_kind_def_name == null && concept_name == null && fur_kind_def_name == null) {
 			model.addAttribute("roomconcept", "0");
 		}
-		
+
 		return Pages.VIEW_FURNITURE_LIST;
 	}
 
@@ -191,7 +193,7 @@ public class FurnitureController {
 		}
 
 		retVal.put("list_good", list_good);
-		System.out.println("뭐야"+list_good);
+		System.out.println("뭐야" + list_good);
 
 		return retVal;
 

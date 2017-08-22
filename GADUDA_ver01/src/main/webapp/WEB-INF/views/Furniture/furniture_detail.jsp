@@ -365,7 +365,9 @@ ${craw_fur.craw_fur_brand_site }<br>${craw_fur.craw_fur_name }<br>${craw_fur.cra
 			<div id="recom_fur" class="w3-content">
 				<div class="title"><h4><b>가구 리뷰 리스트</b></h4></div>
 				<div class="w3-bar">
-
+					<c:forEach var="reviewList" items="${simple_review_list }">
+						<p class="simple_review">${reviewList} </p>
+					</c:forEach>
 				</div>
 			</div>
 		</div>

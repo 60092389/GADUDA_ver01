@@ -215,53 +215,58 @@ public class FurnitureDao implements IFurnitureDao {
 	public List<String> getFurDefKind() {
 		return sqlSession.selectList(namespace + ".get_fur_def_kind");
 	}
-	
-	//방 종류에 따라 가구 가져오기
+
+	// 방 종류에 따라 가구 가져오기
 	public List<String> getFurNameForRoom(String room_kind_def_name) {
 		return sqlSession.selectList(namespace + ".get_fur_name_for_room", room_kind_def_name);
 	}
-	
-	//가구 상세보기 페이지 가구 아이템 이름이랑 사이즈 가져오기
-	public FurnitureItemVO getFurItem(int fur_no){
-		return sqlSession.selectOne(namespace+".get_fur_item", fur_no);
+
+	// 가구 상세보기 페이지 가구 아이템 이름이랑 사이즈 가져오기
+	public FurnitureItemVO getFurItem(int fur_no) {
+		return sqlSession.selectOne(namespace + ".get_fur_item", fur_no);
 	}
-	
-	
-	//최근에 본 가구 불러오기
+
+	// 최근에 본 가구 불러오기
 	@Override
 	public FurnitureListViewVO getFindRecentFur(int fur_no) {
 
-		return sqlSession.selectOne(namespace+".recent_view_fur", fur_no);
+		return sqlSession.selectOne(namespace + ".recent_view_fur", fur_no);
 	}
 
 	@Override
 	public List<crawling_furnitureVO> getCrawling_furniture(FurnitureDTO furnitureDTO) {
-		String fur_kind=furnitureDTO.getFur_concept().trim();
-		int max_fur_width=furnitureDTO.getMax_fur_width();
-	      int min_fur_width=furnitureDTO.getMin_fur_width();
-	      int max_fur_depth=furnitureDTO.getMax_fur_depth();
-	      int min_fur_depth=furnitureDTO.getMin_fur_depth();
-	      int max_fur_height=furnitureDTO.getMax_fur_height();
-	      int min_fur_height=furnitureDTO.getMin_fur_height();
-	      
-	    
-	      Criteria cri = new Criteria("craw_fur_kind_name");
-	      cri.regex(fur_kind);
-	      /*Criteria cri2 = new Criteria("craw_fur_concept_name");*/
-	      
-	      
-	      cri.andOperator(new Criteria("craw_fur_size.0").gte(min_fur_width).lte(max_fur_width),
-	            new Criteria("craw_fur_size.1").gte(min_fur_depth).lte(max_fur_depth),
-	            new Criteria("craw_fur_size.2").gte(min_fur_height).lte(max_fur_height),
-	            new Criteria("craw_fur_size").ne("")/*,cri2.regex(fur_concept)*/);
+		String fur_kind = furnitureDTO.getFur_kind().trim();
+		String fur_concept = furnitureDTO.getFur_concept().trim();
+		
+		System.out.println("퍼니처다오 컨트롤러 fur_kind : " + fur_kind);
+		System.out.println("퍼니처다오 컨트롤러  fur_concept : " + fur_concept);
+		
+		int max_fur_width = furnitureDTO.getMax_fur_width();
+		int min_fur_width = furnitureDTO.getMin_fur_width();
+		int max_fur_depth = furnitureDTO.getMax_fur_depth();
+		int min_fur_depth = furnitureDTO.getMin_fur_depth();
+		int max_fur_height = furnitureDTO.getMax_fur_height();
+		int min_fur_height = furnitureDTO.getMin_fur_height();
 
-	      
-	      Query query = new Query(cri);
-	      query.limit(20);
-	
-	      return mongoTemplate.find(query, crawling_furnitureVO.class,"crawling_furniture");
+		Criteria cri = new Criteria("craw_fur_kind_name");
+		cri.regex(fur_kind);
+		/* Criteria cri2 = new Criteria("craw_fur_concept_name"); */
+
+		cri.andOperator(new Criteria("craw_fur_size.0").gte(min_fur_width).lte(max_fur_width),
+				new Criteria("craw_fur_size.1").gte(min_fur_depth).lte(max_fur_depth),
+				new Criteria("craw_fur_size.2").gte(min_fur_height).lte(max_fur_height), 
+				new Criteria("craw_fur_size").ne(""),
+				new Criteria("craw_fur_concpet_name").regex(fur_concept));
+
+		Query query = new Query(cri);
+		query.limit(10);
+
+		return mongoTemplate.find(query, crawling_furnitureVO.class, "crawling_furniture");
 	}
-	
-	
-	
+
+	@Override
+	public List<String> get_simple_review(int fur_no) {
+		return sqlSession.selectList(namespace + ".get_simple_review", fur_no);
+	}
+
 }

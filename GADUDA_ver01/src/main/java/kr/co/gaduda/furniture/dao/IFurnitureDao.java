@@ -101,5 +101,8 @@ public interface IFurnitureDao {
 	public FurnitureListViewVO getFindRecentFur(int fur_no);
 	
 	public List<crawling_furnitureVO> getCrawling_furniture(FurnitureDTO furnitureDTO);
+	
+	//해당 가구의 간단 제품평 가져오기
+	public List<String> get_simple_review(int fur_no);
 
 }

@@ -67,4 +67,7 @@ public interface IFurnitureService {
 	
 	public List<crawling_furnitureVO> craw_furniture_list(int fur_no);
 	
+	//해당 가구의 간단 제품평
+	public List<String> get_simple_review(int fur_no);
+	
 }

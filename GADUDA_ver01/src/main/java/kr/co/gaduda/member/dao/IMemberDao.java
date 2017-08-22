@@ -73,4 +73,6 @@ public interface IMemberDao {
 	//가구댓글 회원이미지변경
 	public void update_fur_repl_img(MemberDTO memberDTO);
 	
+
+	
 } 

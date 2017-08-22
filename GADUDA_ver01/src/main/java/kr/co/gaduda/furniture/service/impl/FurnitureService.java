@@ -277,8 +277,17 @@ public class FurnitureService implements IFurnitureService {
 	@Override
 	public List<crawling_furnitureVO> craw_furniture_list(int fur_no) {
 		FurnitureDTO furDTO = new FurnitureDTO();
-		furDTO.setFur_concept(furDetailView(fur_no).getFur_kind());
+		
+		String fur_concept = furDetailView(fur_no).getFur_con();
+		String fur_concept_arr[] = fur_concept.split(" ");
 
+		fur_concept = fur_concept_arr[0];
+		
+		furDTO.setFur_concept(fur_concept);
+		furDTO.setFur_kind(furDetailView(fur_no).getFur_kind());
+			
+		
+		
 		furDTO.setMax_fur_width(furDetailView(fur_no).getFur_width() + 150);
 		furDTO.setMin_fur_width(furDetailView(fur_no).getFur_width() - 150);
 		furDTO.setMax_fur_depth(furDetailView(fur_no).getFur_depth() + 150);
@@ -289,5 +298,10 @@ public class FurnitureService implements IFurnitureService {
 		List<crawling_furnitureVO> craw_furniture = furnitureDao.getCrawling_furniture(furDTO);
 		
 		return craw_furniture;
+	}
+	
+	@Override
+	public List<String> get_simple_review(int fur_no) {
+		return furnitureDao.get_simple_review(fur_no);
 	}
 }
