@@ -16,6 +16,23 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+html { scrollbar-arrow-color: #efefef;
+        scrollbar-Track-Color: #efefef; 
+        scrollbar-base-color: #dfdfdf;
+        scrollbar-Face-Color: #dfdfdf;
+        scrollbar-3dLight-Color: #dfdfdf;         
+        scrollbar-DarkShadow-Color: #dfdfdf;
+        scrollbar-Highlight-Color: #dfdfdf;
+        scrollbar-Shadow-Color: #dfdfdf}
+/* Chrome, Safari용 스크롤 바 */
+::-webkit-scrollbar {width: 12px; height: 12px;  }
+::-webkit-scrollbar-button:start:decrement, 
+::-webkit-scrollbar-button:end:increment {display: block; width: 12px;height: 12px; background: url() rgba(0,0,0,.05);}
+::-webkit-scrollbar-track {     background: rgba(0,0,0,.05); }
+::-webkit-scrollbar-thumb {  background: rgba(0,0,0,.1);  }
+
+</style>
 </head>
 
 <body>
@@ -58,54 +75,63 @@
 					</div>
 				</div>
 				<br>
-
-				<!-- Middle Column -->
-				<div class="w3-container" id="re_fur">
-					<h3>최근에 본 가구</h3>
-					<div class="w3-col m1"><button style="margin-top: 100px" class="w3-button" id="furbtnpre" onclick="plusDivs(-1)">&#10094;</button></div>
-					<c:forEach var="fur_list" items="${recent_view_fur_list }">
-						<div class="furSlides w3-col m3 w3-round w3-margin-right w3-padding w3-border" style="height: 220px">
-							<table class="w3-container w3-padding w3-center" >
-								<tr>
-									<td colspan="3" style="height: 130px">
-										<a href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fur_list.fur_no }">
-											<img src="${fur_list.fur_pic_loc }"  alt="${fur_list.fur_no  }" style="max-width:60% ;">
-										</a>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2"><b class="w3-padding" style="font-size: 13px">${fur_list.fur_name }</b></td>
-								</tr>
-							</table>
-						</div>
-					</c:forEach>
-					<div class="w3-col m1"><button style="margin-top: 100px" class="w3-button" onclick="plusDivs(1)">&#10095;</button></div>
-				</div>
-				</br>
-				
-				<!-- Middle Column -->
-				<div class="w3-container" id="replt_arr">
-					<h3>내 배치도 반응</h3>
-					<c:forEach var="repllist" items="${repllist }">
-						<c:set value="${repllist.mem_id }" var="repl"/>
-						<c:set value="${member.mem_id }" var="user"/>
-						<c:choose>
-							<c:when test="${repl == user}">
-									
-							</c:when>
-							<c:otherwise>
-								<div class="w3-container w3-margin-top">
-									<div class="w3-col m2"><a class="w3-button w3-hover-white" href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${repllist.fur_arr_plan_no}"><b>${repllist.fur_arr_plan_no }</b>번 배치도에</a></div>
-									<div class="w3-col m4">
-										<img class="w3-circle" alt="${repllist.mem_id }" src="${repllist.mem_profile_pic }" style="width:25px; height: 25px" >　
-										<b>${repllist.mem_nickname }</b>님이
+				<c:set value="${recent_view }" var="recent_view"/>
+				<c:if test="${ recent_view eq '0' }">
+				 　　
+				</c:if>
+				<c:if test="${ recent_view eq '1' }">
+					<!-- Middle Column -->
+					<div class="w3-container" id="re_fur">
+						<h3>최근에 본 가구</h3>
+						<div class="w3-col m1"><button style="margin-top: 100px" class="w3-button" id="furbtnpre" onclick="plusDivs(-1)">&#10094;</button></div>
+						<c:forEach var="fur_list" items="${recent_view_fur_list }">
+							<div class="furSlides w3-col m3 w3-round w3-margin-right w3-padding w3-border" style="height: 220px">
+								<table class="w3-container w3-padding w3-center" >
+									<tr>
+										<td colspan="3" style="height: 130px">
+											<a href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fur_list.fur_no }">
+												<img src="${fur_list.fur_pic_loc }"  alt="${fur_list.fur_no  }" style="max-width:60% ;">
+											</a>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2"><b class="w3-padding" style="font-size: 13px">${fur_list.fur_name }</b></td>
+									</tr>
+								</table>
+							</div>
+						</c:forEach>
+						<div class="w3-col m1"><button style="margin-top: 100px" class="w3-button" onclick="plusDivs(1)">&#10095;</button></div>
+					</div>
+				</c:if>
+				<c:set value="${repl_view }" var="repl_view"/>
+				<c:if test="${ repl_view eq '0' }">
+				 　　
+				</c:if>
+				<c:if test="${ repl_view eq '1' }">
+					<!-- Middle Column -->
+					<div class="w3-container" id="replt_arr" style="max-height: 400px; overflow: auto;">
+						<h3>내 배치도 반응</h3>
+						<c:forEach var="repllist" items="${repllist }">
+							<c:set value="${repllist.mem_id }" var="repl"/>
+							<c:set value="${member.mem_id }" var="user"/>
+							<c:choose>
+								<c:when test="${repl == user}">
+										
+								</c:when>
+								<c:otherwise>
+									<div class="w3-container w3-margin-top">
+										<div class="w3-col m2"><a class="w3-button w3-hover-white" href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${repllist.fur_arr_plan_no}"><b>${repllist.fur_arr_plan_no }</b>번 배치도에</a></div>
+										<div class="w3-col m4">
+											<img class="w3-circle" alt="${repllist.mem_id }" src="${repllist.mem_profile_pic }" style="width:25px; height: 25px" >　
+											<b>${repllist.mem_nickname }</b>님이
+										</div>
+										<div class="w3-col m6"> 댓글　<b>"${repllist.fur_arr_plan_rep_contents }"</b>　을 남기셨습니다.</div>
 									</div>
-									<div class="w3-col m6"> 댓글　<b>"${repllist.fur_arr_plan_rep_contents }"</b>　을 남기셨습니다.</div>
-								</div>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-				</div>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+					</div>
+				</c:if>
 			</div>
 		</div>
 	</div>

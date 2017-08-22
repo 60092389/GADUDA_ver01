@@ -59,6 +59,17 @@ public class MypageMemberController implements ServletContextAware {
 		List<FurnitureListViewVO> recent_view_fur_list = memberService.getRecentFindFur(mem_id);
 		List<FurnitureArrReplyListVO> repllist = memberService.MyFurArrReplyList(mem_id);
 		
+		
+		
+		model.addAttribute("recent_view", 1);
+		model.addAttribute("repl_view", 1);
+		
+		if(recent_view_fur_list.isEmpty()){
+			model.addAttribute("recent_view", 0);
+		}
+		if(repllist.isEmpty()){
+			model.addAttribute("repl_view", 0);
+		}
 		model.addAttribute("repllist", repllist);
 		model.addAttribute("follower", follower);
 		model.addAttribute("following", following);
