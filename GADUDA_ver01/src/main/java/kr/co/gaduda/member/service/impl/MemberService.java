@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.gaduda.furniture.dao.impl.FurnitureDao;
 import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
@@ -54,12 +56,19 @@ public class MemberService implements IMemberService {
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED,
+				rollbackFor={Exception.class})
 	public void update_mem(MemberDTO memberDTO) {
-		memberDAO.update_mem(memberDTO);
-		memberDAO.update_fur_arr_good_nick(memberDTO);
-		memberDAO.update_fur_arr_repl_nick(memberDTO);
-		memberDAO.update_fur_good_nick(memberDTO);
-		memberDAO.update_fur_repl_nick(memberDTO);
+		try {
+			memberDAO.update_mem(memberDTO);
+			memberDAO.update_fur_arr_good_nick(memberDTO);
+			memberDAO.update_fur_arr_repl_nick(memberDTO);
+			memberDAO.update_fur_good_nick(memberDTO);
+			memberDAO.update_fur_repl_nick(memberDTO);
+		} catch (Exception e) {
+			
+		}
+
 		
 	}
 
@@ -73,14 +82,21 @@ public class MemberService implements IMemberService {
 	public int update_mem_pw_chk(MemberDTO memberDTO) {
 		return memberDAO.update_mem_pw_chk(memberDTO);
 	}
-
+	
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED,
+				rollbackFor={Exception.class})
 	public void update_mem_pic(MemberDTO memberDTO) {
-		memberDAO.update_mem_img(memberDTO);
-		memberDAO.update_fur_arr_good_img(memberDTO);
-		memberDAO.update_fur_arr_repl_img(memberDTO);
-		memberDAO.update_fur_good_img(memberDTO);
-		memberDAO.update_fur_repl_img(memberDTO);
+		try {
+			memberDAO.update_mem_img(memberDTO);
+			memberDAO.update_fur_arr_good_img(memberDTO);
+			memberDAO.update_fur_arr_repl_img(memberDTO);
+			memberDAO.update_fur_good_img(memberDTO);
+			memberDAO.update_fur_repl_img(memberDTO);
+		} catch (Exception e) {
+		
+		}
+
 		
 	}
 
@@ -114,13 +130,20 @@ public class MemberService implements IMemberService {
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED,
+				rollbackFor={Exception.class})
 	public void follow_change(FollowDTO followDTO) {
-		memberDAO.follow_change(followDTO);
-		memberDAO.follow_change1(followDTO);
-		
+		try {
+			memberDAO.follow_change(followDTO);
+			memberDAO.follow_change1(followDTO);
+		} catch (Exception e) {
+			
+		}
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED,
+				rollbackFor={Exception.class})
 	public void unfollow_change(FollowDTO followDTO) {
 		memberDAO.unfollow_change(followDTO);
 		memberDAO.unfollow_change1(followDTO);
@@ -135,10 +158,18 @@ public class MemberService implements IMemberService {
 	public int add2follow(FollowDTO followDTO){
 		return memberDAO.add2follow(followDTO);
 	}
+	
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED,
+				rollbackFor={Exception.class})
 	public void delfollow(FollowDTO followDTO){
-		memberDAO.delfollow(followDTO);
-		memberDAO.del2follow(followDTO);
+		try {
+			memberDAO.delfollow(followDTO);
+			memberDAO.del2follow(followDTO);
+		} catch (Exception e) {
+
+		}
+
 	}
 	@Override
 	public int unfollow_available(FollowDTO followDTO) {
