@@ -95,7 +95,7 @@
 							</c:when>
 							<c:otherwise>
 								<div class="w3-container w3-margin-top">
-									<div class="w3-col m2"><b>${repllist.fur_arr_plan_no }</b>번 배치도에</div>
+									<div class="w3-col m2"><a class="w3-button w3-hover-white" href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${repllist.fur_arr_plan_no}"><b>${repllist.fur_arr_plan_no }</b>번 배치도에</a></div>
 									<div class="w3-col m4">
 										<img class="w3-circle" alt="${repllist.mem_id }" src="${repllist.mem_profile_pic }" style="width:25px; height: 25px" >　
 										<b>${repllist.mem_nickname }</b>님이
