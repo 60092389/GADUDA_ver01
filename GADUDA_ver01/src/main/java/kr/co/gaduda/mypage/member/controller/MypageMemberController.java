@@ -101,11 +101,22 @@ public class MypageMemberController implements ServletContextAware {
 	}
 
 	@RequestMapping(value = URLs.URI_UPDATE_MEMBER_CHK, method = RequestMethod.POST)
-	public String update_mem_chk(MemberDTO memberDTO, Model model) {
+	public String update_mem_chk(MemberDTO memberDTO, Model model, HttpServletRequest request) {
 
 		memberService.update_mem(memberDTO);
 		model.addAttribute("member");
-		return Pages.VIEW_MYPAGE_MEMBER;
+		System.out.println("회원수정 입력 후 닉네임 : " + memberDTO.getMem_nickname());
+		System.out.println("회원수정 입력 후 성별 : " + memberDTO.getMem_sex());
+		System.out.println("회원수정 입력 후 소개 : " + memberDTO.getMem_intro());
+		System.out.println("회원수정 입력 후 생일 : " + memberDTO.getMem_birth());
+		MemberVO memVO = (MemberVO) request.getSession().getAttribute("member");
+		memVO.setMem_nickname(memberDTO.getMem_nickname());
+		memVO.setMem_sex(memberDTO.getMem_sex());
+		memVO.setMem_intro(memberDTO.getMem_intro());
+		memVO.setMem_birth(memberDTO.getMem_birth());
+		request.getSession().setAttribute("member", memVO);
+		
+		return "redirect:"+URLs.URI_MYPAGE_MEMBER_FULL;
 	}
 
 	@RequestMapping(value = URLs.URI_UPDATE_MEMBER_PW_PAGE)
@@ -127,7 +138,7 @@ public class MypageMemberController implements ServletContextAware {
 			return Pages.VIEW_MYPAGE_MEMBER;
 		}
 
-		return Pages.VIEW_MYPAGE_MEMBER;
+		return "redirect:"+URLs.URI_MYPAGE_MEMBER_FULL;
 
 	}
 
@@ -146,6 +157,8 @@ public class MypageMemberController implements ServletContextAware {
 		memVO.setMem_profile_pic(pic_path);
 		memberService.update_mem_pic(memberDTO);
 
+		memVO.setMem_profile_pic(pic_path);
+		request.getSession().setAttribute("member", memVO);
 		//return Pages.VIEW_MYPAGE_MEMBER;
 		return "redirect:"+URLs.URI_MYPAGE_MEMBER_FULL;
 	}

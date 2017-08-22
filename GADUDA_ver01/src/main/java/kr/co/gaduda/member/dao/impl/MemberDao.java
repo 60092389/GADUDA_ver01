@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
@@ -258,6 +259,95 @@ public class MemberDao implements IMemberDao {
 
 		return list;
 
+	}
+	
+	@Override
+	public void update_fur_arr_good_nick(MemberDTO memberDTO) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("mem_id").is(memberDTO.getMem_id()));
+		
+		Update update = new Update();
+		
+		update.set("mem_nickname", memberDTO.getMem_nickname());
+		mongoTemplate.updateMulti(query, update, "furniture_arrangement_good");
+	}
+	
+	@Override
+	public void update_fur_arr_repl_nick(MemberDTO memberDTO) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("mem_id").is(memberDTO.getMem_id()));
+		
+		Update update = new Update();
+		
+		update.set("mem_nickname", memberDTO.getMem_nickname());
+		mongoTemplate.updateMulti(query, update, "furniture_arrangement_reply");
+	}
+	
+	@Override
+	public void update_fur_good_nick(MemberDTO memberDTO) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("mem_id").is(memberDTO.getMem_id()));
+		
+		Update update = new Update();
+		
+		update.set("mem_nickname", memberDTO.getMem_nickname());
+		mongoTemplate.updateMulti(query, update, "furniture_good");
+		
+	}
+	
+	@Override
+	public void update_fur_repl_nick(MemberDTO memberDTO) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("mem_id").is(memberDTO.getMem_id()));
+		
+		Update update = new Update();
+		
+		update.set("mem_nickname", memberDTO.getMem_nickname());
+		mongoTemplate.updateMulti(query, update, "furniture_reply");
+	}
+	
+	@Override
+	public void update_fur_arr_good_img(MemberDTO memberDTO) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("mem_id").is(memberDTO.getMem_id()));
+		
+		Update update = new Update();
+		
+		update.set("mem_profile_pic", memberDTO.getMem_profile_pic());
+		mongoTemplate.updateMulti(query, update, "furniture_arrangement_good");
+	}
+	
+	@Override
+	public void update_fur_arr_repl_img(MemberDTO memberDTO) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("mem_id").is(memberDTO.getMem_id()));
+		
+		Update update = new Update();
+		
+		update.set("mem_profile_pic", memberDTO.getMem_profile_pic());
+		mongoTemplate.updateMulti(query, update, "furniture_arrangement_reply");
+	}
+	
+	@Override
+	public void update_fur_good_img(MemberDTO memberDTO) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("mem_id").is(memberDTO.getMem_id()));
+		
+		Update update = new Update();
+		
+		update.set("mem_profile_pic", memberDTO.getMem_profile_pic());
+		mongoTemplate.updateMulti(query, update, "furniture_good");
+	}
+	
+	@Override
+	public void update_fur_repl_img(MemberDTO memberDTO) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("mem_id").is(memberDTO.getMem_id()));
+		
+		Update update = new Update();
+		
+		update.set("mem_profile_pic", memberDTO.getMem_profile_pic());
+		mongoTemplate.updateMulti(query, update, "furniture_reply");
 	}
 
 

@@ -82,5 +82,13 @@ public class MemberDTO {
 	public void setMem_profile_pic(String mem_profile_pic) {
 		this.mem_profile_pic = mem_profile_pic;
 	}
+	@Override
+	public String toString() {
+		return "MemberDTO [mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_name=" + mem_name + ", mem_nickname="
+				+ mem_nickname + ", mem_sex=" + mem_sex + ", mem_birth=" + mem_birth + ", mem_intro=" + mem_intro
+				+ ", mem_profile_pic=" + mem_profile_pic + ", mem_orgname=" + mem_orgname + ", mem_newname="
+				+ mem_newname + ", mem_pw_chk=" + mem_pw_chk + ", file=" + file + "]";
+	}
+	
 	
 }

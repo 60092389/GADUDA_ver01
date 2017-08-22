@@ -54,4 +54,23 @@ public interface IMemberDao {
 	
 	//댓글 알림
 	public List<FurnitureArrReplyListVO> MyFurArrReplyList(String mem_id);
+	
+	//가구배치도댓글 닉네임변경
+	public void update_fur_arr_repl_nick(MemberDTO memberDTO);
+	//가구배치도좋아요 닉네임변경
+	public void update_fur_arr_good_nick(MemberDTO memberDTO);
+	//가구좋아요 닉네임변경
+	public void update_fur_good_nick(MemberDTO memberDTO);
+	//가구댓글 닉네임변경
+	public void update_fur_repl_nick(MemberDTO memberDTO);
+	
+	//가구배치도댓글 회원이미지변경
+	public void update_fur_arr_repl_img(MemberDTO memberDTO);
+	//가구배치도좋아요 회원이미지변경
+	public void update_fur_arr_good_img(MemberDTO memberDTO);
+	//가구좋아요 회원이미지변경
+	public void update_fur_good_img(MemberDTO  memberDTO);
+	//가구댓글 회원이미지변경
+	public void update_fur_repl_img(MemberDTO memberDTO);
+	
 } 

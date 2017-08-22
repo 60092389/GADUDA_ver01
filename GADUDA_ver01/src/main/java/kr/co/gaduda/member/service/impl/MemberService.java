@@ -56,6 +56,10 @@ public class MemberService implements IMemberService {
 	@Override
 	public void update_mem(MemberDTO memberDTO) {
 		memberDAO.update_mem(memberDTO);
+		memberDAO.update_fur_arr_good_nick(memberDTO);
+		memberDAO.update_fur_arr_repl_nick(memberDTO);
+		memberDAO.update_fur_good_nick(memberDTO);
+		memberDAO.update_fur_repl_nick(memberDTO);
 		
 	}
 
@@ -73,7 +77,10 @@ public class MemberService implements IMemberService {
 	@Override
 	public void update_mem_pic(MemberDTO memberDTO) {
 		memberDAO.update_mem_img(memberDTO);
-
+		memberDAO.update_fur_arr_good_img(memberDTO);
+		memberDAO.update_fur_arr_repl_img(memberDTO);
+		memberDAO.update_fur_good_img(memberDTO);
+		memberDAO.update_fur_repl_img(memberDTO);
 		
 	}
 
