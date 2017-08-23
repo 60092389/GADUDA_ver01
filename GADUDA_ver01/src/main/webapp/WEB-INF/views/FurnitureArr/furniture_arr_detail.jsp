@@ -438,7 +438,7 @@ if(mem_id != repl_id){
 	<div class="w3-padding-large">
 		<div class="w3-container w3-left">
 			<div id="recommend_items" class="w3-content">
-				<div class="title"><h2><b>배치도에 사용된 제품</b></h2></div>
+				<div class="title w3-text-teal"><h4><b>사용된 가구</b></h4></div>
 				<div class="w3-bar">
 					<c:forEach var="fur" items="${arr_fur }">
 						<div class="w3-container w3-border-top">
@@ -472,7 +472,7 @@ if(mem_id != repl_id){
 	<div class="w3-padding-large">
 		<div class="w3-container w3-left">
 			<div id="other_arr_fur" class="w3-content">
-				<div class="title"><h2><b>작성자의 다른 가구배치도</b></h2></div>
+				<div class="title w3-text-teal"><h4><b>작성자의 다른 가구배치도</b></h4></div>
 				<div class="w3-bar">
 					<c:forEach var="otherFurArr" items="${detailVO.other_furniture_arrList }">
 						<div class="w3-container w3-border-top">
@@ -500,11 +500,7 @@ if(mem_id != repl_id){
 	<div class="w3-padding-large">
          <div class="w3-container w3-left">
             <div id="recom_fur" class="w3-content">
-               <div class="title">
-                  <h2>
-                     <b>가구 추천 리스트</b>
-                  </h2>
-               </div>
+               <div class="title w3-text-teal"><h4><b>추천 가구</b></h4></div>
 
 
                <div class="w3-bar">
@@ -557,28 +553,30 @@ if(mem_id != repl_id){
 	<div id="more_comments" class="w3-container w3-left">
 		<!-- 댓글 보기 -->
 		<div class="w3-content w3-border-bottom ">
-			<a><h2><b>댓글</b></h2></a>
-			<!-- ★★★★★★★★★★★★★★★★★★★★★★★댓글이 많아지는 경우에는 더보기 버튼 눌러야 더나오는 걸로 수정하거나, 최근 댓글만 보여주기 ★★★★★★★★★★★★★★★★★★★★★★★-->
+		<div class="title w3-text-teal"><h4><b>댓글</b></h4></div>			
+		<!-- ★★★★★★★★★★★★★★★★★★★★★★★댓글이 많아지는 경우에는 더보기 버튼 눌러야 더나오는 걸로 수정하거나, 최근 댓글만 보여주기 ★★★★★★★★★★★★★★★★★★★★★★★-->
 			<!-- 댓글 리스트 불러오기 -->
-			<c:forEach var="reply" items="${reply_list }">
-				<div id="repllistcall" class="w3-padding">
-					<div class="w3-container">
-						<img class="w3-circle w3-col m1 w3-margin-right" alt="${reply.mem_id }" src="${reply.mem_profile_pic }" style="width:25px; height: 25px">
-						<div class="w3-col m2">${reply.mem_nickname }</div>
-						<div class="w3-col m6">${reply.fur_arr_plan_rep_contents }</div>
-						<div class="w3-col m2 w3-padding-top" style="font-size: 11px">${reply.fur_arr_plan_rep_write_date }</div>
-						<div class="w3-col m1">
-							<c:set value="${reply.mem_id }" var="repl"/>
-							<c:set value="${member.mem_id }" var="user"/>
-							
-							<c:if test="${repl == user}">
-								<button class="btn-reply-delete w3-button" style="font-size: 11px; size: 12px; padding-top: 0px; padding-bottom: 0px " value="${reply._id }"> delete</button>
-							</c:if>
-							<input type="hidden" id="repl_id" value="${ reply.mem_id }">
-						</div>
-					</div>		
-				</div>
-			</c:forEach>
+			<div class="w3-border-top">
+				<c:forEach var="reply" items="${reply_list }">
+					<div id="repllistcall" class="w3-padding">
+						<div class="w3-container">
+							<img class="w3-circle w3-col m1 w3-margin-right" alt="${reply.mem_id }" src="${reply.mem_profile_pic }" style="width:25px; height: 25px">
+							<div class="w3-col m2">${reply.mem_nickname }</div>
+							<div class="w3-col m6">${reply.fur_arr_plan_rep_contents }</div>
+							<div class="w3-col m2 w3-padding-top" style="font-size: 11px">${reply.fur_arr_plan_rep_write_date }</div>
+							<div class="w3-col m1">
+								<c:set value="${reply.mem_id }" var="repl"/>
+								<c:set value="${member.mem_id }" var="user"/>
+								
+								<c:if test="${repl == user}">
+									<button class="btn-reply-delete w3-button" style="font-size: 11px; size: 12px; padding-top: 0px; padding-bottom: 0px " value="${reply._id }"> delete</button>
+								</c:if>
+								<input type="hidden" id="repl_id" value="${ reply.mem_id }">
+							</div>
+						</div>		
+					</div>
+				</c:forEach>
+			</div>
 		</div>
 		<!-- 댓글 달기 -->
 		<div class="w3-content w3-border-bottom">
