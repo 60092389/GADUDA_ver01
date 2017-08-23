@@ -137,8 +137,7 @@ $(document).ready(function(){
 			contentType : 'application/json',
 			mimeType : 'application/json',
 			success : function(retVal){
-				alert("결과값 : " + retVal.result);
-				
+
 				location.reload();
 			},
 			error : function(retVal, status, er){
@@ -176,6 +175,10 @@ $(document).ready(function(){
 			success : function(retVal){
 				//alert("좋아요 목록" + " / " + retVal.goodList[].mem_id);
 				//alert("결과값 : " + retVal.result);
+	
+				if(retVal.result == '1'){
+					alert("댓글을 삭제하였습니다.")
+				}
 				
 				location.reload();
 			},

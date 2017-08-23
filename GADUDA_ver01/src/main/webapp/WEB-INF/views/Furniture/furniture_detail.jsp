@@ -75,7 +75,13 @@ $(document).ready(function() {
 			contentType : 'application/json',
 			mimeType : 'application/json',
 			success : function(retDeleteVal){
-				alert("삭제 성공 - " + retDeleteVal.val );
+				
+				if(retDeleteVal.val == 1){
+					alert("댓글을 삭제하였습니다.")
+				}else{
+					alert("댓글 삭제에 실패했습니다.")
+				}
+				
 				location.reload();
 			}
 		});
@@ -184,7 +190,7 @@ $(document).ready(function() {
 	
 	//댓글쓰기
 	$("#replinput").click(function(){
-		alert("댓글?");
+
 		var mem_nickname = $('#fur_memnick').val();
 		var fur_no = $('#fur_no').val();
 		var mem_id = $('#fur_mem_id').val();
@@ -211,7 +217,7 @@ $(document).ready(function() {
 			contentType : 'application/json',
 			mimeType : 'application/json',
 			success : function(retVal){
-				alert("댓글 작성 결과" + " / " + retVal.val);
+				
 				location.reload();
 			},
 			error : function(retVal, status, er){
