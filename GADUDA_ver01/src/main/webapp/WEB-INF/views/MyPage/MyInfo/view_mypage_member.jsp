@@ -60,17 +60,39 @@ html { scrollbar-arrow-color: #efefef;
 					<c:set var="member" value="${ member }" />
 					<div class="w3-container">
 						<h4>My Profile</h4>
-						<div class="w3-col m5">
-							<img src=${ member.mem_profile_pic } class="w3-circle" style="height: 150px; width: 150px" alt="profile ficture">
-							<p class="w3-center"><i class="w3-margin-right w3-text-theme"></i><a onclick="document.getElementById('proficMod').style.display='block'">프로필 사진 변경</a></p>
-						</div>
-						<div class="w3-col m5">
-							<p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>${ member.mem_nickname }</p>
-							<p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>${ member.mem_birth }</p>
-							<p><i class="fa fa-male fa-fw w3-margin-right w3-text-theme"></i> <a href=${URLs.URI_MYPAGE_MEMBER_FOLLOWER_FULL }>팔로워 ${follower}</a></p>
-							<p><i class="fa fa-male fa-fw w3-margin-right w3-text-theme"></i> <a href=${URLs.URI_MYPAGE_MEMBER_FOLLOWING_FULL }>팔로잉 ${following }</a></p>
-							<a type="button" onclick="document.getElementById('profMod').style.display='block'" class="w3-button w3-theme-d2 w3-margin-bottom w3-center">프로필 수정하기</a>
-						</div>
+						<div class="w3-container">
+							<table class="w3-margin w3-padding w3-center">
+								<tr>
+									<td rowspan="5" colspan="2" style="width: 300px; height: 300px">
+										<img src=${ member.mem_profile_pic } class="w3-circle" style="height: 200px; width: 200px" alt="profile ficture">
+									</td>
+									<td rowspan="6" style="width: 50px">　</td>
+								</tr>
+  								<tr>
+    								<td style="width: 100px">별명</td>
+   	 								<td style="width: 200px"><b class="w3-button w3-hover-white">${ member.mem_nickname }</b></td>
+								</tr>
+								<tr>
+								    <td>생년월일</td>
+								    <td><p class="w3-button w3-hover-white">${ member.mem_birth }</p></td>
+								</tr>
+								
+								<tr>
+								    <td>팔로워</td>
+								    <td><a class="w3-button" href=${URLs.URI_MYPAGE_MEMBER_FOLLOWER_FULL }>${follower}</a></td>
+								</tr>
+								<tr>
+								    <td>팔로잉</td>
+								    <td><a class="w3-button" href=${URLs.URI_MYPAGE_MEMBER_FOLLOWING_FULL }>${following }</a></td>
+								</tr>
+								<tr>
+									<td colspan="2"><a type="button" onclick="document.getElementById('proficMod').style.display='block'" 
+									class="w3-button w3-blue w3-margin w3-center">프로필 사진 수정하기</a></td>
+									<td colspan="2"><a type="button" onclick="document.getElementById('profMod').style.display='block'" 
+									class="w3-button w3-green w3-margin w3-center">프로필 수정하기</a></td>
+								</tr>
+							</table>
+							</div>
 						<hr>
 					</div>
 				</div>
@@ -109,7 +131,7 @@ html { scrollbar-arrow-color: #efefef;
 				</c:if>
 				<c:if test="${ repl_view eq '1' }">
 					<!-- Middle Column -->
-					<div class="w3-container" id="replt_arr" style="max-height: 400px; overflow: auto;">
+					<div class="w3-container w3-margin-top" id="replt_arr" style="max-height: 400px; overflow: auto;">
 						<h3>내 배치도 반응</h3>
 						<c:forEach var="repllist" items="${repllist }">
 							<c:set value="${repllist.mem_id }" var="repl"/>
