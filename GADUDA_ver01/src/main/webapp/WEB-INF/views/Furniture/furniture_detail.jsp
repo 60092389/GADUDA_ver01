@@ -235,6 +235,13 @@ $(document).ready(function() {
 	height : 20px !important
 }
 
+.review_icon{
+	height: 100%;
+	background-image: url('/resources/Images/review/review.png');
+	background-size: 300px, 150px;
+	background-repeat: no-repeat;
+}
+
 </style>
 </head>
 <body>
@@ -320,7 +327,7 @@ ${craw_fur.craw_fur_brand_site }<br>${craw_fur.craw_fur_name }<br>${craw_fur.cra
 	<div id="more_comments" class="w3-container w3-left">
 		<!-- 댓글 보기 -->
 		<div class="w3-content w3-border-bottom ">
-			<a><h2><b>댓글</b></h2></a>
+			<div class="title w3-text-teal"><h4><b>댓글</b></h4></div>					
 			<!-- ★★★★★★★★★★★★★★★★★★★★★★★댓글이 많아지는 경우에는 더보기 버튼 눌러야 더나오는 걸로 수정하거나, 최근 댓글만 보여주기 ★★★★★★★★★★★★★★★★★★★★★★★-->
 			<!-- 댓글 리스트 불러오기 -->
 			<c:forEach var="replyList" items="${fur_repl_list }">
@@ -369,10 +376,12 @@ ${craw_fur.craw_fur_brand_site }<br>${craw_fur.craw_fur_name }<br>${craw_fur.cra
 	<div class="w3-padding-large">
 		<div class="w3-container w3-left">
 			<div id="recom_fur" class="w3-content">
-				<div class="title"><h4><b>가구 리뷰 리스트</b></h4></div>
+				<div class="title w3-text-teal"><h4><b>가구 한 줄</b></h4></div>		
 				<div class="w3-bar">
 					<c:forEach var="reviewList" items="${simple_review_list }">
-						<p class="simple_review">${reviewList} </p>
+						<div class="w3-container review_icon" style="height: 60px">
+							<p class="simple_review"><span class="w3-center" style="margin-left: 80px">${reviewList} </span></p>
+						</div>
 					</c:forEach>
 				</div>
 			</div>
@@ -382,7 +391,7 @@ ${craw_fur.craw_fur_brand_site }<br>${craw_fur.craw_fur_name }<br>${craw_fur.cra
 	<div class="w3-padding-large">
 		<div class="w3-container w3-left">
 			<div id="recom_fur" class="w3-content">
-				<div class="title"><h4><b>가구 가격 비교</b></h4></div>
+				<div class="title w3-text-teal"><h4><b>???????</b></h4></div>		
 				<div class="w3-bar">
 
 				</div>
