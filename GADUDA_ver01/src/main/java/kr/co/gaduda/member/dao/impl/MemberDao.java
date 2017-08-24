@@ -18,6 +18,7 @@ import org.springframework.stereotype.Repository;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.member.dao.IMemberDao;
 import kr.co.gaduda.member.dto.FollowDTO;
+import kr.co.gaduda.member.dto.MemberAccHistoryDTO;
 import kr.co.gaduda.member.dto.MemberDTO;
 import kr.co.gaduda.member.vo.Follower_VO;
 import kr.co.gaduda.member.vo.Following_VO;
@@ -351,5 +352,10 @@ public class MemberDao implements IMemberDao {
 	}
 
 
+	@Override
+	public void addMemberAccHistory(MemberAccHistoryDTO memberAccHistoryDTO) {
+		memberSqlSession.insert(namespace+".addMemAccHistory", memberAccHistoryDTO);
+	}
+	
 
 }

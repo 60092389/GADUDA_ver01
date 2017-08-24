@@ -5,6 +5,7 @@ import java.util.Map;
 
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.member.dto.FollowDTO;
+import kr.co.gaduda.member.dto.MemberAccHistoryDTO;
 import kr.co.gaduda.member.dto.MemberDTO;
 import kr.co.gaduda.member.vo.Follower_VO;
 import kr.co.gaduda.member.vo.Following_VO;
@@ -73,6 +74,7 @@ public interface IMemberDao {
 	//가구댓글 회원이미지변경
 	public void update_fur_repl_img(MemberDTO memberDTO);
 	
-
+	//회원접속기록 추가
+	public void addMemberAccHistory(MemberAccHistoryDTO memberAccHistoryDTO);
 	
 } 

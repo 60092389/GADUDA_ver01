@@ -50,4 +50,7 @@ public interface IMemberService {
 	
 	//나의 가구 배치도 내용 가져오기
 	public List<FurnitureArrReplyListVO> MyFurArrReplyList(String mem_id);
+	
+	//로그아웃시 회원접속기록에 추가
+	public void logoutAddMemberAcchHistory(String mem_id);
 }

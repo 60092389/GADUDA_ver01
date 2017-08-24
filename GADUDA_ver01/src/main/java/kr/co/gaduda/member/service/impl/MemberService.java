@@ -1,6 +1,8 @@
 package kr.co.gaduda.member.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import kr.co.gaduda.furniture.vo.FurnitureListViewVO;
 import kr.co.gaduda.furniture_arr.vo.FurnitureArrReplyListVO;
 import kr.co.gaduda.member.dao.impl.MemberDao;
 import kr.co.gaduda.member.dto.FollowDTO;
+import kr.co.gaduda.member.dto.MemberAccHistoryDTO;
 import kr.co.gaduda.member.dto.MemberDTO;
 import kr.co.gaduda.member.service.IMemberService;
 import kr.co.gaduda.member.vo.Follower_VO;
@@ -31,8 +34,33 @@ public class MemberService implements IMemberService {
 	private FurnitureDao furnitureDao;
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class})
 	public int joinMember(MemberDTO memberDTO) {
-		return memberDAO.joinMember(memberDTO);
+		int result = 0;
+		
+		try {
+			
+			memberDAO.joinMember(memberDTO);
+			
+			MemberAccHistoryDTO mahDTO = new MemberAccHistoryDTO();
+			String mem_id = memberDTO.getMem_id();
+			String mem_acc_kind = "회원가입";
+			
+			mahDTO.setMem_id(mem_id);
+			mahDTO.setMem_acc_kind(mem_acc_kind);
+			
+			memberDAO.addMemberAccHistory(mahDTO);
+			
+			result = 1;
+			
+		} catch (Exception e) {
+			System.out.println("회원가입실패");
+			result=0;
+		}
+		
+		
+		
+		return result;
 	}
 
 	@Override
@@ -41,8 +69,31 @@ public class MemberService implements IMemberService {
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class})
 	public MemberVO login_chk(MemberDTO memberDTO) {
-		return memberDAO.login_chk(memberDTO);
+		
+		MemberVO memberVO = new MemberVO();
+		
+		try {
+			
+
+			
+			MemberAccHistoryDTO mahDTO = new MemberAccHistoryDTO();
+			String mem_id = memberDTO.getMem_id();
+			String mem_acc_kind = "로그인";
+			
+			mahDTO.setMem_id(mem_id);
+			mahDTO.setMem_acc_kind(mem_acc_kind);
+
+			memberVO = memberDAO.login_chk(memberDTO);
+			
+			memberDAO.addMemberAccHistory(mahDTO);
+
+		} catch (Exception e) {
+			memberVO = null;
+		}
+		
+		return memberVO;
 	}
 
 	@Override
@@ -271,4 +322,13 @@ public class MemberService implements IMemberService {
 		return memberDAO.MyFurArrReplyList(mem_id);
 	}
 
+	
+	@Override
+	public void logoutAddMemberAcchHistory(String mem_id) {
+		String mem_acc_kind = "로그아웃";
+		MemberAccHistoryDTO mahDTO = new MemberAccHistoryDTO();
+		mahDTO.setMem_acc_kind(mem_acc_kind);
+		mahDTO.setMem_id(mem_id);
+		memberDAO.addMemberAccHistory(mahDTO);
+	}
 }

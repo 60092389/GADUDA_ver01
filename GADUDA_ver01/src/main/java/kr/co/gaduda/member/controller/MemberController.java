@@ -88,7 +88,15 @@ public class MemberController {
 
 	@RequestMapping(value = URLs.URI_LOGOUT)
 	public String logout(HttpServletRequest request) {
-
+		
+		
+		
+		MemberVO memberVO = (MemberVO) request.getSession().getAttribute("member");
+		
+		String mem_id = memberVO.getMem_id();
+		
+		memberService.logoutAddMemberAcchHistory(mem_id);
+		
 		request.getSession().invalidate();
 
 		return URLs.URI_MAIN_REDIRECT;

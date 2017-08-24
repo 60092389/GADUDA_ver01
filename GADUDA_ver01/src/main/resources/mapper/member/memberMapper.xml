@@ -210,9 +210,11 @@
 	
 	<!-- 2017.08.21 내 가구 배치도 넘버 찾기 -->
 	<select id = "get_fur_arr_no" parameterType="String" resultType="int">
-		select fur_arr_plan_no from FURNITURE_ARRANGEMENT_PLAN where mem_id = ${mem_id}
+		select fur_arr_plan_no from FURNITURE_ARRANGEMENT_PLAN where mem_id = #{mem_id}
 	</select>
 	
-	
+	<insert id="addMemAccHistory">
+		insert into member_access_history values(seq_mem_acc_his.nextval, #{mem_id}, #{mem_acc_kind}, sysdate)
+	</insert>
 	
 </mapper>
