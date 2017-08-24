@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 <style>
 #myCanvas_div{
-	border:1px solid;
 	float:left;
 	width:850;
 	height:800;
@@ -296,7 +295,19 @@
 	height:100%;
 }
 
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
 
+#myBar {
+  width: 0%;
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
 
 
 </style>
@@ -804,47 +815,48 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<div id="myCanvas_div">
-	<canvas id="myCanvas" width="850" height="800" />
-</div>
-<div id="designroom_menu">
-	<div id="designRoom_menu1">
-		<div id="designRoom_menu_1" class="designRoom_menu_css">
-			<div id="designRoom_menu_sofa" class="designRoom_menu_furniture" value="sofa" value2="소파"><p class="designRoom_menu_text">#소파</p></div> 
-			<div id="designRoom_menu_dressing_table" class="designRoom_menu_furniture" value="dressing_table" value2="화장재"><p class="designRoom_menu_text">#화장대</p></div>
-		</div>
-		
-		<div id="designRoom_menu_2" class="designRoom_menu_css">
-			<div id="designRoom_menu_bookcase" class="designRoom_menu_furniture" value="bookcase" value2="책장"><p class="designRoom_menu_text">#책장</p></div> 
-			<div id="designRoom_menu_chair" class="designRoom_menu_furniture" value="chair" value2="의자"><p class="designRoom_menu_text">#의자 </p></div>
-			<div id="designRoom_menu_drawer" class="designRoom_menu_furniture" value="drawer" value2="서랍"><p class="designRoom_menu_text">#서랍</p></div>
-		</div>
-		
-		<div id="designRoom_menu_3" class="designRoom_menu_css">
-			<div id="designRoom_menu_desk_workstation" class="designRoom_menu_furniture" value="desk_workstation" value2="책상"><p class="designRoom_menu_text">#책생#워크스테이션</p></div> 
-		</div>
-		
-		<div id="designRoom_menu_4" class="designRoom_menu_css">
-			<div id="designRoom_menu_table" class="designRoom_menu_furniture" value="table" value2="데이블"><p class="designRoom_menu_text">#데이블</p></div> 
-			<div id="designRoom_menu_wardrobe" class="designRoom_menu_furniture" value="wardrobe" value2="옷장"><p class="designRoom_menu_text">#옷장</p></div> 
-		</div>
-		
-		<div id="designRoom_menu_5" class="designRoom_menu_css">
-			<div id="designRoom_menu_support" class="designRoom_menu_furniture" value="support" value2="받침대 장식"><p class="designRoom_menu_text">#받침대#장식</p></div> 
-		</div>
-		
-		<div id="designRoom_menu_6" class="designRoom_menu_css">
-			<div id="designRoom_menu_display_cupboard" class="designRoom_menu_furniture" value2="display_supboard" value2="장식장"><p class="designRoom_menu_text">#장식장</p></div>
-			<div id="designRoom_menu_storage_closet" class="designRoom_menu_furniture" value2="storage_closet" value2="수납장"><p class="designRoom_menu_text">#수납장</p></div> 
-		</div>
-		
-		<div id="designRoom_menu_7" class="designRoom_menu_css">
-			<div id="designRoom_menu_bed" class="designRoom_menu_furniture" value="bed" value2="침대"><p class="designRoom_menu_text">#침대</p></div>
-		</div>
+<div>
+	<div id="myCanvas_div" >
+	<canvas id="myCanvas" width="800" height="800" />
 	</div>
-	
-	<div id="designRoom_menu2">
+	<div id="designroom_menu">
+		<div id="designRoom_menu1">
+			<div id="designRoom_menu_1" class="designRoom_menu_css">
+				<div id="designRoom_menu_sofa" class="designRoom_menu_furniture" value="sofa" value2="소파"><p class="designRoom_menu_text">#소파</p></div> 
+				<div id="designRoom_menu_dressing_table" class="designRoom_menu_furniture" value="dressing_table" value2="화장재"><p class="designRoom_menu_text">#화장대</p></div>
+			</div>
+			
+			<div id="designRoom_menu_2" class="designRoom_menu_css">
+				<div id="designRoom_menu_bookcase" class="designRoom_menu_furniture" value="bookcase" value2="책장"><p class="designRoom_menu_text">#책장</p></div> 
+				<div id="designRoom_menu_chair" class="designRoom_menu_furniture" value="chair" value2="의자"><p class="designRoom_menu_text">#의자 </p></div>
+				<div id="designRoom_menu_drawer" class="designRoom_menu_furniture" value="drawer" value2="서랍"><p class="designRoom_menu_text">#서랍</p></div>
+			</div>
+			
+			<div id="designRoom_menu_3" class="designRoom_menu_css">
+				<div id="designRoom_menu_desk_workstation" class="designRoom_menu_furniture" value="desk_workstation" value2="책상"><p class="designRoom_menu_text">#책생#워크스테이션</p></div> 
+			</div>
+			
+			<div id="designRoom_menu_4" class="designRoom_menu_css">
+				<div id="designRoom_menu_table" class="designRoom_menu_furniture" value="table" value2="데이블"><p class="designRoom_menu_text">#데이블</p></div> 
+				<div id="designRoom_menu_wardrobe" class="designRoom_menu_furniture" value="wardrobe" value2="옷장"><p class="designRoom_menu_text">#옷장</p></div> 
+			</div>
+			
+			<div id="designRoom_menu_5" class="designRoom_menu_css">
+				<div id="designRoom_menu_support" class="designRoom_menu_furniture" value="support" value2="받침대 장식"><p class="designRoom_menu_text">#받침대#장식</p></div> 
+			</div>
+			
+			<div id="designRoom_menu_6" class="designRoom_menu_css">
+				<div id="designRoom_menu_display_cupboard" class="designRoom_menu_furniture" value2="display_supboard" value2="장식장"><p class="designRoom_menu_text">#장식장</p></div>
+				<div id="designRoom_menu_storage_closet" class="designRoom_menu_furniture" value2="storage_closet" value2="수납장"><p class="designRoom_menu_text">#수납장</p></div> 
+			</div>
+			
+			<div id="designRoom_menu_7" class="designRoom_menu_css">
+				<div id="designRoom_menu_bed" class="designRoom_menu_furniture" value="bed" value2="침대"><p class="designRoom_menu_text">#침대</p></div>
+			</div>
+		</div>
+		
 	</div>
+	<div id="designRoom_menu2">	</div>
 </div>
 </body>
 </html>

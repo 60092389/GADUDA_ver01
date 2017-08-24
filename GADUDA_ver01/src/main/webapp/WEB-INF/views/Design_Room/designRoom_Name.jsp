@@ -7,29 +7,41 @@
 <title>Insert title here</title>
 <style>
 #myCanvas_div{
-	border:1px solid;
 	float:left;
 	width:850;
 	height:800;
 	margin-right:10px;
 }
 #designroom_name{
-	border:1px solid;
 	float:left;
-	width:291;
-	height:800;
+	width:90%;
+	height:100%;
 }
 #designroom_name_title{
-	border:1px solid;
+
 	width:100%;
 	height:200;
 }
 #designroom_name_text{
-	border:1px solid;
+
 	width:100%;
 	height:200;
 }
-</div>
+
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 0%;
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+
 </style>
 <script src="/resources/script/html2canvas.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -107,12 +119,23 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<div id="myCanvas_div">
-	<canvas id="myCanvas" width="850" height="800" />
-</div>
-<div id="designroom_name">
-	<div id="designroom_name_title">방이름을 입력해주세요</div>
-	<div id="designroom_name_text">방이름:<input type="text" id="designroom_name_text_value"></div>
+<div id="myCanvas_div" class="w3-container">
+	<canvas id="myCanvas" width="1030" height="800" />
+	
+	<div id="designroom_name">
+		<table class="w3-container">
+			<tr>
+				<th class="w3-border" id="designroom_name_title"><b>방 이름 정하기</b></th>
+			</tr>
+			<tr>
+				<td class="w3-border" id="designroom_name_text">
+					<input class="w3-input" type="text" placeholder="방 이름을 입력하세요." id="designroom_name_text_value" name="designroom_ArrName_Menu_Name">
+				</td>
+			</tr>
+		</table>
+
+	</div>
+	
 </div>
 
 </body>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>GADUDA</title>
 <style type="text/css">
 
 
@@ -35,9 +35,22 @@
 	height:800px;
 }
 #design_Include_button{
-	border: 1px solid;
-	width: 1158px; 
-	height:200px;
+	width: 100%; 
+	height:100%;
+}
+	
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 0%;
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 30px;
+  color: white;
 }
 
 
@@ -64,6 +77,8 @@ var select_width='';
 var select_height='';
 
 $(document).ready(function(){
+	$("#myBar").css("width","25%");
+	$("#ing").append("25%");
 	
 	$.ajax({
 		url:"${URLs.URI_DESIGNROOM_SELECT_FULL}",
@@ -84,15 +99,20 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+<div class="w3-container">
+	<div class="w3-container" id="myProgress">
+  		<div id="myBar"><b id="ing"></b></div>
+	</div>
+	
+	<br>
+	<br>
 
-<diV id="design_Include_hadder"></diV>
-</br>
+	<div id="design_Include_body"></div>
+	
+	<br>
 
-<div id="design_Include_body">
-
+	<div id="design_Include_button"></div>
+	
 </div>
-</br>
-
-<div id="design_Include_button"></div>
 </body>
 </html>

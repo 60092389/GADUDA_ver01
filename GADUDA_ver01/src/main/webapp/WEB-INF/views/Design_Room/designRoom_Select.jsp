@@ -164,7 +164,7 @@ $(document).ready(function(){
 		$("#designRoom_select_room").append(designRoom_select_room_append);
 	}
 	
-	function designRoom_select_room_content(){
+ 	function designRoom_select_room_content(){
 		designRoom_select_room_append+="<div class='designRoom_select_room_content' value='"+myroom.myroom[myroom_start].room_img_src+"'>";
 			designRoom_select_room_append+="<div class='designRoom_select_room_img'>";
 			designRoom_select_room_append+="<img class='designRoom_select_room_img_src' src='"+myroom.myroom[myroom_start].room_img_src+"'>;"
@@ -175,6 +175,7 @@ $(document).ready(function(){
 		designRoom_select_room_append+="</div>";		
 	}
 	
+
 	
 	
 	$(document).on('click', '.designRoom_select_room_content', function(e) {

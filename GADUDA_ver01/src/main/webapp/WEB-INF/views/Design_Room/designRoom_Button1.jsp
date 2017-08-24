@@ -7,13 +7,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<style type="text/css">
+
+.designRoom_Progress_Button1_css{
+	width: 90%; 
+	text-align: right;
+	padding-bottom: 50px;
+}
+</style>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#designRoom_next1").click(function(){
 		if(select_myroom == ''){
-			alert("select my room!")
+			alert("방을 선택하세요!")
 		}else{
-			
+			$("#myBar").css("width","50%");
+			$("#ing").html("");
+			$("#ing").append("50%");
 			$.ajax({
 				url:"${URLs.URI_DESIGNROOM_CANVAS_FULL}",
 				success:function(data){
@@ -34,6 +44,8 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<button id="designRoom_next1">다음</button>
+<div class="w3-container designRoom_Progress_Button1_css">
+	<button class="w3-button w3-blue" id="designRoom_next1" >다음</button>
+</div>
 </body>
 </html>
