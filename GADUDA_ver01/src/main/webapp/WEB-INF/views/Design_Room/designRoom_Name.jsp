@@ -47,6 +47,11 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	$("#myBar").css("width","75%");
+	$("#ing").html("");
+	$("#ing").append("75%");
+	
 	var furniture_kind= ''
 		
 		var canvas = document.getElementById("myCanvas");
