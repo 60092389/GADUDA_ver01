@@ -50,7 +50,7 @@ $(document).ready(function(){
 	<!-- Page Container -->
 	<div class="w3-main w3-content" style="max-width: 1200px; margin-top: 200px; margin-left: 300px" id ='designRoom_body'>
 		<div class="w3-container" id="myPage_content5">
-		
+		<button class="w3-button w3-blue w3-hover-white" id="designRoom_button">새로운 배치도 생성 하기</button>
 			<br>
 			<c:forEach var="arrList" items="${arrList }">
 			<div class="w3-padding-32 w3-main w3-content w3-margin-top w3-border-top">
@@ -100,7 +100,6 @@ $(document).ready(function(){
 	    	</div>
 		</c:forEach>
 		</div>
-		<button class="w3-button w3-blue w3-hover-white" id="designRoom_button">새로운 배치도 생성 하기</button>
 	</div>
 </div>
 	

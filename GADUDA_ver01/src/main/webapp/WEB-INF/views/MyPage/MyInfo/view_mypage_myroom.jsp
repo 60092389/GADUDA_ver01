@@ -50,6 +50,7 @@ $(document).ready(function(){
 				<table class="w3-container w3-table w3-center">
 					<tr>
 	   					<td>No.<h3>${ myRoomList.room_no }</h3></td>
+	   					<td><img src="${myRoomList.room_img_src }" alt=${myRoomList.room_img_src } style="width:150x; height:150px;"></td>
 						<td><h3>${ myRoomList.room_name }</h3></td>
 						<td>${ myRoomList.room_create_date }</td>
 	  				</tr>
