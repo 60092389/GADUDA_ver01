@@ -2,6 +2,8 @@ package kr.co.gaduda.mypage.member.controller;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -155,25 +157,33 @@ public class MypageMemberController implements ServletContextAware {
 
 	@RequestMapping(value = URLs.URI_MYPAGE_MEMBER_IMAGE, method = RequestMethod.POST)
 	public String mem_img_upload(MemberDTO memberDTO, HttpServletRequest request, MultipartFile file) throws Exception {
-		//String realpath = request.getSession().getServletContext().getRealPath("D:\\gaduda\\profile\\");
 		String realpath = "D:\\gaduda\\profile\\";
-		System.out.println("프로필사진 저장되는 경로" + realpath);
-		File f = new File(realpath + file.getOriginalFilename());
-		MemberVO memVO = (MemberVO) request.getSession().getAttribute("member");
-		String mem_id = memVO.getMem_id();
+	      System.out.println("프로필사진 저장되는 경로" + realpath);
+	      MemberVO memVO = (MemberVO) request.getSession().getAttribute("member");
+	      String mem_id = memVO.getMem_id();
+	      
+	      Date d = new Date();
+	      SimpleDateFormat formatType=new SimpleDateFormat("yyyyMMddhhmmss");
+	       String date=formatType.format(d);
+	      System.out.println("이미지 업로드"+date);
+	      String file_name=date+mem_id+file.getOriginalFilename();
+	      
+	      
+	      
+	      File f = new File(realpath +file_name);
 
-		memberDTO.setMem_id(mem_id);
-		file.transferTo(f);
-		String path = "/profileimage/";
-		String pic_path = path + file.getOriginalFilename();
-		memberDTO.setMem_profile_pic(pic_path);
-		memVO.setMem_profile_pic(pic_path);
-		memberService.update_mem_pic(memberDTO);
+	      memberDTO.setMem_id(mem_id);
+	      file.transferTo(f);
+	      String path = "/profileimage/";
+	      String pic_path = path + file_name;
+	      memberDTO.setMem_profile_pic(pic_path);
+	      memVO.setMem_profile_pic(pic_path);
+	      memberService.update_mem_pic(memberDTO);
 
-		memVO.setMem_profile_pic(pic_path);
-		request.getSession().setAttribute("member", memVO);
-		//return Pages.VIEW_MYPAGE_MEMBER;
-		return "redirect:"+URLs.URI_MYPAGE_MEMBER_FULL;
+	      memVO.setMem_profile_pic(pic_path);
+	      request.getSession().setAttribute("member", memVO);
+	      //return Pages.VIEW_MYPAGE_MEMBER;
+	      return "redirect:"+URLs.URI_MYPAGE_MEMBER_FULL;
 	}
 
 	@RequestMapping(value = URLs.URI_MYPAGE_MEMBER_FOLLOWER)
