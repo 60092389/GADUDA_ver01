@@ -82,7 +82,7 @@ $(document).ready(function(){
 		<div class="w3-padding-16 w3-main w3-content w3-margin-top w3-border-top">
 			<table class="w3-container w3-table">
   				<tr>
-   					 <th colspan="4" class="w3-blue w3-button w3-center"><a href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fsl.fur_no }"><b>No.${fsl.fur_no }　${fsl.fur_name }</b></a></th>
+   					 <th colspan="4" class="w3-center"><a class="w3-button w3-white" href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fsl.fur_no }"><h4>No.${fsl.fur_no }　${fsl.fur_name }</h4></a></th>
   				</tr>
   				<tr>
     				<th rowspan="3"><img alt="${fsl.fur_name }" src="${fsl.fur_pic_loc }" height="200px"></th>
@@ -104,7 +104,7 @@ $(document).ready(function(){
   				<tr>
     				<th>${fsl.fur_brand_name } 　　 ${fsl.fur_price }won</th> 
     				<th></th>
-    				<th><button class="w3-button w3-red" id="btn-scrap-delete" value="${fsl.fur_scrap_no}">삭제하기</button></th>
+    				<th><a  class="w3-button w3-deep-orange" id="btn-scrap-delete" value="${fsl.fur_scrap_no}">삭제하기</a></th>
   				</tr>
   
 			</table>

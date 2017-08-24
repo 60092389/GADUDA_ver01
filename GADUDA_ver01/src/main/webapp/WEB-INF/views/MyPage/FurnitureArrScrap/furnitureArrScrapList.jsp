@@ -97,8 +97,8 @@ $(document).ready(function(){
 			<div class="w3-padding-16 w3-main w3-content w3-margin-top w3-border-top">
 				<table class="w3-container w3-table">
 					<tr>
-   						<th colspan="4" class="w3-blue w3-button w3-center"><a href="<%= URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL%>/?fur_arr_plan_no=${fasl.fur_arr_plan_no }"><b>No.${fasl.fur_arr_plan_no } 　${fasl.fur_arr_plan_name }</b></a></th>
-  					</tr>
+						<th colspan="4" class="w3-center"><a class="w3-button w3-white" href="<%=URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL%>/?fur_arr_plan_no=${fasl.fur_arr_plan_no }"><h4>No.${fasl.fur_arr_plan_no } 　${fasl.fur_arr_plan_name }</h4></a></th>
+					</tr>
   					<tr>
 	    				<th rowspan="3" class="w3-padding-32"><img alt="${fasl.fur_arr_plan_name }" src="${fasl.fur_arr_plan_img_loc }" height="200px"></th>
 	   					<th class="w3-padding-32">${fasl.fur_arr_plan_mem_id }</th> 
