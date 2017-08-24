@@ -47,19 +47,19 @@
 						<c:set var="followox" value="${ follower_list.status_fol_kind }"/>
 							<!-- 둘다 팔로우 안한 상태일때 -->
 		    				<c:if test="${ followox eq '1' }">
-		    					<button onclick="newfollow('${follower_list.fol_mem_id}');" class="w3-button w3-blue">팔로우하기${followox }</button>
+		    					<button onclick="newfollow('${follower_list.fol_mem_id}');" class="w3-button w3-blue">팔로우하기</button>
 		    				</c:if>
 		    				<!-- 게시자만 팔로우 -->
 		    				<c:if test="${ followox eq '2' }">
-		    					<button onclick="follow('${follower_list.fol_mem_id}');" class="w3-button w3-blue">팔로우하기${followox }</button>
+		    					<button onclick="follow('${follower_list.fol_mem_id}');" class="w3-button w3-blue">팔로우하기</button>
 		    				</c:if>
 		    				<!-- 나만 팔로우 한 상태일때 -->
 		    				<c:if test="${ followox eq '3' }">
-		    					<button onclick="delfollow('${follower_list.fol_mem_id}');" class="w3-button w3-blue">언팔로우하기${followox }</button>
+		    					<button onclick="delfollow('${follower_list.fol_mem_id}');" class="w3-button w3-blue">언팔로우하기</button>
 		    				</c:if>
 		    				<!-- 둘다 팔로우 -->
 		    				<c:if test="${ followox eq '4' }">
-		    					<button onclick="follow('${follower_list.fol_mem_id}');" class="w3-button w3-blue">언팔로우하기${followox }</button>
+		    					<button onclick="follow('${follower_list.fol_mem_id}');" class="w3-button w3-blue">언팔로우하기</button>
 		    				</c:if>
 						</div>
 						<div class="w3-col m3 w3-center"><a href="${URLs.URI_FOLLOW_FURARR_FULL }?fol_mem_id=${follower_list.fol_mem_id}" value="${follower_list.fol_mem_id}" class="w3-button w3-blue">가구 배치도</a></div>
