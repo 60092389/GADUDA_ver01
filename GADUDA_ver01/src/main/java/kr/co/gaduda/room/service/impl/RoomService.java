@@ -6,7 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.gaduda.room.dao.IRoomDao;
+import kr.co.gaduda.room.dto.DesignRoom_Concept_DTO;
+import kr.co.gaduda.room.dto.DesignRoom_DTO;
+import kr.co.gaduda.room.dto.DesignRoom_Furniture_DTO;
+import kr.co.gaduda.room.dto.DesignRoom_Kind_DTO;
+import kr.co.gaduda.room.dto.Designroom_Tag_DTO;
 import kr.co.gaduda.room.dto.RoomDTO;
+import kr.co.gaduda.room.dto.Room_Img_Src_DTO;
 import kr.co.gaduda.room.service.IRoomService;
 import kr.co.gaduda.room.vo.Funrniture_VO;
 import kr.co.gaduda.room.vo.Furniture_Basic_Img;
@@ -44,6 +50,42 @@ public class RoomService implements IRoomService {
 	@Override
 	public List<Furniture_Basic_Img> get_basic_img_ser() {
 		return roomDao.get_basic_img_dao();
+	}
+
+	@Override
+	public int insertDesignRoom_ser(DesignRoom_DTO designRoom_DTO, List<Designroom_Tag_DTO> designroom_tag, List<DesignRoom_Furniture_DTO> DesignRoom_Furniture_List,Room_Img_Src_DTO room_Img_Src_DTO,DesignRoom_Concept_DTO designRoom_concept_DTO,DesignRoom_Kind_DTO designRoom_Kind_DTO) {
+		
+		int num =roomDao.insertDesignRoom_dao(designRoom_DTO);
+		
+		int designRoom_max_num=roomDao.designRoom_max_num_dao();
+		
+		for(int i=0;i<designroom_tag.size();i++){
+			Designroom_Tag_DTO designroom_tag_value=designroom_tag.get(i);
+			designroom_tag_value.setDesignRoom_max_num(designRoom_max_num);
+			System.out.println(designroom_tag_value.getDesignroom_tag());
+			System.out.println(designroom_tag_value.getDesignRoom_max_num());
+			roomDao.insertDesignRoom_Tag_dao(designroom_tag_value);
+		}
+		
+		for(int i=0;i<DesignRoom_Furniture_List.size();i++){
+			DesignRoom_Furniture_DTO designRoom_Furniture_DTO=DesignRoom_Furniture_List.get(i);
+			designRoom_Furniture_DTO.setDesignRoom_max_num(designRoom_max_num);
+			roomDao.insertDesignRoom_Img_dao(designRoom_Furniture_DTO);
+		}
+		
+		room_Img_Src_DTO.setDesignRoom_max_num(designRoom_max_num);
+		roomDao.insertDesignRoom_Img_Src_dao(room_Img_Src_DTO);
+		
+		
+		designRoom_concept_DTO.setDesignRoom_max_num(designRoom_max_num);
+		roomDao.insertDesignRoom_concept_dao(designRoom_concept_DTO);
+
+		
+		designRoom_Kind_DTO.setDesignRoom_max_num(designRoom_max_num);
+		roomDao.insertDesignRoom_Kind_dao(designRoom_Kind_DTO);
+		
+		
+		return  num;
 	}
 
 	

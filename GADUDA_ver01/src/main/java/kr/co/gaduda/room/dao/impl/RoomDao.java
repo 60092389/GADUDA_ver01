@@ -7,7 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.gaduda.room.dao.IRoomDao;
+import kr.co.gaduda.room.dto.DesignRoom_Concept_DTO;
+import kr.co.gaduda.room.dto.DesignRoom_DTO;
+import kr.co.gaduda.room.dto.DesignRoom_Furniture_DTO;
+import kr.co.gaduda.room.dto.DesignRoom_Kind_DTO;
+import kr.co.gaduda.room.dto.Designroom_Tag_DTO;
 import kr.co.gaduda.room.dto.RoomDTO;
+import kr.co.gaduda.room.dto.Room_Img_Src_DTO;
 import kr.co.gaduda.room.vo.Funrniture_VO;
 import kr.co.gaduda.room.vo.Furniture_Basic_Img;
 import kr.co.gaduda.room.vo.Furniture_Pic_VO;
@@ -50,4 +56,42 @@ public class RoomDao implements IRoomDao {
 	public List<Furniture_Basic_Img> get_basic_img_dao() {
 		return roomSqlSession.selectList(namespace + ".get_basic_img");
 	}
+
+	@Override
+	public int insertDesignRoom_dao(DesignRoom_DTO designRoom_DTO) {
+		return roomSqlSession.insert(namespace+".insertDesignRoom",designRoom_DTO);
+	}
+	
+	@Override
+	public int designRoom_max_num_dao() {
+		return roomSqlSession.selectOne(namespace+".designRoom_max_num");
+	}
+	@Override
+	public int insertDesignRoom_Tag_dao(Designroom_Tag_DTO designroom_tag_value) {
+		return roomSqlSession.insert(namespace+".insertDesignRoom_Tag_dao",designroom_tag_value);
+	}
+	@Override
+	public int insertDesignRoom_Img_dao(DesignRoom_Furniture_DTO designRoom_Furniture_DTO) {
+		return roomSqlSession.insert(namespace+".insertDesignRoom_Img_dao",designRoom_Furniture_DTO);
+	}
+	@Override
+	public int insertDesignRoom_Img_Src_dao(Room_Img_Src_DTO room_Img_Src_DTO) {
+		return roomSqlSession.insert(namespace+".insertDesignRoom_Img_Src_dao",room_Img_Src_DTO);
+	}
+
+	
+	
+	@Override
+	public int insertDesignRoom_Kind_dao(DesignRoom_Kind_DTO designRoom_Kind_DTO) {
+		return roomSqlSession.insert(namespace+".insertDesignRoom_Kind_dao",designRoom_Kind_DTO);
+	}
+
+	@Override
+	public int insertDesignRoom_concept_dao(DesignRoom_Concept_DTO designRoom_concept_DTO) {
+		return roomSqlSession.insert(namespace+".insertDesignRoom_concept_dao",designRoom_concept_DTO);
+	}
+
+	
+
+
 }

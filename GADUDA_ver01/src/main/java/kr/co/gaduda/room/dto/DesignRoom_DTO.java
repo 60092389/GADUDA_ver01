@@ -1,56 +1,36 @@
 package kr.co.gaduda.room.dto;
 
-
 public class DesignRoom_DTO {
-
-	private String fig_img_src;
-	private int fig_num;
-	private int fig_img_X;
-	private int fig_img_Y;
-	private int fig_img_width_length;
-	private int fig_img_height_length;
-	private String fig_img_state;
-	public String getFig_img_src() {
-		return fig_img_src;
+	private String designRoom_name;
+	private String userId;
+	private String designroom_info;
+	private int select_myroom_num;
+	
+	public String getDesignRoom_name() {
+		return designRoom_name;
 	}
-	public void setFig_img_src(String fig_img_src) {
-		this.fig_img_src = fig_img_src;
+	public void setDesignRoom_name(String designRoom_name) {
+		this.designRoom_name = designRoom_name;
 	}
-	public int getFig_num() {
-		return fig_num;
+	public String getUserId() {
+		return userId;
 	}
-	public void setFig_num(int fig_num) {
-		this.fig_num = fig_num;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
-	public int getFig_img_X() {
-		return fig_img_X;
+	public String getDesignroom_info() {
+		return designroom_info;
 	}
-	public void setFig_img_X(int fig_img_X) {
-		this.fig_img_X = fig_img_X;
+	public void setDesignroom_info(String designroom_info) {
+		this.designroom_info = designroom_info;
 	}
-	public int getFig_img_Y() {
-		return fig_img_Y;
+	public int getSelect_myroom_num() {
+		return select_myroom_num;
 	}
-	public void setFig_img_Y(int fig_img_Y) {
-		this.fig_img_Y = fig_img_Y;
+	public void setSelect_myroom_num(int select_myroom_num) {
+		this.select_myroom_num = select_myroom_num;
 	}
-	public int getFig_img_width_length() {
-		return fig_img_width_length;
-	}
-	public void setFig_img_width_length(int fig_img_width_length) {
-		this.fig_img_width_length = fig_img_width_length;
-	}
-	public int getFig_img_height_length() {
-		return fig_img_height_length;
-	}
-	public void setFig_img_height_length(int fig_img_height_length) {
-		this.fig_img_height_length = fig_img_height_length;
-	}
-	public String getFig_img_state() {
-		return fig_img_state;
-	}
-	public void setFig_img_state(String fig_img_state) {
-		this.fig_img_state = fig_img_state;
-	}
+	
+	
 
 }

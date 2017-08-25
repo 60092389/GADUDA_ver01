@@ -1,12 +1,14 @@
 package kr.co.gaduda.room.vo;
 
 public class RoomVO {
+	
 	private int room_no;
 	private String room_name;
 	private String mem_id;
 	private String room_create_date;
 	private int room_img_loc;
 	private String room_img_src;
+	
 	public String getRoom_img_src() {
 		return room_img_src;
 	}
