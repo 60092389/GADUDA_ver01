@@ -10,8 +10,8 @@ public class URLs {
 	private static final String furniture_default = "/furniture";
 	private static final String furniture_arr_default = "/furniture_arr";
 	private static final String mypage_scrap_default = "/mypage/scrap";
-
-	private static final String room_default = "/room";
+	
+	private static final String room_default="/room";
 
 	// 로그아웃
 	public static final String URI_LOGOUT = "/logout";
@@ -37,11 +37,11 @@ public class URLs {
 
 	// 회원탈퇴 페이지
 	public static final String URI_DELETE_MEMBER = "/deletemember";
-	public static final String URI_DELETE_MEMBER_FULL = mypage_default + member_default + URI_DELETE_MEMBER;
+	public static final String URI_DELETE_MEMBER_FULL = mypage_default+member_default + URI_DELETE_MEMBER;
 
 	// 회원탈퇴
 	public static final String URI_DELETE_MEMBER_CHK = "/deletemember_chk";
-	public static final String URI_DELETE_MEMBER_CHK_FULL = mypage_default + member_default + URI_DELETE_MEMBER_CHK;
+	public static final String URI_DELETE_MEMBER_CHK_FULL = mypage_default+member_default + URI_DELETE_MEMBER_CHK;
 
 	// 회원정보 수정 페이지
 	public static final String URI_UPDATE_MEMBER = "/update_mem";
@@ -73,29 +73,28 @@ public class URLs {
 
 	// 팔로워 리스트 페이지
 	public static final String URI_MYPAGE_MEMBER_FOLLOWER = "/follower";
-	public static final String URI_MYPAGE_MEMBER_FOLLOWER_FULL = mypage_default + member_default
-			+ URI_MYPAGE_MEMBER_FOLLOWER;
+	public static final String URI_MYPAGE_MEMBER_FOLLOWER_FULL = mypage_default + member_default + URI_MYPAGE_MEMBER_FOLLOWER;
 	// 팔로잉 리스트 페이지
 	public static final String URI_MYPAGE_MEMBER_FOLLOWING = "/following";
 	public static final String URI_MYPAGE_MEMBER_FOLLOWING_FULL = mypage_default + member_default
 			+ URI_MYPAGE_MEMBER_FOLLOWING;
-
-	// 회원 프로필사진 업로드
-	public static final String URI_MYPAGE_MEMBER_IMAGE = "/upload";
-	public static final String URI_MYPAGE_MEMBER_IMAGE_FULL = mypage_default + member_default + URI_MYPAGE_MEMBER_IMAGE;
-
-	// 언팔 -> 팔로우
-	public static final String URI_MYPAGE_FOLLOW_CHK = "/follow_chk";
-	public static final String URI_MYPAGE_FOLLOW_CHK_FULL = mypage_default + member_default + URI_MYPAGE_FOLLOW_CHK;
-
-	// 새로 팔로우하기
-	public static final String URI_MYPAGE_NEW_FOLLOW = "/new_follow";
-	public static final String URI_MYPAGE_NEW_FOLLOW_FULL = mypage_default + member_default + URI_MYPAGE_NEW_FOLLOW;
-
-	// 언팔하기
-	public static final String URI_MYPAGE_DEL_FOLLOW = "/del_follow";
-	public static final String URI_MYPAGE_DEL_FOLLOW_FULL = mypage_default + member_default + URI_MYPAGE_DEL_FOLLOW;
-
+	
+	//회원 프로필사진 업로드
+	public static final String URI_MYPAGE_MEMBER_IMAGE ="/upload";
+	public static final String URI_MYPAGE_MEMBER_IMAGE_FULL = mypage_default+member_default + URI_MYPAGE_MEMBER_IMAGE;
+	
+	//언팔 -> 팔로우
+	public static final String URI_MYPAGE_FOLLOW_CHK="/follow_chk";
+	public static final String URI_MYPAGE_FOLLOW_CHK_FULL= mypage_default+member_default + URI_MYPAGE_FOLLOW_CHK;
+	
+	//새로 팔로우하기
+	public static final String URI_MYPAGE_NEW_FOLLOW="/new_follow";
+	public static final String URI_MYPAGE_NEW_FOLLOW_FULL= mypage_default+member_default + URI_MYPAGE_NEW_FOLLOW;
+	
+	//언팔하기
+	public static final String URI_MYPAGE_DEL_FOLLOW="/del_follow";
+	public static final String URI_MYPAGE_DEL_FOLLOW_FULL= mypage_default+member_default + URI_MYPAGE_DEL_FOLLOW;
+	
 	// 가구스크랩
 	public static final String URI_FURNITURE_SCRAP = "/furniture_scrap";
 	public static final String URI_FURNITURE_SCRAP_FULL = mypage_scrap_default + URI_FURNITURE_SCRAP;
@@ -110,8 +109,7 @@ public class URLs {
 
 	// 가구배치도스크랩 삭제
 	public static final String URI_FURNITURE_ARR_SCRAP_DELETE = "/fur_arr_scrap_delete";
-	public static final String URI_FURNITURE_ARR_SCRAP_DELETE_FULL = mypage_scrap_default
-			+ URI_FURNITURE_ARR_SCRAP_DELETE;
+	public static final String URI_FURNITURE_ARR_SCRAP_DELETE_FULL = mypage_scrap_default + URI_FURNITURE_ARR_SCRAP_DELETE;
 
 	// Main Button
 	public static final String URI_MAIN_HOME = "/";
@@ -125,24 +123,21 @@ public class URLs {
 	// 가구 상세페이지 좋아요 리스트 보기
 	public static final String URI_FURNITURE_DETAIL_GOOD_LIST = "/mongofurgoodlistajax";
 	public static final String URI_FURNITURE_DETAIL_GOOD_LIST_U = URI_FURNITURE_DETAIL + URI_FURNITURE_DETAIL_GOOD_LIST;
-	public static final String URI_FURNITURE_DETAIL_GOOD_LIST_FULL = URI_FURNITURE_DETAIL_FULL
-			+ URI_FURNITURE_DETAIL_GOOD_LIST;
+	public static final String URI_FURNITURE_DETAIL_GOOD_LIST_FULL = URI_FURNITURE_DETAIL_FULL + URI_FURNITURE_DETAIL_GOOD_LIST;
 	// 가구 상세페이지 댓글 리스트 보기
 	public static final String URI_FURNITURE_DETAIL_REPL_LIST = "/mongofurrepllistajax";
 	public static final String URI_FURNITURE_DETAIL_REPL_LIST_FULL = furniture_default + URI_FURNITURE_DETAIL_GOOD_LIST;
 	// 가구 상세페이지 스크랩 리스트 보기
 	public static final String URI_FURNITURE_DETAIL_SCRAP_LIST = "/furscraplist";
-	public static final String URI_FURNITURE_DETAIL_SCRAP_LIST_U = URI_FURNITURE_DETAIL
-			+ URI_FURNITURE_DETAIL_SCRAP_LIST;
-	public static final String URI_FURNITURE_DETAIL_SCRAP_LIST_FULL = URI_FURNITURE_DETAIL_FULL
-			+ URI_FURNITURE_DETAIL_SCRAP_LIST;
+	public static final String URI_FURNITURE_DETAIL_SCRAP_LIST_U = URI_FURNITURE_DETAIL + URI_FURNITURE_DETAIL_SCRAP_LIST;
+	public static final String URI_FURNITURE_DETAIL_SCRAP_LIST_FULL = URI_FURNITURE_DETAIL_FULL + URI_FURNITURE_DETAIL_SCRAP_LIST;
 
 	// 가구 배치도 페이지
 	public static final String URI_FURNITURE_WATCH = "/fur_arr";
 	public static final String URI_FURNITURE_WATCH_FULL = furniture_arr_default + URI_FURNITURE_WATCH;
-
-	// 17-08-17
-	// hashtag 검색
+	
+	//17-08-17
+	//hashtag 검색
 	public static final String URI_FURNITURE_HASHTAG = "/hashtag_search";
 	public static final String URI_FURNITURE_HASHTAG_FULL = furniture_arr_default + URI_FURNITURE_HASHTAG;
 
@@ -203,80 +198,81 @@ public class URLs {
 	// 가구배치도 스크랩 하기
 	public static final String URI_FURNITURE_ARR_SCRAP_ADD = "/fur_arr_scrap_add";
 	public static final String URI_FURNITURE_ARR_SCRAP_ADD_FULL = furniture_arr_default + URI_FURNITURE_ARR_SCRAP_ADD;
-
+	
 	// 가구배치도스크랩 리스트 보기 --17.07.26 수정 추가
 	public static final String URI_FURNITURE_ARR_DETAIL_SCRAP_LIST = "/furarrscraplist";
-	public static final String URI_FURNITURE_ARR_DETAIL_SCRAP_LIST_FULL = furniture_arr_default
-			+ URI_FURNITURE_ARR_DETAIL_SCRAP_LIST;
+	public static final String URI_FURNITURE_ARR_DETAIL_SCRAP_LIST_FULL = furniture_arr_default + URI_FURNITURE_ARR_DETAIL_SCRAP_LIST;
 
-	// 마이페이지 나의 배치도 부분
-	public static final String URI_MYPAGE_MYFURARR = "/myfurarr";
-	public static final String URI_MYPAGE_MYFURARR_FULL = mypage_default + member_default + URI_MYPAGE_MYFURARR;
-
-	// 마이페이지 내방보기 부분
-	public static final String URI_MYPAGE_MYROOM = "/myroom";
-	public static final String URI_MYPAGE_MYROOM_FULL = room_default + URI_MYPAGE_MYROOM;
-
-	// 팔로우 회원 배치도 가져오기
+	
+	//마이페이지 나의 배치도 부분
+	public static final String URI_MYPAGE_MYFURARR  = "/myfurarr";
+	public static final String URI_MYPAGE_MYFURARR_FULL =  mypage_default + member_default + URI_MYPAGE_MYFURARR;
+	
+	//마이페이지 내방보기 부분
+	public static final String URI_MYPAGE_MYROOM  = "/myroom";
+	public static final String URI_MYPAGE_MYROOM_FULL =  room_default + URI_MYPAGE_MYROOM;
+	
+	//팔로우 회원 배치도 가져오기
 	public static final String URI_FOLLOW_FURARR = "/folfurarr";
 	public static final String URI_FOLLOW_FURARR_FULL = mypage_default + member_default + URI_FOLLOW_FURARR;
-
-	//////// 진섭 17-07-21 /////////////////////
+	
+	
+	////////진섭 17-07-21 /////////////////////
 	// 방생성 관련
-	// private static final String room_default="/room";
+	//private static final String room_default="/room";
 	public static final String URI_ROOMMAKE_INCLUDE = "/roomMake_Include";
-	public static final String URI_ROOMMAKE_INCLUDE_FULL = room_default + URI_ROOMMAKE_INCLUDE;
-
+	public static final String URI_ROOMMAKE_INCLUDE_FULL = room_default+URI_ROOMMAKE_INCLUDE;
+	
 	public static final String URI_ROOMMAKE_PROGRESS_BUTTON1 = "/roomMake_Progress_Button1";
-	public static final String URI_ROOMMAKE_PROGRESS_BUTTON1_FULL = room_default + URI_ROOMMAKE_PROGRESS_BUTTON1;
-
+	public static final String URI_ROOMMAKE_PROGRESS_BUTTON1_FULL = room_default+URI_ROOMMAKE_PROGRESS_BUTTON1;
+	
 	public static final String URI_ROOMMAKE_SELECT_FIGURE = "/roomMake_Select_Figure";
-	public static final String URI_ROOMMAKE_SELECT_FIGURE_FULL = room_default + URI_ROOMMAKE_SELECT_FIGURE;
-
+	public static final String URI_ROOMMAKE_SELECT_FIGURE_FULL = room_default+URI_ROOMMAKE_SELECT_FIGURE;
+	
 	public static final String URI_ROOMMAKE_PROGRESS_BUTTON2 = "/roomMake_Progress_Button2";
-	public static final String URI_ROOMMAKE_PROGRESS_BUTTON2_FULL = room_default + URI_ROOMMAKE_PROGRESS_BUTTON2;
-
+	public static final String URI_ROOMMAKE_PROGRESS_BUTTON2_FULL = room_default+URI_ROOMMAKE_PROGRESS_BUTTON2;
+	
 	public static final String URI_ROOMMAKE_CANVAS = "/roomMake_Canvas";
-	public static final String URI_ROOMMAKE_CANVAS_FULL = room_default + URI_ROOMMAKE_CANVAS;
-
+	public static final String URI_ROOMMAKE_CANVAS_FULL = room_default+URI_ROOMMAKE_CANVAS;
+	
 	public static final String URI_ROOMMAKE_PROGRESS_BUTTON3 = "/roomMake_Progress_Button3";
-	public static final String URI_ROOMMAKE_PROGRESS_BUTTON3_FULL = room_default + URI_ROOMMAKE_PROGRESS_BUTTON3;
-
+	public static final String URI_ROOMMAKE_PROGRESS_BUTTON3_FULL = room_default+URI_ROOMMAKE_PROGRESS_BUTTON3;
+	
 	public static final String URI_ROOMMAKE_ROOMNAME = "/roomMake_roomName";
-	public static final String URI_ROOMMAKEROOMNAE_FULL = room_default + URI_ROOMMAKE_ROOMNAME;
-
+	public static final String URI_ROOMMAKEROOMNAE_FULL = room_default+URI_ROOMMAKE_ROOMNAME;
+	
 	public static final String URI_ROOMMAKE = "/roomMake";
-	public static final String URI_ROOMMAKE_FULL = room_default + URI_ROOMMAKE;
-
-	public static final String URI_DESIGNROOM_INCLUDE = "/designRoom_Include";
-	public static final String URI_DESIGNROOM_INCLUDE_FULL = room_default + URI_DESIGNROOM_INCLUDE;
-
-	public static final String URI_DESIGNROOM_SELECT = "/designRoom_Select";
-	public static final String URI_DESIGNROOM_SELECT_FULL = room_default + URI_DESIGNROOM_SELECT;
-
-	public static final String URI_DESIGNROOM_SELECT_ROOM = "/designRoom_Select_Room";
-	public static final String URI_DESIGNROOM_SELECT_ROOM_FULL = room_default + URI_DESIGNROOM_SELECT_ROOM;
-
-	public static final String URI_DESIGNROOM_CANVAS = "/designRoom_Canvas";
-	public static final String URI_DESIGNROOM_CANVAS_FULL = room_default + URI_DESIGNROOM_CANVAS;
-
-	public static final String URI_DESIGNROOM_NAME = "/designRoom_Name";
-	public static final String URI_DESIGNROOM_NAME_FULL = room_default + URI_DESIGNROOM_NAME;
-
-	public static final String URI_DESIGNROOM_CANVAS_FURNITURE_DATA = "/designRoom_Canvas_Furniture_Data";
-	public static final String URI_DESIGNROOM_CANVAS_FURNITURE_DATA_FULL = room_default
-			+ URI_DESIGNROOM_CANVAS_FURNITURE_DATA;
-
-	public static final String URI_DESIGNROOM_MENU = "/designRoom_Menu1";
-	public static final String URI_DESIGNROOM_MENU_FULL = room_default + URI_DESIGNROOM_MENU;
-
-	public static final String URI_DESIGNROOM_BUTTON1 = "/designRoom_Button1";
-	public static final String URI_DESIGNROOM_BUTTON1_FULL = room_default + URI_DESIGNROOM_BUTTON1;
-
-	public static final String URI_DESIGNROOM_BUTTON2 = "/designRoom_Button2";
-	public static final String URI_DESIGNROOM_BUTTON2_FULL = room_default + URI_DESIGNROOM_BUTTON2;
-
-	public static final String URI_DESIGNROOM_BUTTON3 = "/designRoom_Button3";
-	public static final String URI_DESIGNROOM_BUTTON3_FULL = room_default + URI_DESIGNROOM_BUTTON3;
-
+	public static final String URI_ROOMMAKE_FULL = room_default+URI_ROOMMAKE;
+	
+	public static final String URI_DESIGNROOM_INCLUDE= "/designRoom_Include";
+	public static final String URI_DESIGNROOM_INCLUDE_FULL = room_default+URI_DESIGNROOM_INCLUDE;
+	
+	public static final String URI_DESIGNROOM_SELECT= "/designRoom_Select";
+	public static final String URI_DESIGNROOM_SELECT_FULL = room_default+URI_DESIGNROOM_SELECT;
+	
+	
+	public static final String URI_DESIGNROOM_SELECT_ROOM="/designRoom_Select_Room"; 
+	public static final String URI_DESIGNROOM_SELECT_ROOM_FULL=room_default+URI_DESIGNROOM_SELECT_ROOM;
+	
+	public static final String URI_DESIGNROOM_CANVAS= "/designRoom_Canvas";
+	public static final String URI_DESIGNROOM_CANVAS_FULL = room_default+URI_DESIGNROOM_CANVAS;
+	
+	public static final String URI_DESIGNROOM_NAME= "/designRoom_Name";
+	public static final String URI_DESIGNROOM_NAME_FULL = room_default+URI_DESIGNROOM_NAME;
+	
+	public static final String URI_DESIGNROOM_CANVAS_FURNITURE_DATA= "/designRoom_Canvas_Furniture_Data";
+	public static final String URI_DESIGNROOM_CANVAS_FURNITURE_DATA_FULL = room_default + URI_DESIGNROOM_CANVAS_FURNITURE_DATA;
+	
+	public static final String URI_DESIGNROOM_NAME_SAVE= "/designRoom_Name_Save";
+	public static final String URI_DESIGNROOM_NAME_SAVE_FULL = room_default+URI_DESIGNROOM_NAME_SAVE;
+	
+	public static final String URI_DESIGNROOM_BUTTON1= "/designRoom_Button1";
+	public static final String URI_DESIGNROOM_BUTTON1_FULL = room_default+URI_DESIGNROOM_BUTTON1;
+	
+	public static final String URI_DESIGNROOM_BUTTON2= "/designRoom_Button2";
+	public static final String URI_DESIGNROOM_BUTTON2_FULL = room_default+URI_DESIGNROOM_BUTTON2;
+	
+	public static final String URI_DESIGNROOM_BUTTON3= "/designRoom_Button3";
+	public static final String URI_DESIGNROOM_BUTTON3_FULL = room_default+URI_DESIGNROOM_BUTTON3;
+	
 }

@@ -6,6 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>GADUDA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style type="text/css">
 
 
@@ -15,9 +21,7 @@
 	height: 100px;
 }
 #design_Include_body{
-	border: 1px solid;
 	width:1158px; 
-	height:800px;
 }
  
 #design_Include_body1{
@@ -34,11 +38,14 @@
 	width:295px; 
 	height:800px;
 }
+
 #design_Include_button{
-	width: 100%; 
-	height:100%;
+   display:inline-table;
+    float: center;
+    width: 100px;
+    height: 50px;
+    border: 1px solid blue;
 }
-	
 #myProgress {
   width: 100%;
   background-color: #ddd;
@@ -54,9 +61,17 @@
 }
 
 
+
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
+
+var furniture_kind= ''
+var designRoom_kind='';		
+var designroom_tag_value='';
+var designRoom_name='';
+var designroom_info_value='';
+var designRoom_concept='';
 
 var furniture_data='';
 var furniture_basic_img='';
@@ -68,11 +83,14 @@ var fig_img_Y_arr=[];
 var fig_img_width_length_arr=[];
 var fig_img_height_length_arr=[];
 var fig_img_state_arr=[];
+var select_myroom='';
 
-
+var fig_arr_length=0;
 
 var myroom ='';
+
 var select_myroom='';
+var select_myroom_num='';
 var select_width='';
 var select_height='';
 
@@ -100,6 +118,8 @@ $(document).ready(function(){
 </head>
 <body>
 <div class="w3-container">
+	<h1><b>내 방 만들기</b></h1>
+	
 	<div class="w3-container" id="myProgress">
   		<div id="myBar"><b id="ing"></b></div>
 	</div>
@@ -107,12 +127,12 @@ $(document).ready(function(){
 	<br>
 	<br>
 
-	<div id="design_Include_body"></div>
-	
-	<br>
+	<div id="design_Include_body">
+
+	</div>
+	</br>
 
 	<div id="design_Include_button"></div>
-	
 </div>
 </body>
 </html>

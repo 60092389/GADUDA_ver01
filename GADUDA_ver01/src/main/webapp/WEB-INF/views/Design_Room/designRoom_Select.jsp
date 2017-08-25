@@ -11,7 +11,7 @@
 #designRoom_select_room{
 	border: 1px solid; 
 	width: 1158px; 
-	height:800px;
+	height:1140px;
 }
 
 .designRoom_select_room_line{
@@ -164,8 +164,8 @@ $(document).ready(function(){
 		$("#designRoom_select_room").append(designRoom_select_room_append);
 	}
 	
- 	function designRoom_select_room_content(){
-		designRoom_select_room_append+="<div class='designRoom_select_room_content' value='"+myroom.myroom[myroom_start].room_img_src+"'>";
+	function designRoom_select_room_content(){
+		designRoom_select_room_append+="<div class='designRoom_select_room_content' value='"+myroom.myroom[myroom_start].room_img_src+"' value2='"+myroom.myroom[myroom_start].room_no+"'>";
 			designRoom_select_room_append+="<div class='designRoom_select_room_img'>";
 			designRoom_select_room_append+="<img class='designRoom_select_room_img_src' src='"+myroom.myroom[myroom_start].room_img_src+"'>;"
 			designRoom_select_room_append+="</div>";
@@ -175,11 +175,11 @@ $(document).ready(function(){
 		designRoom_select_room_append+="</div>";		
 	}
 	
-
 	
 	
 	$(document).on('click', '.designRoom_select_room_content', function(e) {
 		select_myroom = $(this).attr('value');
+		select_myroom_num =$(this).attr('value2');
 		$(".designRoom_select_room_content").css('border','2px solid');
 		$(this).css('border','2px solid red');
 	});

@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <style>
 #myCanvas_div{
+	border:1px solid;
 	float:left;
 	width:850;
 	height:800;
@@ -185,26 +186,29 @@
 	height:30;
 }
 .designRoom_menu2_content{
+	
 	margin-top:20px;
-	border: 1px solid;
-	width:100%; 
-	height:120;
+	margin-right:20px;
+	margin-left:10px;
+	border: 1px solid red;
+	width:95%; 
+	height:200px;
 }
-.designRoom_menu2_content_img{
+.designRoom_menu10_content_img{
 	border: 1px solid;
 	float:left;
-	width:36%; 
-	height:100%;
+	width:40%;
+	height:100px
 }
 .designRoom_menu2_content_data{
 	border: 1px solid;
-	float:left;
-	width:62%; 
-	height:100%;
+	float:right;
+	width:55%; 
+	height:95%;
 }
 .designRoom_menu2_content_pic{
-	width:100%; 
-	height:100%;
+	width:100px; 
+	height:197px;
 }
 .designRoom_menu2_content_data_name{
 	border:1px solid;
@@ -225,7 +229,7 @@
 	border:2px solid;	
 	width:500;
 	height:800;
-	background-color: ivory;
+	background-color: white;
 
 }
 
@@ -295,20 +299,17 @@
 	height:100%;
 }
 
-#myProgress {
-  width: 100%;
-  background-color: #ddd;
-}
-
-#myBar {
-  width: 0%;
-  height: 30px;
-  background-color: #4CAF50;
+.lenthinput {
+  display: inline-block;
+  width: 80px;
   text-align: center;
-  line-height: 30px;
-  color: white;
+  margin: 10px;
+  color: black;
+  background: #FFFFFF;
+  border: 1px solid #999999;
+  border-radius: 3px;
+  outline: 0;
 }
-
 
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -343,7 +344,6 @@ $(document).ready(function(){
 	var moveDiv = false;
 	
 	
-	var fig_arr_length=0;
 	
 	var select_fig_num='';
 	
@@ -388,6 +388,12 @@ $(document).ready(function(){
 		drawRoom();
 	}
 	
+	if(fig_img_arr.length!=0){
+		RectDraw();
+		drawRoom();
+		drawFigImg();
+	}
+	
 	function RectDraw() {
 		context.clearRect(0, 0, canvas.width, canvas.height);
 	}
@@ -395,9 +401,7 @@ $(document).ready(function(){
 		context.drawImage(roomMake_canvas_window_one_img, 0, 0);		
 	}
 	function drawFigImg(){
-		
-		for(var i=0; i<fig_arr_length;i++){
-			
+		for(var i=0; i<fig_img_arr.length;i++){
 			context.drawImage(fig_img_arr[i], 0, 0, 
 					fig_img_arr[i].width, fig_img_arr[i].height, 
 					fig_img_X_arr[i],fig_img_Y_arr[i],
@@ -609,28 +613,30 @@ $(document).ready(function(){
 					
 					if(furniture_data[i].fur_no==furniture_pic[j].fur_no){
 						
-						if(furniture_pic[j].fur_pic_kind=='앞'){
-							fur_pic_kind = furniture_pic[j].fur_pic_loc;
-						}
+						fur_pic_kind = furniture_pic[j].fur_pic_loc;
 					}
 				}
 				
 				designRoom_menu2_content_append+="<div class='designRoom_menu2_content'>";
 				
-						designRoom_menu2_content_append+="<div class='designRoom_menu2_content_img'>";
-							designRoom_menu2_content_append+="<img  class='designRoom_menu2_content_pic' src='"+fur_pic_kind+"'>";
-						designRoom_menu2_content_append+="</div>";					
+				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_img'>";
+					designRoom_menu2_content_append+="<img  class='designRoom_menu2_content_pic' src='"+fur_pic_kind+"'>";
+				designRoom_menu2_content_append+="</div>";
 				
-					designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data'>";
 				
-						designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_name'>"+furniture_data[i].fur_name+"/"+furniture_data[i].fur_brand_name+"</div>";
-						designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_size'>W:"+furniture_data[i].fur_width+"CM V:"+furniture_data[i].fur_depth+"CM H:"+furniture_data[i].fur_height+"CM W:"+furniture_data[i].fur_weight+"kg</div>";
+				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data'>";
 				
-						designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_button'>";
-							designRoom_menu2_content_append+="<button class='designRoom_menu2_content_data_button_img' num='"+furniture_data[i].fur_no+"'>배치도추가</button>";
-							designRoom_menu2_content_append+="<button class='designRoom_menu2_content_data_button_dita' num='"+furniture_data[i].fur_no+"'>상세보기</button>";
-						designRoom_menu2_content_append+="</div>";
-					designRoom_menu2_content_append+="</div>";
+				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_name'>"+furniture_data[i].fur_name+"/"+furniture_data[i].fur_brand_name+"</div>";
+				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_size'>W:"+furniture_data[i].fur_width+"CM V:"+furniture_data[i].fur_depth+"CM H:"+furniture_data[i].fur_height+"CM W:"+furniture_data[i].fur_weight+"kg</div>";
+				
+				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_button'>";
+					designRoom_menu2_content_append+="<button class='designRoom_menu2_content_data_button_img' num='"+furniture_data[i].fur_no+"'>배치도추가</button>";
+					designRoom_menu2_content_append+="<button class='designRoom_menu2_content_data_button_dita' num='"+furniture_data[i].fur_no+"'>상세보기</button>";
+				designRoom_menu2_content_append+="</div>";
+				
+				designRoom_menu2_content_append+="</div>";
+				
+				designRoom_menu2_content_append+="</div>";
 			}
 		}
 		
@@ -645,6 +651,7 @@ $(document).ready(function(){
 	
 	//배치 버튼 번호 클릭
 	$(document).on('click', '.designRoom_menu2_content_data_button_img', function(e) {
+		
 		for( var i =0; i<furniture_basic_img.length; i++){
 			if($(this).attr('num')==furniture_basic_img[i].fur_no){
 				if(furniture_basic_img[i].fur_arr_basic_img_kind=='상단'){
@@ -676,6 +683,7 @@ $(document).ready(function(){
 		fig_img_state_arr[fig_arr_length]='상단';
 		
 		fig_arr_length++;
+		alert(fig_img_arr.length);
 		
 	}
 	
@@ -696,12 +704,12 @@ $(document).ready(function(){
 	
 	function Img_TextPosition(){
 		
-    	$("#myCanvas_div").append("<div id='Img_lengthText1' class='Img_lengthText'><input type='text' id='Img_lengthText1Val1' readonly>CM<div>");
-		$("#Img_lengthText1").css("position","absolute").css("top",fig_img_Y_arr[select_fig_num]+80).css("left",fig_img_X_arr[select_fig_num]+(fig_img_width_length_arr[select_fig_num]/2));
+    	$("#myCanvas_div").append("<div id='Img_lengthText1' class='Img_lengthText'><input type='text'  class='lenthinput' id='Img_lengthText1Val1' readonly>CM<div>");
+		$("#Img_lengthText1").css("position","absolute").css("top",fig_img_Y_arr[select_fig_num]+320).css("left",fig_img_X_arr[select_fig_num]+(fig_img_width_length_arr[select_fig_num]/2)+500);
 		$("#Img_lengthText1Val1").val(fig_img_width_length_arr[select_fig_num]*10);
 		
-		$("#myCanvas_div").append("<div id='Img_lengthText2' class='Img_lengthText'><input type='text' id='Img_lengthText1Val2' readonly>CM<div>");
-		$("#Img_lengthText2").css("position","absolute").css("top",fig_img_Y_arr[select_fig_num]+(fig_img_height_length_arr[select_fig_num]/2)+130).css("left", fig_img_X_arr[select_fig_num]+fig_img_width_length_arr[select_fig_num]+50);
+		$("#myCanvas_div").append("<div id='Img_lengthText2' class='Img_lengthText'><input type='text' class='lenthinput' id='Img_lengthText1Val2' readonly>CM<div>");
+		$("#Img_lengthText2").css("position","absolute").css("top",fig_img_Y_arr[select_fig_num]+(fig_img_height_length_arr[select_fig_num]/2)+360).css("left", fig_img_X_arr[select_fig_num]+fig_img_width_length_arr[select_fig_num]+550);
 		$("#Img_lengthText1Val2").val(fig_img_height_length_arr[select_fig_num]*10);
     }
 	
@@ -717,12 +725,9 @@ $(document).ready(function(){
 		for(var i=0;i<furniture_pic.length;i++){
 			
 			if(furniture_data[deta_textPosition_num].fur_no==furniture_pic[i].fur_no){
-				if(furniture_pic[i].fur_pic_kind=='앞'){
-					deta_pic_front= furniture_pic[i].fur_pic_loc;
-				}else{
+				
 					deta_pic[deta_num]=furniture_pic[i].fur_pic_loc;
 					deta_num++;
-				}
 			}
 		}
 		
@@ -733,7 +738,7 @@ $(document).ready(function(){
 		deta_textPosition_append+="<div id='deta_lengthText1_content1'>";
 			
 			deta_textPosition_append+="<div id='deta_lengthText1_content_img'>";
-				deta_textPosition_append+="<img id='deta_lengthText1_content_img_src' src='"+deta_pic_front+"'>";
+				deta_textPosition_append+="<img id='deta_lengthText1_content_img_src' src='"+deta_pic[0]+"'>";
 			deta_textPosition_append+="</div>";
 			deta_textPosition_append+="<div id='deta_lengthText1_content_data'>";
 				deta_textPosition_append+="<div id='deta_lengthText1_content_data_name'>"+furniture_data[deta_textPosition_num].fur_name+"/"+furniture_data[deta_textPosition_num].fur_brand_name+"</div>";
@@ -744,10 +749,6 @@ $(document).ready(function(){
 			
 		deta_textPosition_append+="<div id='deta_lengthText1_text1'>";
 			deta_textPosition_append+="<div id='deta_lengthText1_text1_text'>"+furniture_data[deta_textPosition_num].fur_info+"</div>";
-			
-			deta_textPosition_append+="<div class='deta_lengthText1_text1_img'>";
-				deta_textPosition_append+="<img class='deta_lengthText1_text1_img_src' src='"+deta_pic_front+"'>";
-			deta_textPosition_append+="</div>";
 			
 			
 			for(var i=0; i<deta_pic.length; i++){
@@ -815,48 +816,47 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<div>
-	<div id="myCanvas_div" >
-	<canvas id="myCanvas" width="800" height="800" />
-	</div>
-	<div id="designroom_menu">
-		<div id="designRoom_menu1">
-			<div id="designRoom_menu_1" class="designRoom_menu_css">
-				<div id="designRoom_menu_sofa" class="designRoom_menu_furniture" value="sofa" value2="소파"><p class="designRoom_menu_text">#소파</p></div> 
-				<div id="designRoom_menu_dressing_table" class="designRoom_menu_furniture" value="dressing_table" value2="화장재"><p class="designRoom_menu_text">#화장대</p></div>
-			</div>
-			
-			<div id="designRoom_menu_2" class="designRoom_menu_css">
-				<div id="designRoom_menu_bookcase" class="designRoom_menu_furniture" value="bookcase" value2="책장"><p class="designRoom_menu_text">#책장</p></div> 
-				<div id="designRoom_menu_chair" class="designRoom_menu_furniture" value="chair" value2="의자"><p class="designRoom_menu_text">#의자 </p></div>
-				<div id="designRoom_menu_drawer" class="designRoom_menu_furniture" value="drawer" value2="서랍"><p class="designRoom_menu_text">#서랍</p></div>
-			</div>
-			
-			<div id="designRoom_menu_3" class="designRoom_menu_css">
-				<div id="designRoom_menu_desk_workstation" class="designRoom_menu_furniture" value="desk_workstation" value2="책상"><p class="designRoom_menu_text">#책생#워크스테이션</p></div> 
-			</div>
-			
-			<div id="designRoom_menu_4" class="designRoom_menu_css">
-				<div id="designRoom_menu_table" class="designRoom_menu_furniture" value="table" value2="데이블"><p class="designRoom_menu_text">#데이블</p></div> 
-				<div id="designRoom_menu_wardrobe" class="designRoom_menu_furniture" value="wardrobe" value2="옷장"><p class="designRoom_menu_text">#옷장</p></div> 
-			</div>
-			
-			<div id="designRoom_menu_5" class="designRoom_menu_css">
-				<div id="designRoom_menu_support" class="designRoom_menu_furniture" value="support" value2="받침대 장식"><p class="designRoom_menu_text">#받침대#장식</p></div> 
-			</div>
-			
-			<div id="designRoom_menu_6" class="designRoom_menu_css">
-				<div id="designRoom_menu_display_cupboard" class="designRoom_menu_furniture" value2="display_supboard" value2="장식장"><p class="designRoom_menu_text">#장식장</p></div>
-				<div id="designRoom_menu_storage_closet" class="designRoom_menu_furniture" value2="storage_closet" value2="수납장"><p class="designRoom_menu_text">#수납장</p></div> 
-			</div>
-			
-			<div id="designRoom_menu_7" class="designRoom_menu_css">
-				<div id="designRoom_menu_bed" class="designRoom_menu_furniture" value="bed" value2="침대"><p class="designRoom_menu_text">#침대</p></div>
-			</div>
+<div id="myCanvas_div">
+	<canvas id="myCanvas" width="850" height="800" />
+</div>
+<div id="designroom_menu">
+	<div id="designRoom_menu1">
+		<div id="designRoom_menu_1" class="designRoom_menu_css">
+			<div id="designRoom_menu_sofa" class="designRoom_menu_furniture" value="sofa" value2="소파"><p class="designRoom_menu_text">#소파</p></div> 
+			<div id="designRoom_menu_dressing_table" class="designRoom_menu_furniture" value="dressing_table" value2="화장재"><p class="designRoom_menu_text">#화장대</p></div>
 		</div>
 		
+		<div id="designRoom_menu_2" class="designRoom_menu_css">
+			<div id="designRoom_menu_bookcase" class="designRoom_menu_furniture" value="bookcase" value2="책장"><p class="designRoom_menu_text">#책장</p></div> 
+			<div id="designRoom_menu_chair" class="designRoom_menu_furniture" value="chair" value2="의자"><p class="designRoom_menu_text">#의자 </p></div>
+			<div id="designRoom_menu_drawer" class="designRoom_menu_furniture" value="drawer" value2="서랍"><p class="designRoom_menu_text">#서랍</p></div>
+		</div>
+		
+		<div id="designRoom_menu_3" class="designRoom_menu_css">
+			<div id="designRoom_menu_desk_workstation" class="designRoom_menu_furniture" value="desk_workstation" value2="책상"><p class="designRoom_menu_text">#책생#워크스테이션</p></div> 
+		</div>
+		
+		<div id="designRoom_menu_4" class="designRoom_menu_css">
+			<div id="designRoom_menu_table" class="designRoom_menu_furniture" value="table" value2="데이블"><p class="designRoom_menu_text">#데이블</p></div> 
+			<div id="designRoom_menu_wardrobe" class="designRoom_menu_furniture" value="wardrobe" value2="옷장"><p class="designRoom_menu_text">#옷장</p></div> 
+		</div>
+		
+		<div id="designRoom_menu_5" class="designRoom_menu_css">
+			<div id="designRoom_menu_support" class="designRoom_menu_furniture" value="support" value2="받침대 장식"><p class="designRoom_menu_text">#받침대#장식</p></div> 
+		</div>
+		
+		<div id="designRoom_menu_6" class="designRoom_menu_css">
+			<div id="designRoom_menu_display_cupboard" class="designRoom_menu_furniture" value2="display_supboard" value2="장식장"><p class="designRoom_menu_text">#장식장</p></div>
+			<div id="designRoom_menu_storage_closet" class="designRoom_menu_furniture" value2="storage_closet" value2="수납장"><p class="designRoom_menu_text">#수납장</p></div> 
+		</div>
+		
+		<div id="designRoom_menu_7" class="designRoom_menu_css">
+			<div id="designRoom_menu_bed" class="designRoom_menu_furniture" value="bed" value2="침대"><p class="designRoom_menu_text">#침대</p></div>
+		</div>
 	</div>
-	<div id="designRoom_menu2">	</div>
+	
+	<div id="designRoom_menu2">
+	</div>
 </div>
 </body>
 </html>

@@ -6,24 +6,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<style type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_commons.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-.designRoom_Progress_Button1_css{
+<style type="text/css">
+#designRoom_next1{
 	width: 90%; 
 	text-align: right;
 	padding-bottom: 50px;
 }
 </style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#designRoom_next1").click(function(){
 		if(select_myroom == ''){
-			alert("방을 선택하세요!")
+			alert("select my room!")
 		}else{
+			
 			$("#myBar").css("width","50%");
 			$("#ing").html("");
 			$("#ing").append("50%");
+			
 			$.ajax({
 				url:"${URLs.URI_DESIGNROOM_CANVAS_FULL}",
 				success:function(data){
@@ -44,8 +53,8 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<div class="w3-container designRoom_Progress_Button1_css">
-	<button class="w3-button w3-blue" id="designRoom_next1" >다음</button>
+<div class="w3-container roomMake_Progress_Button1_css">
+	<button class="w3-button w3-blue" id="designRoom_next1">다음</button>
 </div>
 </body>
 </html>
