@@ -138,7 +138,7 @@ public class RoomController {
 			
 			
 			stream = new FileOutputStream(
-					"C:\\Users\\shama\\git\\GADUDA_ver01\\GADUDA_ver01\\src\\main\\webapp\\resources\\Images\\User_Myroom\\"
+					"D:\\gaduda\\room"
 							+ fileName + ".png");
 
 //			stream = new FileOutputStream(
@@ -149,7 +149,7 @@ public class RoomController {
 			MemberVO memberVO = (MemberVO) request.getSession().getAttribute("member");
 			roomDTO.setUserId(memberVO.getMem_id());
 			
-			String room_img_src = "/resources/Images/User_Myroom/"
+			String room_img_src = "/roomimage/"
 					+ fileName + ".png";
 			
 			roomDTO.setRoom_Img_src(room_img_src);
@@ -261,10 +261,10 @@ public class RoomController {
 			String fileName = UUID.randomUUID().toString();
 			
 			stream = new FileOutputStream(
-					"C:\\Users\\shama\\git\\GADUDA_ver01\\GADUDA_ver01\\src\\main\\webapp\\resources\\Images\\User_Myroom\\"
+					"D:\\gaduda\\furniturearr\\"
 							+ fileName + ".png");
 			
-			room_img_src = "/resources/Images/User_Myroom/"+ fileName + ".png";
+			room_img_src = "/furarrimage/"+ fileName + ".png";
 			stream.write(file);
 		} catch (Exception e) {
 			System.out.println("실패");
