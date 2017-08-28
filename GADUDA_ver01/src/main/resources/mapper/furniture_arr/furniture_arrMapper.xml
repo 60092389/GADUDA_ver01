@@ -250,7 +250,7 @@
 	
 	<!-- 2017.08.11 HashTagSearch Sujung-->
 	<select id="search_hashTag" parameterType="String" resultType="int">
-		select FUR_ARR_PLAN_NO from FURNITURE_ARR_PLAN_HASHTAG where FUR_ARR_HASHTAG_NAME = #{HASHTAG_NAME}
+		select FUR_ARR_PLAN_NO from FURNITURE_ARR_PLAN_HASHTAG where FUR_ARR_HASHTAG_NAME like '%' ||  #{FUR_ARR_PLAN_NO} || '%'
 	</select>
 	<select id="get_arr_info_hash" resultType="kr.co.gaduda.furniture_arr.vo.Furniture_arrVO">
 		<![CDATA[
