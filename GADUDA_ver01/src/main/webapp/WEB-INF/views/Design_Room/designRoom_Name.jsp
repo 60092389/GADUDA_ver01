@@ -10,9 +10,9 @@
 #myCanvas_div{
 	border:1px solid;
 	float:left;
-	width:850;
-	height:800;
-	margin-right:10px;
+	width:800;
+	height:500;
+	margin-left:150px;
 }
 #designroom_name{
 	border:1px solid;
@@ -155,7 +155,7 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="myCanvas_div">
-	<canvas id="myCanvas" width="1158" height="800" />
+	<canvas id="myCanvas" width="800" height="500" />
 </div>
 <div>
 		<table class="w3-container">

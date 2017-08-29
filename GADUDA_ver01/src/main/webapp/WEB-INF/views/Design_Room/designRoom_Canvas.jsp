@@ -10,15 +10,15 @@
 #myCanvas_div{
 	border:1px solid;
 	float:left;
-	width:850;
-	height:800;
+	width:800px;
+	height:500px;
 	margin-right:5px;
 }
 #designroom_menu{
 	border:1px solid;
 	float:left;
-	width:291;
-	height:800;
+	width:320px;
+	height:500px;
 }
 
 .fig_coommend_Text{
@@ -58,9 +58,8 @@
 }
 
 #designRoom_menu1{
-	border: 1px solid;
-	width:291px; 
-	height:800px;
+	width:100%; 
+	height:90%;
 	display:block;
 	
 }
@@ -176,8 +175,8 @@
 	background:white;
 	OVERFLOW-Y:auto;
 	border: 1px solid;
-	width:291px; 
-	height:800px;
+	width:100%; 
+	height:100%;
 	display:none;
 }
 #designRoom_menu2_back{
@@ -187,43 +186,42 @@
 }
 .designRoom_menu2_content{
 	
-	margin-top:20px;
-	margin-right:20px;
-	margin-left:10px;
-	border: 1px solid red;
-	width:95%; 
+	margin-top:2px;
+	
+	border: 1px solid;
+	width:100%; 
 	height:200px;
 }
-.designRoom_menu10_content_img{
+.designRoom_menu2_content_img{
 	border: 1px solid;
 	float:left;
 	width:40%;
-	height:100px
+	height:100%;
 }
 .designRoom_menu2_content_data{
 	border: 1px solid;
 	float:right;
-	width:55%; 
-	height:95%;
+	width:60%; 
+	height:100%;
 }
 .designRoom_menu2_content_pic{
-	width:100px; 
-	height:197px;
+	width:100%; 
+	height:100%;
 }
 .designRoom_menu2_content_data_name{
 	border:1px solid;
 	width:100%; 
-	height:28%;
+	height:40%;
 }
 .designRoom_menu2_content_data_size{
 	border: 1px solid;
 	width:100%; 
-	height:38%;
+	height:44%;
 }
 .designRoom_menu2_content_data_button{
 	border: 1px solid;
 	width:100%; 
-	height:30%;
+	height:16%;
 }
 #deta_lengthText1{
 	border:2px solid;	
@@ -283,6 +281,9 @@
 	border: 1px solid;
 	width:100%;
 	height:30%;
+}
+.designRoom_menu2_content_data_button_dita{
+float:right;
 }
 #deta_lengthText1_text1_text{
 	border: 1px solid;
@@ -627,7 +628,7 @@ $(document).ready(function(){
 				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data'>";
 				
 				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_name'>"+furniture_data[i].fur_name+"/"+furniture_data[i].fur_brand_name+"</div>";
-				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_size'>W:"+furniture_data[i].fur_width+"CM V:"+furniture_data[i].fur_depth+"CM H:"+furniture_data[i].fur_height+"CM W:"+furniture_data[i].fur_weight+"kg</div>";
+				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_size'>가:"+furniture_data[i].fur_width+"CM  세:"+furniture_data[i].fur_depth+"CM 높:"+furniture_data[i].fur_height+"CM 무:"+furniture_data[i].fur_weight+"kg</div>";
 				
 				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_button'>";
 					designRoom_menu2_content_append+="<button class='designRoom_menu2_content_data_button_img' num='"+furniture_data[i].fur_no+"'>배치도추가</button>";
@@ -817,7 +818,7 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="myCanvas_div">
-	<canvas id="myCanvas" width="850" height="800" />
+	<canvas id="myCanvas" width="800" height="500" />
 </div>
 <div id="designroom_menu">
 	<div id="designRoom_menu1">
