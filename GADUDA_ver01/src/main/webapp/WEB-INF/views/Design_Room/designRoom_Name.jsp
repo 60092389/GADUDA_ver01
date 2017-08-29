@@ -47,7 +47,7 @@ td, th {
   background-color: #ddd;
 }
 .designRoom_kind_class{
-display:inline-table;
+	display:inline-table;
 }
 .designRoom_concept_class{
 display:inline-table;
@@ -182,25 +182,28 @@ $(document).ready(function(){
 		    	<td >
 						<table>
 							<tr>
-								<td><div class='designRoom_kind_class' value="1" style="background: #ffddd6; height: 50px; width: 50px"><p class="p">침실</p></div></td>
-								<td><div class='designRoom_kind_class' value="2" style="background: #fce4c7; height: 50px; width: 50px"><p class="p">거실</p></div></td>
-								<td><div class='designRoom_kind_class' value="3" style="background: #fffdcc; height: 50px; width: 50px"><p class="p">홈오피스</p></div></td>
+								<td><div class='designRoom_kind_class' value="1" style="background: #edf2f7; height: 50px; width: 330px"><p class="p">침실</p></div></td>
+								<td><div class='designRoom_kind_class' value="2" style="background: #edf2f7; height: 50px; width: 330px"><p class="p">거실</p></div></td>
+								<td><div class='designRoom_kind_class' value="3" style="background: #edf2f7; height: 50px; width: 330px"><p class="p">홈오피스</p></div></td>
 							</tr>
 						</table>
 				</td>
 			</tr>
 		  	
 		  	<tr>
-		    	<td ><b>방 컨샙 색</b></td>
+		    	<td ><b>방 컨셉</b></td>
 		  	</tr>
 		  	
 		  	<tr>
 		    	<td >
 						<table>
 							<tr>
-								<td><div class='designRoom_concept_class' value="1" style="background: #ffddd6; height: 50px; width: 50px"><p class="p">내추럴</p></div></td>
-								<td><div class='designRoom_concept_class' value="2" style="background: #fce4c7; height: 50px; width: 50px"><p class="p">모던</p></div></td>
-								<td><div class='designRoom_concept_class' value="3" style="background: #fffdcc; height: 50px; width: 50px"><p class="p">심플</p></div></td>
+								<td><div class='designRoom_concept_class' value="1" style="background: #edf2f7; height: 50px; width: 160px"><p class="p">내추럴</p></div></td>
+								<td><div class='designRoom_concept_class' value="2" style="background: #edf2f7; height: 50px; width: 160px"><p class="p">모던</p></div></td>
+								<td><div class='designRoom_concept_class' value="3" style="background: #edf2f7; height: 50px; width: 160px"><p class="p">북유럽</p></div></td>
+								<td><div class='designRoom_concept_class' value="4" style="background: #edf2f7; height: 50px; width: 160px"><p class="p">시골풍</p></div></td>
+								<td><div class='designRoom_concept_class' value="5" style="background: #edf2f7; height: 50px; width: 160px"><p class="p">앤틱</p></div></td>
+								<td><div class='designRoom_concept_class' value="6" style="background: #edf2f7; height: 50px; width: 160px"><p class="p">동양적</p></div></td>
 							</tr>
 						</table>
 				</td>

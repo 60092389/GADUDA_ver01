@@ -40,12 +40,10 @@
 }
 
 #design_Include_button{
-   display:inline-table;
-    float: center;
-    width: 100px;
-    height: 50px;
-    border: 1px solid blue;
+    width: 100%; 
+ 	height:100%;
 }
+
 #myProgress {
   width: 100%;
   background-color: #ddd;
@@ -118,7 +116,7 @@ $(document).ready(function(){
 </head>
 <body>
 <div class="w3-container">
-	<h1><b>내 방 만들기</b></h1>
+	<h1><b>내 배치도 만들기</b></h1>
 	
 	<div class="w3-container" id="myProgress">
   		<div id="myBar"><b id="ing"></b></div>

@@ -837,7 +837,7 @@ $(document).ready(function(){
 		</div>
 		
 		<div id="designRoom_menu_4" class="designRoom_menu_css">
-			<div id="designRoom_menu_table" class="designRoom_menu_furniture" value="table" value2="데이블"><p class="designRoom_menu_text">#데이블</p></div> 
+			<div id="designRoom_menu_table" class="designRoom_menu_furniture" value="table" value2="테이블"><p class="designRoom_menu_text">#테이블</p></div> 
 			<div id="designRoom_menu_wardrobe" class="designRoom_menu_furniture" value="wardrobe" value2="옷장"><p class="designRoom_menu_text">#옷장</p></div> 
 		</div>
 		

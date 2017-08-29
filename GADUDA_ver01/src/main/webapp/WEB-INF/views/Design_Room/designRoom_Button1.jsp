@@ -14,11 +14,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <style type="text/css">
-#designRoom_next1{
-	width: 90%; 
-	text-align: right;
-	padding-bottom: 50px;
-}
+.designRoom_Progress_Button1_css{
+ 	width: 90%; 
+ 	text-align: right;
+ 	padding-bottom: 50px;
+ }
 </style>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -53,7 +53,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<div class="w3-container roomMake_Progress_Button1_css">
+<div class="w3-container designRoom_Progress_Button1_css">
 	<button class="w3-button w3-blue" id="designRoom_next1">다음</button>
 </div>
 </body>

@@ -7,6 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+.designRoom_Progress_Button2_css{
+ 	width: 90%; 
+ 	text-align: right;
+ 	padding-bottom: 50px;
+ }
 </style>
 
 <script type="text/javascript"
@@ -73,7 +78,7 @@
 </script>
 </head>
 <body>
-<div class="w3-container roomMake_Progress_Button2_css">
+<div class="w3-container designRoom_Progress_Button2_css">
 	<button  class="w3-button w3-red" id="designRoom_after2">이전</button>
 	<button  class="w3-button w3-blue"id="designRoom_next2">다음</button>
 </div>

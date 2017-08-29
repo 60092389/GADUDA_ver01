@@ -8,12 +8,13 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-.roomMake_Progress_Button3_css{
-	width: 90%; 
-	text-align: right;
-	padding-bottom: 50px;
-}
+.designRoom_Progress_Button3_css{
+ 	width: 90%; 
+ 	text-align: right;
+ 	padding-bottom: 50px;
+ }
 </style>
+
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -46,7 +47,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<div class="w3-container roomMake_Progress_Button3_css">
+<div class="w3-container designRoom_Progress_Button3_css">
 	<button class="w3-button w3-red" id="designRoom_after3">이전</button>
 	<button  class="w3-button w3-blue" id="designRoom_next3">저장</button>
 </div>
