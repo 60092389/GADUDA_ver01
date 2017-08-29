@@ -95,7 +95,7 @@ svg:not (:root ){
 }
 
 code, kbd, pre, samp {
-	font-family: monospace, monospace;
+	font-family: 'Noto Sans KR';
 	font-size: 1em
 }
 
@@ -185,7 +185,7 @@ textarea {
 }
 /* End extract */
 html, body {
-	font-family: Verdana, sans-serif;
+	font-family: 'Noto Sans KR';
 	font-size: 15px;
 	line-height: 1.5
 }
@@ -223,7 +223,7 @@ h6 {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Noto Sans KR'
+	font-family: 'Noto Sans KR';
 	font-weight: normal;
 	font-style: normal
 }
@@ -961,7 +961,7 @@ a {
 }
 
 .w3-code, .w3-codespan {
-	font-family: Consolas, "courier new";
+	font-family: 'Noto Sans KR';
 	font-size: 16px
 }
 
