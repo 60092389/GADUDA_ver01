@@ -259,7 +259,7 @@
 	text-align: center;
 }
 .designRoom_menu2_content_data_button{
-	width:100%; 
+	width:80%; 
 	height:20%;
 	font-family: 'Noto Sans KR';
 	font-size:12px;
@@ -325,7 +325,7 @@
 	height:30%;
 }
 .designRoom_menu2_content_data_button_dita{
-float:right;
+	float:right;
 }
 #deta_lengthText1_text1_text{
 	border: 1px solid;
