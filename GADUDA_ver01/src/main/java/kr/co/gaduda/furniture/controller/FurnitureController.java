@@ -52,6 +52,12 @@ public class FurnitureController {
 			System.out.println(getCrawling.get(i).getCraw_fur_price());
 
 		}
+		
+		model.addAttribute("Crawlingdata", 1);
+		
+		if(getCrawling.isEmpty()){
+			model.addAttribute("Crawlingdata", 0);
+		}
 
 		model.addAttribute("getCrawling", getCrawling);
 

@@ -865,7 +865,7 @@ $(document).ready(function(){
 	<div id="designRoom_menu1">
 		<div id="designRoom_menu_1" class="designRoom_menu_css">
 			<div id="designRoom_menu_sofa" class="designRoom_menu_furniture" value="sofa" value2="소파"><p class="designRoom_menu_text">#소파</p></div> 
-			<div id="designRoom_menu_dressing_table" class="designRoom_menu_furniture" value="dressing_table" value2="화장재"><p class="designRoom_menu_text">#화장대</p></div>
+			<div id="designRoom_menu_dressing_table" class="designRoom_menu_furniture" value="dressing_table" value2="화장대"><p class="designRoom_menu_text">#화장대</p></div>
 		</div>
 		
 		<div id="designRoom_menu_2" class="designRoom_menu_css">
@@ -888,8 +888,8 @@ $(document).ready(function(){
 		</div>
 		-->
 		<div id="designRoom_menu_6" class="designRoom_menu_css">
-			<div id="designRoom_menu_display_cupboard" class="designRoom_menu_furniture" value2="display_supboard" value2="장식장"><p class="designRoom_menu_text">#장식장</p></div>
-			<div id="designRoom_menu_storage_closet" class="designRoom_menu_furniture" value2="storage_closet" value2="수납장"><p class="designRoom_menu_text">#수납장</p></div> 
+			<div id="designRoom_menu_display_cupboard" class="designRoom_menu_furniture" value="display_supboard" value2="장식장"><p class="designRoom_menu_text">#장식장</p></div>
+			<div id="designRoom_menu_storage_closet" class="designRoom_menu_furniture" value="storage_closet" value2="수납장"><p class="designRoom_menu_text">#수납장</p></div> 
 		</div>
 		
 		<div id="designRoom_menu_7" class="designRoom_menu_css">

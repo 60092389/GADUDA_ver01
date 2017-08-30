@@ -5,31 +5,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <style type="text/css">
 
 #designRoom_select_room{
-	border: 1px solid; 
+	border: 1px solid #ccc; 
 	width: 1158px; 
 	height:1140px;
 }
 
 .designRoom_select_room_line{
-	height:251;
-	margin-top:10px;
-	margin-right:10px;
-	margin-left:10px;
+	height:250;
+	margin: 10px;
 }
 .designRoom_select_room_content{
-	border: 1px solid;
-	margin-left:10px;
+	border: 1px solid #ddd;
+	padding: 4px;
+	vertical-align: center;
+	font-family: 'Noto Sans KR';
+	font-size:15px;
+	text-align: center;
+	border-radius: 4px;
+	margin:2px;
 	float:left;
 	width: 32%; 
 	height:100%;
 }
 .designRoom_select_room_img{
-	width: 100%; 
+	width: 90%; 
 	height:80%;
+	margin: 10px;
+	padding: 10px;
 }
 .designRoom_select_room_title{
 	width: 100%; 
@@ -167,7 +172,7 @@ $(document).ready(function(){
 	function designRoom_select_room_content(){
 		designRoom_select_room_append+="<div class='designRoom_select_room_content' value='"+myroom.myroom[myroom_start].room_img_src+"' value2='"+myroom.myroom[myroom_start].room_no+"'>";
 			designRoom_select_room_append+="<div class='designRoom_select_room_img'>";
-			designRoom_select_room_append+="<img class='designRoom_select_room_img_src' src='"+myroom.myroom[myroom_start].room_img_src+"'>;"
+			designRoom_select_room_append+="<img class='designRoom_select_room_img_src' src='"+myroom.myroom[myroom_start].room_img_src+"'>";
 			designRoom_select_room_append+="</div>";
 			designRoom_select_room_append+="<div class='designRoom_select_room_title'>";
 			designRoom_select_room_append+=myroom.myroom[myroom_start].room_name;
@@ -180,7 +185,7 @@ $(document).ready(function(){
 	$(document).on('click', '.designRoom_select_room_content', function(e) {
 		select_myroom = $(this).attr('value');
 		select_myroom_num =$(this).attr('value2');
-		$(".designRoom_select_room_content").css('border','2px solid');
+		$(".designRoom_select_room_content").css('border','1px solid #ddd');
 		$(this).css('border','2px solid red');
 	});
 	$(document).on('click', '.designRoom_select_num_pageing', function(e) {

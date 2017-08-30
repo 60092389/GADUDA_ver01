@@ -12,7 +12,23 @@
 <link rel="stylesheet" href="/resources/Css/Commons/gaduda_font.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style type="text/css">
+html { scrollbar-arrow-color: #efefef;
+        scrollbar-Track-Color: #efefef; 
+        scrollbar-base-color: #dfdfdf;
+        scrollbar-Face-Color: #dfdfdf;
+        scrollbar-3dLight-Color: #dfdfdf;         
+        scrollbar-DarkShadow-Color: #dfdfdf;
+        scrollbar-Highlight-Color: #dfdfdf;
+        scrollbar-Shadow-Color: #dfdfdf}
+/* Chrome, Safari용 스크롤 바 */
+::-webkit-scrollbar {width: 12px; height: 12px;  }
+::-webkit-scrollbar-button:start:decrement, 
+::-webkit-scrollbar-button:end:increment {display: block; width: 12px;height: 12px; background: url() rgba(0,0,0,.05);}
+::-webkit-scrollbar-track {     background: rgba(0,0,0,.05); }
+::-webkit-scrollbar-thumb {  background: rgba(0,0,0,.1);  }
 
+</style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
@@ -259,11 +275,7 @@ $(document).ready(function() {
 	<input type="hidden" id="fur_no" value="${ furdeVO.fur_no }">
 	<input type="hidden" id="user_profile_pic" value="${ member.mem_profile_pic }">
 </div>
-<c:forEach var="craw_fur" items="${ getCrawling }">
-${craw_fur.craw_fur_brand_site }<br>${craw_fur.craw_fur_name }<br>${craw_fur.craw_fur_price }<br>${craw_fur.craw_fur_brand }<br>${craw_fur.craw_fur_kind_name }
 
-
-</c:forEach>
 <!-- 메인 화면 -->
 <div class="w3-main w3-container mainSection" style="width: 1200px">
 	
@@ -323,7 +335,57 @@ ${craw_fur.craw_fur_brand_site }<br>${craw_fur.craw_fur_name }<br>${craw_fur.cra
 </div>
 
 <div>
-	  	<!-- 댓글 -->
+	<!-- 가구 가격 비교 -->
+	<div class="w3-padding-large">
+		<div class="w3-container w3-left">
+			<div id="recom_fur" class="w3-content">		
+			<c:if test="${ Crawlingdata eq '1' }">
+				<div class="title w3-text-teal"><h4><b>비슷한 가구</b></h4></div>		
+				<div class="w3-col m1"><button style="margin-top: 100px" class="w3-button" id="furbtnpre" onclick="plusDivs(-1)">&#10094;</button></div>
+				<c:forEach var="craw_fur" items="${ getCrawling }">
+					<div class="furSlides w3-col m3 w3-round w3-margin-right w3-padding w3-border" style="height: 250px">
+						<table class="w3-container w3-padding w3-center" >
+							<tr>
+								<td  style="height: 130px">
+									<a href="${craw_fur.craw_fur_brand_site }">
+										<img src="${craw_fur.craw_fur_img }"  alt="${craw_fur.craw_fur_name }" style="max-width:60% ;">
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td><b style="font-size: 12px">${craw_fur.craw_fur_name }</b></td>
+							</tr>
+							<tr>
+								<td><b style="font-size: 11px">${craw_fur.craw_fur_brand } | ${craw_fur.craw_fur_price }won </b></td>
+							</tr>
+						</table>
+					</div>
+				</c:forEach>
+				<div class="w3-col m1"><button style="margin-top: 100px" class="w3-button" onclick="plusDivs(1)">&#10095;</button></div>
+			</c:if>
+			</div>
+		</div>
+	</div>
+	<!-- ★★★★★★★★★★★★★★★크롤링 완성 후 수정하기★★★★★★★★★★★★★★ -->
+	<!-- 가구 리뷰 리스트 -->
+	<div class="w3-padding-large">
+		<div class="w3-container w3-left">
+			<div id="recom_fur" class="w3-content">
+				<div class="title w3-text-teal"><h4><b>가구 한 줄</b></h4></div>		
+				<div class="w3-bar">
+					<c:forEach var="reviewList" items="${simple_review_list }">
+						<div class="w3-container review_icon" style="height: 60px">
+							<p class="simple_review"><span class="w3-center" style="margin-left: 80px">${reviewList} </span></p>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+	
+		  	<!-- 댓글 -->
 	<div id="more_comments" class="w3-container w3-left">
 		<!-- 댓글 보기 -->
 		<div class="w3-content w3-border-bottom ">
@@ -370,35 +432,11 @@ ${craw_fur.craw_fur_brand_site }<br>${craw_fur.craw_fur_name }<br>${craw_fur.cra
 			</div>
 		</div>
 	</div>
-
-	<!-- ★★★★★★★★★★★★★★★크롤링 완성 후 수정하기★★★★★★★★★★★★★★ -->
-	<!-- 가구 리뷰 리스트 -->
-	<div class="w3-padding-large">
-		<div class="w3-container w3-left">
-			<div id="recom_fur" class="w3-content">
-				<div class="title w3-text-teal"><h4><b>가구 한 줄</b></h4></div>		
-				<div class="w3-bar">
-					<c:forEach var="reviewList" items="${simple_review_list }">
-						<div class="w3-container review_icon" style="height: 60px">
-							<p class="simple_review"><span class="w3-center" style="margin-left: 80px">${reviewList} </span></p>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- 가구 가격 비교 -->
-	<div class="w3-padding-large">
-		<div class="w3-container w3-left">
-			<div id="recom_fur" class="w3-content">
-				<div class="title w3-text-teal"><h4><b>???????</b></h4></div>		
-				<div class="w3-bar">
-
-				</div>
-			</div>
-		</div>
-	</div>
+	
 </div>
+
+
+
 <!-- Modal -->
 <!-- 좋아요 -->
 	<div id="myLikeModal" class="w3-modal" style="margin-top: 0px; margin-bottom: 0px;">	
@@ -451,6 +489,29 @@ function showDivs(n) {
   }
   x[slideIndex-1].style.display = "block";  
 }
+</script>
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+ 	showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("furSlides");
+  if (n >= x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";  
+  x[slideIndex].style.display = "block";  
+  x[slideIndex+1].style.display = "block"; 
+}
+
 </script>
 <jsp:include page="/WEB-INF/views/footer.jsp" flush="false" />
 </body>
