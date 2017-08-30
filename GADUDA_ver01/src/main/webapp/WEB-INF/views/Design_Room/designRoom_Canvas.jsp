@@ -271,7 +271,7 @@
 	z-index: 3;
 	padding: 30px;
 	overflow: auto;
-	
+	visibility: none;
 	border:1px solid #ddd;	
 	width: 500px;
 	height: 600px;
