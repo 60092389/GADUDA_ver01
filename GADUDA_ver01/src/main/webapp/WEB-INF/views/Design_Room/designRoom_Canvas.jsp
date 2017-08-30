@@ -270,12 +270,12 @@
 	
 	z-index: 3;
 	padding: 30px;
-	overflow: auto;
+	overflow-y: auto;
 	visibility: none;
 	border:1px solid #ddd;	
 	width: 500px;
 	height: 600px;
-	overflow: auto;
+	overflow-x:hidden;
 	background-color: white;
 	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
 		rgba(0, 0, 0, 0.19);
@@ -305,7 +305,8 @@
 
 }
 #deta_lengthText1_text1{
- 	overflow-y:scroll;
+ 	overflow-y: auto;
+ 	overflow-x:hidden;
 	border:1px solid #ddd;
 	text-align: center;
 	width:100%;
