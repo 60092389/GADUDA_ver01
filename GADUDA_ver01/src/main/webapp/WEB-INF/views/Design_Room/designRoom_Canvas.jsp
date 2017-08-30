@@ -253,88 +253,115 @@
 }
 .designRoom_menu2_content_data_size{
 	width:100%; 
-	height:40%;
+	height:30%;
 	font-family: 'Noto Sans KR';
 	font-size:12px;
 	text-align: center;
 }
 .designRoom_menu2_content_data_button{
 	width:80%; 
-	height:20%;
+	height:30%;
 	font-family: 'Noto Sans KR';
 	font-size:12px;
 	text-align: center;
 }
 #deta_lengthText1{
-	border:2px solid;	
-	width:500;
-	height:800;
+	
+	z-index: 3;
+	padding: 30px;
+	overflow: auto;
+	
+	border:1px solid #ddd;	
+	width: 500px;
+	height: 600px;
+	overflow: auto;
 	background-color: white;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
 
 }
 
 #deta_lengthText1_close{
-	border:2px solid;
-	width:100%;
-	height:5%;
+	border: none;
+	width:98%;
+	padding: 8px 16px;
+	margin: 4px;
+	display: inline-block;
+	text-align: center;
+	color: #ffffff;
+	height:8%;
+	vertical-align: middle;
+	background-color: #ff5028;
 }
 
 #deta_lengthText1_content1{
-	border:2px solid;
+	border:1px solid #ddd;
 	width:100%;
-	height:30%;
+	height:35%;
+	font-family: 'Noto Sans KR';
+	font-size:12px;
+	text-align: center;
 
 }
 #deta_lengthText1_text1{
  	overflow-y:scroll;
-	border:2px solid;
+	border:1px solid #ddd;
+	text-align: center;
 	width:100%;
 	height:65%;
+	font-family: 'Noto Sans KR';
+	font-size:15px;
 }
 
 
 #deta_lengthText1_content_img{
-	border: 1px solid;
 	width:40%;
-	height:100%;
 	float:left;
+	margin: 10px;
 }
 #deta_lengthText1_content_img_src{
-	width:100%;
-	height:100%;
+	width:98%;
+	vertical-align: center;
 }
 #deta_lengthText1_content_data{
-	border: 1px solid;
-	width:58%;
+	width:50%;
 	height:100%;
+	text-align:center;
 	float:left;
 }
 #deta_lengthText1_content_data_name{
-	border: 1px solid;
 	width:100%;
-	height:30%;
+	height:40%;
+	margin: 5px;
+	font-family: 'Noto Sans KR';
+	font-size:15px;
 }
 #deta_lengthText1_content_data_size{
-	border: 1px solid;
 	width:100%;
 	height:30%;
+	margin: 5px;
+	font-family: 'Noto Sans KR';
+	font-size:15px;
 }
 #deta_lengthText1_content_data_pay{
-	border: 1px solid;
 	width:100%;
-	height:30%;
+	height:10%;
+	margin: 5px;
+	font-family: 'Noto Sans KR';
+	font-size:15px;
 }
 .designRoom_menu2_content_data_button_dita{
 	float:right;
 }
 #deta_lengthText1_text1_text{
-	border: 1px solid;
-	width:100%;
+	width:98%;
+	vertical-align: center;
+	margin: 10px;
 }
+
 .deta_lengthText1_text1_img{
-	margin-top:30px;
-	width:100%;
-	height:300;
+	margin:20px;
+	width:60%;
 	
 }
 .deta_lengthText1_text1_img_src{
@@ -669,7 +696,7 @@ $(document).ready(function(){
 				
 				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data'>";
 				
-				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_name'>"+furniture_data[i].fur_name+"/"+furniture_data[i].fur_brand_name+"</div>";
+				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_name'>"+furniture_data[i].fur_name+"<br>("+furniture_data[i].fur_brand_name+")</div>";
 				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_size'>가:"+furniture_data[i].fur_width+"MM  세:"+furniture_data[i].fur_depth+"MM 높:"+furniture_data[i].fur_height+"MM</div>";
 				
 				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_button'>";
@@ -784,8 +811,8 @@ $(document).ready(function(){
 				deta_textPosition_append+="<img id='deta_lengthText1_content_img_src' src='"+deta_pic[0]+"'>";
 			deta_textPosition_append+="</div>";
 			deta_textPosition_append+="<div id='deta_lengthText1_content_data'>";
-				deta_textPosition_append+="<div id='deta_lengthText1_content_data_name'>"+furniture_data[deta_textPosition_num].fur_name+"/"+furniture_data[deta_textPosition_num].fur_brand_name+"</div>";
-				deta_textPosition_append+="<div id='deta_lengthText1_content_data_size'>W:"+furniture_data[deta_textPosition_num].fur_width+"MM V:"+furniture_data[deta_textPosition_num].fur_depth+"MM H:"+furniture_data[deta_textPosition_num].fur_height+"MM W:"+furniture_data[deta_textPosition_num].fur_weight+"kg</div>";
+				deta_textPosition_append+="<div id='deta_lengthText1_content_data_name'>"+furniture_data[deta_textPosition_num].fur_name+"<br>("+furniture_data[deta_textPosition_num].fur_brand_name+")</div>";
+				deta_textPosition_append+="<div id='deta_lengthText1_content_data_size'>W:"+furniture_data[deta_textPosition_num].fur_width+"MM V:"+furniture_data[deta_textPosition_num].fur_depth+"MM H:"+furniture_data[deta_textPosition_num].fur_height+"MM </div>";
 				deta_textPosition_append+="<div id='deta_lengthText1_content_data_pay'>가격:"+furniture_data[deta_textPosition_num].fur_price+"원</div>";
 			deta_textPosition_append+="</div>";
 		deta_textPosition_append+="</div>";
@@ -806,7 +833,7 @@ $(document).ready(function(){
 		
 	}
 	function move_deta_textPosition(){
-		$("#deta_lengthText1").css("position","absolute").css("top",move_deta_textPosition_Y).css("left",move_deta_textPosition_X);
+		$("#deta_lengthText1").css("position","absolute").css("top","40%").css("left","40%").css("z-index",2);
 	}
 	$(document).on('click','#deta_lengthText1_close',function(e){
 		$("#deta_lengthText1").remove();

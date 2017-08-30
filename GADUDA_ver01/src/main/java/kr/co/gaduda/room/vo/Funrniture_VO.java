@@ -4,7 +4,7 @@ public class Funrniture_VO {
 	
 	private int fur_no;
 	private String fur_name;
-	private String fur_barnd_name;
+	private String fur_brand_name;
 	private int fur_price;
 	private String fur_kind_def_name;
 	private int fur_width;
@@ -24,11 +24,11 @@ public class Funrniture_VO {
 	public void setFur_name(String fur_name) {
 		this.fur_name = fur_name;
 	}
-	public String getFur_barnd_name() {
-		return fur_barnd_name;
+	public String getFur_brand_name() {
+		return fur_brand_name;
 	}
-	public void setFur_barnd_name(String fur_barnd_name) {
-		this.fur_barnd_name = fur_barnd_name;
+	public void setFur_brand_name(String fur_brand_name) {
+		this.fur_brand_name = fur_brand_name;
 	}
 	public int getFur_price() {
 		return fur_price;

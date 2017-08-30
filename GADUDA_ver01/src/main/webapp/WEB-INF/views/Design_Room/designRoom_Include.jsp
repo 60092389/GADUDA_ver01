@@ -18,7 +18,8 @@
 	height: 100px;
 }
 #design_Include_body{
-	width:1158px; 
+	width:90%;
+	height: 100% 
 }
  
 #design_Include_body1{

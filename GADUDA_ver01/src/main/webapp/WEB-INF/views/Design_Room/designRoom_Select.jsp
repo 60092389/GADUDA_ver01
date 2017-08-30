@@ -32,7 +32,7 @@
 }
 .designRoom_select_room_img{
 	width: 90%; 
-	height:80%;
+	height:40%;
 	margin: 10px;
 	padding: 10px;
 }
@@ -57,8 +57,7 @@
 	
 	
 }
-.designRoom_select_num_pageing{
-	
+.designRoom_select_num_pageing{	
 	float:left;
 	height:50px;
 	width: 50px;
@@ -191,8 +190,8 @@ $(document).ready(function(){
 	$(document).on('click', '.designRoom_select_num_pageing', function(e) {
 		num = $(this).attr('value')-1;
 		designRoom_select_room_show();
-		$(".designRoom_select_num_pageing").css('border','');
-		$(this).css('border','2px solid red');
+		$(".designRoom_select_num_pageing").css('color','black');
+		$(this).css('color','red');
 	});
 });
 

@@ -27,7 +27,7 @@ $(document).ready(function(){
 	$("#btn-scrap-delete").click(function(){
 		
 		var fur_scrap_no = $(this).val();
-
+		alert("가구번호 : " + fur_scrap_no)
 	 	var trans_object = {
 			'fur_scrap_no' : fur_scrap_no
 		} 
@@ -104,7 +104,7 @@ $(document).ready(function(){
   				<tr>
     				<th>${fsl.fur_brand_name } 　　 ${fsl.fur_price }won</th> 
     				<th></th>
-    				<th><a  class="w3-button w3-deep-orange" id="btn-scrap-delete" value="${fsl.fur_scrap_no}">삭제하기</a></th>
+    				<th><button class="w3-button w3-deep-orange" id="btn-scrap-delete" value="${fsl.fur_scrap_no}">삭제하기</button></th>
   				</tr>
   
 			</table>
