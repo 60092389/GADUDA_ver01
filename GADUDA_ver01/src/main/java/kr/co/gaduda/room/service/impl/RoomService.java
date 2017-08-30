@@ -88,5 +88,20 @@ public class RoomService implements IRoomService {
 		return  num;
 	}
 
+	@Override
+	public int delDesignRoom_ser(int designRoomNum) {
+		
+		roomDao.delDesignRoom_Tag_dao(designRoomNum);
+		roomDao.delDesignRoom_Img_dao(designRoomNum);
+		roomDao.delDesignRoom_Img_Src_dao(designRoomNum);
+		
+		roomDao.delDesignRoom_Kind_dao(designRoomNum);
+		roomDao.delDesignRoom_concept_dao(designRoomNum);
+		
+		
+		
+		return roomDao.delDesignRoom_dao(designRoomNum);
+	}
+
 	
 }

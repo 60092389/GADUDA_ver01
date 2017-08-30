@@ -260,6 +260,9 @@ public class URLs {
 	public static final String URI_DESIGNROOM_NAME= "/designRoom_Name";
 	public static final String URI_DESIGNROOM_NAME_FULL = room_default+URI_DESIGNROOM_NAME;
 	
+	public static final String URI_DESIGNROOM_DEL= "/designRoom_Del";
+	public static final String URI_DESIGNROOM_DEL_FULL = room_default+URI_DESIGNROOM_DEL;
+	
 	public static final String URI_DESIGNROOM_CANVAS_FURNITURE_DATA= "/designRoom_Canvas_Furniture_Data";
 	public static final String URI_DESIGNROOM_CANVAS_FURNITURE_DATA_FULL = room_default + URI_DESIGNROOM_CANVAS_FURNITURE_DATA;
 	

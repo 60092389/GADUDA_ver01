@@ -32,4 +32,17 @@ public interface IRoomDao {
 	
 	public int insertDesignRoom_Kind_dao(DesignRoom_Kind_DTO designRoom_Kind_DTO);
 	public int insertDesignRoom_concept_dao(DesignRoom_Concept_DTO designRoom_concept_DTO);
+	
+	
+	
+	public int delDesignRoom_dao(int designRoomNum);
+	
+	public int delDesignRoom_Tag_dao(int designRoomNum);
+	public int delDesignRoom_Img_dao(int designRoomNum);
+	public int delDesignRoom_Img_Src_dao(int designRoomNum);
+	
+	public int delDesignRoom_Kind_dao(int designRoomNum);
+	public int delDesignRoom_concept_dao(int designRoomNum);
+	
+	
 }

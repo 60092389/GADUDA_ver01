@@ -292,8 +292,23 @@ public class RoomController {
 	}
 	
 	
+	@RequestMapping(value = URLs.URI_DESIGNROOM_DEL, method = RequestMethod.POST, produces = { "application/json" })
+	public @ResponseBody Map<String, Object> ss(@RequestParam(value="designRoomNum") int designRoomNum) throws Exception{
+		Map<String, Object> data = new HashMap<String, Object>();
+		int sss=roomService.delDesignRoom_ser(designRoomNum);
+		if(sss==0){
+			data.put("MSG", "1");
+			data.put("URL", URLs.URI_MYPAGE_MEMBER_FULL);
+		}else{
+			data.put("MSG", "0");
+		}
+		return data;
+	}
+	
+	
+	
 	@RequestMapping(value = URLs.URI_DESIGNROOM_BUTTON1, method = RequestMethod.GET)
-	public ModelAndView designRoom_Button1() {
+	public  ModelAndView designRoom_Button1() {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Pages.VIEW_DESIGNROOM_BUTTON1);

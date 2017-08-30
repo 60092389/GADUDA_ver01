@@ -64,16 +64,20 @@
 	</select>
 	
 	
-	<insert id="insertDesignRoom" >
-	<![CDATA[
-		 INSERT INTO FURNITURE_ARRANGEMENT_PLAN VALUES(SEQ_FUR_ARR_PLAN.NEXTVAL,#{designRoom_name},#{userId},#{designroom_info},SYSDATE,#{select_myroom_num},0,0)
-	]]>
-	</insert>
+	
 	<select id="designRoom_max_num" resultType="int">
  	<![CDATA[
  		SELECT  MAX(FUR_ARR_PLAN_NO)FROM FURNITURE_ARRANGEMENT_PLAN
 	]]>
 	</select>
+	
+	
+	
+	<insert id="insertDesignRoom" >
+	<![CDATA[
+		 INSERT INTO FURNITURE_ARRANGEMENT_PLAN VALUES(SEQ_FUR_ARR_PLAN.NEXTVAL,#{designRoom_name},#{userId},#{designroom_info},SYSDATE,#{select_myroom_num},0,0)
+	]]>
+	</insert>
 	
 	
 	<insert id="insertDesignRoom_Tag_dao">
@@ -115,23 +119,45 @@
 	</insert>
 	
 	
+	<delete id="delDesignRoom_dao">
+ 	<![CDATA[
+ 	DELETE FROM FURNITURE_ARR_PLAN_HASHTAG 
+ 	WHERE FUR_ARR_PLAN_NO = #{designRoomNum}
+	]]>
+	</delete>
 	
+	<delete id="delDesignRoom_Tag_dao">
+ 	<![CDATA[
+ 	DELETE FROM FURNITURE_ARR_PLAN_HASHTAG
+ 	WHERE FUR_ARR_PLAN_NO = #{designRoomNum}
+	]]>
+	</delete>
 	
+	<delete id="delDesignRoom_Img_dao">
+ 	<![CDATA[
+ 	DELETE FROM ARRANGEMENT_FURNITURE
+ 	WHERE FUR_ARR_PLAN_NO = #{designRoomNum}
+	]]>
+	</delete>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<delete id="delDesignRoom_Img_Src_dao">
+ 	<![CDATA[
+ 	DELETE FROM FURNITURE_ARRANGEMENT_IMAGE  
+ 	WHERE FUR_ARR_PLAN_NO = #{designRoomNum}
+	]]>
+	</delete>
+	<delete id="delDesignRoom_Kind_dao">
+ 	<![CDATA[
+ 	DELETE FROM FURNITURE_ARR_ROOM_KIND 
+ 	WHERE FUR_ARR_PLAN_NO = #{designRoomNum}
+	]]>
+	</delete>
+	<delete id="delDesignRoom_concept_dao">
+ 	<![CDATA[
+ 	DELETE FROM FURNITURE_ARR_PLAN_CONCEPT 
+ 	WHERE FUR_ARR_PLAN_NO = #{designRoomNum}
+	]]>
+	</delete>
 	
 	
 	

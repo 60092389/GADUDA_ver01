@@ -19,7 +19,42 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
+	$(".del_designRoom").click(function(){
+		var retVal = confirm("삭제하시겠습까?");
+		   if( retVal == true ){
+			   var del_num={"designRoomNum":$(this).attr('value')};
+			   $.ajax({
+					url: "${URLs.URI_DESIGNROOM_DEL_FULL}",
+					type:"POST",
+					data:del_num,
+					success:function(data){
+						if(data.MSG=1){
+							alert("삭제 성고");
+							location.href=data.URL;
+						}else{
+							alert("삭제 실패");
+						}
+								
+					}
+				});
+		   }
+	});
+	
+	$(".up_designRoom").click(function(){
+		$("#designRoom_body").html("");
+		alert("성공");
+		
+		
+	});
+	
+	
+	
+
 });
+
+
+
 </script>
 
 
@@ -92,8 +127,8 @@ $(document).ready(function(){
 					<tr>
 						<td colspan="4"> </td>
 						<td>
-							<button class="w3-button w3-green w3-hover-white">수정하기</button> 
-							<button class="w3-button w3-red w3-hover-white">삭제하기</button> 
+							<button class="w3-button w3-green w3-hover-white up_designRoom">수정하기</button> 
+							<button class="w3-button w3-red w3-hover-white del_designRoom" value=${ arrList.fur_arr_plan_no }>삭제하기</button> 
 						</td>
 					</tr>
 				</table>	
