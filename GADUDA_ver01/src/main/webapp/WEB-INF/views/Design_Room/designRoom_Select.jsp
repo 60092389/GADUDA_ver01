@@ -9,7 +9,7 @@
 
 #designRoom_select_room{
 	border: 1px solid #ccc; 
-	width: 1158px; 
+	width: 1200px; 
 	height:1140px;
 }
 
@@ -190,7 +190,7 @@ $(document).ready(function(){
 	$(document).on('click', '.designRoom_select_num_pageing', function(e) {
 		num = $(this).attr('value')-1;
 		designRoom_select_room_show();
-		$(".designRoom_select_num_pageing").css('color','black');
+		$(".designRoom_select_num_pageing").css('color','black ');
 		$(this).css('color','red');
 	});
 });

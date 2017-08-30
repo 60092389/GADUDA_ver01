@@ -18,9 +18,10 @@
 }
 
 #designroom_menu{
+
 	border:1px solid;
 	float:left;
-	width:400px;
+	width:350px;
 	height:500px;
 	border:1px solid #ccc;
 	float:left;
