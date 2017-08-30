@@ -92,6 +92,38 @@ public class RoomDao implements IRoomDao {
 	}
 
 	
+	
+	@Override
+	public int delDesignRoom_dao(int designRoomNum) {
+		return roomSqlSession.delete(namespace+".delDesignRoom_dao",designRoomNum);
+	}
+
+	@Override
+	public int delDesignRoom_Tag_dao(int designRoomNum) {
+		return roomSqlSession.delete(namespace+".delDesignRoom_Tag_dao",designRoomNum);
+	}
+
+	@Override
+	public int delDesignRoom_Img_dao(int designRoomNum) {
+		return roomSqlSession.delete(namespace+".delDesignRoom_Img_dao",designRoomNum);
+	}
+
+	@Override
+	public int delDesignRoom_Img_Src_dao(int designRoomNum) {
+		return roomSqlSession.delete(namespace+".delDesignRoom_Img_Src_dao",designRoomNum);
+	}
+
+	@Override
+	public int delDesignRoom_Kind_dao(int designRoomNum) {
+		return roomSqlSession.delete(namespace+".delDesignRoom_Kind_dao",designRoomNum);
+	}
+
+	@Override
+	public int delDesignRoom_concept_dao(int designRoomNum) {
+		return roomSqlSession.delete(namespace+".delDesignRoom_concept_dao",designRoomNum);
+	}
+
+	
 
 
 }
