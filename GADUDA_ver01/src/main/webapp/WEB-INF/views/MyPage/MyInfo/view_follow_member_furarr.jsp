@@ -37,42 +37,47 @@
 			<h1>${fol_mem_id }의 배치도</h1>
 			<div class="w3-border-top">
 				<c:forEach var="arrList" items="${arrList }">
-					<table class="w3-container w3-table w3-center">
-						<tr>
-			   				<th></th>
-							<th colspan="3">
-								<h3><a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${ arrList.fur_arr_plan_no }" class="w3-button">${ arrList.fur_arr_name }</a></h3>
-							</th>
-							<th>${ arrList.fur_arr_create_date }</th>
-			  			</tr>
-						<tr>
-							<td colspan="3" rowspan="4">
-								<img src="${ arrList.fur_arr_plan_img_loc }" alt="${ arrList.fur_arr_name }" style="width:200px">
-							</td>
-							<td class="w3-center">종류</td>
-							<td>${ arrList.fur_arr_plan_room_kind }</td>
-						</tr>
-						<tr>
-							<td class="w3-center">컨셉</td>
-							<td>${ arrList.fur_arr_plan_concept }</td>
-						</tr>
-						<tr>
-							<td class="w3-center">HashTag</td>
-							<td>${ arrList.fur_arr_plan_hash_tag }</td>
-						</tr>
-						<tr>
-							<td>
-								<div class="w3-center">
-									<i class="material-icons" >favorite</i>${ arrList.fur_arr_plan_good_num }
-									<i class="material-icons">attachment</i>${ arrList.fur_arr_plan_scrap_num }
-									<i class="material-icons">cloud</i>${ arrList.fur_arr_plan_repl_num }
-								</div>
-							</td>
-							<td colspan="2">
-								${ arrList.fur_arr_contents }
-							</td>
-						</tr>
-					</table>	
+					<div class="w3-col m5 w3-border w3-margin w3-round">
+						<div class=" w3-padding ">
+							<img class="w3-cell-middle w3-center" src="${ arrList.fur_arr_plan_img_loc }" alt="${ arrList.fur_arr_name }" style="height: 300px;">
+						
+						<div class="w3-container" >
+							<table class="w3-col m12 w3-center w3-table">
+								<tr>
+									<td colspan="2" class="w3-center"><a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${ arrList.fur_arr_plan_no }" class="w3-button"><h4>${ arrList.fur_arr_name }</h4></a></td>
+								</tr> 
+								<tr>
+									<td colspan="2" class="w3-right-align"><b style="font-size: 12px">${ arrList.fur_arr_create_date }</b></td>
+								</tr>
+								<tr>
+									<td style="width: 40%">방 종류</td>
+									<td><b>${ arrList.fur_arr_plan_room_kind }</b></td>
+								</tr>
+								<tr>
+									<td>컨셉</td>
+									<td><b>${ arrList.fur_arr_plan_concept }</b></td>
+								</tr>
+								<tr>
+									<td>해시태그</td>
+									<td><b>${ arrList.fur_arr_plan_hash_tag }</b></td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div class="w3-center">
+											<i class="material-icons" >favorite</i>${ arrList.fur_arr_plan_good_num }
+											<i class="material-icons">attachment</i>${ arrList.fur_arr_plan_scrap_num }
+											<i class="material-icons">cloud</i>${ arrList.fur_arr_plan_repl_num }
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">${ arrList.fur_arr_contents }</td>
+								</tr>
+							</table>
+						</div>
+						</div>
+					</div>
+
 				</c:forEach>
 			</div>
 			</div>

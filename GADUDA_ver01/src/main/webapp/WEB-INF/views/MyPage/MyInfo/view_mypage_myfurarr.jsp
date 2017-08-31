@@ -91,14 +91,14 @@ $(document).ready(function(){
 			<div class="w3-padding-32 w3-main w3-content w3-margin-top w3-border-top">
 				<table class="w3-container w3-table w3-center">
 					<tr>
-	   					<th>No.<h1>${ arrList.fur_arr_plan_no }</h1></th>
-						<th colspan="3">
+	   					<th style="width: 200px">No.<h1>${ arrList.fur_arr_plan_no }</h1></th>
+						<th style="width: 200px">
 							<h3><a href="${URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL }/?fur_arr_plan_no=${ arrList.fur_arr_plan_no }" class="w3-button">${ arrList.fur_arr_name }</a></h3>
 						</th>
-						<th>${ arrList.fur_arr_create_date }</th>
+						<th style="width: 300px" class="w3-right-align">${ arrList.fur_arr_create_date }</th>
 	  				</tr>
 					<tr>
-						<td colspan="3" rowspan="4">
+						<td rowspan="4">
 							<img src="${ arrList.fur_arr_plan_img_loc }" alt="${ arrList.fur_arr_name }" style="width:200px">
 						</td>
 						<td class="w3-center">종류</td>
@@ -113,20 +113,17 @@ $(document).ready(function(){
 						<td>${ arrList.fur_arr_plan_hash_tag }</td>
 					</tr>
 					<tr>
-						<td>
-							<div class="w3-center">
+						<td colspan="2">
+							<div class="w3-center ">
 								<i class="material-icons" >favorite</i>${ arrList.fur_arr_plan_good_num }
 								<i class="material-icons">attachment</i>${ arrList.fur_arr_plan_scrap_num }
 								<i class="material-icons">cloud</i>${ arrList.fur_arr_plan_repl_num }
 							</div>
 						</td>
-						<td colspan="2">
-							${ arrList.fur_arr_contents }
-						</td>
 					</tr>
 					<tr>
-						<td colspan="4"> </td>
-						<td>
+						<td colspan="2">${ arrList.fur_arr_contents } </td>
+						<td class="w3-right-align">
 							<button class="w3-button w3-green w3-hover-white up_designRoom">수정하기</button> 
 							<button class="w3-button w3-red w3-hover-white del_designRoom" value=${ arrList.fur_arr_plan_no }>삭제하기</button> 
 						</td>

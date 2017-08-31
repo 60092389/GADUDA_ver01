@@ -93,7 +93,7 @@ $(document).ready(function(){
 			
 				for(var i =0; i < retVal.goodList.length; i++){ 
 					$(".good_list_show").append("<div>");
-					$(".good_list_show").append("<p><b>" + retVal.goodList[i].mem_id +"</b>　"+retVal.goodList[i].mem_nickname+"</p>");
+					$(".good_list_show").append("<p><b>" + retVal.goodList[i].mem_nickname +"</b></p>");
 					//$(".good_list_show").append("<h6>[" + retVal.goodList[i].fur_arr_plan_good_date+"]</h6>");
 					$(".good_list_show").append("</div>");
 				}
@@ -215,7 +215,7 @@ $(document).ready(function(){
 					
 					for(var i =0; i < retVal.fur_arr_plan_list.length; i++){ 
 						$(".scrap_list_show").append("<div>");
-						$(".scrap_list_show").append("<p><b>" + retVal.fur_arr_plan_list[i].mem_id +"</b>　"+retVal.fur_arr_plan_list[i].mem_nickname+"</p>");
+						$(".scrap_list_show").append("<p><b>" + retVal.fur_arr_plan_list[i].mem_nickname +"</b></p>");
 						//$(".scrap_list_show").append("<h6>[" + retVal.fur_arr_plan_list[i].fur_scrap_date+"]</h6>");
 						$(".scrap_list_show").append("</div>");
 					}
@@ -628,7 +628,7 @@ if(mem_id != repl_id){
 		<!-- 여기도 좋아요 한사람 많아지면 바꿔야 될거같은데 -->
 		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width: 600px;margin-bottom: 300px">
 			<img class="w3-image" src="/resources/Images/basic/scrap.jpg">
-			<div class="w3-section">
+			<div class="w3-section w3-center">
 				<div class="scrap_list_show w3-margin"></div>
 			</div>
 			<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">

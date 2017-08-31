@@ -85,26 +85,21 @@ $(document).ready(function(){
    					 <th colspan="4" class="w3-center"><a class="w3-button w3-white" href="<%= URLs.URI_FURNITURE_DETAIL_FULL %>/?fur_no=${fsl.fur_no }"><h4>No.${fsl.fur_no }　${fsl.fur_name }</h4></a></th>
   				</tr>
   				<tr>
-    				<th rowspan="3"><img alt="${fsl.fur_name }" src="${fsl.fur_pic_loc }" height="200px"></th>
-   					<th></th> 
-    				<th></th>
-    				<th></th> 
+    				<td rowspan="3" style="width: 200px"><img alt="${fsl.fur_name }" src="${fsl.fur_pic_loc }" style="width: 100%"></td>
+   					<td colspan="3" class="w3-right-align"><p style="font-size: 12px">${fsl.fur_scrap_date }<p></td> 
   				</tr>
   				<tr>
-   	 				<th>${fsl.fur_scrap_date }</th> 
-    				<th></th>
-    				<th>
+   	 				<td colspan="3" class="w3-center"><b>${fsl.fur_brand_name } 　　 ${fsl.fur_price }won</b></td> 
+  				</tr>
+  				<tr> 
+    				<td class="w3-center">
     					<div>
 							<i class="material-icons" >favorite</i>${fsl.fur_good_count }
 							<i class="material-icons">attachment</i>${fsl.fur_scrap_count }
 							<i class="material-icons">cloud</i>${fsl.fur_reply_count }
 						</div>
-    				</th> 
-  				</tr>
-  				<tr>
-    				<th>${fsl.fur_brand_name } 　　 ${fsl.fur_price }won</th> 
-    				<th></th>
-    				<th><button class="w3-button w3-deep-orange" id="btn-scrap-delete" value="${fsl.fur_scrap_no}">삭제하기</button></th>
+    				</td>
+    				<td class="w3-right-align"><button class="w3-button w3-deep-orange" id="btn-scrap-delete" value="${fsl.fur_scrap_no}">삭제하기</button></td>
   				</tr>
   
 			</table>

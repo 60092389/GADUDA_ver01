@@ -100,26 +100,24 @@ $(document).ready(function(){
 						<th colspan="4" class="w3-center"><a class="w3-button w3-white" href="<%=URLs.URI_FURNITURE_ARR_DETAIL_VIEW_FULL%>/?fur_arr_plan_no=${fasl.fur_arr_plan_no }"><h4>No.${fasl.fur_arr_plan_no } 　${fasl.fur_arr_plan_name }</h4></a></th>
 					</tr>
   					<tr>
-	    				<th rowspan="3" class="w3-padding-32"><img alt="${fasl.fur_arr_plan_name }" src="${fasl.fur_arr_plan_img_loc }" height="200px"></th>
-	   					<th class="w3-padding-32">${fasl.fur_arr_plan_mem_id }</th> 
-	    				<th class="w3-padding-32">${fasl.fur_arr_plan_mem_nickname }</th>
-	    				<th></th> 
+	    				<td rowspan="3" style="width: 200px"><img alt="${fasl.fur_arr_plan_name }" src="${fasl.fur_arr_plan_img_loc }" height="200px"></td>
+	   					<td style="width: 200px">${fasl.fur_arr_plan_mem_id }</td> 
+	    				<td style="width: 200px">${fasl.fur_arr_plan_mem_nickname }</td>
+	    				<td style="width: 200px">${fasl.fur_arr_plan_scrap_date }</td> 
   					</tr>
   					<tr>
-	   	 				<th class="w3-padding-32"> ${fasl.fur_arr_plan_scrap_date } | ${fasl.fur_arr_plan_scrap_no } </th> 
-	    				<th class="w3-padding-32">
+	    				<td class="w3-center" colspan="3">
 	    					<div >
 								<i class="material-icons" >favorite</i>${fasl.fur_arr_plan_good_count }
-								<i class="material-icons">attachment</i>${fsl.fur_reply_count }
+								<i class="material-icons">attachment</i>${fsl.fur_arr_plan_scrap_count }
 								<i class="material-icons">cloud</i>${fasl.fur_arr_plan_reply_count }
 							</div>
-	    				</th> 
-	    				<th></th>
+	    				</td> 
   					</tr>
   					<tr>
-	    				<th class="w3-padding-32">${fasl.fur_arr_plan_concepts }</th> 
-	    				<th class="w3-padding-32">${fasl.fur_arr_plan_room_kind_names}</th>
-	    				<th><button class="w3-button w3-red" id="btn-scrap-delete" value="${fasl.fur_arr_plan_scrap_no }">삭제하기</button></th>
+	    				<td>${fasl.fur_arr_plan_concepts }</td> 
+	    				<td>${fasl.fur_arr_plan_room_kind_names}</td>
+	    				<td class="w3-right-align"><button class="w3-button w3-red " id="btn-scrap-delete" value="${fasl.fur_arr_plan_scrap_no }">삭제하기</button></td>
   					</tr>
 				</table>
 			</div>

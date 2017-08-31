@@ -218,10 +218,10 @@ $(document).ready(function(){
 									  <tr>
 									  </tr>
 									  <tr>
-									    <td colspan="5">
+									    <td colspan="5" style="width: 360px">
 									    	<div>
-										    	<div class="w3-col m3 w3-border w3-round w3-margin-right">
-										    		<button class="btn-fur-arr-good w3-button w3-hover-white w3-white" value="${fur_arr_list.fur_arr_plan_no}">좋아요</button>
+										    	<div class="w3-col m3 w3-border w3-round w3-margin-right" style="width: 120px">
+										    		<button class="btn-fur-arr-good w3-button w3-hover-white w3-white" style="font-size: 12px" value="${fur_arr_list.fur_arr_plan_no}">좋아요</button>
 										    		<input type="hidden" id="user_id_li" value="${ member.mem_id }">
 										    		<button onclick="document.getElementById('myModal').style.display='block'" 
 										    				class="good_list w3-button w3-hover-white w3-white" value="${fur_arr_list.fur_arr_plan_no}"
@@ -229,18 +229,18 @@ $(document).ready(function(){
 										    				${fur_arr_list.fur_arr_plan_good_num}
 										    		</button>
 										    	</div>
-										    	<div class="w3-col m3 w3-border w3-round w3-margin-right">
-										    		<button class="btn-scrap-add w3-button w3-hover-white w3-white" value="${fur_arr_list.fur_arr_plan_no}">스크랩</button>
+										    	<div class="w3-col m3 w3-border w3-round w3-margin-right" style="width: 120px">
+										    		<button class="btn-scrap-add w3-button w3-hover-white w3-white" style="font-size: 12px" value="${fur_arr_list.fur_arr_plan_no}">스크랩</button>
 										    		<input type="hidden" id="write_id" value="${ fur_arr_list.mem_id }">
 										    		<button class="w3-button w3-hover-white w3-white">${fur_arr_list.fur_arr_plan_scrap_num }</button>
 										    	</div>
-										    	<div class="w3-col m3 w3-border w3-round w3-margin-right">
-										    		<button class="w3-button w3-hover-white w3-white">댓글</button>
+										    	<div class="w3-col m3 w3-border w3-round w3-margin-right" style="width: 120px">
+										    		<button class="w3-button w3-hover-white w3-white" style="font-size: 12px">댓글</button>
 										    		<button class="w3-button w3-hover-white w3-white">${fur_arr_list.fur_arr_plan_repl_num }</button>
 										    	</div>
 									    	</div>
 									    </td>
-									     <td class="w3-right-align w3-padding-right">
+									     <td class="w3-right-align w3-padding-right" style="width: 120px">
 									    	<span class="w3-opacity w3-black">Room ${fur_arr_list.fur_arr_room_kind }
 									    									<br>Concept ${fur_arr_list.fur_arr_con }
 									    									<br>HashTag ${fur_arr_list.fur_arr_hashtag_name }</span>

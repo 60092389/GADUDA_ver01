@@ -240,7 +240,7 @@ $(document).ready(function(){
 									    </td>
 									    <td colspan="3"><b>${fur_arr_list.mem_id }(${fur_arr_list.mem_nickname })</b></td>
 									    <td rowspan="5" style="height: 200px">
-									    	<img class="w3-margin-top w3-margin-bottom" src="${fur_arr_list.fur_arr_plan_img_loc }" alt="${fur_arr_list.fur_arr_plan_img_loc }" style="height:100%">
+									    	<img class="w3-margin-top w3-margin-bottom" src="${fur_arr_list.fur_arr_plan_img_loc }" alt="${fur_arr_list.fur_arr_name }" style="height:100%">
 									    </td>
 									  </tr>
 									  <tr>
@@ -255,10 +255,10 @@ $(document).ready(function(){
 									  <tr>
 									  </tr>
 									  <tr>
-									    <td colspan="5">
+									    <td colspan="5" style="width: 360px">
 									    	<div>
-										    	<div class="w3-col m3 w3-border w3-round w3-margin-right">
-										    		<button class="btn-fur-arr-good w3-button w3-hover-white w3-white" value="${fur_arr_list.fur_arr_plan_no}">좋아요</button>
+										    	<div class="w3-col m3 w3-border w3-round w3-margin-right" style="width: 120px">
+										    		<button class="btn-fur-arr-good w3-button w3-hover-white w3-white" style="font-size: 12px" value="${fur_arr_list.fur_arr_plan_no}">좋아요</button>
 										    		<input type="hidden" id="user_id_li" value="${ member.mem_id }">
 										    		<button onclick="document.getElementById('myModal').style.display='block'" 
 										    				class="good_list w3-button w3-hover-white w3-white" value="${fur_arr_list.fur_arr_plan_no}"
@@ -266,13 +266,13 @@ $(document).ready(function(){
 										    				${fur_arr_list.fur_arr_plan_good_num}
 										    		</button>
 										    	</div>
-										    	<div class="w3-col m3 w3-border w3-round w3-margin-right">
-										    		<button class="btn-scrap-add w3-button w3-hover-white w3-white" value="${fur_arr_list.fur_arr_plan_no}">스크랩</button>
+										    	<div class="w3-col m3 w3-border w3-round w3-margin-right" style="width: 120px">
+										    		<button class="btn-scrap-add w3-button w3-hover-white w3-white" style="font-size: 12px" value="${fur_arr_list.fur_arr_plan_no}">스크랩</button>
 										    		<input type="hidden" id="write_id" value="${ fur_arr_list.mem_id }">
 										    		<button class="w3-button w3-hover-white w3-white">${fur_arr_list.fur_arr_plan_scrap_num }</button>
 										    	</div>
-										    	<div class="w3-col m3 w3-border w3-round w3-margin-right">
-										    		<button class="w3-button w3-hover-white w3-white">댓글</button>
+										    	<div class="w3-col m3 w3-border w3-round w3-margin-right" style="width: 120px">
+										    		<button class="w3-button w3-hover-white w3-white" style="font-size: 12px">댓글</button>
 										    		<button class="w3-button w3-hover-white w3-white">${fur_arr_list.fur_arr_plan_repl_num }</button>
 										    	</div>
 									    	</div>

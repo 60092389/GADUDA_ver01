@@ -58,7 +58,7 @@ $(document).ready(function() {
 				$(".good_list_show").html("");
 				for(var i =0; i < retVal.list_good.length; i++){ 
 					$(".good_list_show").append("<div>");
-					$(".good_list_show").append("<p><b>" + retVal.list_good[i].mem_id +"</b>　"+retVal.list_good[i].mem_nickname+"</p>");
+					$(".good_list_show").append("<p><b>" + retVal.list_good[i].mem_nickname+"</b></p>");
 					//$(".good_list_show").append("<h6>[" + retVal.list_good[i].fur_good_date+"]</h6>");
 					$(".good_list_show").append("</div>");
 				}
@@ -126,7 +126,7 @@ $(document).ready(function() {
 					
 					for(var i =0; i < retVal.fur_scrap_list.length; i++){ 
 						$(".scrap_list_show").append("<div>");
-						$(".scrap_list_show").append("<p><b>" + retVal.fur_scrap_list[i].mem_id +"</b>　"+retVal.fur_scrap_list[i].mem_nickname+"</p>");
+						$(".scrap_list_show").append("<p><b>" + retVal.fur_scrap_list[i].mem_nickname+"</b></p>");
 						//$(".scrap_list_show").append("<h6>[" + retVal.list_good[i].fur_scrap_date+"]</h6>");
 						$(".scrap_list_show").append("</div>");
 					}
