@@ -588,53 +588,72 @@ $(document).ready(function(){
 	//'turn'이 선택시 
 	//가구 베치도 회전하기
 	function turn_Img(){
+		alert("돼나여");;
+		var fur_turn_img_src=[];
 		var turn_img= new Image();		
 		var temp='';
+
+		var fig_img = new Image();
 		
-		
-		for(var i=0; i<furniture_data.furniture.length; i++){
-			
-			if(fig_img_kind[select_fig_num]==furniture_data.furniture[i].furniture_num){
-				
-				if(fig_img_state_arr[select_fig_num]==1){
-					
-					turn_img.src=furniture_data.furniture[i].furniture_arrangement_plan_img_src_2;
-					
-					fig_img_arr[select_fig_num]=turn_img;
-					temp=fig_img_width_length_arr[select_fig_num];
-					fig_img_width_length_arr[select_fig_num]=fig_img_height_length_arr[select_fig_num];
-					fig_img_height_length_arr[select_fig_num]=temp;
-					
-					fig_img_state_arr[select_fig_num]=2;
-					
-				}else if(fig_img_state_arr[select_fig_num]==2){
-					turn_img.src=furniture_data.furniture[i].furniture_arrangement_plan_img_src_3;
-					fig_img_arr[select_fig_num]=turn_img;
-					temp=fig_img_width_length_arr[select_fig_num];
-					fig_img_width_length_arr[select_fig_num]=fig_img_height_length_arr[select_fig_num];
-					fig_img_height_length_arr[select_fig_num]=temp;
-					fig_img_state_arr[select_fig_num]=3;
-					
-				}else if(fig_img_state_arr[select_fig_num]==3){
-					turn_img.src=furniture_data.furniture[i].furniture_arrangement_plan_img_src_4;
-					fig_img_arr[select_fig_num]=turn_img;
-					temp=fig_img_width_length_arr[select_fig_num];
-					fig_img_width_length_arr[select_fig_num]=fig_img_height_length_arr[select_fig_num];
-					fig_img_height_length_arr[select_fig_num]=temp;
-					fig_img_state_arr[select_fig_num]=4;
-					
-				}else if(fig_img_state_arr[select_fig_num]==4){
-					turn_img.src=furniture_data.furniture[i].furniture_arrangement_plan_img_src_1;
-					fig_img_arr[select_fig_num]=turn_img;
-					temp=fig_img_width_length_arr[select_fig_num];
-					fig_img_width_length_arr[select_fig_num]=fig_img_height_length_arr[select_fig_num];
-					fig_img_height_length_arr[select_fig_num]=temp;
-					fig_img_state_arr[select_fig_num]=1;
-					
+		for(var i=0; i<furniture_basic_img.length;i++){
+			if(fig_num_arr[select_fig_num]==furniture_basic_img[i].fur_no){
+				if(furniture_basic_img[i].fur_arr_basic_img_kind=='상단'){
+					fur_turn_img_src[0]=furniture_basic_img[i].fur_arr_basic_img_loc;		
+				}
+				else if(furniture_basic_img[i].fur_arr_basic_img_kind=='오른쪽'){
+					fur_turn_img_src[1]=furniture_basic_img[i].fur_arr_basic_img_loc;
+				}
+				else if(furniture_basic_img[i].fur_arr_basic_img_kind=='하단'){
+					fur_turn_img_src[2]=furniture_basic_img[i].fur_arr_basic_img_loc;
+				}
+				else if(furniture_basic_img[i].fur_arr_basic_img_kind=='왼쪽'){
+					fur_turn_img_src[3]=furniture_basic_img[i].fur_arr_basic_img_loc;
 				}
 			}
 		}
 		
+		
+		if(fig_img_state_arr[select_fig_num]=='상단'){
+			turn_img.src=fur_turn_img_src[1];
+			
+			fig_img_arr[select_fig_num]=turn_img;
+			temp=fig_img_width_length_arr[select_fig_num];
+			fig_img_width_length_arr[select_fig_num]=fig_img_height_length_arr[select_fig_num];
+			fig_img_height_length_arr[select_fig_num]=temp;
+			
+			
+			fig_img_state_arr[select_fig_num]='오른쪽'
+		}
+		else if(fig_img_state_arr[select_fig_num]=='오른쪽'){
+			turn_img.src=fur_turn_img_src[2];
+			
+			fig_img_arr[select_fig_num]=turn_img;
+			temp=fig_img_width_length_arr[select_fig_num];
+			fig_img_width_length_arr[select_fig_num]=fig_img_height_length_arr[select_fig_num];
+			fig_img_height_length_arr[select_fig_num]=temp;
+			
+			fig_img_state_arr[select_fig_num]='하단'
+		}
+		else if(fig_img_state_arr[select_fig_num]=='하단'){
+			turn_img.src=fur_turn_img_src[3];
+			
+			fig_img_arr[select_fig_num]=turn_img;
+			temp=fig_img_width_length_arr[select_fig_num];
+			fig_img_width_length_arr[select_fig_num]=fig_img_height_length_arr[select_fig_num];
+			fig_img_height_length_arr[select_fig_num]=temp;
+			
+			fig_img_state_arr[select_fig_num]=='왼쪽'
+		}
+		else if(fig_img_state_arr[select_fig_num]=='왼쪽'){
+			turn_img.src=fur_turn_img_src[0];
+			
+			fig_img_arr[select_fig_num]=turn_img;
+			temp=fig_img_width_length_arr[select_fig_num];
+			fig_img_width_length_arr[select_fig_num]=fig_img_height_length_arr[select_fig_num];
+			fig_img_height_length_arr[select_fig_num]=temp;
+			
+			fig_img_state_arr[select_fig_num]=='상단'
+		}
 	}
 	
 	function handleMouseMove(e){  
