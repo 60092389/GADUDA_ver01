@@ -49,14 +49,18 @@ $(document).ready(function(){
 			<div class="w3-padding w3-main w3-content w3-margin-top w3-border-top w3-center">
 				<table class="w3-container w3-table w3-center">
 					<tr>
-	   					<td>No.<h3>${ myRoomList.room_no }</h3></td>
-	   					<td><img src="${myRoomList.room_img_src }" alt=${myRoomList.room_img_src } style="width:150x; height:150px;"></td>
-						<td><h3>${ myRoomList.room_name }</h3></td>
-						<td>${ myRoomList.room_create_date }</td>
+						<th><p>No.${ myRoomList.room_no }</p></th>
+						<th class="w3-center" colspan="2"><h4>${ myRoomList.room_name }</h4></th>
+					</tr>
+					<tr>
+						<td class="w3-right-align" colspan="4"><p style="font-size: 12px">${ myRoomList.room_create_date }</p></td>
+					</tr>
+					<tr>
+						<td style="width: 300px">${ myRoomList.room_name }</td>
+	   					<td colspan="2" style="width: 200px"><img src="${myRoomList.room_img_src }" alt=${myRoomList.room_img_src } style="height:200px"></td>
 	  				</tr>
 					<tr>
-						<td colspan="2"><img src="${ myRoomList.room_img_loc }" alt="${ myRoomList.room_name }" style="width:200px"></td>
-						<td><button class="w3-button w3-red w3-hover-white">삭제하기</button> </td>
+						<td class="w3-right-align" colspan="3"><button class="w3-button w3-red w3-hover-white">삭제하기</button> </td>
 					</tr>
 				</table>	
 	    	</div>
