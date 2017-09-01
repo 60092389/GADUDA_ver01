@@ -30,6 +30,12 @@ public class DesignRoom_DTO {
 	public void setSelect_myroom_num(int select_myroom_num) {
 		this.select_myroom_num = select_myroom_num;
 	}
+	@Override
+	public String toString() {
+		return "DesignRoom_DTO [designRoom_name=" + designRoom_name + ", userId=" + userId + ", designroom_info="
+				+ designroom_info + ", select_myroom_num=" + select_myroom_num + "]";
+	}
+	
 	
 	
 

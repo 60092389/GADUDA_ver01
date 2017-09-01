@@ -24,6 +24,31 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
+	$(".del_myroom").click(function(){
+		var retVal = confirm("삭제하시겠습까?");
+		var del_num=$(this).attr("value");
+		   if( retVal == true ){
+			   var del_room_no={"del_room_no":del_num};
+				$.ajax({
+					url:"${URLs.URI_ROOMMAKE_DEL_FULL}",
+					type : "GET",
+					data:del_room_no,
+					success:function(data){
+						if(data.MSG=1){
+							alert("삭제 성고");
+							location.href=data.URL;
+						}else{
+							alert("삭제 실패");
+						}
+								
+					}
+				});
+		   }
+		
+	});
+	
+	
 });
 </script>
 <body>
@@ -60,7 +85,7 @@ $(document).ready(function(){
 	   					<td colspan="2" style="width: 200px"><img src="${myRoomList.room_img_src }" alt=${myRoomList.room_img_src } style="height:200px"></td>
 	  				</tr>
 					<tr>
-						<td class="w3-right-align" colspan="3"><button class="w3-button w3-red w3-hover-white">삭제하기</button> </td>
+						<td class="w3-right-align" colspan="3"><button class="w3-button w3-red w3-hover-white del_myroom" value=${ myRoomList.room_no }>삭제하기</button> </td>
 					</tr>
 				</table>	
 	    	</div>

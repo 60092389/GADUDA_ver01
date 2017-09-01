@@ -193,6 +193,15 @@
 	width:92%;
 	height:100%;
 }
+#designRoom_menu_8{
+	width:100%;
+	height:15%;
+}
+
+#designRoom_menu_scrap{
+	width:92%;
+	height:100%;
+}
 
 #designRoom_menu2{
 	background:white;
@@ -451,6 +460,9 @@ $(document).ready(function(){
 				furniture_pic=data.furniture_pic;
 				furniture_basic_img=data.furniture_basic_img;
 				
+				
+				furniture_scrap_no=data.furniture_scrap_no;
+				
 			}
 		});
 	}
@@ -575,6 +587,7 @@ $(document).ready(function(){
 	//'x'이밎 선택시 
 	//가구 베치도 삭제하기
 	function del_fig_img(){
+		fig_img_arr.splice(select_fig_num, 1);
 		fig_img_X_arr.splice(select_fig_num, 1);
 		fig_img_Y_arr.splice(select_fig_num, 1);
 		fig_img_width_length_arr.splice(select_fig_num, 1);
@@ -588,7 +601,6 @@ $(document).ready(function(){
 	//'turn'이 선택시 
 	//가구 베치도 회전하기
 	function turn_Img(){
-		alert("돼나여");;
 		var fur_turn_img_src=[];
 		var turn_img= new Image();		
 		var temp='';
@@ -693,43 +705,80 @@ $(document).ready(function(){
 	//가기고 있는 가구 메뉴 만들어주기
 	function designRoom_menu2_content(){
 		var designRoom_menu2_content_append='';
+		var fur_pic_kind = '';
 		designRoom_menu2_content_append+="<div id='designRoom_menu2_back'>뒤돌아가기</div>";
 		
-		
-		
-		for(var i=0; i<furniture_data.length;i++){
-			var fur_pic_kind = '';
-			if(furniture_data[i].fur_kind_def_name==furniture_kind){
+		if(furniture_kind=='스크랩'){
+			
+			for(var s=0; s<furniture_scrap_no.length; s++){
+				
 				for(var j=0; j<furniture_pic.length;j++){
-					
-					if(furniture_data[i].fur_no==furniture_pic[j].fur_no){
-						
+					if(furniture_scrap_no[s].fur_no==furniture_pic[j].fur_no){
 						fur_pic_kind = furniture_pic[j].fur_pic_loc;
 					}
 				}
-				
-				designRoom_menu2_content_append+="<div class='designRoom_menu2_content'>";
-				
-				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_img'>";
-					designRoom_menu2_content_append+="<img  class='designRoom_menu2_content_pic' src='"+fur_pic_kind+"'>";
-				designRoom_menu2_content_append+="</div>";
-				
-				
-				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data'>";
-				
-				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_name'>"+furniture_data[i].fur_name+"<br>("+furniture_data[i].fur_brand_name+")</div>";
-				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_size'>가:"+furniture_data[i].fur_width+"MM  세:"+furniture_data[i].fur_depth+"MM 높:"+furniture_data[i].fur_height+"MM</div>";
-				
-				designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_button'>";
-					designRoom_menu2_content_append+="<button class='designRoom_menu2_content_data_button_img' num='"+furniture_data[i].fur_no+"'>배치도추가</button>";
-					designRoom_menu2_content_append+="<button class='designRoom_menu2_content_data_button_dita' num='"+furniture_data[i].fur_no+"'>상세보기</button>";
-				designRoom_menu2_content_append+="</div>";
-				
-				designRoom_menu2_content_append+="</div>";
-				
-				designRoom_menu2_content_append+="</div>";
+				for(var i=0; i<furniture_data.length; i ++){
+					if(furniture_scrap_no[s].fur_no==furniture_data[i].fur_no){
+						
+						designRoom_menu2_content_append+="<div class='designRoom_menu2_content'>";
+						
+						designRoom_menu2_content_append+="<div class='designRoom_menu2_content_img'>";
+							designRoom_menu2_content_append+="<img  class='designRoom_menu2_content_pic' src='"+fur_pic_kind+"'>";
+						designRoom_menu2_content_append+="</div>";
+						
+						
+						designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data'>";
+						
+						designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_name'>"+furniture_data[i].fur_name+"<br>("+furniture_data[i].fur_brand_name+")</div>";
+						designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_size'>가:"+furniture_data[i].fur_width+"MM  세:"+furniture_data[i].fur_depth+"MM 높:"+furniture_data[i].fur_height+"MM</div>";
+						
+						designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_button'>";
+							designRoom_menu2_content_append+="<button class='designRoom_menu2_content_data_button_img' num='"+furniture_data[i].fur_no+"'>배치도추가</button>";
+							designRoom_menu2_content_append+="<button class='designRoom_menu2_content_data_button_dita' num='"+furniture_data[i].fur_no+"'>상세보기</button>";
+						designRoom_menu2_content_append+="</div>";
+						
+						designRoom_menu2_content_append+="</div>";
+						
+						designRoom_menu2_content_append+="</div>";
+					}
+				}
+			}
+		}else{
+			for(var i=0; i<furniture_data.length;i++){
+				fur_pic_kind = '';
+				if(furniture_data[i].fur_kind_def_name==furniture_kind){
+					for(var j=0; j<furniture_pic.length;j++){
+						
+						if(furniture_data[i].fur_no==furniture_pic[j].fur_no){
+							
+							fur_pic_kind = furniture_pic[j].fur_pic_loc;
+						}
+					}
+					
+					designRoom_menu2_content_append+="<div class='designRoom_menu2_content'>";
+					
+					designRoom_menu2_content_append+="<div class='designRoom_menu2_content_img'>";
+						designRoom_menu2_content_append+="<img  class='designRoom_menu2_content_pic' src='"+fur_pic_kind+"'>";
+					designRoom_menu2_content_append+="</div>";
+					
+					
+					designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data'>";
+					
+					designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_name'>"+furniture_data[i].fur_name+"<br>("+furniture_data[i].fur_brand_name+")</div>";
+					designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_size'>가:"+furniture_data[i].fur_width+"MM  세:"+furniture_data[i].fur_depth+"MM 높:"+furniture_data[i].fur_height+"MM</div>";
+					
+					designRoom_menu2_content_append+="<div class='designRoom_menu2_content_data_button'>";
+						designRoom_menu2_content_append+="<button class='designRoom_menu2_content_data_button_img' num='"+furniture_data[i].fur_no+"'>배치도추가</button>";
+						designRoom_menu2_content_append+="<button class='designRoom_menu2_content_data_button_dita' num='"+furniture_data[i].fur_no+"'>상세보기</button>";
+					designRoom_menu2_content_append+="</div>";
+					
+					designRoom_menu2_content_append+="</div>";
+					
+					designRoom_menu2_content_append+="</div>";
+				}
 			}
 		}
+		
 		
 		$('#designRoom_menu2').append(designRoom_menu2_content_append);
 	}
@@ -774,7 +823,6 @@ $(document).ready(function(){
 		fig_img_state_arr[fig_arr_length]='상단';
 		
 		fig_arr_length++;
-		alert(fig_img_arr.length);
 		
 	}
 	
@@ -942,6 +990,10 @@ $(document).ready(function(){
 		
 		<div id="designRoom_menu_7" class="designRoom_menu_css">
 			<div id="designRoom_menu_bed" class="designRoom_menu_furniture" value="bed" value2="침대"><p class="designRoom_menu_text">#침대</p></div>
+		</div>
+		
+		<div id="designRoom_menu_8" class="designRoom_menu_css">
+			<div id="designRoom_menu_scrap" class="designRoom_menu_furniture" value="scrap" value2="스크랩"><p class="designRoom_menu_text">#스크랩</p></div>
 		</div>
 	</div>
 	

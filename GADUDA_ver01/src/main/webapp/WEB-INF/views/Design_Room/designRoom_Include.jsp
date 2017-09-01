@@ -71,6 +71,7 @@ var designRoom_concept='';
 
 var furniture_data='';
 var furniture_basic_img='';
+var furniture_scrap_no='';
 
 var fig_img_arr=[];
 var fig_num_arr=[];

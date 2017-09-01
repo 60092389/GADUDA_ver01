@@ -7,6 +7,7 @@
 <title>GADUDA</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
+var updata_num='';
 $(document).ready(function(){
 	$("#designRoom_button").click(function(){
 		$("#designRoom_body").html("");
@@ -43,8 +44,13 @@ $(document).ready(function(){
 	
 	$(".up_designRoom").click(function(){
 		$("#designRoom_body").html("");
-		alert("성공");
-		
+		updata_num=$(this).attr("value");
+		$.ajax({
+			url:"${URLs.URI_DESIGNROOM_UP_INCLUDE_FULL}",
+			success:function(data){
+				$("#designRoom_body").html(data);
+			}
+		})
 		
 	});
 	
@@ -83,7 +89,7 @@ $(document).ready(function(){
 	<jsp:include page="/WEB-INF/views/MyPage/MyInfo/view_mypage_sidebar.jsp" flush="false" />
 	
 	<!-- Page Container -->
-	<div class="w3-main w3-content" style="max-width: 1200px; margin-top: 200px; margin-left: 300px" id ='designRoom_body'>
+	<div class="w3-main w3-content" style="max-width: 1300px; margin-top: 200px; margin-left: 300px" id ='designRoom_body'>
 		<div class="w3-container" id="myPage_content5">
 		<button class="w3-button w3-blue w3-hover-white" id="designRoom_button">새로운 배치도 생성 하기</button>
 			<br>
@@ -124,7 +130,7 @@ $(document).ready(function(){
 					<tr>
 						<td colspan="2">${ arrList.fur_arr_contents } </td>
 						<td class="w3-right-align">
-							<button class="w3-button w3-green w3-hover-white up_designRoom">수정하기</button> 
+							<button class="w3-button w3-green w3-hover-white up_designRoom" value=${ arrList.fur_arr_plan_no }>수정하기</button> 
 							<button class="w3-button w3-red w3-hover-white del_designRoom" value=${ arrList.fur_arr_plan_no }>삭제하기</button> 
 						</td>
 					</tr>

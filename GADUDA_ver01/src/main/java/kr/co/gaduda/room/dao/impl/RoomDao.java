@@ -11,13 +11,17 @@ import kr.co.gaduda.room.dto.DesignRoom_Concept_DTO;
 import kr.co.gaduda.room.dto.DesignRoom_DTO;
 import kr.co.gaduda.room.dto.DesignRoom_Furniture_DTO;
 import kr.co.gaduda.room.dto.DesignRoom_Kind_DTO;
+import kr.co.gaduda.room.dto.DesignRoom_Update_DTO;
 import kr.co.gaduda.room.dto.Designroom_Tag_DTO;
 import kr.co.gaduda.room.dto.RoomDTO;
 import kr.co.gaduda.room.dto.Room_Img_Src_DTO;
 import kr.co.gaduda.room.vo.Funrniture_VO;
 import kr.co.gaduda.room.vo.Furniture_Basic_Img;
 import kr.co.gaduda.room.vo.Furniture_Pic_VO;
+import kr.co.gaduda.room.vo.Furniture_Up_Room_VO;
+import kr.co.gaduda.room.vo.Furniture_Up_Select_Data_VO;
 import kr.co.gaduda.room.vo.RoomVO;
+import kr.co.gaduda.room.vo.Scrap_No;
 
 @Repository
 public class RoomDao implements IRoomDao {
@@ -39,6 +43,12 @@ public class RoomDao implements IRoomDao {
 	public int insertRoom(RoomDTO roomDTO) {
 		return roomSqlSession.insert(namespace+".insert_my_room",roomDTO);
 	}
+	@Override
+	public int del_Room_dao(int del_room_no) {
+		return roomSqlSession.update(namespace+".del_Room_dao",del_room_no);
+	}
+
+	
 	@Override
 	public List<RoomVO> get_Room_info_dao(String UserId) {
 		return roomSqlSession.selectList(namespace + ".get_Room_info",UserId);
@@ -122,6 +132,29 @@ public class RoomDao implements IRoomDao {
 	public int delDesignRoom_concept_dao(int designRoomNum) {
 		return roomSqlSession.delete(namespace+".delDesignRoom_concept_dao",designRoomNum);
 	}
+	
+	@Override
+	public List<Furniture_Up_Select_Data_VO> Furniture_Up_Select_Data_dao(int designRoom_up_num) {
+		return roomSqlSession.selectList(namespace + ".Furniture_Up_Select_Data_dao", designRoom_up_num);
+	}
+
+	@Override
+	public Furniture_Up_Room_VO Furniture_Up_Room_dao(int designRoom_up_num) {
+		return roomSqlSession.selectOne(namespace + ".Furniture_Up_Room_dao", designRoom_up_num);
+	}
+
+	
+	
+	@Override
+	public int updateDesignRoom_dao(DesignRoom_Update_DTO designRoom_Update_DTO) {
+		return roomSqlSession.update(namespace + ".updateDesignRoom_dao",designRoom_Update_DTO);
+	}
+
+	@Override
+	public List<Scrap_No> get_scrap_fur_no_dao(String userId) {
+		return roomSqlSession.selectList(namespace + ".get_scrap_fur_no_dao", userId);
+	}
+
 
 	
 

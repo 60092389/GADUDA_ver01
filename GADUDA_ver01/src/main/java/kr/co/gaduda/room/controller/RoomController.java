@@ -27,6 +27,7 @@ import kr.co.gaduda.room.dto.DesignRoom_Concept_DTO;
 import kr.co.gaduda.room.dto.DesignRoom_DTO;
 import kr.co.gaduda.room.dto.DesignRoom_Furniture_DTO;
 import kr.co.gaduda.room.dto.DesignRoom_Kind_DTO;
+import kr.co.gaduda.room.dto.DesignRoom_Update_DTO;
 import kr.co.gaduda.room.dto.Designroom_Tag_DTO;
 import kr.co.gaduda.room.dto.RoomDTO;
 import kr.co.gaduda.room.dto.Room_Img_Src_DTO;
@@ -34,7 +35,10 @@ import kr.co.gaduda.room.service.impl.RoomService;
 import kr.co.gaduda.room.vo.Funrniture_VO;
 import kr.co.gaduda.room.vo.Furniture_Basic_Img;
 import kr.co.gaduda.room.vo.Furniture_Pic_VO;
+import kr.co.gaduda.room.vo.Furniture_Up_Room_VO;
+import kr.co.gaduda.room.vo.Furniture_Up_Select_Data_VO;
 import kr.co.gaduda.room.vo.RoomVO;
+import kr.co.gaduda.room.vo.Scrap_No;
 
 @Controller
 @RequestMapping(value = "/room")
@@ -109,7 +113,24 @@ public class RoomController {
 
 		return mav;
 	}
-
+	@RequestMapping(value = URLs.URI_ROOMMAKE_DEL, method = RequestMethod.GET,produces = { "application/json" })
+	public  @ResponseBody Map<String, Object> room_del(@RequestParam(value="del_room_no") int del_room_no) throws Exception{
+		
+		Map<String, Object> data = new HashMap<String, Object>();
+		if(roomService.del_Room_ser(del_room_no)==1){
+			data.put("MSG", 1);
+			data.put("URL", URLs.URI_MYPAGE_MEMBER_FULL);
+		}else{
+			data.put("MSG", 0);
+		}
+		return data;
+	}
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = URLs.URI_ROOMMAKE_PROGRESS_BUTTON3, method = RequestMethod.GET)
 	public ModelAndView roomMake_Progress_Button3() {
 
@@ -166,7 +187,8 @@ public class RoomController {
 		data.put("URL", URLs.URI_MYPAGE_MEMBER_FULL);
 		return data;
 	}
-
+	
+	
 	@RequestMapping(value = URLs.URI_DESIGNROOM_INCLUDE, method = RequestMethod.GET)
 	public ModelAndView designRoom_Include() {
 
@@ -249,7 +271,7 @@ public class RoomController {
 			DesignRoom_Furniture_List.add(designRoon_Furniture_DTO);
 		}
 		
-		
+		System.out.println("나오냐 : " + designRoon_DTO.toString());
 		//배치도 이미지 생성
 		FileOutputStream stream = null;
 		try {
@@ -295,8 +317,7 @@ public class RoomController {
 	@RequestMapping(value = URLs.URI_DESIGNROOM_DEL, method = RequestMethod.POST, produces = { "application/json" })
 	public @ResponseBody Map<String, Object> ss(@RequestParam(value="designRoomNum") int designRoomNum) throws Exception{
 		Map<String, Object> data = new HashMap<String, Object>();
-		int sss=roomService.delDesignRoom_ser(designRoomNum);
-		if(sss==0){
+		if(roomService. del_Room_ser(designRoomNum)==0){
 			data.put("MSG", "1");
 			data.put("URL", URLs.URI_MYPAGE_MEMBER_FULL);
 		}else{
@@ -349,7 +370,7 @@ public class RoomController {
 
 	@RequestMapping(value = URLs.URI_DESIGNROOM_CANVAS_FURNITURE_DATA, method = RequestMethod.POST, produces = {
 			"application/json" })
-	public @ResponseBody Map<String, Object> designRoom_Canvas_Furniture_Data() {
+	public @ResponseBody Map<String, Object> designRoom_Canvas_Furniture_Data(HttpServletRequest request) {
 
 		Map<String, Object> furniture = new HashMap<String, Object>();
 
@@ -360,8 +381,208 @@ public class RoomController {
 		furniture.put("furniture", list);
 		furniture.put("furniture_pic", list2);
 		furniture.put("furniture_basic_img", list3);
+		
+		
+		MemberVO memberVO = (MemberVO) request.getSession().getAttribute("member");
+		
+		List<Scrap_No> list6 = roomService.get_scrap_fur_no_ser(memberVO.getMem_id());
+		
+		furniture.put("furniture_scrap_no", list6);
 
 		return furniture;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value = URLs.URI_DESIGNROOM_UP_INCLUDE, method = RequestMethod.GET)
+	public ModelAndView designRoom_Up_Include() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Pages.VIEW_DESIGNROOM_UP_INCLUDE);
+		
+		return mav;
+	}
+	@RequestMapping(value = URLs. URI_DESIGNROOM_UP_BUTTON1, method = RequestMethod.GET)
+	public ModelAndView designRoom_Up_Button1() {
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Pages.VIEW_DESIGNROOM_UP_BUTTON1);
+		
+		return mav;
+	}
+	@RequestMapping(value = URLs. URI_DESIGNROOM_UP_CANVAS , method = RequestMethod.GET)
+	public ModelAndView designRoom_Up_Canvas() {
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Pages. VIEW_DESIGNROOM_UP_CANVAS);
+		
+		return mav;
+	}
+	
+	
+	@RequestMapping(value = URLs.URI_DESIGNROOM_BUTTON2_UP, method = RequestMethod.GET)
+	public ModelAndView designRoom_Button2_Up() {
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Pages.VIEW_DESIGNROOM_UP_BUTTON2);
+		
+		return mav;
+	}
+	@RequestMapping(value = URLs. URI_DESIGNROOM_NAME_UP , method = RequestMethod.GET)
+	public ModelAndView designRoom_Name_Up() {
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Pages.VIEW_DESIGNROOM_UP_NAME);
+		
+		return mav;
+	}
+	
+	
+	@RequestMapping(value = URLs.URI_DESIGNROOM_CANVAS_UP_FURNITURE_DATA, method = RequestMethod.POST, produces = {"application/json" })
+	public @ResponseBody Map<String, Object> designRoom_Canvas_Up_Furniture_Data(@RequestParam(value="designRoom_up_num") int designRoom_up_num,HttpServletRequest request){
+
+		Map<String, Object> furniture = new HashMap<String, Object>();
+		List<Furniture_Up_Select_Data_VO> list1 = roomService.Furniture_Up_Select_Data_ser(designRoom_up_num);
+		Furniture_Up_Room_VO list2 = roomService.Furniture_Up_Room_ser(designRoom_up_num);
+		
+		furniture.put("furniture_up", list1);
+		furniture.put("furniture_up_room", list2);
+		
+		
+		List<Funrniture_VO> list3 = roomService.get_Fur_info_ser();
+		List<Furniture_Pic_VO> list4 = roomService.get_Fur_pic_ser();
+		List<Furniture_Basic_Img> list5 = roomService.get_basic_img_ser();
+
+		furniture.put("furniture", list3);
+		furniture.put("furniture_pic", list4);
+		furniture.put("furniture_basic_img", list5);
+		
+		
+		MemberVO memberVO = (MemberVO) request.getSession().getAttribute("member");
+		
+		List<Scrap_No> list6 = roomService.get_scrap_fur_no_ser(memberVO.getMem_id());
+		
+		
+		furniture.put("furniture_scrap_no", list6);
+		
+		return furniture;
+	}	
+	
+	
+	@RequestMapping(value = URLs.URI_DESIGNROOM_NAME_SAVE_UP, method = RequestMethod.POST, produces = { "application/json" })
+	public @ResponseBody Map<String, Object> designRoom_Up(
+			
+			DesignRoom_Update_DTO designRoom_Update_DTO,
+			//해시 태그 값
+			@RequestParam(value="designroom_tag_value") String designroom_tag_value,
+			
+			@RequestParam(value="fig_num[]") List<Integer> fig_num,
+			@RequestParam(value="fig_img_X[]") List<Integer> fig_img_X,
+			@RequestParam(value="fig_img_Y[]") List<Integer> fig_img_Y,
+			@RequestParam(value="fig_img_state[]") List<String> fig_img_state,
+			
+			@RequestParam(value="designRoom_Img") String designRoom_Img,
+			
+			@RequestParam(value="designRoom_kind") int designRoom_kind,
+			@RequestParam(value="designRoom_concept") int designRoom_concept) throws Exception{
+		
+		Map<String, Object> data = new HashMap<String, Object>();
+		
+		String room_img_src =null;
+		
+		List<Designroom_Tag_DTO>designroom_tag = new ArrayList<Designroom_Tag_DTO>();
+		String temp[] = designroom_tag_value.split("#");
+		for(int i=1; i<temp.length;i++){
+			Designroom_Tag_DTO designroom_Tag_DTO = new Designroom_Tag_DTO();
+			
+			designroom_Tag_DTO.setDesignroom_tag("#"+temp[i]);
+			designroom_tag.add(designroom_Tag_DTO);
+		}
+		
+		//배치도 그림 좌표
+		List<DesignRoom_Furniture_DTO> DesignRoom_Furniture_List = new ArrayList<DesignRoom_Furniture_DTO>();
+		for(int i=0;i<fig_num.size();i++){
+			DesignRoom_Furniture_DTO designRoon_Furniture_DTO = new DesignRoom_Furniture_DTO();
+			designRoon_Furniture_DTO.setFig_num(fig_num.get(i));
+			designRoon_Furniture_DTO.setFig_img_X(fig_img_X.get(i));
+			designRoon_Furniture_DTO.setFig_img_Y(fig_img_Y.get(i));
+			designRoon_Furniture_DTO.setFig_img_state(fig_img_state.get(i));
+			DesignRoom_Furniture_List.add(designRoon_Furniture_DTO);
+		}
+		
+		
+		//배치도 이미지 생성
+		FileOutputStream stream = null;
+		try {
+			if (designRoom_Img == null || designRoom_Img == "") {
+				throw new Exception();
+			}
+			String RoomMake_Canvas_Img_MyRoom = designRoom_Img.replaceAll("data:image/png;base64,", "");
+			byte[] file = Base64.decodeBase64(RoomMake_Canvas_Img_MyRoom);
+			String fileName = UUID.randomUUID().toString();
+			
+			stream = new FileOutputStream(
+					"D:\\gaduda\\furniturearr\\"
+							+ fileName + ".png");
+			
+			room_img_src = "/furarrimage/"+ fileName + ".png";
+			stream.write(file);
+		} catch (Exception e) {
+			System.out.println("실패");
+		} finally {
+			stream.close();
+		}
+		Room_Img_Src_DTO room_Img_Src_DTO = new Room_Img_Src_DTO();
+		room_Img_Src_DTO.setRoom_img_src(room_img_src);
+		
+		DesignRoom_Kind_DTO designRoom_Kind_DTO =  new DesignRoom_Kind_DTO();
+		designRoom_Kind_DTO.setDesignRoom_kind(designRoom_kind);
+		
+		DesignRoom_Concept_DTO designRoom_concept_DTO  =  new DesignRoom_Concept_DTO();
+		designRoom_concept_DTO.setDesignRoom_concept(designRoom_concept);
+		
+		
+		int num= roomService.updateDesignRoom_ser(designRoom_Update_DTO,designroom_tag,DesignRoom_Furniture_List, room_Img_Src_DTO,designRoom_concept_DTO ,designRoom_Kind_DTO);		
+		if(num==1){
+			 data.put("MSG", "저장완료");
+		}else if(num==2){
+			data.put("MSG", "저장실패");
+		}
+		data.put("URL", URLs.URI_MYPAGE_MEMBER_FULL);
+		return data;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

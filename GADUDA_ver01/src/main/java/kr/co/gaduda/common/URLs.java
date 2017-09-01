@@ -244,6 +244,15 @@ public class URLs {
 	public static final String URI_ROOMMAKE = "/roomMake";
 	public static final String URI_ROOMMAKE_FULL = room_default+URI_ROOMMAKE;
 	
+	
+	
+	public static final String URI_ROOMMAKE_DEL = "/roomMake_Del";
+	public static final String URI_ROOMMAKE_DEL_FULL = room_default+URI_ROOMMAKE_DEL;
+	
+	
+	
+	
+	
 	public static final String URI_DESIGNROOM_INCLUDE= "/designRoom_Include";
 	public static final String URI_DESIGNROOM_INCLUDE_FULL = room_default+URI_DESIGNROOM_INCLUDE;
 	
@@ -277,5 +286,39 @@ public class URLs {
 	
 	public static final String URI_DESIGNROOM_BUTTON3= "/designRoom_Button3";
 	public static final String URI_DESIGNROOM_BUTTON3_FULL = room_default+URI_DESIGNROOM_BUTTON3;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public static final String URI_DESIGNROOM_UP_INCLUDE ="/designRoom_Up_Include";
+	public static final String URI_DESIGNROOM_UP_INCLUDE_FULL=room_default+URI_DESIGNROOM_UP_INCLUDE;
+	
+	public static final String URI_DESIGNROOM_UP_BUTTON1 ="/designRoom_Up_Button1";
+	public static final String URI_DESIGNROOM_UP_BUTTON1_FULL =room_default+URI_DESIGNROOM_UP_BUTTON1;
+	
+	public static final String URI_DESIGNROOM_UP_CANVAS ="/designRoom_Up_Canvas";
+	public static final String URI_DESIGNROOM_UP_CANVAS_FULL =room_default+URI_DESIGNROOM_UP_CANVAS;
+	
+	public static final String URI_DESIGNROOM_CANVAS_UP_FURNITURE_DATA ="/designRoom_Canvas_Up_Furniture_Data";
+	public static final String URI_DESIGNROOM_CANVAS_UP_FURNITURE_DATA_FULL=room_default+URI_DESIGNROOM_CANVAS_UP_FURNITURE_DATA;
+	
+	public static final String URI_DESIGNROOM_NAME_UP ="/designRoom_Canvas_Name_Up";
+	public static final String URI_DESIGNROOM_NAME_UP_FULL=room_default+URI_DESIGNROOM_NAME_UP;
+
+	public static final String URI_DESIGNROOM_BUTTON2_UP="/designRoom_Button2_Up";
+	public static final String URI_DESIGNROOM_BUTTON2_UP_FULL=room_default+URI_DESIGNROOM_BUTTON2_UP;
+	
+	public static final String URI_DESIGNROOM_NAME_SAVE_UP="/designRoom_Name_Save_Up";
+	public static final String URI_DESIGNROOM_NAME_SAVE_UP_FULL=room_default+URI_DESIGNROOM_NAME_SAVE_UP;
+	
 	
 }
