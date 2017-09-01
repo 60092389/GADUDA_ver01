@@ -95,6 +95,14 @@ public class Pages {
 	public static final String VIEW_DESIGNROOM_BUTTON1 = design_room_path + "/designRoom_Button1";
 	public static final String VIEW_DESIGNROOM_BUTTON2 = design_room_path + "/designRoom_Button2";
 	public static final String VIEW_DESIGNROOM_BUTTON3 = design_room_path + "/designRoom_Button3";
+	
+	public static final String VIEW_DESIGNROOM_UP_INCLUDE = design_room_Updata_path+ "/designRoom_Up_Include";
+	public static final String VIEW_DESIGNROOM_UP_CANVAS = design_room_Updata_path+ "/designRoom_Up_Canvas";
+	public static final String VIEW_DESIGNROOM_UP_BUTTON1 = design_room_Updata_path+ "/designRoom_Up_Button1";
+	
+	public static final String VIEW_DESIGNROOM_UP_NAME = design_room_Updata_path+ "/designRoom_Up_Name";
+	public static final String VIEW_DESIGNROOM_UP_BUTTON2 = design_room_Updata_path+"/designRoom_Up_Button2";
+	
 
 	// main page
 	public static final String VIEW_HOME = "/main";
