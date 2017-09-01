@@ -115,7 +115,6 @@ $(document).ready(function(){
 </head>
 <body>
 <div class="w3-container">
-	<h1><b>내 배치도 만들기</b></h1>
 	
 	<div class="w3-container" id="myProgress">
   		<div id="myBar"><b id="ing"></b></div>

@@ -844,11 +844,11 @@ $(document).ready(function(){
 	function Img_TextPosition(){
 		
     	$("#myCanvas_div").append("<div id='Img_lengthText1' class='Img_lengthText'><input type='text'  class='lenthinput' id='Img_lengthText1Val1' readonly>MM<div>");
-		$("#Img_lengthText1").css("position","absolute").css("top",fig_img_Y_arr[select_fig_num]+320).css("left",fig_img_X_arr[select_fig_num]+(fig_img_width_length_arr[select_fig_num]/2)+500);
+		$("#Img_lengthText1").css("position","absolute").css("top",fig_img_Y_arr[select_fig_num]+220).css("left",fig_img_X_arr[select_fig_num]+(fig_img_width_length_arr[select_fig_num]/2)+500);
 		$("#Img_lengthText1Val1").val(fig_img_width_length_arr[select_fig_num]*10);
 		
 		$("#myCanvas_div").append("<div id='Img_lengthText2' class='Img_lengthText'><input type='text' class='lenthinput' id='Img_lengthText1Val2' readonly>MM<div>");
-		$("#Img_lengthText2").css("position","absolute").css("top",fig_img_Y_arr[select_fig_num]+(fig_img_height_length_arr[select_fig_num]/2)+360).css("left", fig_img_X_arr[select_fig_num]+fig_img_width_length_arr[select_fig_num]+550);
+		$("#Img_lengthText2").css("position","absolute").css("top",fig_img_Y_arr[select_fig_num]+(fig_img_height_length_arr[select_fig_num]/2)+260).css("left", fig_img_X_arr[select_fig_num]+fig_img_width_length_arr[select_fig_num]+550);
 		$("#Img_lengthText1Val2").val(fig_img_height_length_arr[select_fig_num]*10);
     }
 	

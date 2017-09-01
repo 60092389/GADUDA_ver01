@@ -142,8 +142,6 @@ public class RoomService implements IRoomService {
 		for(int i=0;i<designroom_tag.size();i++){
 			Designroom_Tag_DTO designroom_tag_value=designroom_tag.get(i);
 			designroom_tag_value.setDesignRoom_max_num(designRoom_Update_DTO.getUpdata_num());
-			System.out.println(designroom_tag_value.getDesignroom_tag());
-			System.out.println(designroom_tag_value.getDesignRoom_max_num());
 			roomDao.insertDesignRoom_Tag_dao(designroom_tag_value);
 		}
 		
@@ -152,6 +150,21 @@ public class RoomService implements IRoomService {
 			designRoom_Furniture_DTO.setDesignRoom_max_num(designRoom_Update_DTO.getUpdata_num());
 			roomDao.insertDesignRoom_Img_dao(designRoom_Furniture_DTO);
 		}
+		
+		
+		room_Img_Src_DTO.setDesignRoom_max_num(designRoom_Update_DTO.getUpdata_num());
+		roomDao.insertDesignRoom_Img_Src_dao(room_Img_Src_DTO);
+		
+		
+		designRoom_concept_DTO.setDesignRoom_max_num(designRoom_Update_DTO.getUpdata_num());
+		roomDao.insertDesignRoom_concept_dao(designRoom_concept_DTO);
+
+		
+		designRoom_Kind_DTO.setDesignRoom_max_num(designRoom_Update_DTO.getUpdata_num());
+		roomDao.insertDesignRoom_Kind_dao(designRoom_Kind_DTO);
+		
+		
+		
 		return num;
 	}
 

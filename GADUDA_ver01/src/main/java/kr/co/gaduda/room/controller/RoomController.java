@@ -159,7 +159,7 @@ public class RoomController {
 			
 			
 			stream = new FileOutputStream(
-					"D:\\gaduda\\room"
+					"D:\\gaduda\\room\\"
 							+ fileName + ".png");
 
 //			stream = new FileOutputStream(
@@ -527,6 +527,16 @@ public class RoomController {
 			String RoomMake_Canvas_Img_MyRoom = designRoom_Img.replaceAll("data:image/png;base64,", "");
 			byte[] file = Base64.decodeBase64(RoomMake_Canvas_Img_MyRoom);
 			String fileName = UUID.randomUUID().toString();
+			
+			System.out.println("야야 : " + fileName);
+			
+			
+			
+			stream = new FileOutputStream(
+					"D:\\gaduda\\furniturearr\\"
+							+ fileName + ".png");
+			
+			room_img_src = "/furarrimage/"+ fileName + ".png";
 			
 			stream = new FileOutputStream(
 					"D:\\gaduda\\furniturearr\\"

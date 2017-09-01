@@ -439,14 +439,7 @@ $(document).ready(function(){
 	
 	var roomMake_canvas_window_one_img  = new Image();
 	
-	if(include_up_num==0){
 		get_DesignRoom_data();
-		include_up_num=1;
-	}else{
-		RectDraw();
-		drawRoom();
-		drawFigImg();
-	}
 	
 	
 	function get_DesignRoom_data(){
