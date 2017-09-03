@@ -13,7 +13,7 @@
   text-align: center;
   margin: 10px;
   color: black;
-  background: #FFFFFF;
+  background:transparent;
   border:none;
   border-radius: 3px;
   outline: 0;

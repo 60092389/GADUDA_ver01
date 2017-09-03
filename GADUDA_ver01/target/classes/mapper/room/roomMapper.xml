@@ -19,6 +19,13 @@
 		  INSERT INTO ROOM VALUES (SEQ_ROOM.NEXTVAL,#{myroom_Name},#{userId},SYSDATE,#{room_Img_src})
 	]]>
 	</insert>
+	
+	
+	<update id="del_Room_dao">
+		<![CDATA[
+		 UPDATE ROOM SET MEM_ID='admin' WHERE ROOM_NO=#{del_room_no}
+		]]>
+	</update>
 
 
 
@@ -160,9 +167,45 @@
 	</delete>
 	
 	
+	<select id="Furniture_Up_Select_Data_dao" resultType="kr.co.gaduda.room.vo.Furniture_Up_Select_Data_VO">
+		<![CDATA[
+			SELECT AF.ARR_FUR_NO,AF.FUR_NO,AF.FUR_ARR_PLAN_NO,AF.ARR_FUR_X_VALUE, AF.ARR_FUR_y_VALUE,AF.ARR_FUR_STATE, FFABI.FUR_ARR_BASIC_IMG_LOC
+			FROM ARRANGEMENT_FURNITURE AF,
+			(SELECT FBI.FUR_NO, FABI.FUR_ARR_BASIC_IMG_KIND, FABI.FUR_ARR_BASIC_IMG_LOC
+			FROM FURNITURE_BASIC_IMAGE FBI, FURNITURE_ARR_BASIC_IMAGE FABI
+			WHERE FBI.FUR_ARR_BASIC_IMG_NO=FABI.FUR_ARR_BASIC_IMG_NO
+			ORDER BY FBI.FUR_NO) FFABI
+			WHERE AF.ARR_FUR_NO = FFABI.FUR_NO
+			AND AF.ARR_FUR_STATE= FFABI.FUR_ARR_BASIC_IMG_KIND
+			AND FUR_ARR_PLAN_NO=#{designRoom_up_num}
+		]]>
+	</select>
+	
+	<select id="Furniture_Up_Room_dao" resultType="kr.co.gaduda.room.vo.Furniture_Up_Room_VO">
+		<![CDATA[
+			SELECT FAP.FUR_ARR_PLAN_NO,FAP.ROOM_NO,RM.ROOM_IMG_SRC
+			FROM FURNITURE_ARRANGEMENT_PLAN FAP, ROOM RM
+			WHERE FAP.ROOM_NO=RM.ROOM_NO
+			AND FAP.FUR_ARR_PLAN_NO=#{designRoom_up_num}
+		]]>
+	</select>
+	
+	
+	<update id="updateDesignRoom_dao">
+		<![CDATA[
+			UPDATE FURNITURE_ARRANGEMENT_PLAN 
+			SET FUR_ARR_NAME = #{designRoom_name},FUR_ARR_CONTENTS=#{designroom_info}
+			WHERE FUR_ARR_PLAN_NO = #{updata_num}  
+		]]>
+	</update>
 	
 	
 	
-	
+	<select id="get_scrap_fur_no_dao" resultType="kr.co.gaduda.room.vo.Scrap_No">
+ 	<![CDATA[
+ 		SELECT FUR_NO 
+ 		FROM FURNITURE_SCRAP WHERE MEM_ID=#{userId}
+	]]>
+	</select>
   	
 </mapper>

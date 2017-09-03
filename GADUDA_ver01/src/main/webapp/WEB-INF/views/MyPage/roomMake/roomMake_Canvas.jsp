@@ -43,7 +43,7 @@ td, th {
   text-align: center;
   margin: 10px;
   color: black;
-  background: #FFFFFF;
+ background:transparent;
   border: none;
   border-radius: 3px;
   outline: 0;
@@ -102,7 +102,7 @@ $(document).ready(function(){
 	
     
 	//�대�몄� ������
-	var roomMake_canvas_img_X = 150;
+	var roomMake_canvas_img_X = 300;
 	var roomMake_canvas_img_Y = 150;
 	
 	
@@ -122,10 +122,10 @@ $(document).ready(function(){
 	roomMake_canvas_Ximg.src = "https://static4.depositphotos.com/1001003/355/i/450/depositphotos_3552603-stock-photo-3d-rejected-or-rated-x.jpg";
     
 	var roomMake_canvas_Turnimg =  new Image();
-	roomMake_canvas_Turnimg.src = "https://st2.depositphotos.com/4441075/12231/v/950/depositphotos_122316444-stock-illustration-rotation-arrow-in-a-circle.jpg";
+	roomMake_canvas_Turnimg.src = "/resources/Images/basic_img/turn_img.jpg";
 	
 	var size_img = new Image();
-	size_img.src="http://cfile29.uf.tistory.com/image/224DC14F530F35C5292D53";
+	size_img.src="http://www.koreadepart.com/data/item/1335166020_l1";
 	
 	var roomMake_canvas_XImg_X ='';
 	var roomMake_canvas_XImg_Y = '';

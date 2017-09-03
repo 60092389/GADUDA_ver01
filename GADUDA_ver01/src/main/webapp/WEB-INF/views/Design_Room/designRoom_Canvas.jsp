@@ -409,11 +409,9 @@ $(document).ready(function(){
 	var roomMake_canvas_Ximg =  new Image();
 	roomMake_canvas_Ximg.src = "https://static4.depositphotos.com/1001003/355/i/450/depositphotos_3552603-stock-photo-3d-rejected-or-rated-x.jpg";
 	
-	var roomMake_canvas_Recommend_img =  new Image();
-	roomMake_canvas_Recommend_img.src = "http://cfile23.uf.tistory.com/image/27494B4E51BA8D6B089339";
 	
 	var roomMake_canvas_Turnimg =  new Image();
-	roomMake_canvas_Turnimg.src = "https://st2.depositphotos.com/4441075/12231/v/950/depositphotos_122316444-stock-illustration-rotation-arrow-in-a-circle.jpg";
+	roomMake_canvas_Turnimg.src = "/resources/Images/basic_img/turn_img.jpg";
 	
 	var fig_img_X =20;
 	var fig_img_Y =20;
