@@ -317,7 +317,7 @@ public class RoomController {
 	@RequestMapping(value = URLs.URI_DESIGNROOM_DEL, method = RequestMethod.POST, produces = { "application/json" })
 	public @ResponseBody Map<String, Object> ss(@RequestParam(value="designRoomNum") int designRoomNum) throws Exception{
 		Map<String, Object> data = new HashMap<String, Object>();
-		if(roomService. del_Room_ser(designRoomNum)==0){
+		if(roomService.delDesignRoom_ser(designRoomNum)==0){
 			data.put("MSG", "1");
 			data.put("URL", URLs.URI_MYPAGE_MEMBER_FULL);
 		}else{
@@ -536,11 +536,11 @@ public class RoomController {
 					"D:\\gaduda\\furniturearr\\"
 							+ fileName + ".png");
 			
-			room_img_src = "/furarrimage/"+ fileName + ".png";
+			/*room_img_src = "/furarrimage/"+ fileName + ".png";
 			
 			stream = new FileOutputStream(
 					"D:\\gaduda\\furniturearr\\"
-							+ fileName + ".png");
+							+ fileName + ".png");*/
 			
 			room_img_src = "/furarrimage/"+ fileName + ".png";
 			stream.write(file);

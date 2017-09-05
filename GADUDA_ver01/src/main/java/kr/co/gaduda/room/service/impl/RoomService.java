@@ -22,12 +22,15 @@ import kr.co.gaduda.room.vo.Furniture_Up_Room_VO;
 import kr.co.gaduda.room.vo.Furniture_Up_Select_Data_VO;
 import kr.co.gaduda.room.vo.RoomVO;
 import kr.co.gaduda.room.vo.Scrap_No;
+import kr.co.gaduda.scrap.dao.impl.ScrapDao;
 
 @Service
 public class RoomService implements IRoomService {
 	
 	@Autowired
 	private IRoomDao roomDao;
+	@Autowired
+	private ScrapDao scrapDao;
 	
 	@Override
 	public List<RoomVO> callMyRoomList(String mem_id){
@@ -107,6 +110,7 @@ public class RoomService implements IRoomService {
 		
 		roomDao.delDesignRoom_Kind_dao(designRoomNum);
 		roomDao.delDesignRoom_concept_dao(designRoomNum);
+		scrapDao.furArrScrapDelete_furArrNo(designRoomNum);
 		
 		
 		

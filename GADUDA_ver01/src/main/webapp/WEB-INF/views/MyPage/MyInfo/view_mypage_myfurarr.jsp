@@ -32,7 +32,7 @@ $(document).ready(function(){
 					success:function(data){
 						if(data.MSG=1){
 							alert("삭제 성고");
-							location.href=data.URL;
+							location.reload();
 						}else{
 							alert("삭제 실패");
 						}

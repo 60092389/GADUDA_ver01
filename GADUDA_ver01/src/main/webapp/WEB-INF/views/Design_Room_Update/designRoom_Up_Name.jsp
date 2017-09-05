@@ -139,7 +139,7 @@ $(document).ready(function(){
 									url : "${URLs.URI_DESIGNROOM_NAME_SAVE_UP_FULL}",
 									success : function(data) {
 										alert(data.MSG);
-										location.href=data.URL;
+										location.reload();
 									}
 								});
 							}

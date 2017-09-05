@@ -113,19 +113,38 @@ $(document).ready(function(){
 	var roomMake_canvas_window_one_img  = new Image();
 	roomMake_canvas_window_one_img.src = "/resources/Images/Room/roomMake_window_one.png";
 	
+	var roomMake_canvas_window_two_img  = new Image();
+	roomMake_canvas_window_two_img.src = "/resources/Images/Room/roomMake_window_two.png";
+	
+	var roomMake_canvas_window_three_img  = new Image();
+	roomMake_canvas_window_three_img.src = "/resources/Images/Room/roomMake_window_three.png";
+	
+	var roomMake_canvas_window_four_img  = new Image();
+	roomMake_canvas_window_four_img.src = "/resources/Images/Room/roomMake_window_four.png";
+	
+	
 	//臾몄�대�몄�
 	var roomMake_canvas_door_one_img =  new Image();
 	roomMake_canvas_door_one_img.src = "/resources/Images/Room/roomMake_door_one.png";
+	
+	var roomMake_canvas_door_two_img =  new Image();
+	roomMake_canvas_door_two_img.src = "/resources/Images/Room/roomMake_door_two.png";
+	
+	var roomMake_canvas_door_three_img =  new Image();
+	roomMake_canvas_door_three_img.src = "/resources/Images/Room/roomMake_door_three.png";
+	
+	var roomMake_canvas_door_four_img =  new Image();
+	roomMake_canvas_door_four_img.src = "/resources/Images/Room/roomMake_door_four.png";
 	
 	//�≪�ㅽ�� �대�몄�
 	var roomMake_canvas_Ximg =  new Image();
 	roomMake_canvas_Ximg.src = "https://static4.depositphotos.com/1001003/355/i/450/depositphotos_3552603-stock-photo-3d-rejected-or-rated-x.jpg";
     
 	var roomMake_canvas_Turnimg =  new Image();
-	roomMake_canvas_Turnimg.src = "/resources/Images/basic_img/turn_img.jpg";
+	roomMake_canvas_Turnimg.src = "/resources/Images/basic_img/turn.png";
 	
 	var size_img = new Image();
-	size_img.src="http://www.koreadepart.com/data/item/1335166020_l1";
+	size_img.src="/resources/Images/basic_img/cercle.png";
 	
 	var roomMake_canvas_XImg_X ='';
 	var roomMake_canvas_XImg_Y = '';
@@ -141,7 +160,6 @@ $(document).ready(function(){
 	
     RectDraw();
     roomDraw();
-    TextPoition();
     
     if(roomMake_canvas_img_kind_num_arr[0]!=''){
     	roomMake_Canvas_DrawCanvas();
@@ -377,22 +395,20 @@ $(document).ready(function(){
 	}
 	
 	function roomMake_Canvas_Turn_Img(){
-		var img_turn = new Image();
 		var temp = '';
 		
 		if(roomMake_canvas_img_kind_num_arr[select_img_num]==1){
 			
+			
 			if(roomMake_canvas_img_state_arr[select_img_num]==1){
-				img_turn.src="/resources/Images/Room/roomMake_window_two.png";
-				roomMake_canvas_img_kind_arr[select_img_num]=img_turn;
+				roomMake_canvas_img_kind_arr[select_img_num]=roomMake_canvas_window_two_img;
 				temp=roomMake_canvas_img_height_arr[select_img_num];
 				roomMake_canvas_img_height_arr[select_img_num]=roomMake_canvas_img_width_arr[select_img_num];
 				roomMake_canvas_img_width_arr[select_img_num]=temp;
 				roomMake_canvas_img_state_arr[select_img_num]=2;
 			}
 			else if(roomMake_canvas_img_state_arr[select_img_num]==2){
-				img_turn.src="/resources/Images/Room/roomMake_window_three.png";
-				roomMake_canvas_img_kind_arr[select_img_num]=img_turn;
+				roomMake_canvas_img_kind_arr[select_img_num]= roomMake_canvas_window_three_img;
 				temp=roomMake_canvas_img_height_arr[select_img_num];
 				roomMake_canvas_img_height_arr[select_img_num]=roomMake_canvas_img_width_arr[select_img_num];
 				roomMake_canvas_img_width_arr[select_img_num]=temp;
@@ -400,8 +416,7 @@ $(document).ready(function(){
 				
 			}
 			else if(roomMake_canvas_img_state_arr[select_img_num]==3){
-				img_turn.src="/resources/Images/Room/roomMake_window_four.png";
-				roomMake_canvas_img_kind_arr[select_img_num]=img_turn;
+				roomMake_canvas_img_kind_arr[select_img_num]=roomMake_canvas_window_four_img;
 				temp=roomMake_canvas_img_height_arr[select_img_num];
 				roomMake_canvas_img_height_arr[select_img_num]=roomMake_canvas_img_width_arr[select_img_num];
 				roomMake_canvas_img_width_arr[select_img_num]=temp;
@@ -409,8 +424,7 @@ $(document).ready(function(){
 				
 			}
 			else if(roomMake_canvas_img_state_arr[select_img_num]==4){
-				img_turn.src="/resources/Images/Room/roomMake_window_one.png";
-				roomMake_canvas_img_kind_arr[select_img_num]=img_turn;
+				roomMake_canvas_img_kind_arr[select_img_num]= roomMake_canvas_window_one_img;
 				temp=roomMake_canvas_img_height_arr[select_img_num];
 				roomMake_canvas_img_height_arr[select_img_num]=roomMake_canvas_img_width_arr[select_img_num];
 				roomMake_canvas_img_width_arr[select_img_num]=temp;
@@ -420,19 +434,20 @@ $(document).ready(function(){
 			
 		}
 		
+		
+		//臾몄�대�몄�
+		
 		else if(roomMake_canvas_img_kind_num_arr[select_img_num]==2){
 			
 			if(roomMake_canvas_img_state_arr[select_img_num]==1){
-				img_turn.src="/resources/Images/Room/roomMake_door_two.png";
-				roomMake_canvas_img_kind_arr[select_img_num]=img_turn;
+				roomMake_canvas_img_kind_arr[select_img_num]= roomMake_canvas_door_two_img;
 				temp=roomMake_canvas_img_height_arr[select_img_num];
 				roomMake_canvas_img_height_arr[select_img_num]=roomMake_canvas_img_width_arr[select_img_num];
 				roomMake_canvas_img_width_arr[select_img_num]=temp;
 				roomMake_canvas_img_state_arr[select_img_num]=2;
 			}
 			else if(roomMake_canvas_img_state_arr[select_img_num]==2){
-				img_turn.src="/resources/Images/Room/roomMake_door_three.png";
-				roomMake_canvas_img_kind_arr[select_img_num]=img_turn;
+				roomMake_canvas_img_kind_arr[select_img_num]=roomMake_canvas_door_three_img;
 				temp=roomMake_canvas_img_height_arr[select_img_num];
 				roomMake_canvas_img_height_arr[select_img_num]=roomMake_canvas_img_width_arr[select_img_num];
 				roomMake_canvas_img_width_arr[select_img_num]=temp;
@@ -440,8 +455,7 @@ $(document).ready(function(){
 				
 			}
 			else if(roomMake_canvas_img_state_arr[select_img_num]==3){
-				img_turn.src="/resources/Images/Room/roomMake_door_four.png";
-				roomMake_canvas_img_kind_arr[select_img_num]=img_turn;
+				roomMake_canvas_img_kind_arr[select_img_num]=roomMake_canvas_door_four_img;
 				temp=roomMake_canvas_img_height_arr[select_img_num];
 				roomMake_canvas_img_height_arr[select_img_num]=roomMake_canvas_img_width_arr[select_img_num];
 				roomMake_canvas_img_width_arr[select_img_num]=temp;
@@ -449,8 +463,7 @@ $(document).ready(function(){
 				
 			}
 			else if(roomMake_canvas_img_state_arr[select_img_num]==4){
-				img_turn.src="/resources/Images/Room/roomMake_door_one.png";
-				roomMake_canvas_img_kind_arr[select_img_num]=img_turn;
+				roomMake_canvas_img_kind_arr[select_img_num]=roomMake_canvas_door_one_img;
 				temp=roomMake_canvas_img_height_arr[select_img_num];
 				roomMake_canvas_img_height_arr[select_img_num]=roomMake_canvas_img_width_arr[select_img_num];
 				roomMake_canvas_img_width_arr[select_img_num]=temp;
@@ -546,120 +559,6 @@ $(document).ready(function(){
 		$("#Img_lengthText2").css("position","absolute").css("top",roomMake_canvas_img_Y_arr[select_img_num]+(roomMake_canvas_img_height_arr[select_img_num]/2)+230).css("left", roomMake_canvas_img_X_arr[select_img_num]+roomMake_canvas_img_width_arr[select_img_num]+570);
 		$("#Img_lengthText1Val2").val(roomMake_canvas_img_height_arr[select_img_num]*10);
     }
-	function TextPoition(){
-		if(figure_num==1){
-			$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val1' readonly>MM<div>");
-			$("#lengthText1").css("position","absolute").css("top",figure_Y[0]+200).css("left", (figure_X[1]+figure_X[0])/2+500);
-			$("#lengthText1Val1").val((figure_X[1]-figure_X[0])*10);
-			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText2' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val2' readonly>MM<div>");
-			$("#lengthText2").css("position","absolute").css("top",(figure_Y[2]+figure_Y[1])/2+230).css("left", figure_X[1]+570);
-			$("#lengthText1Val2").val((figure_Y[2]-figure_Y[1])*10);
-    	}
-    	else if(figure_num==2){
-    		
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val1'readonly>MM<div>");
-    		$("#lengthText1").css("position","absolute").css("top",figure_Y[0]+210).css("left", (figure_X[0]+figure_X[1])/2+500);
-    		$("#lengthText1Val1").val((figure_X[1]-figure_X[0])*10);
-    		
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText2' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val2'readonly>MM<div>");
-    		$("#lengthText2").css("position","absolute").css("top",(figure_Y[1]+figure_Y[2])/2+220).css("left", figure_X[1]+570);
-    		$("#lengthText1Val2").val((figure_Y[2]-figure_Y[1])*10);
-    		
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText3' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val3'readonly>MM<div>");
-    		$("#lengthText3").css("position","absolute").css("top",figure_Y[2]+250).css("left", (figure_X[2]+figure_X[3])/2+520);
-    		$("#lengthText1Val3").val((figure_X[2]-figure_X[3])*10);
-    		
-			$("#roomMake_Canvas_Body").append("<div id='lengthText4' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val4'readonly>MM<div>");
-			$("#lengthText4").css("position","absolute").css("top",(figure_Y[3]+figure_Y[4])/2+240).css("left", figure_X[3]+410);
-			$("#lengthText1Val4").val((figure_Y[3]-figure_Y[4])*10);
-			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText5' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val5'readonly>MM<div>");
-			$("#lengthText5").css("position","absolute").css("top",figure_Y[4]+250).css("left", (figure_X[4]+figure_X[5])/2+500);
-			$("#lengthText1Val5").val((figure_X[4]-figure_X[5])*10);
-			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText6' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val6'readonly>MM<div>");
-			$("#lengthText6").css("position","absolute").css("top",(figure_Y[5]+figure_Y[0])/2+250).css("left", figure_X[5]+400);
-			$("#lengthText1Val6").val((figure_Y[5]-figure_Y[0])*10);
-    	}
-    	else if(figure_num==3){
-    		
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val1'readonly>MM<div>");
-    		$("#lengthText1").css("position","absolute").css("top",figure_Y[0]+210).css("left", (figure_X[0]+figure_X[1])/2+520);
-    		$("#lengthText1Val1").val((figure_X[1]-figure_X[0])*10);
-			
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText2' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val2'readonly>MM<div>");
-    		$("#lengthText2").css("position","absolute").css("top",(figure_Y[1]+figure_Y[2])/2+220).css("left", figure_X[1]+560);
-    		$("#lengthText1Val2").val((figure_Y[2]-figure_Y[1])*10);
-			
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText3' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val3'readonly>MM<div>");
-    		$("#lengthText3").css("position","absolute").css("top",figure_Y[2]+210).css("left", (figure_X[2]+figure_X[3])/2+530);
-    		$("#lengthText1Val3").val((figure_X[3]-figure_X[2])*10);
-			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText4' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val4'readonly>MM<div>");
-			$("#lengthText4").css("position","absolute").css("top",(figure_Y[3]+figure_Y[4])/2+230).css("left", figure_X[3]+560);
-			$("#lengthText1Val4").val((figure_Y[4]-figure_Y[3])*10);
-			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText5' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val5'readonly>MM<div>");
-			$("#lengthText5").css("position","absolute").css("top",figure_Y[4]+260).css("left", (figure_X[4]+figure_X[5])/2+500);
-			$("#lengthText1Val5").val((figure_X[4]-figure_X[5])*10);
-			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText6' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val6'readonly>MM<div>");
-			$("#lengthText6").css("position","absolute").css("top",(figure_Y[5]+figure_Y[0])/2+200).css("left", figure_X[5]+400);
-			$("#lengthText1Val6").val((figure_Y[5]-figure_Y[0])*10);
-    	}
-		else if(figure_num==4){
-			$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val1'readonly>MM<div>");
-    		$("#lengthText1").css("position","absolute").css("top",figure_Y[0]+210).css("left", (figure_X[0]+figure_X[1])/2+500);
-    		$("#lengthText1Val1").val((figure_X[1]-figure_X[0])*10);
-    		
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText2' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val2'readonly>MM<div>");
-    		$("#lengthText2").css("position","absolute").css("top",(figure_Y[1]+figure_Y[2])/2+240).css("left", figure_X[1]+560);
-    		$("#lengthText1Val2").val((figure_Y[2]-figure_Y[1])*10);
-    		
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText3' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val3'readonly>MM<div>");
-    		$("#lengthText3").css("position","absolute").css("top",figure_Y[2]+260).css("left", (figure_X[2]+figure_X[3])/2+540);
-    		$("#lengthText1Val3").val((figure_X[2]-figure_X[3])*10);
-    		
-			$("#roomMake_Canvas_Body").append("<div id='lengthText4' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val4'readonly>MM<div>");
-			$("#lengthText4").css("position","absolute").css("top",(figure_Y[3]+figure_Y[4])/2+240).css("left", figure_X[3]+560);
-			$("#lengthText1Val4").val((figure_Y[4]-figure_Y[3])*10);
-			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText5' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val5'readonly>MM<div>");
-			$("#lengthText5").css("position","absolute").css("top",figure_Y[4]+250).css("left", (figure_X[4]+figure_X[5])/2+500);
-			$("#lengthText1Val5").val((figure_X[4]-figure_X[5])*10);
-			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText6' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val6'readonly>MM<div>");
-			$("#lengthText6").css("position","absolute").css("top",(figure_Y[5]+figure_Y[0])/2+230).css("left", figure_X[5]+400);
-			$("#lengthText1Val6").val((figure_Y[5]-figure_Y[0])*10);
-		}
-		else if(figure_num==5){
-			$("#roomMake_Canvas_Body").append("<div id='lengthText1' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val1'readonly>MM<div>");
-    		$("#lengthText1").css("position","absolute").css("top",figure_Y[0]+210).css("left", (figure_X[0]+figure_X[1])/2+500);
-    		$("#lengthText1Val1").val((figure_X[1]-figure_X[0])*10);
-    		
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText2' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val2'readonly>MM<div>");
-    		$("#lengthText2").css("position","absolute").css("top",(figure_Y[1]+figure_Y[2])/2+250).css("left", figure_X[1]+570);
-    		$("#lengthText1Val2").val((figure_Y[2]-figure_Y[1])*10);
-			
-    		$("#roomMake_Canvas_Body").append("<div id='lengthText3' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val3'readonly>MM<div>");
-    		$("#lengthText3").css("position","absolute").css("top",figure_Y[2]+250).css("left", (figure_X[2]+figure_X[3])/2+530);
-    		$("#lengthText1Val3").val((figure_X[2]-figure_X[3])*10);
-    		
-			$("#roomMake_Canvas_Body").append("<div id='lengthText4' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val4'readonly>MM<div>");
-			$("#lengthText4").css("position","absolute").css("top",(figure_Y[3]+figure_Y[4])/2+260).css("left", figure_X[3]+400);
-			$("#lengthText1Val4").val((figure_Y[3]-figure_Y[4])*10);
-			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText5' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val5'readonly>MM<div>");
-			$("#lengthText5").css("position","absolute").css("top",figure_Y[4]+200).css("left", (figure_X[4]+figure_X[5])/2+510);
-			$("#lengthText1Val5").val((figure_X[5]-figure_X[4])*10);
-			
-			$("#roomMake_Canvas_Body").append("<div id='lengthText6' class='lengthText'><input class='lenthinput' type='text' id='lengthText1Val6'readonly>MM<div>");
-			$("#lengthText6").css("position","absolute").css("top",(figure_Y[5]+figure_Y[0])/2+220).css("left", figure_X[5]+400);
-			$("#lengthText1Val6").val((figure_Y[5]-figure_Y[0])*10);
-			
-		}
-	}
 	
 });
 	

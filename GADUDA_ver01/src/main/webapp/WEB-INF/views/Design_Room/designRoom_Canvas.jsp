@@ -402,7 +402,7 @@ $(document).ready(function(){
 	var canvas = document.getElementById("myCanvas");
 	var context = canvas.getContext("2d");
 	
-	var canvasOffset=$("#design_Include_body").offset();
+	var canvasOffset=$("#myCanvas_div").offset();
 	var offsetX=canvasOffset.left;
 	var offsetY=canvasOffset.top;
 	
@@ -411,10 +411,10 @@ $(document).ready(function(){
 	
 	
 	var roomMake_canvas_Turnimg =  new Image();
-	roomMake_canvas_Turnimg.src = "/resources/Images/basic_img/turn_img.jpg";
+	roomMake_canvas_Turnimg.src = "/resources/Images/basic_img/turn.png";
 	
-	var fig_img_X =20;
-	var fig_img_Y =20;
+	var fig_img_X =300;
+	var fig_img_Y =150;
 	
 	var fig_width_length =200;
 	var fig_height_length =200;
@@ -844,10 +844,12 @@ $(document).ready(function(){
     	$("#myCanvas_div").append("<div id='Img_lengthText1' class='Img_lengthText'><input type='text'  class='lenthinput' id='Img_lengthText1Val1' readonly>MM<div>");
 		$("#Img_lengthText1").css("position","absolute").css("top",fig_img_Y_arr[select_fig_num]+220).css("left",fig_img_X_arr[select_fig_num]+(fig_img_width_length_arr[select_fig_num]/2)+500);
 		$("#Img_lengthText1Val1").val(fig_img_width_length_arr[select_fig_num]*10);
+		$("#Img_lengthText1Val1").css('background',"transparent").css('border','none');
 		
 		$("#myCanvas_div").append("<div id='Img_lengthText2' class='Img_lengthText'><input type='text' class='lenthinput' id='Img_lengthText1Val2' readonly>MM<div>");
 		$("#Img_lengthText2").css("position","absolute").css("top",fig_img_Y_arr[select_fig_num]+(fig_img_height_length_arr[select_fig_num]/2)+260).css("left", fig_img_X_arr[select_fig_num]+fig_img_width_length_arr[select_fig_num]+550);
 		$("#Img_lengthText1Val2").val(fig_img_height_length_arr[select_fig_num]*10);
+		$("#Img_lengthText1Val2").css('background',"transparent").css('border','none');
     }
 	
 	
